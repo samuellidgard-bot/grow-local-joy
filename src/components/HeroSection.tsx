@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import icon from "@/assets/icon.png";
 
 const HeroSection = () => {
   const scrollToContact = () => {
