@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import icon from "@/assets/icon.png";
 
 const links = [
   { label: "Services", href: "#services" },
@@ -21,7 +21,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-lg border-b border-primary-foreground/5">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <img src={logo} alt="Excello Media" className="h-10" />
+        <div className="flex items-center gap-2">
+          <img src={icon} alt="Excello Media" className="h-10 w-10" />
+          <span className="font-heading font-bold text-xl text-primary-foreground tracking-tight">EXCELLO <span className="text-secondary">MEDIA</span></span>
+        </div>
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (

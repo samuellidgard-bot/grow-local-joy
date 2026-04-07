@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import icon from "@/assets/icon.png";
 
 const HeroSection = () => {
   const scrollToContact = () => {
@@ -21,7 +21,10 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <img src={logo} alt="Excello Media" className="h-20 mx-auto mb-8" />
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <img src={icon} alt="Excello Media" className="h-16 w-16" />
+              <span className="font-heading font-extrabold text-4xl text-primary-foreground tracking-tight">EXCELLO <span className="text-secondary">MEDIA</span></span>
+            </div>
           </motion.div>
 
           <motion.div
