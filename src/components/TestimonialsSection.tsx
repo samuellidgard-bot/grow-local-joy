@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: "James Hartley",
     role: "Owner, Hartley Painting Co.",
-    text: "Excello Media transformed our business. We went from scrambling for leads to having a 3-week waiting list. Their Meta ads system is genuinely next level.",
+    text: "Xello Media transformed our business. We went from scrambling for leads to having a 3-week waiting list. Their Meta ads system is genuinely next level.",
     stars: 5,
   },
   {
@@ -17,7 +17,7 @@ const testimonials = [
   {
     name: "David Chen",
     role: "Founder, Apex Roofing Solutions",
-    text: "I was sceptical about Meta ads, but the team at Excello proved me wrong. £72K in revenue from a £3K monthly investment. The numbers speak for themselves.",
+    text: "I was sceptical about Meta ads, but the team at Xello proved me wrong. £72K in revenue from a £3K monthly investment. The numbers speak for themselves.",
     stars: 5,
   },
   {
