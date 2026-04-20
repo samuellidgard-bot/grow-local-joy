@@ -22,8 +22,8 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center justify-center gap-3 mb-8">
-              <img src={icon} alt="Excello Media" className="h-16 w-16" />
-              <span className="font-heading font-extrabold text-4xl text-primary-foreground tracking-tight">EXCELLO <span className="text-secondary">MEDIA</span></span>
+              <img src={icon} alt="Xello Media" className="h-16 w-16 -mr-2" />
+              <span className="font-heading font-extrabold text-4xl text-primary-foreground tracking-tight">ELLO <span className="text-secondary">MEDIA</span></span>
             </div>
           </motion.div>
 
