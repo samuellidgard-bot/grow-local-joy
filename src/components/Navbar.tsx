@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import icon from "@/assets/icon.png";
+import logo from "@/assets/logo-full.png";
 
 const links = [
   { label: "Services", href: "#services" },
@@ -21,10 +21,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-lg border-b border-primary-foreground/5">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <img src={icon} alt="Xello Media" className="h-10 w-10 -mr-1" />
-          <span className="font-heading font-bold text-xl text-primary-foreground tracking-tight">ELLO <span className="text-secondary">MEDIA</span></span>
-        </div>
+        <img src={logo} alt="Xello Media" className="h-9 w-auto" />
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
