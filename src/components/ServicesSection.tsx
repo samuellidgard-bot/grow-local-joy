@@ -24,7 +24,7 @@ const ServicesSection = () => (
           Everything You Need to <span className="text-gradient-primary">Scale</span>
         </h2>
         <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
-          Simple, flat-rate pricing at £3,000/month. Start with a free 7-day trial.
+          Simple, flat-rate pricing at £1,000/month. Start with a free 7-day trial.
         </p>
       </motion.div>
 
