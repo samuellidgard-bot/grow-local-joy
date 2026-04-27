@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-full.png";
 
@@ -9,20 +9,23 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-hero overflow-hidden flex items-center">
-      {/* Ambient glow effects */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/10 blur-[120px]" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-secondary/10 blur-[120px]" />
+    <section className="relative min-h-[92vh] bg-hero overflow-hidden flex items-center">
+      <img
+        src="/renovation-before-after.png"
+        alt="House renovation before and after concept"
+        className="absolute inset-0 h-full w-full object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/72 to-black/88" />
 
       <div className="container mx-auto px-6 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center justify-center mb-8">
-              <img src={logo} alt="Xello Media" className="h-20 sm:h-24 w-auto" />
+              <img src={logo} alt="Xello Media" className="h-16 sm:h-20 w-auto" />
             </div>
           </motion.div>
 
@@ -30,11 +33,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 mb-8"
+            className="inline-flex items-center gap-2 rounded-md border border-secondary/30 bg-secondary/10 px-4 py-2 mb-8"
           >
-            <span className="h-2 w-2 rounded-full bg-secondary animate-pulse" />
+            <MapPin className="h-4 w-4 text-secondary" />
             <span className="text-sm font-medium text-secondary">
-              7-Day Free Trial — No Management Fee
+              Brighton, Hove & Sussex Renovation Growth Partner
             </span>
           </motion.div>
 
@@ -42,21 +45,21 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-primary-foreground leading-[1.1] mb-6"
+            className="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold text-primary-foreground leading-[1.06] mb-6"
           >
-            More Leads. More Jobs.{" "}
-            <span className="text-gradient-accent">More Growth.</span>
+            We build the growth engine for{" "}
+            <span className="text-gradient-accent">renovation companies.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-lg sm:text-xl text-primary-foreground/70 max-w-2xl mx-auto mb-10 font-body"
+            className="text-lg sm:text-xl text-primary-foreground/76 max-w-3xl mx-auto mb-10 font-body"
           >
-            We help home improvement businesses generate consistent, high-quality
-            leads using proven Meta ad systems designed to scale. Painting,
-            roofing, landscaping — we've got you covered.
+            Xello Media manages your website, Meta ads, social content and lead
+            follow-up so more local homeowners turn into quote-ready enquiries.
+            Built for builders, extensions, lofts, kitchens and bathrooms.
           </motion.p>
 
           <motion.div
@@ -68,40 +71,38 @@ const HeroSection = () => {
             <Button
               size="lg"
               onClick={scrollToContact}
-              className="bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-bold text-lg px-8 py-6 rounded-xl shadow-elevated transition-all hover:shadow-glow hover:scale-[1.02]"
+              className="bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-bold text-lg px-8 py-6 rounded-md shadow-elevated transition-all hover:shadow-glow hover:scale-[1.02]"
             >
-              Start Your Free Trial
+              Get My Free Growth Audit
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              onClick={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
-              className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 font-heading font-semibold text-lg px-8 py-6 rounded-xl"
+              onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+              className="border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 font-heading font-semibold text-lg px-8 py-6 rounded-md"
             >
-              <Play className="mr-2 h-5 w-5" />
-              See Case Studies
+              See What We Manage
             </Button>
           </motion.div>
 
-          {/* Trust badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-16 flex flex-wrap justify-center gap-8 text-primary-foreground/40 text-sm font-medium"
+            className="mt-14 grid gap-3 sm:grid-cols-3 text-primary-foreground/68 text-sm font-medium max-w-3xl mx-auto"
           >
-            <div className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              Zero Risk Start
+            <div className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-secondary" />
+              £1,500/month management
             </div>
-            <div className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              30-Day Lead Guarantee
+            <div className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-secondary" />
+              Client owns ad account
             </div>
-            <div className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              Meta Ads Specialists
+            <div className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-secondary" />
+              90-day growth sprint
             </div>
           </motion.div>
         </div>

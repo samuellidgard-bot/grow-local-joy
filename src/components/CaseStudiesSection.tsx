@@ -1,39 +1,24 @@
 import { motion } from "framer-motion";
-import { TrendingUp, Users, DollarSign } from "lucide-react";
+import { ClipboardCheck, MousePointerClick, Search, TrendingUp } from "lucide-react";
 
-const caseStudies = [
+const launchPlan = [
   {
-    niche: "Painting Company",
-    location: "Manchester, UK",
-    results: [
-      { icon: Users, label: "Leads Generated", value: "127" },
-      { icon: DollarSign, label: "Cost Per Lead", value: "£8.40" },
-      { icon: TrendingUp, label: "Revenue Generated", value: "£48K" },
-    ],
-    quote: "We went from relying on word-of-mouth to having a fully booked calendar within 6 weeks.",
-    period: "First 90 Days",
+    phase: "Week 1",
+    title: "Audit & Growth Map",
+    icon: Search,
+    points: ["Website conversion review", "Meta account setup plan", "Best services and areas to target"],
   },
   {
-    niche: "Roofing Contractor",
-    location: "Birmingham, UK",
-    results: [
-      { icon: Users, label: "Leads Generated", value: "89" },
-      { icon: DollarSign, label: "Cost Per Lead", value: "£12.60" },
-      { icon: TrendingUp, label: "Revenue Generated", value: "£72K" },
-    ],
-    quote: "The quality of leads is unreal. These aren't tyre-kickers — they're ready to buy.",
-    period: "First 60 Days",
+    phase: "Weeks 2-4",
+    title: "Launch The Lead System",
+    icon: MousePointerClick,
+    points: ["Landing page or website upgrades", "Meta campaigns and creative tests", "Lead capture and notification flow"],
   },
   {
-    niche: "Landscaping Business",
-    location: "Leeds, UK",
-    results: [
-      { icon: Users, label: "Leads Generated", value: "203" },
-      { icon: DollarSign, label: "Cost Per Lead", value: "£6.20" },
-      { icon: TrendingUp, label: "Revenue Generated", value: "£35K" },
-    ],
-    quote: "We had to hire two new crew members just to keep up with the demand.",
-    period: "First 90 Days",
+    phase: "Days 30-90",
+    title: "Optimise & Scale",
+    icon: TrendingUp,
+    points: ["Shift budget to winning services", "Improve lead quality with better questions", "Weekly report and next-step actions"],
   },
 ];
 
@@ -46,45 +31,41 @@ const CaseStudiesSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">Proven Results</span>
+        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">How It Works</span>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-primary-foreground">
-          Real Results for Real Businesses
+          A practical 90-day sprint to generate better quote enquiries
         </h2>
+        <p className="text-primary-foreground/60 mt-4 max-w-2xl mx-auto text-lg">
+          We keep the system simple: improve the website journey, run local Meta campaigns, track every lead and refine weekly.
+        </p>
       </motion.div>
 
       <div className="grid lg:grid-cols-3 gap-8">
-        {caseStudies.map((cs, i) => (
+        {launchPlan.map((step, i) => (
           <motion.div
-            key={cs.niche}
+            key={step.title}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.15 }}
-            className="rounded-2xl border border-primary-foreground/10 bg-primary-foreground/5 backdrop-blur-sm p-8 flex flex-col"
+            className="rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 backdrop-blur-sm p-8 flex flex-col"
           >
             <div className="mb-6">
-              <span className="text-xs font-semibold tracking-wider uppercase text-secondary">{cs.period}</span>
-              <h3 className="font-heading font-bold text-xl text-primary-foreground mt-1">{cs.niche}</h3>
-              <p className="text-primary-foreground/50 text-sm">{cs.location}</p>
+              <div className="h-11 w-11 rounded-md bg-secondary/15 flex items-center justify-center mb-5">
+                <step.icon className="h-5 w-5 text-secondary" />
+              </div>
+              <span className="text-xs font-semibold tracking-wider uppercase text-secondary">{step.phase}</span>
+              <h3 className="font-heading font-bold text-xl text-primary-foreground mt-1">{step.title}</h3>
             </div>
 
-            <div className="space-y-4 mb-8">
-              {cs.results.map((r) => (
-                <div key={r.label} className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-lg bg-secondary/15 flex items-center justify-center">
-                    <r.icon className="h-4 w-4 text-secondary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-primary-foreground/50">{r.label}</p>
-                    <p className="font-heading font-bold text-lg text-primary-foreground">{r.value}</p>
-                  </div>
+            <div className="space-y-4">
+              {step.points.map((point) => (
+                <div key={point} className="flex items-start gap-3">
+                  <ClipboardCheck className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
+                  <p className="text-primary-foreground/70 text-sm leading-relaxed">{point}</p>
                 </div>
               ))}
             </div>
-
-            <blockquote className="mt-auto border-l-2 border-secondary/40 pl-4 text-primary-foreground/70 text-sm italic">
-              "{cs.quote}"
-            </blockquote>
           </motion.div>
         ))}
       </div>

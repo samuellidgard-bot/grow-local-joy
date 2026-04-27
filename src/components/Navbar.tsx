@@ -5,8 +5,8 @@ import logo from "@/assets/logo-full.png";
 
 const links = [
   { label: "Services", href: "#services" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Process", href: "#case-studies" },
+  { label: "Why Us", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -36,9 +36,9 @@ const Navbar = () => {
           <Button
             size="sm"
             onClick={() => scrollTo("#contact")}
-            className="bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-lg"
+            className="bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Free Trial
+            Free Audit
           </Button>
         </div>
 
@@ -61,9 +61,9 @@ const Navbar = () => {
           <Button
             size="sm"
             onClick={() => scrollTo("#contact")}
-            className="w-full bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-lg"
+            className="w-full bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Free Trial
+            Free Audit
           </Button>
         </div>
       )}

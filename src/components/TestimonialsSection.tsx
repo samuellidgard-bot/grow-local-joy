@@ -1,30 +1,22 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
-const testimonials = [
+const reasons = [
   {
-    name: "James Hartley",
-    role: "Owner, Hartley Painting Co.",
-    text: "Xello Media transformed our business. We went from scrambling for leads to having a 3-week waiting list. Their Meta ads system is genuinely next level.",
-    stars: 5,
+    title: "Built for high-value jobs",
+    text: "A kitchen, loft, extension or full renovation is worth far more than a cheap enquiry. The strategy focuses on quality homeowner conversations, not vanity metrics.",
   },
   {
-    name: "Sarah Mitchell",
-    role: "Director, GreenScape Landscaping",
-    text: "The free trial sold us instantly. Within 5 days we had 14 qualified leads. Now on the monthly retainer — it's the best investment we've ever made.",
-    stars: 5,
+    title: "Your business keeps control",
+    text: "Campaigns are run through your ad account, so you keep ownership of the data, assets and learning as the system improves.",
   },
   {
-    name: "David Chen",
-    role: "Founder, Apex Roofing Solutions",
-    text: "I was sceptical about Meta ads, but the team at Xello proved me wrong. £72K in revenue from a £3K monthly investment. The numbers speak for themselves.",
-    stars: 5,
+    title: "Website and ads work together",
+    text: "Most agencies only run ads. We look at the full journey from first click to quote request so more interested homeowners take action.",
   },
   {
-    name: "Mark Thompson",
-    role: "Owner, Thompson Renovations",
-    text: "Finally, a marketing agency that actually delivers. No fluff, no excuses — just consistent, qualified leads hitting my phone every single day.",
-    stars: 5,
+    title: "Clear weekly priorities",
+    text: "You see what was launched, what leads came in, what needs fixing and what we are testing next. No confusing reports.",
   },
 ];
 
@@ -37,32 +29,27 @@ const TestimonialsSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">Testimonials</span>
+        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">Why This Works</span>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-foreground">
-          Trusted by Home Improvement <span className="text-gradient-accent">Leaders</span>
+          Renovation companies need more than <span className="text-gradient-accent">posting on social</span>
         </h2>
       </motion.div>
 
       <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        {testimonials.map((t, i) => (
+        {reasons.map((item, i) => (
           <motion.div
-            key={t.name}
+            key={item.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="bg-card rounded-2xl p-8 shadow-card border border-border"
+            className="bg-card rounded-lg p-8 shadow-card border border-border"
           >
-            <div className="flex gap-1 mb-4">
-              {Array.from({ length: t.stars }).map((_, j) => (
-                <Star key={j} className="h-4 w-4 fill-secondary text-secondary" />
-              ))}
+            <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center mb-5">
+              <CheckCircle2 className="h-5 w-5 text-primary" />
             </div>
-            <p className="text-card-foreground/80 text-sm leading-relaxed mb-6">"{t.text}"</p>
-            <div>
-              <p className="font-heading font-bold text-card-foreground text-sm">{t.name}</p>
-              <p className="text-muted-foreground text-xs">{t.role}</p>
-            </div>
+            <h3 className="font-heading font-bold text-card-foreground text-lg mb-3">{item.title}</h3>
+            <p className="text-card-foreground/75 text-sm leading-relaxed">{item.text}</p>
           </motion.div>
         ))}
       </div>

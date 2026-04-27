@@ -1,0 +1,43 @@
+{
+  "offer": "Xello Renovation Growth Engine",
+  "price": "£1,500/month + client ad spend",
+  "recommendedMinimumTerm": "90 days",
+  "targetAreas": [
+    "Brighton",
+    "Hove",
+    "Worthing",
+    "Lewes",
+    "Shoreham",
+    "Eastbourne",
+    "Crawley",
+    "Haywards Heath",
+    "Burgess Hill",
+    "Horsham"
+  ],
+  "targetServices": [
+    "renovation company",
+    "builder",
+    "home extensions",
+    "loft conversions",
+    "kitchen renovation",
+    "bathroom renovation",
+    "design and build",
+    "garden rooms",
+    "roofing contractor"
+  ],
+  "highIntentSignals": [
+    "Good project photos but weak website call to action",
+    "Strong reviews but no obvious lead capture system",
+    "Active Instagram but inconsistent posting",
+    "High-ticket renovation services",
+    "Serves affluent local areas",
+    "No visible landing pages or Meta ad funnel"
+  ],
+  "avoidSignals": [
+    "No contact details",
+    "Very poor reputation",
+    "Likely sole trader with no capacity",
+    "Already has a polished paid acquisition funnel",
+    "Clearly outside renovation/home improvement niche"
+  ]
+}
