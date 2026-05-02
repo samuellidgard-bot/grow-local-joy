@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, Mail, PhoneCall, Send } from "lucide-react";
+import { CheckCircle2, Mail, Send } from "lucide-react";
 
 const callSteps = [
   "Sam reviews your website, socials and local area before replying.",
@@ -54,13 +54,12 @@ const ContactSection = () => {
                   Renovation, extension, kitchen, bathroom, roofing, garden room and design-build companies around Brighton, Hove and Sussex.
                 </p>
               </div>
-              <a
-                href="tel:+447943574948"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-md border border-border px-5 py-3 font-heading font-bold text-card-foreground transition-colors hover:bg-muted"
-              >
-                <PhoneCall className="mr-2 h-4 w-4" />
-                Call Sam Directly
-              </a>
+              <div className="mt-6 rounded-md border border-secondary/25 bg-secondary/10 p-5">
+                <p className="text-sm font-semibold text-card-foreground">No surprise calls.</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Enquiries come through first, then Sam replies to arrange a time so both sides are ready.
+                </p>
+              </div>
             </motion.aside>
 
             <motion.form

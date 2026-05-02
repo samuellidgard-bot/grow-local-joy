@@ -13,9 +13,6 @@ const Footer = () => (
             <a href="mailto:sam@xellomedia.co.uk" className="text-primary-foreground/60 transition-colors hover:text-secondary">
               sam@xellomedia.co.uk
             </a>
-            <a href="tel:+447943574948" className="text-primary-foreground/60 transition-colors hover:text-secondary">
-              07943 574948
-            </a>
           </div>
         </div>
       </div>
