@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xello CRM Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="brand-logo" src="assets/xello-media-logo-transparent.png" alt="Xello Media" />
+          <p class="brand-subtitle">Internal command centre</p>
+        </div>
+
+        <nav class="nav-list" aria-label="Dashboard navigation">
+          <button class="nav-item active" data-view="overview">Overview</button>
+          <button class="nav-item" data-view="today">Today's Actions</button>
+
+          <details class="nav-folder" open>
+            <summary>Outreach System</summary>
+            <button class="nav-item" data-view="prospects">Prospects</button>
+            <button class="nav-item" data-view="profiles">Company Profiles</button>
+            <button class="nav-item" data-view="research">Company Research</button>
+            <button class="nav-item" data-view="website-audits">Website Audits</button>
+            <button class="nav-item" data-view="social-audits">Social Audits</button>
+            <button class="nav-item" data-view="outreach">Outreach</button>
+            <button class="nav-item" data-view="voice">Outreach Voice</button>
+            <button class="nav-item" data-view="replies">Replies</button>
+            <button class="nav-item" data-view="approvals">Approvals</button>
+          </details>
+
+          <details class="nav-folder" open>
+            <summary>AI Operating Hub</summary>
+            <button class="nav-item" data-view="agents">AI Agents</button>
+            <button class="nav-item" data-view="agent-outputs">Agent Outputs</button>
+            <button class="nav-item" data-view="learning">Learning</button>
+            <button class="nav-item" data-view="ceo">CEO Brief</button>
+          </details>
+
+          <details class="nav-folder">
+            <summary>Content Creation</summary>
+            <button class="nav-item" data-view="content">Content Ideas</button>
+            <button class="nav-item" data-view="content-briefs">Content Briefs</button>
+            <button class="nav-item" data-view="xello-social">Xello Social</button>
+          </details>
+
+          <details class="nav-folder">
+            <summary>Business</summary>
+            <button class="nav-item" data-view="pipeline">Pipeline</button>
+            <button class="nav-item" data-view="test-journey">Test Journey</button>
+            <button class="nav-item" data-view="delivery">Client Delivery</button>
+            <button class="nav-item" data-view="clients">Clients</button>
+            <button class="nav-item" data-view="finance">Finance</button>
+            <button class="nav-item" data-view="spend">Spend</button>
+          </details>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="label">Current offer</p>
+          <strong>14-day test</strong>
+          <span>Site visit, filmed advert, Meta test, lead tracking, then retainer if proven.</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Xello Media</p>
+            <h1>Agency CRM Dashboard</h1>
+            <p class="subhead">Track prospects, AI outreach, calls, clients and spend from one simple internal workspace.</p>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button" id="syncBtn" title="Sync live Google Sheet data">Sync Sheet</button>
+            <button class="icon-button" id="connectSheetBtn" title="Connect Google Sheet backend">Connect Sheet</button>
+            <button class="icon-button" id="exportBtn" title="Export data">Export</button>
+            <button class="primary-button" id="addLeadBtn">Add Prospect</button>
+            <a class="icon-button logout-link" href="/crm/api/logout" title="Log out of the private dashboard">Log Out</a>
+          </div>
+        </header>
+
+        <div class="connection-bar" id="connectionBar">
+          <span class="status-dot"></span>
+          <span id="connectionText">Using local demo data. Connect your Google Sheet to show live business data.</span>
+        </div>
+
+        <section class="view active" id="overview">
+          <div class="metric-grid" id="metricGrid"></div>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Priority</p>
+                  <h2>Hot Leads</h2>
+                </div>
+                <span class="pill">Today</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Company</th>
+                      <th>Area</th>
+                      <th>Service</th>
+                      <th>Score</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="hotLeadsTable"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Actions</p>
+                  <h2>Today</h2>
+                </div>
+              </div>
+              <div class="task-list" id="taskList"></div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Pipeline</p>
+                <h2>Sales Stages</h2>
+              </div>
+            </div>
+            <div class="pipeline-row" id="pipelineRow"></div>
+          </section>
+        </section>
+
+        <section class="view" id="today">
+          <div class="metric-grid" id="todayMetricGrid"></div>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Focus view</p>
+                  <h2>Today's Action Queue</h2>
+                </div>
+                <span class="pill">Do these first</span>
+              </div>
+              <div class="today-action-list" id="todayActionList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Quick controls</p>
+                  <h2>Move The System Forward</h2>
+                </div>
+              </div>
+              <div class="quick-action-grid">
+                <button class="small-button approve" id="todaySyncBtn">Sync Sheet</button>
+                <button class="small-button" id="todayResearchBtn">Research Prospects</button>
+                <button class="small-button" id="todayDraftBtn">Generate Drafts</button>
+                <button class="small-button" id="todaySocialBtn">Plan Xello Social</button>
+              </div>
+              <div class="message-preview">
+                <p>This page is the daily command centre. Start here, complete the top actions, then move into Outreach, Delivery or Social only when needed.</p>
+                <p>Nothing here sends messages or posts content. It only helps you decide the next best manual action.</p>
+              </div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Readiness</p>
+                <h2>Business Setup Checklist</h2>
+              </div>
+              <span class="pill">Before going live</span>
+            </div>
+            <div class="setup-checklist" id="setupChecklist"></div>
+          </section>
+        </section>
+
+        <section class="view" id="prospects">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Database</p>
+                <h2>Prospects</h2>
+              </div>
+              <input class="search-input" id="prospectSearch" placeholder="Search prospects..." />
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Area</th>
+                    <th>Service</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                    <th>Next Action</th>
+                    <th>Profile</th>
+                  </tr>
+                </thead>
+                <tbody id="prospectsTable"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="profiles">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Single company view</p>
+                <h2>Company Profiles</h2>
+              </div>
+              <span class="pill">Joined-up view</span>
+            </div>
+            <div class="profile-grid" id="profileGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="website-audits">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Website Audit Agent</p>
+                  <h2>Run Website Audit</h2>
+                </div>
+                <span class="pill">Local output</span>
+              </div>
+              <form class="audit-form" id="websiteAuditForm">
+                <label>
+                  Company name
+                  <input name="company" placeholder="Example Renovations" />
+                </label>
+                <label>
+                  Website URL
+                  <input name="url" placeholder="https://example.co.uk" required />
+                </label>
+                <button class="primary-button full-width" type="submit">Create Audit Output</button>
+              </form>
+              <div class="message-preview">
+                <p>This creates a structured Website Audit Agent output inside the CRM. It does not contact the company or spend API credits.</p>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Outputs</p>
+                  <h2>Latest Website Audits</h2>
+                </div>
+              </div>
+              <div class="website-audit-list" id="websiteAuditList"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="social-audits">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Social Audit Agent</p>
+                <h2>Social Audits</h2>
+              </div>
+              <div class="panel-actions">
+                <button class="small-button" id="generateSocialAuditsLocalBtn">Generate Practice Audits</button>
+              </div>
+            </div>
+            <div class="social-audit-list" id="socialAuditList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="research">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Personalisation layer</p>
+                  <h2>Company Research</h2>
+                </div>
+                <div class="panel-actions">
+                  <button class="small-button" id="auditWebsitesBtn">Audit Websites</button>
+                  <button class="small-button" id="auditSocialsBtn">Audit Socials</button>
+                  <button class="small-button approve" id="researchProspectsBtn">Research Prospects</button>
+                </div>
+              </div>
+              <div class="research-list" id="researchList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">How this helps</p>
+                  <h2>Human-Sounding Outreach</h2>
+                </div>
+              </div>
+              <div class="message-preview">
+                <p>The Company Research Agent feeds the Outreach Writer with specific notes before any draft is created.</p>
+                <p>It looks for a personalised hook, likely pain point and best outreach angle, so the message feels like Sam actually checked the company.</p>
+                <p>No message is sent automatically. Research improves the draft quality only.</p>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="outreach">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Approval queue</p>
+                  <h2>AI Drafts</h2>
+                </div>
+                <div class="panel-actions">
+                  <button class="small-button" id="createTasksBtn">Create Tasks</button>
+                  <button class="small-button" id="refreshOutreachExamplesBtn">Refresh Examples</button>
+                  <button class="small-button approve" id="generateDraftsBtn">Generate Drafts</button>
+                </div>
+              </div>
+              <div class="draft-list" id="draftList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Template</p>
+                  <h2>Core Outreach Angle</h2>
+                </div>
+              </div>
+              <div class="message-preview">
+                <p>Hi [Name], I came across [Company] while looking at renovation companies around [Area].</p>
+                <p>I liked the way you [specific compliment from research]. It looks like the kind of work local homeowners would want to see more of.</p>
+                <p>I help local renovation companies improve their online presence and turn more of that attention into enquiries.</p>
+                <p>Do you currently get most enquiries through word of mouth, your website or Instagram?</p>
+              </div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Training loop</p>
+                <h2>Outreach Feedback</h2>
+              </div>
+              <span class="pill">Teaches the writer</span>
+            </div>
+            <div class="outreach-feedback-list" id="outreachFeedbackList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="voice">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Training data</p>
+                  <h2>Xello Outreach Voice</h2>
+                </div>
+                <span class="pill">Used by Outreach Writer</span>
+              </div>
+              <div class="voice-list" id="voiceList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Writing rules</p>
+                  <h2>Message Guardrails</h2>
+                </div>
+              </div>
+              <ul class="rules-list">
+                <li>Write like Sam: clear, friendly, direct and local.</li>
+                <li>First touch = observation, compliment, simple question.</li>
+                <li>Do not explain the full service before they reply.</li>
+                <li>Use a 10-minute chat only as a soft next step, not a hard pitch.</li>
+                <li>The 14-day local lead test is explained after they respond or on the call.</li>
+                <li>Do not mention the £1,500/month retainer in cold outreach.</li>
+                <li>Avoid fake case studies, guaranteed results and corporate fluff.</li>
+                <li>Draft only. Nothing sends without human approval.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="content">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Content creation</p>
+                  <h2>Research-Led Ad Ideas</h2>
+                </div>
+                <div class="panel-actions">
+                  <span class="pill">Uses Company Research</span>
+                  <button class="small-button approve" id="generateContentIdeasBtn">Generate Ideas</button>
+                </div>
+              </div>
+              <div class="content-idea-list" id="contentIdeaList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Agent handoff</p>
+                  <h2>Research → Content</h2>
+                </div>
+              </div>
+              <div class="message-preview">
+                <p>The Company Research Agent identifies what makes each business stand out: local reputation, specialist services, proof, project style and likely homeowner pain points.</p>
+                <p>The Content Creation Agent turns that into practical filming angles, advert hooks, talking points and Meta ad ideas for the 14-day local lead test.</p>
+                <p>This keeps content specific to the company instead of generic renovation ads.</p>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="content-briefs">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Content Creation Agent</p>
+                <h2>Content Briefs</h2>
+              </div>
+              <div class="panel-actions">
+                <button class="small-button approve" id="generateContentBriefsBtn">Generate Briefs From Research</button>
+              </div>
+            </div>
+            <div class="content-brief-list" id="contentBriefList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="xello-social">
+          <div class="metric-grid" id="socialMetricGrid"></div>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Xello audience growth</p>
+                  <h2>Instagram & TikTok Plan</h2>
+                </div>
+                <button class="small-button approve" id="generateSocialPlanBtn">Generate Plan</button>
+              </div>
+              <div class="xello-social-list" id="xelloSocialList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Agent role</p>
+                  <h2>Social Growth Agent</h2>
+                </div>
+              </div>
+              <div class="message-preview">
+                <p>This agent helps Xello look credible while the client base is still growing.</p>
+                <p>It plans Reels, TikToks, carousels and marketing tips that show you understand lead generation, local ads, websites and renovation marketing.</p>
+                <p>It creates plans and scripts only. It does not post to Instagram or TikTok automatically.</p>
+              </div>
+            </section>
+          </div>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Weekly rhythm</p>
+                  <h2>Posting Calendar</h2>
+                </div>
+                <span class="pill">Founder-led</span>
+              </div>
+              <div class="social-calendar-list" id="socialCalendarList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Creative direction</p>
+                  <h2>Content Pillars</h2>
+                </div>
+              </div>
+              <div class="pillar-list" id="pillarList"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="replies">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Inbox simulation</p>
+                  <h2>Replies</h2>
+                </div>
+                <div class="panel-actions">
+                  <button class="small-button" id="demoRepliesBtn">Add Demo Replies</button>
+                  <button class="small-button" id="practiceReplyFlowBtn">Practice Flow</button>
+                  <button class="small-button approve" id="triageRepliesBtn">Triage Replies</button>
+                </div>
+              </div>
+              <div class="reply-list" id="replyList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Next stage</p>
+                  <h2>Calls</h2>
+                </div>
+              </div>
+              <div class="call-list" id="callList"></div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Reply Triage Agent</p>
+                <h2>Suggested Responses</h2>
+              </div>
+              <span class="pill">Draft only</span>
+            </div>
+            <div class="reply-response-list" id="replyResponseList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="agents">
+          <div class="metric-grid" id="agentMetricGrid"></div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Agent control</p>
+                <h2>AI Agent Hub</h2>
+              </div>
+              <div class="panel-actions">
+                <button class="small-button" id="scanProspectsBtn">Scan Prospects</button>
+                <button class="small-button" id="researchProspectsAgentBtn">Research Prospects</button>
+                <button class="small-button" id="auditWebsitesAgentBtn">Audit Websites</button>
+                <button class="small-button" id="auditSocialsAgentBtn">Audit Socials</button>
+                <button class="small-button" id="generateContentAgentBtn">Generate Content</button>
+                <button class="small-button" id="practiceAllAgentsBtn">Practice All Agents</button>
+                <button class="small-button approve" id="runDailyCycleBtn">Run Daily Cycle</button>
+                <button class="small-button" id="installAutomationBtn">Install Daily Automation</button>
+                <button class="small-button danger" id="removeAutomationBtn">Remove Automation</button>
+              </div>
+            </div>
+            <div class="agent-grid" id="agentGrid"></div>
+          </section>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Work queue</p>
+                  <h2>Agent Tasks</h2>
+                </div>
+                <button class="ghost-button" id="simulateAgentRun">Simulate Progress</button>
+              </div>
+              <div class="task-table" id="agentTaskTable"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Approvals</p>
+                  <h2>Needs Your Review</h2>
+                </div>
+              </div>
+              <div class="approval-list" id="approvalList"></div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">System log</p>
+                <h2>Agent Activity</h2>
+              </div>
+            </div>
+            <div class="log-list" id="agentLogList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="agent-outputs">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Agent result history</p>
+                <h2>Agent Outputs</h2>
+              </div>
+              <span class="pill">What the AI completed</span>
+            </div>
+            <div class="agent-output-list" id="agentOutputList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="approvals">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Human control</p>
+                <h2>Approval Centre</h2>
+              </div>
+              <span class="pill warning">Nothing important sends without review</span>
+            </div>
+            <div class="approval-list large-list" id="masterApprovalList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="learning">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Agent memory</p>
+                  <h2>What The Business Is Learning</h2>
+                </div>
+              </div>
+              <div class="memory-list" id="memoryList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Knowledge base</p>
+                  <h2>Source Of Truth</h2>
+                </div>
+              </div>
+              <div class="knowledge-list" id="knowledgeList"></div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Testing system</p>
+                <h2>Experiments</h2>
+              </div>
+              <span class="pill">Every result teaches the agents</span>
+            </div>
+            <div class="experiment-grid" id="experimentGrid"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Playbooks</p>
+                <h2>How Agents Should Work</h2>
+              </div>
+            </div>
+            <div class="playbook-grid" id="playbookGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="delivery">
+          <div class="metric-grid" id="deliveryMetricGrid"></div>
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Client operations</p>
+                <h2>Client Delivery Tracker</h2>
+              </div>
+              <span class="pill">From site visit to retainer</span>
+            </div>
+            <div class="delivery-grid" id="deliveryGrid"></div>
+          </section>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">14-day test</p>
+                  <h2>Delivery Workflow</h2>
+                </div>
+              </div>
+              <div class="delivery-workflow" id="deliveryWorkflow"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Client proof</p>
+                  <h2>What To Track</h2>
+                </div>
+              </div>
+              <ul class="rules-list">
+                <li>Ad spend agreed and paid by the company.</li>
+                <li>Site visit date, content filmed and edits delivered.</li>
+                <li>Meta campaign status, leads generated and cost per lead.</li>
+                <li>Booked quote calls and whether the client followed up quickly.</li>
+                <li>Review call outcome and whether to pitch the retainer.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="test-journey">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Dry run</p>
+                  <h2>Full Fake Client Journey</h2>
+                </div>
+                <button class="small-button approve" id="runDemoJourneyBtn">Run Demo Journey</button>
+              </div>
+              <div class="journey-timeline" id="journeyTimeline"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Why this matters</p>
+                  <h2>System Test</h2>
+                </div>
+              </div>
+              <div class="message-preview">
+                <p>This page lets you test the entire business without contacting a real company.</p>
+                <p>Use First Touch Innovations as the example: prospect, research, draft, reply, call, 14-day trial, delivery and retainer follow-up.</p>
+                <p>Once this looks right, you can confidently push the CRM online and use the same structure for real prospects.</p>
+              </div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Operating notes</p>
+                <h2>What The Demo Should Prove</h2>
+              </div>
+              <span class="pill">No external sending</span>
+            </div>
+            <div class="demo-proof-grid" id="demoProofGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="finance">
+          <div class="metric-grid" id="financeMetricGrid"></div>
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Numbers</p>
+                  <h2>Financial Command Centre</h2>
+                </div>
+              </div>
+              <div class="finance-list" id="financeList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Risk monitor</p>
+                  <h2>Errors & Warnings</h2>
+                </div>
+              </div>
+              <div class="risk-list" id="riskList"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="ceo">
+          <section class="panel ceo-panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Weekly CEO brief</p>
+                <h2>What Matters Most</h2>
+              </div>
+              <div class="panel-actions">
+                <span class="pill">Decision view</span>
+                <button class="small-button approve" id="generateCeoBriefBtn">Generate Brief</button>
+              </div>
+            </div>
+            <div class="ceo-grid" id="ceoGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="pipeline">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Deals</p>
+                <h2>Pipeline Board</h2>
+              </div>
+            </div>
+            <div class="kanban" id="kanban"></div>
+          </section>
+        </section>
+
+        <section class="view" id="clients">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Delivery</p>
+                <h2>Clients</h2>
+              </div>
+              <span class="pill">Target: 3 clients</span>
+            </div>
+            <div class="client-grid" id="clientGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="spend">
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Budget control</p>
+                  <h2>API & Tool Spend</h2>
+                </div>
+              </div>
+              <div class="spend-list" id="spendList"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Guardrails</p>
+                  <h2>Operating Rules</h2>
+                </div>
+              </div>
+              <ul class="rules-list">
+                <li>Run prospect scans in batches of 25.</li>
+                <li>Approve every message before sending.</li>
+                <li>Keep Instagram manual-assisted to protect the account.</li>
+                <li>Stop AI processing when daily spend hits the limit.</li>
+                <li>Log every reply and call outcome.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="leadDialog">
+      <form method="dialog" class="dialog-card" id="leadForm">
+        <div class="panel-header">
+          <div>
+            <p class="label">New prospect</p>
+            <h2>Add Company</h2>
+          </div>
+          <button class="ghost-button" value="cancel" type="button" id="closeDialog">Close</button>
+        </div>
+        <div class="form-grid">
+          <label>Company<input name="company" required placeholder="Brighton Renovations Ltd" /></label>
+          <label>Area<input name="area" required placeholder="Brighton" /></label>
+          <label>Service<input name="service" required placeholder="Extensions" /></label>
+          <label>Lead Score<input name="score" required type="number" min="1" max="100" value="75" /></label>
+          <label>Status
+            <select name="status">
+              <option>New Prospect</option>
+              <option>AI Drafted</option>
+              <option>Contacted</option>
+              <option>Warm Reply</option>
+              <option>Call Booked</option>
+              <option>Proposal Sent</option>
+              <option>Won</option>
+            </select>
+          </label>
+          <label>Next Action<input name="nextAction" required placeholder="Create AI audit" /></label>
+        </div>
+        <button class="primary-button full-width" type="submit">Save Prospect</button>
+      </form>
+    </dialog>
+
+    <dialog id="sheetDialog">
+      <form method="dialog" class="dialog-card" id="sheetForm">
+        <div class="panel-header">
+          <div>
+            <p class="label">Google Sheets</p>
+            <h2>Connect Live Data</h2>
+          </div>
+          <button class="ghost-button" value="cancel" type="button" id="closeSheetDialog">Close</button>
+        </div>
+        <p class="dialog-help">
+          Paste the Apps Script Web App URL that ends in <strong>/exec</strong>. This lets the dashboard read your Xello Operating Hub sheet.
+        </p>
+        <div class="form-grid single-column">
+          <label>Web App URL
+            <input
+              name="sheetUrl"
+              id="sheetUrlInput"
+              required
+              placeholder="https://script.google.com/macros/s/your-deployment-id/exec"
+            />
+          </label>
+        </div>
+        <button class="primary-button full-width" type="submit">Save Connection</button>
+      </form>
+    </dialog>
+
+    <dialog id="agentDialog">
+      <div class="dialog-card agent-dialog-card">
+        <div class="panel-header">
+          <div>
+            <p class="label" id="agentDialogLabel">AI agent</p>
+            <h2 id="agentDialogTitle">Agent Details</h2>
+          </div>
+          <button class="ghost-button" type="button" id="closeAgentDialog">Close</button>
+        </div>
+        <div class="agent-detail-grid" id="agentDetailGrid"></div>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/crm",
+      "destination": "/api/crm"
+    },
+    {
+      "source": "/crm/:path*",
+      "destination": "/api/crm?path=:path*"
+    }
+  ]
+}
