@@ -3,22 +3,22 @@ import { ClipboardCheck, MousePointerClick, Search, TrendingUp } from "lucide-re
 
 const launchPlan = [
   {
-    phase: "Week 1",
-    title: "Audit & Growth Map",
+    phase: "Step 1",
+    title: "Free Audit & 10-Minute Call",
     icon: Search,
-    points: ["Website conversion review", "Meta account setup plan", "Best services and areas to target"],
+    points: ["Quick website and social review", "Choose the best service to test", "Confirm whether a small lead test makes sense"],
   },
   {
-    phase: "Weeks 2-4",
-    title: "Launch The Lead System",
+    phase: "Step 2",
+    title: "Film & Launch The Test",
     icon: MousePointerClick,
-    points: ["Landing page or website upgrades", "Meta campaigns and creative tests", "Lead capture and notification flow"],
+    points: ["On-site filming for one advert", "Client covers Meta ad spend", "Campaign and lead tracking set up clearly"],
   },
   {
-    phase: "Days 30-90",
-    title: "Optimise & Scale",
+    phase: "Step 3",
+    title: "Review & Decide Next Step",
     icon: TrendingUp,
-    points: ["Shift budget to winning services", "Improve lead quality with better questions", "Weekly report and next-step actions"],
+    points: ["Review enquiries and quality", "Identify what should be improved", "Only discuss the retainer if the test shows enough value"],
   },
 ];
 
@@ -33,10 +33,10 @@ const CaseStudiesSection = () => (
       >
         <span className="text-sm font-semibold tracking-widest uppercase text-secondary">How It Works</span>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-primary-foreground">
-          A practical 90-day sprint to generate better quote enquiries
+          A lower-risk way to test if paid content can generate enquiries
         </h2>
         <p className="text-primary-foreground/60 mt-4 max-w-2xl mx-auto text-lg">
-          We keep the system simple: improve the website journey, run local Meta campaigns, track every lead and refine weekly.
+          The first goal is not to sell you a huge package. It is to start a real conversation, test one clear local offer and see whether the numbers justify going further.
         </p>
       </motion.div>
 

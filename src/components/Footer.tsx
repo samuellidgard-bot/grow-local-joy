@@ -6,7 +6,7 @@ const Footer = () => (
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <img src={logo} alt="Xello Media" className="h-8 w-auto" />
         <p className="text-primary-foreground/40 text-sm text-center">
-          © {new Date().getFullYear()} Xello Media. Website, Meta ads and lead systems for renovation companies.
+          © {new Date().getFullYear()} Xello Media. Brighton & Hove marketing tests for renovation companies.
         </p>
       </div>
     </div>

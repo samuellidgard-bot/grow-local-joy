@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-full.png";
 
 const links = [
-  { label: "Services", href: "#services" },
+  { label: "14-Day Test", href: "#services" },
   { label: "Process", href: "#case-studies" },
-  { label: "Why Us", href: "#testimonials" },
+  { label: "Proof", href: "#proof" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -38,7 +39,7 @@ const Navbar = () => {
             onClick={() => scrollTo("#contact")}
             className="bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Free Audit
+            Book Call
           </Button>
         </div>
 
@@ -63,7 +64,7 @@ const Navbar = () => {
             onClick={() => scrollTo("#contact")}
             className="w-full bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Free Audit
+            Book Call
           </Button>
         </div>
       )}

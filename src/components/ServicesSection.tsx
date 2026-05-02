@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { BarChart3, Globe2, Megaphone, PenTool, Target, MessageSquare } from "lucide-react";
+import { BarChart3, Camera, Globe2, Megaphone, MessageSquare, Target } from "lucide-react";
 
 const services = [
-  { icon: Globe2, title: "Website Conversion Management", desc: "We improve the quote journey, calls to action, landing pages and trust signals that turn visitors into enquiries." },
-  { icon: Megaphone, title: "Meta Ads Growth", desc: "Facebook and Instagram campaigns built around real renovation services, local areas and homeowner intent." },
-  { icon: PenTool, title: "Creative & Offer Testing", desc: "Ad concepts, copy, before-and-after style visuals and monthly refreshes so campaigns do not go stale." },
-  { icon: MessageSquare, title: "Lead Follow-Up System", desc: "Simple tracking and response workflows so new enquiries are contacted quickly instead of going cold." },
-  { icon: Target, title: "Local Growth Strategy", desc: "Service-area targeting for Brighton, Hove and Sussex with a clear plan for the jobs you want most." },
-  { icon: BarChart3, title: "Weekly Reporting", desc: "Lead volume, cost per enquiry, booked quotes and next actions explained in plain English." },
+  { icon: Globe2, title: "Website Enquiry Review", desc: "We look at your current website journey, calls to action, trust signals and where quote enquiries may be leaking." },
+  { icon: Camera, title: "On-Site Ad Filming", desc: "Sam can visit your site and film real project content using camera, drone and microphones so the advert feels authentic." },
+  { icon: Megaphone, title: "Meta Test Campaign", desc: "A small Facebook and Instagram test built around one clear service, one local area and one homeowner problem." },
+  { icon: MessageSquare, title: "Lead Tracking Setup", desc: "Simple tracking so you can see which enquiries came from the test and what happened after they arrived." },
+  { icon: Target, title: "Local Offer Strategy", desc: "We choose the service, area and message that has the best chance of producing useful conversations." },
+  { icon: BarChart3, title: "Plain-English Review", desc: "After the test, you get a clear breakdown of what happened, what worked and whether full management makes sense." },
 ];
 
 const ServicesSection = () => (
@@ -19,12 +19,12 @@ const ServicesSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">The Renovation Growth Engine</span>
+        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">The 14-Day Local Lead Test</span>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-foreground">
-          One partner for the channels that <span className="text-gradient-primary">create enquiries</span>
+          Prove the system before committing to <span className="text-gradient-primary">full management</span>
         </h2>
         <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
-          £1,500/month management plus your ad spend. Built for renovation firms that want a serious, managed growth system.
+          Start with a focused test: one offer, one local audience, one filmed advert and clear tracking. If it shows promise, we can discuss ongoing management.
         </p>
       </motion.div>
 

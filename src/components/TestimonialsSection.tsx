@@ -3,20 +3,20 @@ import { CheckCircle2 } from "lucide-react";
 
 const reasons = [
   {
-    title: "Built for high-value jobs",
-    text: "A kitchen, loft, extension or full renovation is worth far more than a cheap enquiry. The strategy focuses on quality homeowner conversations, not vanity metrics.",
+    title: "Local and personal",
+    text: "Xello is built around Brighton, Hove and Sussex. The outreach, filming and ads should feel like they came from someone who understands the local market.",
+  },
+  {
+    title: "Real content beats generic posts",
+    text: "Renovation work is visual. Proper site footage, progress shots, before-and-after proof and team clips usually feel more trustworthy than stock-style marketing.",
   },
   {
     title: "Your business keeps control",
-    text: "Campaigns are run through your ad account, so you keep ownership of the data, assets and learning as the system improves.",
+    text: "The test runs through your ad account and your lead process, so you keep ownership of the data, audience learning and future campaign direction.",
   },
   {
-    title: "Website and ads work together",
-    text: "Most agencies only run ads. We look at the full journey from first click to quote request so more interested homeowners take action.",
-  },
-  {
-    title: "Clear weekly priorities",
-    text: "You see what was launched, what leads came in, what needs fixing and what we are testing next. No confusing reports.",
+    title: "No fake guarantees",
+    text: "We will not promise magic numbers. The point is to run a clear test, track what happens and decide the next move based on evidence.",
   },
 ];
 
@@ -29,9 +29,9 @@ const TestimonialsSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">Why This Works</span>
+        <span className="text-sm font-semibold tracking-widest uppercase text-secondary">Why Xello Is Different</span>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-foreground">
-          Renovation companies need more than <span className="text-gradient-accent">posting on social</span>
+          Built for companies that need <span className="text-gradient-accent">real homeowner conversations</span>
         </h2>
       </motion.div>
 
