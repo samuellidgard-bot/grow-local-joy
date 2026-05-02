@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Camera, CheckCircle2, GraduationCap, MapPin } from "lucide-react";
+import { ArrowRight, Camera, CheckCircle2, GraduationCap, MapPin, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-full.png";
 
@@ -17,7 +17,7 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/72 to-black/88" />
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
+      <div className="container mx-auto px-6 pt-24 pb-16 sm:pt-28 sm:pb-20 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -33,11 +33,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="inline-flex items-center gap-2 rounded-md border border-secondary/30 bg-secondary/10 px-4 py-2 mb-8"
+            className="inline-flex items-center gap-2 rounded-md border border-secondary/30 bg-secondary/10 px-4 py-2 mb-6"
           >
             <MapPin className="h-4 w-4 text-secondary" />
             <span className="text-sm font-medium text-secondary">
-              Brighton & Hove marketing for renovation companies
+              Brighton & Hove growth tests for renovation companies
             </span>
           </motion.div>
 
@@ -45,22 +45,40 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold text-primary-foreground leading-[1.06] mb-6"
+            className="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold text-primary-foreground leading-[1.04] mb-6"
           >
-            Xello Media helps renovation companies turn attention into{" "}
-            <span className="text-gradient-accent">tracked quote enquiries.</span>
+            Test whether better content can bring you more{" "}
+            <span className="text-gradient-accent">local renovation enquiries.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-lg sm:text-xl text-primary-foreground/76 max-w-3xl mx-auto mb-10 font-body"
+            className="text-lg sm:text-xl text-primary-foreground/78 max-w-3xl mx-auto mb-8 font-body"
           >
-            A Brighton & Hove growth partner for builders, extension companies,
-            kitchen fitters and renovation firms that want a practical way to
-            test better website journeys, filmed ads and lead tracking.
+            I help builders, extension companies, kitchen fitters and renovation
+            firms around Sussex run a capped 14-day test: one filmed advert, one
+            local offer, simple tracking and a clear review before any retainer is discussed.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.32 }}
+            className="mb-10 grid gap-3 sm:grid-cols-3 max-w-4xl mx-auto"
+          >
+            {[
+              "Built for high-value home improvement work",
+              "No lead guarantees or fake case studies",
+              "You stay in control of ad spend",
+            ].map((item) => (
+              <div key={item} className="flex items-center justify-center gap-2 rounded-md border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-3 text-sm font-semibold text-primary-foreground/84">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-secondary" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +107,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center"
           >
             <Button
               size="lg"
@@ -99,6 +117,13 @@ const HeroSection = () => {
               Book A 10-Minute Growth Call
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
+            <a
+              href="tel:+447943574948"
+              className="inline-flex h-[60px] items-center justify-center rounded-md border border-primary-foreground/25 px-8 text-lg font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+            >
+              <PhoneCall className="mr-2 h-5 w-5" />
+              Call Sam
+            </a>
             <Button
               size="lg"
               variant="outline"

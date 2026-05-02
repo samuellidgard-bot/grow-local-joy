@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
+    question: "Is the 14-day test free?",
+    answer: "The first fit call and business review are free. If we both agree to run a test, the exact setup, filming scope and ad spend are agreed before anything starts.",
+  },
+  {
     question: "Do you guarantee leads?",
     answer: "No. The honest offer is a controlled test. We create a better local advert, track the enquiries and review the results so you can make a decision based on real data.",
   },
@@ -11,11 +15,15 @@ const faqs = [
   },
   {
     question: "What happens after the 14-day test?",
-    answer: "We review the leads, cost, quality and follow-up process. If the test shows enough potential, we can discuss ongoing management for website improvements, Meta ads, social content and tracking.",
+    answer: "We review the leads, cost, quality and follow-up process. If the test shows enough potential, we can discuss ongoing management for website improvements, Meta ads, social content and tracking. If it does not, you still leave with useful learning.",
   },
   {
     question: "What if we do not have good photos or videos yet?",
     answer: "That is exactly why on-site filming is useful. Strong renovation marketing usually needs real project footage, before-and-after proof, team clips and local trust signals.",
+  },
+  {
+    question: "Do we need to commit to a retainer straight away?",
+    answer: "No. The site deliberately positions the retainer as a later conversation. The first step is to see whether there is enough opportunity to justify building a bigger system.",
   },
   {
     question: "Which companies is this for?",

@@ -39,7 +39,7 @@ const Navbar = () => {
             onClick={() => scrollTo("#contact")}
             className="bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Book Call
+            Free Review
           </Button>
         </div>
 
@@ -64,7 +64,7 @@ const Navbar = () => {
             onClick={() => scrollTo("#contact")}
             className="w-full bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Book Call
+            Free Review
           </Button>
         </div>
       )}

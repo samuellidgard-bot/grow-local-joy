@@ -4,21 +4,21 @@ import { ClipboardCheck, MousePointerClick, Search, TrendingUp } from "lucide-re
 const launchPlan = [
   {
     phase: "Step 1",
-    title: "Free Audit & 10-Minute Call",
+    title: "10-Minute Fit Call",
     icon: Search,
-    points: ["Quick website and social review", "Choose the best service to test", "Confirm whether a small lead test makes sense"],
+    points: ["Understand what work you want more of", "Check your website, social proof and local area", "Decide if a small test is worth running"],
   },
   {
     phase: "Step 2",
-    title: "Film & Launch The Test",
+    title: "Site Visit & Test Build",
     icon: MousePointerClick,
-    points: ["On-site filming for one advert", "Client covers Meta ad spend", "Campaign and lead tracking set up clearly"],
+    points: ["Film one useful project or service angle", "Build one simple Meta campaign", "Set up tracking so enquiries are not guessed"],
   },
   {
     phase: "Step 3",
-    title: "Review & Decide Next Step",
+    title: "Review The Real Outcome",
     icon: TrendingUp,
-    points: ["Review enquiries and quality", "Identify what should be improved", "Only discuss the retainer if the test shows enough value"],
+    points: ["Review enquiries, quality and cost", "Spot website or follow-up improvements", "Only discuss ongoing work if the test creates useful evidence"],
   },
 ];
 
@@ -36,7 +36,7 @@ const CaseStudiesSection = () => (
           A lower-risk way to test if paid content can generate enquiries
         </h2>
         <p className="text-primary-foreground/60 mt-4 max-w-2xl mx-auto text-lg">
-          The first goal is not to sell you a huge package. It is to start a real conversation, test one clear local offer and see whether the numbers justify going further.
+          The first goal is not to sell a huge package. It is to start with one realistic test, learn quickly and decide whether a bigger growth system is worth building.
         </p>
       </motion.div>
 
@@ -69,6 +69,20 @@ const CaseStudiesSection = () => (
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-10 rounded-lg border border-secondary/25 bg-secondary/10 p-6 text-center"
+      >
+        <p className="font-heading text-xl font-bold text-primary-foreground">
+          Best fit: renovation companies that can handle more quote requests and have at least one real project we can use for proof-led content.
+        </p>
+        <p className="mt-2 text-sm text-primary-foreground/68">
+          Not a fit if you want guaranteed leads, zero ad spend, or a full website rebuild for free.
+        </p>
+      </motion.div>
     </div>
   </section>
 );

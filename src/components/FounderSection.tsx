@@ -39,7 +39,7 @@ const FounderSection = () => (
             A hands-on growth partner, not a faceless ad account
           </h2>
           <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
-            Xello Media is being built around a simple promise: help local home
+            Xello Media is built around a simple promise: help local home
             renovation companies look more professional online, test better
             creative and understand exactly where their enquiries come from.
           </p>

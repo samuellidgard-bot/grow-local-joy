@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BarChart3, Camera, Globe2, Megaphone, MessageSquare, Target } from "lucide-react";
+import { BarChart3, Camera, CheckCircle2, Clock, Globe2, Megaphone, MessageSquare, Target } from "lucide-react";
 
 const services = [
   { icon: Globe2, title: "Website Enquiry Review", desc: "We look at your current website journey, calls to action, trust signals and where quote enquiries may be leaking." },
@@ -21,12 +21,41 @@ const ServicesSection = () => (
       >
         <span className="text-sm font-semibold tracking-widest uppercase text-secondary">The 14-Day Local Lead Test</span>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-foreground">
-          Prove the system before committing to <span className="text-gradient-primary">full management</span>
+          A simple test before committing to <span className="text-gradient-primary">full management</span>
         </h2>
         <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
-          Start with a focused test: one offer, one local audience, one filmed advert and clear tracking. If it shows promise, we can discuss ongoing management.
+          Start with one service, one local audience, one filmed advert and clear tracking.
+          If the numbers or learning are useful, then we can discuss the next step.
         </p>
       </motion.div>
+
+      <div className="mb-10 grid gap-4 lg:grid-cols-3">
+        {[
+          {
+            icon: Clock,
+            title: "Low-pressure start",
+            text: "The call is just to see if the test makes sense. No full retainer pitch on day one.",
+          },
+          {
+            icon: CheckCircle2,
+            title: "Clear ad-spend boundary",
+            text: "You run spend through your own Meta account, so you keep control of the budget and data.",
+          },
+          {
+            icon: BarChart3,
+            title: "Decision based on evidence",
+            text: "The review looks at lead quality, cost, follow-up and what should change next.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="rounded-lg border border-border bg-card p-6 shadow-card">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-secondary/15">
+              <item.icon className="h-5 w-5 text-primary" />
+            </div>
+            <h3 className="font-heading text-lg font-bold text-card-foreground">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+          </div>
+        ))}
+      </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s, i) => (
