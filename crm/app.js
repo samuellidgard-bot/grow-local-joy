@@ -36,7 +36,7 @@ const defaultData = {
   xelloSocial: [
     { platform: "Instagram Reels", pillar: "Marketing education", hook: "3 reasons renovation companies lose leads from their website", format: "Talking-head Reel with captions", script: "Open with the problem, show 3 fixes, end with 'I’m testing this with local Brighton renovation firms.'", cta: "Follow for local marketing breakdowns", status: "Planned" },
     { platform: "TikTok", pillar: "Founder journey", hook: "I’m building a Brighton marketing agency from zero", format: "Day-in-the-life / behind the scenes", script: "Show outreach, research, filming kit and why local businesses need better lead tracking.", cta: "Comment 'audit' if you want me to review a local business", status: "Planned" },
-    { platform: "Instagram Carousel", pillar: "Proof building", hook: "What a 14-day local lead test includes", format: "6-slide educational carousel", script: "Site visit, filmed ad, Meta test, tracking, review, next steps.", cta: "Save this if you run a local service business", status: "Planned" }
+    { platform: "Instagram Carousel", pillar: "Proof building", hook: "Why local trades need online foundations before paid ads", format: "6-slide educational carousel", script: "Social setup, Google Business, website basics, tracking, content proof, then ads when ready.", cta: "Save this if you run a local service business", status: "Planned" }
   ],
   socialCalendar: [
     { day: "Monday", platform: "Instagram Reel", focus: "Marketing education", task: "Film one practical tip for renovation companies, using captions and a clear example.", status: "Planned" },
@@ -50,23 +50,59 @@ const defaultData = {
     { pillar: "Behind the scenes", goal: "Show the quality of the process and equipment before you have lots of public case studies.", examples: "Drone setup, filming checklist, CRM workflow, ad planning process." },
     { pillar: "Local proof", goal: "Build credibility around Brighton/Hove renovation marketing without inventing results.", examples: "Local market observations, anonymised audits, before/after creative concepts, test structure." }
   ],
+  firstTouchProduction: [
+    { stage: "Shoot goal", detail: "Film enough real vertical footage to create 5 short Meta adverts for First Touch Innovations.", checklist: "50 usable clips, 5 talking clips, trust shots, work quality shots, process shots, local proof and CTA shots." },
+    { stage: "Must-have shots", detail: "Capture owner/team, finished details, hands working, clean site, exterior/local proof, before-after assets and final CTA clips.", checklist: "Film vertical first, keep clips steady, record 10 seconds per shot and avoid private client details." },
+    { stage: "Owner prompts", detail: "Ask what work they specialise in, what areas they cover, what makes them different and what homeowners should do for a quote.", checklist: "Keep answers natural, short and human. They do not need to sound like actors." },
+    { stage: "Editing rule", detail: "Every advert should follow: hook, proof, trust, offer, CTA.", checklist: "15-30 seconds, captions on, readable mobile text, strong first 2 seconds, no over-editing." }
+  ],
+  firstTouchAdAngles: [
+    { title: "Local Trust Ad", hook: "Planning a home renovation around Brighton or Hove?", structure: "Finished/detail shot, owner/team, work in progress, finished result, CTA.", cta: "Message First Touch Innovations for a free quote." },
+    { title: "Problem/Solution Ad", hook: "Worried about choosing the wrong renovation company?", structure: "Unfinished space, team working, trust clip, clean finish, CTA.", cta: "Ask about your renovation project." },
+    { title: "Before/After Ad", hook: "This is what better home renovation can look like.", structure: "Before shot, fast transition, after shot, detail close-ups, team/trust shot.", cta: "Thinking about a renovation? Send an enquiry." },
+    { title: "Founder/Team-Led Ad", hook: "Meet a local renovation team in Brighton and Hove.", structure: "Owner direct-to-camera, work clips, finished result, CTA.", cta: "Message the team to talk through your project." },
+    { title: "Fast Reel Ad", hook: "Renovating in Brighton or Hove?", structure: "1-second finished shot, process, detail, team, reveal, CTA.", cta: "Send a message to First Touch Innovations." }
+  ],
+  firstTouchMetaPlan: [
+    { area: "Campaign objective", instruction: "Use Leads first because it is simple to test and track.", status: "Planned" },
+    { area: "Budget", instruction: "Start with GBP 10-20/day for 7-14 days. First Touch pays ad spend through their own Meta account.", status: "To confirm" },
+    { area: "Campaign structure", instruction: "One campaign, one local ad set, three adverts first: Local Trust, Problem/Solution and Before/After.", status: "Draft" },
+    { area: "Location", instruction: "Brighton, Hove, Worthing, Lewes, Shoreham and nearby areas only if relevant.", status: "Draft" },
+    { area: "Lead form", instruction: "Name, phone, email, postcode/area, work interested in, when they want to start.", status: "Draft" },
+    { area: "Success tracking", instruction: "Track spend, leads, cost per lead, best ad, lead quality, replies, calls booked and quotes requested.", status: "Ready" }
+  ],
+  firstTouchLearningPlan: [
+    { day: "Days 1-2", focus: "Study good renovation ads and prepare the shoot plan.", output: "Shot list, questions, location/time and equipment ready." },
+    { day: "Day 3", focus: "Film First Touch Innovations.", output: "50+ vertical clips, owner/team soundbites and proof footage." },
+    { day: "Days 4-8", focus: "Organise footage and edit 5 advert versions.", output: "Local Trust, Problem/Solution, Before/After, Founder/Team and Fast Reel ads." },
+    { day: "Days 9-11", focus: "Review ads, pick best 3 and set up Meta lead campaign.", output: "Small test ready to launch with tracking sheet." },
+    { day: "Days 12-14", focus: "Read early data, improve one thing and write case study notes.", output: "First Xello proof project documented." }
+  ],
+  firstTouchCaseStudy: [
+    { section: "Starting point", prompt: "Document their current website/social presence, content they already have and what work they want more of." },
+    { section: "What Xello did", prompt: "Planned one local lead test, filmed real content, created multiple advert versions, launched a small Meta campaign and tracked the result." },
+    { section: "Creative produced", prompt: "List each ad version, the hook used and what footage made it strong." },
+    { section: "Results", prompt: "Only use real numbers: test length, ad spend, leads, cost per lead, best advert and lead quality." },
+    { section: "Learning", prompt: "Record what homeowners responded to, what needs improving and whether the offer is worth scaling." }
+  ],
   outreachTraining: [
     { rule: "First-touch opener", detail: "The first message should start a conversation: one real observation, one light compliment, one very brief line explaining that Xello helps local renovation companies improve online presence and enquiries, then one simple question.", owner: "Outreach Writer" },
     { rule: "Voice", detail: "Write like Sam: direct, friendly, local and human. No corporate agency fluff, no long pitch, no pressure.", owner: "Outreach Writer" },
     { rule: "Personalisation", detail: "Use the company research hook before writing. Mention one specific observation when available, but keep it natural and short.", owner: "Company Research Agent" },
     { rule: "Cold CTA", detail: "Ask a low-friction question or offer a quick chat only if it feels natural. Do not explain the whole offer in the first touch.", owner: "Sales" },
-    { rule: "Proof Offer", detail: "Only after they reply, explain the capped 14-day local lead test: one site visit, one filmed advert, one Meta test, lead tracking and one review.", owner: "Sales" },
+    { rule: "Starter Offer First", detail: "After they reply, explain the starter foundations offer first: social setup, Google Business, website basics, tracking and content foundations.", owner: "Sales" },
+    { rule: "Lead Test Timing", detail: "Only offer the 14-day local lead test once the company has enough trust proof and online foundations to make paid traffic useful.", owner: "Sales" },
     { rule: "Trial Boundary", detail: "The company covers Meta ad spend. Never say Xello covers ad spend. The test is capped and does not include unlimited edits, full management or website rebuild work.", owner: "Operations" },
-    { rule: "Retainer Timing", detail: "Only discuss the full retainer after the test has shown enough value or clear learning.", owner: "Sales" },
+    { rule: "Retainer Timing", detail: "Only discuss the full retainer after starter work or a lead test has shown enough value, trust or clear learning.", owner: "Sales" },
     { rule: "Compliance", detail: "No fake results, fake case studies, guaranteed outcomes or automatic sending.", owner: "Xello" }
   ],
   replies: [
-    { company: "Hove Kitchen Studio", channel: "Email", type: "Warm question", summary: "Thanks Sam, appreciate that. Most of our work is referrals at the moment but we would like more consistent website or Instagram enquiries. What did you have in mind?", nextAction: "Explain 14-day test and ask for 10-minute call", status: "Warm Reply", createdAt: "Demo" },
-    { company: "Brighton Build & Renovate", channel: "Instagram DM", type: "Interested", summary: "Cheers Sam. Instagram brings a few people in but nothing consistent. What would the process actually involve?", nextAction: "Explain 14-day test and ask for 10-minute call", status: "Follow Up", createdAt: "Demo" }
+    { company: "Hove Kitchen Studio", channel: "Email", type: "Warm question", summary: "Thanks Sam, appreciate that. Most of our work is referrals at the moment but we would like more consistent website or Instagram enquiries. What did you have in mind?", nextAction: "Explain starter foundations and ask for 10-minute call", status: "Warm Reply", createdAt: "Demo" },
+    { company: "Brighton Build & Renovate", channel: "Instagram DM", type: "Interested", summary: "Cheers Sam. Instagram brings a few people in but nothing consistent. What would the process actually involve?", nextAction: "Explain starter foundations and ask for 10-minute call", status: "Follow Up", createdAt: "Demo" }
   ],
   replyResponses: [
-    { company: "Hove Kitchen Studio", channel: "Email", type: "Interested", status: "Needs review", message: "Thanks for getting back to me. The idea would be a simple 14-day local lead test: I come to site, film one strong advert, help test it on Meta, track the enquiries and then review what happened with you. You would only cover the ad spend. Would you be open to a quick 10-minute call this week so I can explain it properly?", nextAction: "Ask for 10-minute call" },
-    { company: "Brighton Build & Renovate", channel: "Instagram DM", type: "Warm question", status: "Needs review", message: "Yes, exactly. The idea is to keep it small first: one site visit, one filmed advert, one simple Meta test and clear lead tracking over 14 days. You would cover the ad spend, and we would review whether it brought in useful enquiries. Want to jump on a quick 10-minute call and I’ll explain it?", nextAction: "Send if approved" }
+    { company: "Hove Kitchen Studio", channel: "Email", type: "Interested", status: "Needs review", message: "Thanks for getting back to me. I’d usually start by getting the online foundations in order first: social profiles, Google Business, website/CTA basics, tracking and a simple content plan. Then, if the foundations are strong enough, we can look at a small paid lead test afterwards. Would you be open to a quick 10-minute call this week so I can explain what I’d check?", nextAction: "Ask for 10-minute call" },
+    { company: "Brighton Build & Renovate", channel: "Instagram DM", type: "Warm question", status: "Needs review", message: "Yes, exactly. I’d keep it simple first and look at the foundations: whether the socials, Google Business profile, website and enquiry route make the company look trustworthy enough before spending money on ads. If it looks ready, the next step could be a small local lead test. Want to jump on a quick 10-minute call and I’ll explain it?", nextAction: "Send if approved" }
   ],
   calls: [
     { company: "Hove Kitchen Studio", contact: "Owner", date: "Next Tuesday", type: "Growth audit", outcome: "Booked", nextStep: "Prepare website and Meta audit notes", value: 1500, status: "Call Booked" }
@@ -90,6 +126,8 @@ const defaultData = {
     { name: "Social Audit Agent", purpose: "Reviews Instagram activity and content opportunities.", status: "Idle", currentTask: "No pending social audits", progress: 0, lastRun: "Yesterday 15:40", nextRun: "Manual trigger", cost: 0.18, outputs: 12 },
     { name: "Outreach Writer", purpose: "Drafts personalised emails, follow-ups and Instagram DMs.", status: "Waiting Approval", currentTask: "42 drafts need review", progress: 100, lastRun: "Today 10:05", nextRun: "After approvals", cost: 0.56, outputs: 42 },
     { name: "Reply Triage Agent", purpose: "Categorises replies and suggests the next step.", status: "Complete", currentTask: "Tagged 8 warm replies", progress: 100, lastRun: "Today 11:30", nextRun: "Every morning", cost: 0.08, outputs: 14 },
+    { name: "Client Strategy Agent", purpose: "Turns client goals, services and capacity into clear monthly priorities.", status: "Queued", currentTask: "Waiting for first retained client", progress: 10, lastRun: "Not run yet", nextRun: "On client onboarding", cost: 0, outputs: 0 },
+    { name: "Meta Test Planner", purpose: "Prepares campaign structure, lead forms and tracking fields for offer two: the 14-day lead test.", status: "Queued", currentTask: "Waiting for a client with foundations ready", progress: 10, lastRun: "Not run yet", nextRun: "Before campaign launch", cost: 0, outputs: 0 },
     { name: "Reporting Agent", purpose: "Summarises pipeline, spend, booked calls and weekly priorities.", status: "Idle", currentTask: "Weekly report due Friday", progress: 0, lastRun: "Not run yet", nextRun: "Friday 09:00", cost: 0, outputs: 0 }
   ],
   agentTasks: [
@@ -115,23 +153,25 @@ const defaultData = {
     { insight: "A free growth audit is easier to sell than a full retainer in the first message.", source: "Sales strategy", confidence: 86, action: "CTA remains free audit." }
   ],
   knowledge: [
-    { title: "Entry Offer", detail: "Start with a capped 14-day local lead test: site visit, filmed advert, Meta campaign, lead tracking and review. Company covers ad spend.", owner: "Xello" },
-    { title: "Retainer Path", detail: "After proof is created, pitch £1,500/month plus ad spend for website management, Meta ads, social growth, lead tracking and follow-up.", owner: "Xello" },
+    { title: "Entry Offer", detail: "Start with the starter foundations offer: social setup, Google Business improvements, website/CTA basics, tracking and content foundations.", owner: "Xello" },
+    { title: "Middle Offer", detail: "After the basics are strong enough, offer the paid 14-day local visibility and lead test. Company covers ad spend.", owner: "Xello" },
+    { title: "Retainer Path", detail: "After trust, proof or useful lead test learning is created, pitch £1,500+/month plus ad spend for ongoing local growth.", owner: "Xello" },
     { title: "Target Market", detail: "Renovation companies, builders, extensions, lofts, kitchens, bathrooms and design-build firms across Sussex.", owner: "Prospect Scanner" },
     { title: "Personalisation Layer", detail: "Company Research Agent creates hooks, pain points and outreach angles before the Outreach Writer drafts.", owner: "Company Research Agent" },
     { title: "Content Creation Layer", detail: "Content Creation Agent turns company research into filming angles, advert hooks and Meta content ideas.", owner: "Content Creation Agent" },
     { title: "Xello Social Growth", detail: "Xello Social Growth Agent plans Instagram and TikTok content to build credibility, followers and authority for the agency.", owner: "Xello Social Growth Agent" },
     { title: "Compliance Rule", detail: "No fake guarantees. Clear Xello identity. Respect do-not-contact and approval-first sending.", owner: "Compliance" },
-    { title: "Sales CTA", detail: "First message starts a conversation with a compliment, one brief line explaining what Xello helps with and a simple question. The 14-day test is explained after they reply or on the call.", owner: "Outreach Writer" }
+    { title: "Sales CTA", detail: "First message starts a conversation with a compliment, one brief line explaining that Xello helps improve local online presence and a simple question. Do not lead with paid ads.", owner: "Outreach Writer" }
   ],
   playbooks: [
     { name: "Prospect Research", steps: "Find company, identify service, check area, score lead need, avoid poor-fit businesses.", agent: "Prospect Scanner" },
     { name: "Company Research", steps: "Check available website/social notes, create a safe personal hook, identify pain point, choose outreach angle.", agent: "Company Research Agent" },
-    { name: "Content Creation", steps: "Use company research to choose what to film, what hook to open with and how to frame the 14-day test ad.", agent: "Content Creation Agent" },
+    { name: "Content Creation", steps: "Use company research to choose profile improvements, starter content ideas, what to film and which hooks could later support a paid lead test.", agent: "Content Creation Agent" },
     { name: "Xello Social Growth", steps: "Plan weekly Reels/TikToks around founder journey, marketing tips, local lead generation, behind-the-scenes and proof-building content.", agent: "Xello Social Growth Agent" },
     { name: "Website Audit", steps: "Check CTA clarity, quote form, mobile experience, trust signals, tracking and landing page quality.", agent: "Website Audit Agent" },
     { name: "Outreach Writing", steps: "Use one specific observation, a light compliment and one easy question. Avoid pitching the full offer until they reply.", agent: "Outreach Writer" },
-    { name: "14-Day Lead Test", steps: "One filming visit, one edited advert, one Meta campaign, lead tracking and one results review. Company covers ad spend.", agent: "Sales" },
+    { name: "Starter Foundations", steps: "Create/optimise social profiles, Google Business, website/CTA basics, tracking and content foundations before paid ads.", agent: "Sales" },
+    { name: "14-Day Lead Test", steps: "Offer two only: one filming visit, three edited adverts, one Meta campaign, lead tracking and one results review. Company covers ad spend.", agent: "Sales" },
     { name: "Reply Handling", steps: "Classify reply, suggest next response, book audit if warm, suppress if not relevant.", agent: "Reply Triage Agent" },
     { name: "Client Onboarding", steps: "Get Meta access, website access, assets, budget, service areas, lead routing and reporting cadence.", agent: "Client Onboarding Agent" },
     { name: "Weekly Reporting", steps: "Summarise leads, cost, booked calls, client follow-up speed, risks and next tests.", agent: "Reporting Agent" }
@@ -142,9 +182,9 @@ const defaultData = {
     { name: "Brighton vs Worthing", hypothesis: "Brighton/Hove firms have higher budget but more competition.", status: "Running", result: "Brighton has stronger lead scores", learning: "Prioritise high-ticket areas first." }
   ],
   delivery: [
-    { client: "First Touch Innovations", stage: "14-day test", checklist: "Site visit booked, filming plan ready, Meta ad spend to be confirmed by client.", health: "Demo", adSpend: 100, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "To schedule", contentStatus: "Script planned", campaignStatus: "Not launched", nextReview: "After test", nextAction: "Confirm filming date and ad spend boundary" },
-    { client: "New Client Template", stage: "Onboarding", checklist: "Meta access, website access, photos, testimonials, offer, ad budget, lead notifications.", health: "Ready", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Not set", contentStatus: "Waiting", campaignStatus: "Waiting", nextReview: "Not set", nextAction: "Collect access and offer details" },
-    { client: "Campaign Launch", stage: "Build", checklist: "Landing page, lead form, conversion tracking, campaign structure, first creatives.", health: "Template", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Not needed", contentStatus: "Create first advert", campaignStatus: "Draft", nextReview: "Launch + 3 days", nextAction: "Build first campaign checklist" },
+    { client: "First Touch Innovations", stage: "Starter foundations", checklist: "Social/GMB/website basics, content plan and tracking foundations before any paid test.", health: "Demo", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Optional", contentStatus: "Foundation plan ready", campaignStatus: "Not ready for ads", nextReview: "After starter setup", nextAction: "Confirm missing socials, Google Business gaps and website basics" },
+    { client: "New Client Template", stage: "Starter onboarding", checklist: "Social access, website access, Google Business access, photos, testimonials, logo, services and tracking route.", health: "Ready", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Not set", contentStatus: "Waiting", campaignStatus: "Waiting", nextReview: "Not set", nextAction: "Collect access and foundation details" },
+    { client: "Offer Two Template", stage: "14-day lead test", checklist: "Campaign angle, lead form, conversion tracking, ad spend boundary, first creatives.", health: "Template", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "To schedule", contentStatus: "Create first adverts", campaignStatus: "Draft", nextReview: "Launch + 3 days", nextAction: "Only launch after starter foundations are ready" },
     { client: "Weekly Reporting", stage: "Retain", checklist: "Leads, CPL, booked quotes, follow-up speed, best ads, next actions.", health: "Template", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Complete", contentStatus: "Ongoing", campaignStatus: "Optimising", nextReview: "Every Friday", nextAction: "Prepare client summary and retainer next steps" }
   ],
   testJourney: [
@@ -152,15 +192,225 @@ const defaultData = {
     { stage: "2. Company research", owner: "Company Research Agent", status: "Complete", detail: "Research creates a personalised hook, likely pain point and outreach angle." },
     { stage: "3. Outreach drafted", owner: "Outreach Writer", status: "Complete", detail: "Email/Instagram draft is created for review, but nothing sends automatically." },
     { stage: "4. Reply logged", owner: "Reply Triage Agent", status: "Complete", detail: "A demo reply shows how warm interest appears in the hub." },
-    { stage: "5. Call booked", owner: "Sales", status: "Ready", detail: "The 10-minute call is used to introduce the 14-day test, not the full retainer." },
-    { stage: "6. 14-day test", owner: "Delivery", status: "Planned", detail: "Site visit, filming, Meta test, lead tracking and review. Client covers ad spend." },
-    { stage: "7. Retainer follow-up", owner: "Sales", status: "Planned", detail: "Only discuss the £1,500/month retainer after value or clear learning is proven." }
+    { stage: "5. Call booked", owner: "Sales", status: "Ready", detail: "The 10-minute call is used to understand their online foundations and explain the starter offer." },
+    { stage: "6. Starter foundations", owner: "Delivery", status: "Planned", detail: "Social setup, Google Business improvements, website/CTA basics, tracking and content foundation plan." },
+    { stage: "7. 14-day lead test", owner: "Delivery", status: "Planned", detail: "Only after foundations are ready: filming, Meta test, lead tracking and review. Client covers ad spend." },
+    { stage: "8. Retainer follow-up", owner: "Sales", status: "Planned", detail: "Only discuss the £1,500/month+ retainer after trust, value or clear learning is proven." }
   ],
   demoProof: [
     { title: "Pipeline proof", detail: "The company moves through every CRM stage without needing real outreach." },
     { title: "Agent proof", detail: "Each AI agent has a clear job, input, output and approval boundary." },
-    { title: "Delivery proof", detail: "The 14-day test has a visible checklist, budget boundary and review step." },
-    { title: "Sales proof", detail: "The retainer is positioned after trust is built, not in the first cold message." }
+    { title: "Delivery proof", detail: "The starter offer has a visible setup checklist, then the 14-day test has a clear budget boundary and review step." },
+    { title: "Sales proof", detail: "The retainer is positioned after foundations and trust are built, not in the first cold message." }
+  ],
+  icpProfile: [
+    { section: "Best-fit company", detail: "Local home improvement businesses across Brighton, Hove and Sussex: renovation firms, builders, extensions, loft conversions, kitchens, bathrooms, decorators, painters, roofers, garden rooms and design-build companies." },
+    { section: "Owner profile", detail: "Usually trade-led, experienced at the work, often older or less digitally confident, busy on site, proud of their reputation and short on time for marketing." },
+    { section: "Sweet spot", detail: "Good at the trade, weak online presence, relies heavily on referrals, has visual project work that can be filmed, wants better local visibility and would value even a small number of extra high-quality quote enquiries." },
+    { section: "Buyer trigger", detail: "They know their website, social media or Google profile is behind, or they have gaps between jobs and want more options for their next project." },
+    { section: "Avoid for now", detail: "Companies wanting guaranteed leads, zero ad spend, instant results, national targeting, no access to real project proof, or owners who do not reply/follow up with enquiries." }
+  ],
+  customerProblems: [
+    { problem: "We are good at the work but poor online", answer: "Xello's starter offer gets the basics in order: clearer online presence, stronger social proof, Google Business improvements, practical content and a simple quote journey." },
+    { problem: "We have been burned by agencies before", answer: "Lead with a low-risk starter package and clear deliverables. Avoid promising hundreds of leads. Show exactly what is being improved and report honestly." },
+    { problem: "We do not have time to film or post", answer: "Xello can visit on site, capture the footage, turn long-form material into short clips and create simple posting/ad assets the owner does not have to manage day to day." },
+    { problem: "We do not know what makes us different", answer: "Use a short client interview to uncover their ideal customer, proof, local reputation, specialist services and what homeowners are nervous about." },
+    { problem: "We need leads but do not trust ads yet", answer: "Do not sell ads first. Start by improving visibility and proof, then offer a capped lead test once the foundations are strong enough." },
+    { problem: "How will we know if it worked?", answer: "Track using Meta lead forms, website forms, unique offers, call notes, enquiry source fields, cost per lead, booked quote calls and client follow-up speed." },
+    { problem: "We do not need loads of leads", answer: "Position around a few better quote opportunities, not high-volume cheap leads. For renovation firms, one to five serious enquiries can be meaningful." },
+    { problem: "We do not understand AI/SEO changes", answer: "Explain simply: modern visibility needs a stronger website, Google Business profile, social proof, YouTube/short-form content and regular signals that AI/search systems can understand." }
+  ],
+  customerJourneyMap: [
+    { stage: "1. Unaware or ignoring it", mindset: "They know marketing is weak but keep relying on referrals.", xelloAction: "Use local observation, website/social audit and simple examples to show the visibility gap without embarrassing them." },
+    { stage: "2. Problem aware", mindset: "They realise their social media, Google profile or website does not match the quality of their work.", xelloAction: "Offer a free review or quick local audit focused on what is stopping homeowners from trusting/enquiring." },
+    { stage: "3. Trust building", mindset: "They are interested but sceptical because they have seen poor agency promises before.", xelloAction: "Show Sam's local angle, filming process, honest boundaries, First Touch proof and starter offer with clear deliverables." },
+    { stage: "4. Starter project", mindset: "They want help but do not want a big monthly commitment yet.", xelloAction: "Deliver the starter visibility package: social/GMB/website/content foundations and a clear next-step report." },
+    { stage: "5. Lead test", mindset: "They have better proof online and now want to test whether content can generate enquiries.", xelloAction: "Run a capped Meta lead/content test with client-paid ad spend, simple tracking and a results review." },
+    { stage: "6. Ongoing growth", mindset: "They trust Xello and want the work handled consistently.", xelloAction: "Move into monthly content, Meta management, website improvements, tracking, reporting and ongoing visibility growth." }
+  ],
+  offerLadder: [
+    {
+      name: "Starter Offer",
+      price: "£350-£750 one-off",
+      positioning: "Get your house in order online",
+      bestFor: "Trade businesses with weak socials/Google profile/website basics that are not ready for heavy ads yet.",
+      deliverables: "ICP mini-interview, online presence audit, Google Business checklist, website/CTA recommendations, 1 on-site filming session or content planning session, 3-5 short-form content ideas, basic profile/content improvement plan.",
+      boundary: "Does not include full website rebuild, ongoing posting, Meta ad management or lead guarantees.",
+      nextStep: "Use this to create trust, proof and a clear path into a lead test.",
+      actionPlan: [
+        "Book a 30-minute discovery call and complete the ICP mini-interview.",
+        "Audit website, Google Business Profile, Instagram/TikTok, Facebook and visible trust proof.",
+        "Write a one-page visibility report showing the biggest conversion gaps and quickest fixes.",
+        "Agree whether the client needs a filming session, content planning session or simple profile cleanup first.",
+        "Capture basic business proof: team, finished work, process clips, service areas, testimonials and FAQs.",
+        "Create 3-5 content ideas and a simple improvement plan the client can understand.",
+        "Finish with a clear recommendation: stay foundational, move to the 14-day test, or quote extra website work."
+      ],
+      aiAutomation: [
+        { agent: "Company Research Agent", helpsWith: "Prepares the client interview questions and turns answers into positioning notes.", humanCheck: "Sam confirms the notes are accurate before sharing anything with the client." },
+        { agent: "Website Audit Agent", helpsWith: "Reviews CTA clarity, trust proof, forms, mobile journey and simple conversion gaps.", humanCheck: "Sam reviews the audit and removes anything too harsh or uncertain." },
+        { agent: "Social Audit Agent", helpsWith: "Checks profile quality, posting gaps, project proof and easy content opportunities.", humanCheck: "Sam confirms the account is the right business and the advice is realistic." },
+        { agent: "Content Creation Agent", helpsWith: "Creates the first content ideas, filming shot list and quick-win profile recommendations.", humanCheck: "Sam chooses the strongest ideas and adapts them to the real client." },
+        { agent: "Reporting Agent", helpsWith: "Creates the final starter report and suggested next offer path.", humanCheck: "Sam approves the recommendation before presenting it."
+        }
+      ],
+      setupPlaybook: [
+        {
+          title: "1. Confirm What Exists",
+          detail: "Before creating anything, list what they already have: website, Google Business Profile, Instagram, Facebook Page, TikTok, YouTube, LinkedIn, logo, photos, reviews and access details."
+        },
+        {
+          title: "2. Create Missing Foundations",
+          detail: "Create only the useful missing accounts. For most renovation companies this means Instagram, Facebook Page, Google Business Profile, TikTok and YouTube Shorts. LinkedIn is optional for premium/design-led firms."
+        },
+        {
+          title: "3. Optimise Every Profile",
+          detail: "Add logo/profile image, strong bio, service area, phone/email, website link, enquiry CTA, consistent brand wording, opening hours, service categories and basic highlights where possible."
+        },
+        {
+          title: "4. Improve Google Business",
+          detail: "Check categories, services, description, photos, service areas, contact links, quote/enquiry route, review prompts and whether the profile makes the company look active and trustworthy."
+        },
+        {
+          title: "5. Build The Content Foundation",
+          detail: "Create 3-5 starter content ideas, before/after post structures, Reel hooks, simple captions, FAQs, project story ideas and a list of footage Sam should capture if a site visit is included."
+        },
+        {
+          title: "6. Add Website And Tracking Basics",
+          detail: "Recommend quick CTA improvements, add the client into the CRM, create simple tracking fields and make sure future enquiries can be linked back to website, social, Meta ads or manual referrals."
+        },
+        {
+          title: "7. Set Clear Boundaries",
+          detail: "Do not include ongoing posting, full website rebuilds, Meta ad management, heavy SEO or lead guarantees. Those belong in the middle or high-value offers."
+        },
+        {
+          title: "8. Present The Next Step",
+          detail: "Give the client a simple starter report showing what was fixed, what still needs work and whether they are ready for the 14-day local visibility and lead test."
+        }
+      ]
+    },
+    {
+      name: "Middle Offer",
+      price: "£900-£1,500 project fee + client ad spend",
+      positioning: "14-day local visibility and lead test",
+      bestFor: "Businesses with decent proof or after completing the starter offer, ready to test whether local content can create quote enquiries.",
+      deliverables: "One focused campaign strategy, one filming visit, 3 edited vertical adverts, simple Meta lead campaign setup, lead form, tracking sheet, mid-test check, end-of-test review and next-step recommendation.",
+      boundary: "Client pays Meta ad spend. No guaranteed leads. One campaign/test angle only unless agreed.",
+      nextStep: "If useful enquiries or strong learning appear, pitch the high-value monthly offer.",
+      actionPlan: [
+        "Confirm the offer, service area, ad budget, success measure and who follows up with leads.",
+        "Research the company and pick one clear campaign angle based on their strongest proof.",
+        "Plan the shoot list: hook, owner/team trust, work examples, process, local area, CTA and vertical cutaways.",
+        "Film on site and organise footage into client folders with clear filenames.",
+        "Edit 3 vertical adverts with different hooks, captions and call-to-action variations.",
+        "Build the Meta campaign, lead form, tracking sheet and notification flow before spend starts.",
+        "Check results halfway through, adjust the weakest creative or targeting, then deliver the final review.",
+        "Use the review to recommend whether they should stop, repeat another test, or move into monthly growth."
+      ],
+      aiAutomation: [
+        { agent: "Company Research Agent", helpsWith: "Finds the strongest local angle, likely homeowner problem and best proof to film.", humanCheck: "Sam validates the angle on the client call before filming." },
+        { agent: "Content Creation Agent", helpsWith: "Builds the shoot list, advert hooks, script prompts and creative variations.", humanCheck: "Sam uses the plan on site but adjusts based on what is actually available." },
+        { agent: "Website Audit Agent", helpsWith: "Checks whether the website or landing route can handle traffic from the ad test.", humanCheck: "Sam decides whether to use website traffic, lead form or call booking." },
+        { agent: "Meta Test Planner", helpsWith: "Drafts campaign structure, audience, ad copy, lead form questions and tracking fields.", humanCheck: "Sam sets budgets manually and checks everything before launch." },
+        { agent: "Reporting Agent", helpsWith: "Summarises spend, leads, CPL, lead quality, learning and retainer recommendation.", humanCheck: "Sam explains results honestly and never guarantees future leads." }
+      ],
+      setupPlaybook: [
+        {
+          title: "1. Confirm The Test Scope",
+          detail: "Agree the service being promoted, target area, ad budget, who responds to leads, what counts as a good enquiry and when the review call happens."
+        },
+        {
+          title: "2. Choose One Clear Offer Angle",
+          detail: "Pick one simple campaign idea, such as free quote, renovation advice call, site visit request, before/after inspiration or local project availability."
+        },
+        {
+          title: "3. Build The Filming Plan",
+          detail: "Create a shot list covering local proof, owner/team trust, work examples, process footage, problem/solution clips, testimonials and clear call-to-action moments."
+        },
+        {
+          title: "4. Film On Site",
+          detail: "Capture vertical footage first, then drone/details/process shots. Make sure the company looks real, skilled, local and trustworthy."
+        },
+        {
+          title: "5. Edit The Test Creatives",
+          detail: "Create three short vertical advert variations with different hooks, captions, proof points and CTAs so the test has more than one angle."
+        },
+        {
+          title: "6. Prepare Meta And Tracking",
+          detail: "Set up the campaign structure, lead form or landing route, notification flow, CRM tracking sheet, budget cap and manual review checkpoint before launch."
+        },
+        {
+          title: "7. Monitor The Test",
+          detail: "Check spend, leads, cost per lead, quality, creative performance and client response speed. Adjust weak creative or targeting if needed."
+        },
+        {
+          title: "8. Present Results And Next Step",
+          detail: "Show what worked, what did not, what was learned, whether leads were useful and whether the high-value monthly system is the right next move."
+        }
+      ]
+    },
+    {
+      name: "High-Value Offer",
+      price: "£1,500-£2,500/month + ad spend",
+      positioning: "Ongoing local growth system",
+      bestFor: "Renovation/home improvement companies that want Xello to manage content, ads, website improvements and lead tracking every month.",
+      deliverables: "Monthly content plan, regular short-form edits, Meta ad management, Google Business/content recommendations, website conversion improvements, lead tracking, weekly/monthly reporting, testing roadmap and follow-up improvement notes.",
+      boundary: "Ad spend and third-party tools are separate. Larger website rebuilds, heavy SEO or full sales handling are quoted separately.",
+      nextStep: "Retain clients by showing leads, learning, better follow-up and stronger local visibility.",
+      actionPlan: [
+        "Run a monthly planning call covering pipeline, priority services, best projects and client capacity.",
+        "Create the monthly content calendar for Instagram, TikTok, YouTube Shorts, Google Business and ad creatives.",
+        "Film or collect new proof regularly: before/afters, team clips, process shots, customer questions and project stories.",
+        "Edit and schedule short-form content while saving strong clips for future advert testing.",
+        "Manage Meta campaigns weekly: budget, CPL, lead quality, creative fatigue, targeting and form performance.",
+        "Improve website conversion in small steps: stronger CTAs, proof placement, enquiry forms, service pages and tracking.",
+        "Update the CRM with leads, replies, booked quotes, follow-up speed, spend, results and next actions.",
+        "Send a monthly report showing what happened, what was learned and what Xello will test next."
+      ],
+      aiAutomation: [
+        { agent: "Client Strategy Agent", helpsWith: "Turns client goals, services and capacity into the monthly growth priorities.", humanCheck: "Sam confirms the strategy fits what the client can actually deliver." },
+        { agent: "Content Creation Agent", helpsWith: "Creates monthly content calendars, scripts, hooks, filming briefs and repurposing ideas.", humanCheck: "Sam checks tone, claims and real-world accuracy before content is published." },
+        { agent: "Xello Social Growth Agent", helpsWith: "Reuses learning from client work to plan Xello's own founder-led social content.", humanCheck: "Sam decides what is appropriate to share publicly." },
+        { agent: "Meta Optimisation Agent", helpsWith: "Reviews ad performance, flags weak creatives, suggests new tests and tracks CPL movement.", humanCheck: "Sam changes budgets and campaign settings manually." },
+        { agent: "Website Audit Agent", helpsWith: "Finds monthly website conversion improvements and page ideas.", humanCheck: "Sam approves changes before anything goes live." },
+        { agent: "Reporting Agent", helpsWith: "Writes weekly notes, monthly reports, risk summaries and next test recommendations.", humanCheck: "Sam sends the client-facing report after checking it."
+        }
+      ],
+      setupPlaybook: [
+        {
+          title: "1. Monthly Strategy Reset",
+          detail: "Start each month by reviewing the client's pipeline, best services, capacity, local areas, current leads, project photos and what they most want to sell."
+        },
+        {
+          title: "2. Build The Monthly Plan",
+          detail: "Decide the content themes, Meta campaign focus, website improvements, Google Business updates and tracking priorities for the month."
+        },
+        {
+          title: "3. Collect Or Film Proof",
+          detail: "Gather project photos, customer questions, before/afters, process clips, team trust clips, finished work and any testimonials or review screenshots."
+        },
+        {
+          title: "4. Create And Repurpose Content",
+          detail: "Turn footage into Reels, TikToks, YouTube Shorts, Meta ad creatives, Google Business posts, website proof sections and future content ideas."
+        },
+        {
+          title: "5. Manage Meta Ads",
+          detail: "Monitor budget, CPL, lead quality, follow-up speed, creative fatigue and audience performance. Test new hooks when the current ads weaken."
+        },
+        {
+          title: "6. Improve Website Conversion",
+          detail: "Make small monthly improvements such as stronger CTAs, better service pages, clearer enquiry forms, more proof, local landing pages and tracking fixes."
+        },
+        {
+          title: "7. Track Leads And Follow-Up",
+          detail: "Log every lead, source, cost, status, call outcome, quote booked and follow-up issue so the client can see what is happening clearly."
+        },
+        {
+          title: "8. Report And Retain",
+          detail: "Send a monthly report showing activity, spend, leads, learning, risks, wins and next tests. Use this to keep trust high and prevent churn."
+        }
+      ]
+    }
   ],
   risks: [
     { issue: "GitHub/Vercel deployment friction", severity: "Medium", fix: "Keep standalone dashboard local until pushing flow is simple." },
@@ -178,7 +428,7 @@ const defaultData = {
     { title: "This week", detail: "Prioritise approval of outreach drafts and book the first 10-minute intro calls." },
     { title: "Best opportunity", detail: "Kitchen, extension and loft firms with good project photos but weak quote journeys." },
     { title: "Biggest risk", detail: "Spending too long on systems before speaking to real prospects." },
-    { title: "Recommended move", detail: "Run 25 prospects, approve 10 strong messages, book calls, then offer the capped 14-day lead test." }
+    { title: "Recommended move", detail: "Run 25 prospects, approve 10 strong messages, book calls, then offer starter foundations before any paid lead test." }
   ]
 };
 
@@ -218,7 +468,7 @@ const agentDetails = {
     purpose: "Turns Company Research rows into practical content and ad ideas for each prospect or client.",
     responsibilities: [
       "Uses research hooks, pain points and opportunities to shape filming ideas.",
-      "Creates advert hooks for the 14-day local lead test.",
+      "Creates starter content foundations first, then advert hooks when offer two is appropriate.",
       "Suggests what Sam should film on site with camera, drone and microphones.",
       "Keeps content specific to the company instead of generic renovation ads."
     ],
@@ -286,6 +536,30 @@ const agentDetails = {
     outputs: "Reply rows, suggested next actions, call tasks and updated prospect statuses.",
     guardrails: "It can suggest replies, but sending stays approval-first."
   },
+  "Client Strategy Agent": {
+    purpose: "Turns a paying client's business goals into simple priorities, so monthly work does not become random posting and guessing.",
+    responsibilities: [
+      "Summarises what the client sells, where they want work and what jobs are highest value.",
+      "Turns monthly capacity and pipeline gaps into a focused growth plan.",
+      "Chooses which services should get content, website improvements and ad tests first.",
+      "Feeds the Content Creation Agent, Website Audit Agent and Reporting Agent with the right priorities."
+    ],
+    inputs: "Client onboarding answers, service areas, target job types, current pipeline, ad budget, past results and client notes.",
+    outputs: "Monthly client priorities, campaign focus, content themes, website improvement focus and delivery notes.",
+    guardrails: "It recommends priorities only. Sam confirms what the client can actually handle before work begins."
+  },
+  "Meta Test Planner": {
+    purpose: "Prepares offer two, the 14-day Meta lead test, after the starter foundations are ready.",
+    responsibilities: [
+      "Turns the approved offer angle into campaign structure and ad set notes.",
+      "Drafts Meta ad copy, lead form questions and tracking fields.",
+      "Checks whether the campaign should use a Meta lead form, website form or call booking route.",
+      "Creates the pre-launch checklist so tracking and notifications are ready."
+    ],
+    inputs: "Company research, content brief, website audit, client offer, service area, ad budget and success measure.",
+    outputs: "Campaign plan, advert copy, lead form questions, tracking setup list and launch checklist.",
+    guardrails: "It never launches ads or changes budgets. Sam manually checks and launches inside Meta."
+  },
   "Reporting Agent": {
     purpose: "Summarises what is happening in the agency so you can see the business clearly each week.",
     responsibilities: [
@@ -317,10 +591,125 @@ function loadState() {
   merged.agentOutputs = merged.agentOutputs || defaultData.agentOutputs;
   merged.socialCalendar = merged.socialCalendar || defaultData.socialCalendar;
   merged.contentPillars = merged.contentPillars || defaultData.contentPillars;
+  merged.firstTouchProduction = merged.firstTouchProduction || defaultData.firstTouchProduction;
+  merged.firstTouchAdAngles = merged.firstTouchAdAngles || defaultData.firstTouchAdAngles;
+  merged.firstTouchMetaPlan = merged.firstTouchMetaPlan || defaultData.firstTouchMetaPlan;
+  merged.firstTouchLearningPlan = merged.firstTouchLearningPlan || defaultData.firstTouchLearningPlan;
+  merged.firstTouchCaseStudy = merged.firstTouchCaseStudy || defaultData.firstTouchCaseStudy;
   merged.testJourney = merged.testJourney || defaultData.testJourney;
   merged.demoProof = merged.demoProof || defaultData.demoProof;
+  merged.icpProfile = merged.icpProfile || defaultData.icpProfile;
+  merged.customerProblems = merged.customerProblems || defaultData.customerProblems;
+  merged.customerJourneyMap = merged.customerJourneyMap || defaultData.customerJourneyMap;
+  merged.offerLadder = merged.offerLadder || defaultData.offerLadder;
   merged.outreachTraining = merged.outreachTraining || defaultData.outreachTraining;
-  return merged;
+  return migrateOfferStrategy(merged);
+}
+
+function migrateOfferStrategy(data) {
+  const byTitle = (rows = [], title) => rows.find((row) => row.title === title);
+  const byName = (rows = [], name) => rows.find((row) => row.name === name);
+  const byClient = (rows = [], client) => rows.find((row) => row.client === client);
+
+  const oldProof = (data.outreachTraining || []).find((row) => row.rule === "Proof Offer");
+  if (oldProof) {
+    oldProof.rule = "Starter Offer First";
+    oldProof.detail = "After they reply, explain the starter foundations offer first: social setup, Google Business, website basics, tracking and content foundations.";
+  }
+  if (!data.outreachTraining.some((row) => row.rule === "Lead Test Timing")) {
+    data.outreachTraining.splice(5, 0, { rule: "Lead Test Timing", detail: "Only offer the 14-day local lead test once the company has enough trust proof and online foundations to make paid traffic useful.", owner: "Sales" });
+  }
+
+  const entry = byTitle(data.knowledge, "Entry Offer");
+  if (entry) entry.detail = "Start with the starter foundations offer: social setup, Google Business improvements, website/CTA basics, tracking and content foundations.";
+  if (!byTitle(data.knowledge, "Middle Offer")) {
+    data.knowledge.splice(1, 0, { title: "Middle Offer", detail: "After the basics are strong enough, offer the paid 14-day local visibility and lead test. Company covers ad spend.", owner: "Xello" });
+  }
+  const salesCta = byTitle(data.knowledge, "Sales CTA");
+  if (salesCta) salesCta.detail = "First message starts a conversation with a compliment, one brief line explaining that Xello helps improve local online presence and a simple question. Do not lead with paid ads.";
+
+  const contentPlaybook = byName(data.playbooks, "Content Creation");
+  if (contentPlaybook) contentPlaybook.steps = "Use company research to choose profile improvements, starter content ideas, what to film and which hooks could later support a paid lead test.";
+  if (!byName(data.playbooks, "Starter Foundations")) {
+    const leadTestIndex = data.playbooks.findIndex((row) => row.name === "14-Day Lead Test");
+    data.playbooks.splice(leadTestIndex >= 0 ? leadTestIndex : data.playbooks.length, 0, { name: "Starter Foundations", steps: "Create/optimise social profiles, Google Business, website/CTA basics, tracking and content foundations before paid ads.", agent: "Sales" });
+  }
+  const leadTest = byName(data.playbooks, "14-Day Lead Test");
+  if (leadTest) leadTest.steps = "Offer two only: one filming visit, three edited adverts, one Meta campaign, lead tracking and one results review. Company covers ad spend.";
+
+  const firstTouch = byClient(data.delivery, "First Touch Innovations");
+  if (firstTouch && String(firstTouch.stage || "").includes("14-day")) {
+    Object.assign(firstTouch, {
+      stage: "Starter foundations",
+      checklist: "Social/GMB/website basics, content plan and tracking foundations before any paid test.",
+      adSpend: 0,
+      siteVisit: "Optional",
+      contentStatus: "Foundation plan ready",
+      campaignStatus: "Not ready for ads",
+      nextReview: "After starter setup",
+      nextAction: "Confirm missing socials, Google Business gaps and website basics"
+    });
+  }
+  const newClient = byClient(data.delivery, "New Client Template");
+  if (newClient && newClient.stage === "Onboarding") {
+    Object.assign(newClient, {
+      stage: "Starter onboarding",
+      checklist: "Social access, website access, Google Business access, photos, testimonials, logo, services and tracking route.",
+      nextAction: "Collect access and foundation details"
+    });
+  }
+  const campaignLaunch = byClient(data.delivery, "Campaign Launch");
+  if (campaignLaunch) {
+    Object.assign(campaignLaunch, {
+      client: "Offer Two Template",
+      stage: "14-day lead test",
+      checklist: "Campaign angle, lead form, conversion tracking, ad spend boundary, first creatives.",
+      siteVisit: "To schedule",
+      contentStatus: "Create first adverts",
+      nextAction: "Only launch after starter foundations are ready"
+    });
+  }
+  const seenClients = new Set();
+  data.delivery = (data.delivery || []).filter((row) => {
+    if (!row.client || seenClients.has(row.client)) return false;
+    seenClients.add(row.client);
+    return true;
+  });
+
+  data.testJourney = (data.testJourney || []).some((row) => row.stage === "6. 14-day test")
+    ? structuredClone(defaultData.testJourney)
+    : data.testJourney;
+  data.demoProof = (data.demoProof || []).some((row) => row.detail?.includes("The 14-day test has"))
+    ? structuredClone(defaultData.demoProof)
+    : data.demoProof;
+
+  data.replies = (data.replies || []).map((reply) => ({
+    ...reply,
+    nextAction: String(reply.nextAction || "").includes("14-day test")
+      ? "Explain starter foundations and ask for 10-minute call"
+      : reply.nextAction
+  }));
+
+  data.replyResponses = (data.replyResponses || []).map((response) => {
+    if (!String(response.message || "").includes("14-day local lead test") && !String(response.message || "").includes("one site visit")) return response;
+    const updated = (defaultData.replyResponses || []).find((row) => row.company === response.company && row.channel === response.channel);
+    return updated ? { ...response, message: updated.message, nextAction: updated.nextAction } : response;
+  });
+
+  data.memory = (data.memory || []).map((memory) => ({
+    ...memory,
+    action: String(memory.action || "").includes("explain the 14-day test")
+      ? "Keep first touch light and explain starter foundations after a reply."
+      : memory.action
+  }));
+
+  data.agents = (data.agents || []).map((agent) =>
+    agent.name === "Meta Test Planner"
+      ? { ...agent, purpose: "Prepares campaign structure, lead forms and tracking fields for offer two: the 14-day lead test.", currentTask: agent.currentTask === "Waiting for approved test client" ? "Waiting for a client with foundations ready" : agent.currentTask }
+      : agent
+  );
+
+  return data;
 }
 
 function safeParse(value) {
@@ -660,7 +1049,7 @@ function calculateDeliveryMetrics() {
   const activeTests = rows.filter((item) => String(item.stage || "").toLowerCase().includes("test") || String(item.campaignStatus || "").toLowerCase().includes("launch")).length;
 
   return [
-    { label: "Active tests", value: activeTests, note: "14-day trials", icon: "T" },
+    { label: "Offer two tests", value: activeTests, note: "After foundations", icon: "T" },
     { label: "Client ad spend", value: money(adSpend), note: "Paid by client", icon: "£" },
     { label: "Leads", value: leads, note: "Tracked enquiries", icon: "L" },
     { label: "Booked calls", value: bookedCalls, note: "Quote/call outcomes", icon: "B" }
@@ -1337,14 +1726,14 @@ function createLocalReplyResponse(reply) {
   const isReferralLed = replyText.includes("referral") || replyText.includes("word of mouth") || replyText.includes("recommendation");
   const isAdConcern = replyText.includes("tried ads") || replyText.includes("ads before") || replyText.includes("didn") || replyText.includes("waste");
   const base = isMaybeLater
-    ? `No worries at all, thanks for getting back to me. The idea is very simple and capped, so it would not turn into a big commitment: a 14-day local lead test where I come to site, film one strong advert, help test it on Meta, track any enquiries and then review what happened with you. You would only cover the ad spend. Would it be worth a quick 10-minute call when things calm down so I can explain it properly?`
+    ? `No worries at all, thanks for getting back to me. I’d probably start with something simple rather than jumping straight into ads: checking your socials, Google Business, website/enquiry route, tracking and what content would make you look more trustworthy locally. Would it be worth a quick 10-minute call when things calm down so I can explain what I’d check?`
     : isAdConcern
-      ? `Completely understand. A lot of local companies have tried ads without proper tracking or strong enough creative, so they never really know what worked. My idea is a small 14-day test: I come to site, film one proper advert, run a simple Meta test, track the enquiries and then review it with you. You would only cover the ad spend, and there are no guarantees or long commitment. Would you be open to a quick 10-minute call so I can explain how I would structure it?`
+      ? `Completely understand. A lot of local companies have tried ads before the basics were strong enough, so the spend gets wasted and nobody really knows what worked. I’d start by checking the online foundations first: socials, Google Business, website CTA, tracking and content proof. If that looks ready, then a small paid test could come later. Would you be open to a quick 10-minute call so I can explain how I’d structure it?`
       : isReferralLed
-        ? `That makes sense, referrals are usually the strongest source for renovation companies. What I would be testing is whether we can turn that same trust into more consistent online enquiries. The simple version is a 14-day local lead test: one site visit, one filmed advert, one Meta campaign, lead tracking and a review at the end. You would only cover the ad spend. Would you be open to a quick 10-minute call so I can explain it properly?`
+        ? `That makes sense, referrals are usually the strongest source for renovation companies. What I’d look at first is whether your online presence shows the same trust people already get through word of mouth: socials, Google Business, website, proof and enquiry tracking. Would you be open to a quick 10-minute call so I can explain it properly?`
         : isQuestion
-          ? `Yes, of course. The test would be kept deliberately simple: I come to site, film one strong advert, help test it on Meta, track any enquiries and then review what happened with you after 14 days. You would only cover the ad spend, so it is not a big commitment upfront. Would you be open to a quick 10-minute call so I can walk you through it?`
-          : `Thanks for getting back to me. The next step would be a simple 14-day local lead test: one site visit, one filmed advert, one Meta campaign, lead tracking and one review at the end. You would only cover the ad spend. Would you be open to a quick 10-minute call this week so I can explain it properly?`;
+          ? `Yes, of course. I’d keep it deliberately simple first: look at your social profiles, Google Business, website CTA, trust proof, tracking and the content foundations that would make enquiries more likely. If those foundations are strong enough, then we can look at a small paid lead test afterwards. Would you be open to a quick 10-minute call so I can walk you through it?`
+          : `Thanks for getting back to me. The next step would be a quick 10-minute chat so I can explain the starter foundations offer: socials, Google Business, website/enquiry basics, tracking and content ideas before spending money on ads. Would you be open to a quick call this week?`;
 
   return {
     replyId: reply.replyId || "",
@@ -1369,7 +1758,7 @@ function triageLocalReplies() {
       ? { ...agent, status: "Waiting Approval", currentTask: `Drafted ${state.replyResponses.length} suggested response(s)`, progress: 100, lastRun: "Just now", outputs: state.replyResponses.length }
       : agent
   );
-  addAgentLog("Reply Triage Agent", "Created suggested replies explaining the 14-day test and asking for a 10-minute call.");
+  addAgentLog("Reply Triage Agent", "Created suggested replies explaining the starter foundations offer and asking for a 10-minute call.");
   saveState();
   renderAll();
 }
@@ -1412,7 +1801,7 @@ function practiceReplies() {
       channel: scenario.channel,
       type: scenario.type,
       summary: scenario.summary(lead),
-      nextAction: "Reply with 14-day test outline and ask for 10-minute call",
+      nextAction: "Reply with starter foundations outline and ask for 10-minute call",
       status: scenario.status,
       createdAt: "Practice"
     };
@@ -1427,7 +1816,7 @@ function runPracticeReplyFlow() {
       ? { ...agent, status: "Waiting Approval", currentTask: `Practised ${state.replyResponses.length} reply response(s)`, progress: 100, lastRun: "Just now", outputs: state.replyResponses.length }
       : agent
   );
-  addAgentLog("Reply Triage Agent", "Practice flow created fake company replies and drafted 14-day test call responses.");
+  addAgentLog("Reply Triage Agent", "Practice flow created fake company replies and drafted starter foundations call responses.");
   saveState();
   renderAll();
 }
@@ -1570,7 +1959,7 @@ function renderProfiles(focusCompany = "") {
             <button class="small-button" data-profile-action="audit" data-profile-company="${escapeHtml(company)}">Run Website Audit</button>
             <button class="small-button" data-profile-action="brief" data-profile-company="${escapeHtml(company)}">Generate Content Brief</button>
             <button class="small-button" data-profile-action="call" data-profile-company="${escapeHtml(company)}">Mark Call Booked</button>
-            <button class="small-button" data-profile-action="test" data-profile-company="${escapeHtml(company)}">Move To Client Test</button>
+            <button class="small-button" data-profile-action="test" data-profile-company="${escapeHtml(company)}">Move To Starter Setup</button>
           </div>
         </article>
       `;
@@ -1709,7 +2098,7 @@ function markProfileCallBooked(company) {
   const lead = leadForCompany(company);
   if (lead.company) {
     lead.status = "Call Booked";
-    lead.nextAction = "Prepare 10-minute call notes and 14-day test explanation";
+    lead.nextAction = "Prepare 10-minute call notes and starter foundations explanation";
   }
   state.calls.unshift({
     company,
@@ -1717,7 +2106,7 @@ function markProfileCallBooked(company) {
     date: "To confirm",
     type: "10-minute intro call",
     outcome: "Booked from CRM action",
-    nextStep: "Explain the capped 14-day local lead test and confirm ad spend is paid by the company.",
+    nextStep: "Explain the starter foundations offer and decide whether they are ready for offer two later.",
     value: 1500,
     status: "Call Booked",
     createdAt: displayDate()
@@ -1739,33 +2128,33 @@ function markProfileCallBooked(company) {
 function moveProfileToClientTest(company) {
   const lead = leadForCompany(company);
   if (lead.company) {
-    lead.status = "Proposal Sent";
-    lead.nextAction = "Confirm test boundaries, filming date and ad spend";
+    lead.status = "Starter Setup";
+    lead.nextAction = "Confirm foundation setup scope and missing accounts";
   }
   const existing = state.delivery.find((item) => item.client === company);
   const delivery = {
     client: company,
-    stage: "14-day local lead test",
-    checklist: "Site visit, one filmed advert, Meta campaign, lead tracking and results review.",
+    stage: "Starter foundations",
+    checklist: "Social setup, Google Business improvements, website/CTA basics, tracking and content foundations.",
     health: "Needs setup",
-    adSpend: 100,
+    adSpend: 0,
     leads: 0,
     cpl: 0,
     bookedCalls: 0,
-    siteVisit: "To schedule",
-    contentStatus: "Brief needed",
-    campaignStatus: "Awaiting client ad spend",
-    nextReview: "After test launches",
-    nextAction: "Confirm filming date, service area, ad budget and lead routing"
+    siteVisit: "Optional",
+    contentStatus: "Foundation brief needed",
+    campaignStatus: "Not ready for ads",
+    nextReview: "After starter setup",
+    nextAction: "Confirm missing socials, access, website basics and tracking route"
   };
   if (existing) Object.assign(existing, delivery);
   else state.delivery.unshift(delivery);
   addAgentOutput({
     agent: "Operations Agent",
     company,
-    type: "Client test setup",
-    result: "Moved the company into a 14-day test delivery workflow.",
-    nextAction: "Confirm boundaries before doing unpaid work.",
+    type: "Starter setup",
+    result: "Moved the company into the starter foundations delivery workflow.",
+    nextAction: "Confirm boundaries before creating accounts or doing setup work.",
     approval: "No",
     status: "Needs Review"
   });
@@ -1852,6 +2241,68 @@ function renderContentIdeas() {
       </article>
     `)
     .join("") || `<p class="metric-note">No content ideas yet. Sync company research first.</p>`;
+}
+
+function listMarkup(items = []) {
+  return `
+    <ul class="compact-list">
+      ${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+    </ul>
+  `;
+}
+
+function renderFirstTouchLaunchPack() {
+  const target = document.getElementById("firstTouchLaunchPack");
+  if (!target) return;
+
+  const productionItems = (state.firstTouchProduction || []).map((item) => `${item.stage}: ${item.detail} ${item.checklist}`);
+  const adAngleItems = (state.firstTouchAdAngles || []).map((item) => `${item.title}: ${item.hook}`);
+  const metaItems = (state.firstTouchMetaPlan || []).map((item) => `${item.area}: ${item.instruction}`);
+  const learningItems = (state.firstTouchLearningPlan || []).map((item) => `${item.day}: ${item.focus}`);
+  const caseStudyItems = (state.firstTouchCaseStudy || []).map((item) => `${item.section}: ${item.prompt}`);
+
+  target.innerHTML = `
+    <article class="launch-pack-card featured">
+      <div class="card-title-row">
+        <strong>Production Command</strong>
+        <span class="mini-stat">Content Creation Agent</span>
+      </div>
+      <p>Use this as the operating checklist for the First Touch shoot. The aim is to produce one real local proof project before outreach begins.</p>
+      ${listMarkup(productionItems)}
+    </article>
+    <article class="launch-pack-card">
+      <div class="card-title-row">
+        <strong>5 Advert Angles</strong>
+        <span class="mini-stat">Edit into versions</span>
+      </div>
+      <p>Make multiple ads from the same footage so you can learn what homeowners respond to.</p>
+      ${listMarkup(adAngleItems)}
+    </article>
+    <article class="launch-pack-card">
+      <div class="card-title-row">
+        <strong>Meta Test Setup</strong>
+        <span class="mini-stat">Small budget test</span>
+      </div>
+      <p>Keep the campaign simple: one local lead test, three ads first and clear tracking.</p>
+      ${listMarkup(metaItems)}
+    </article>
+    <article class="launch-pack-card">
+      <div class="card-title-row">
+        <strong>Foundation-To-Ads Learning Plan</strong>
+        <span class="mini-stat">Skill building</span>
+      </div>
+      <p>This keeps Sam focused on learning filming, editing and Meta ads in the right order.</p>
+      ${listMarkup(learningItems)}
+    </article>
+    <article class="launch-pack-card">
+      <div class="card-title-row">
+        <strong>Case Study Capture</strong>
+        <span class="mini-stat">Proof for Xello</span>
+      </div>
+      <p>Document the process honestly so Xello has proof without inventing results.</p>
+      ${listMarkup(caseStudyItems)}
+    </article>
+  `;
 }
 
 function renderContentBriefs() {
@@ -2049,11 +2500,12 @@ function renderDelivery() {
   const workflowTarget = document.getElementById("deliveryWorkflow");
   if (!workflowTarget) return;
   const workflow = [
-    { step: "1. Confirm trial boundary", detail: "Client covers Meta ad spend. Xello provides one capped site visit, one filmed advert, one campaign and one review." },
-    { step: "2. Prepare filming plan", detail: "Use company research to decide what makes the business stand out and what homeowner problem the advert should solve." },
-    { step: "3. Film on site", detail: "Capture owner/team clips, service proof, finished details, process shots, vertical Reels and optional drone footage." },
-    { step: "4. Launch simple Meta test", detail: "Use one clear offer, local targeting, lead form or landing page, and clean tracking back into the CRM." },
-    { step: "5. Review results", detail: "Report spend, leads, CPL, booked quotes, follow-up speed and whether a retainer makes sense." }
+    { step: "1. Starter discovery", detail: "Confirm what socials, Google Business, website pages, assets, reviews and tracking the company already has." },
+    { step: "2. Build foundations", detail: "Create or optimise missing socials, Google Business, website/CTA basics, enquiry routes and CRM tracking." },
+    { step: "3. Create content base", detail: "Prepare profile copy, starter content ideas, FAQs, proof assets and a filming list for future adverts." },
+    { step: "4. Decide if ads are ready", detail: "Only move into offer two if the company has enough trust proof and a clear enquiry route." },
+    { step: "5. Run optional 14-day test", detail: "If ready, run one focused paid test with client-paid ad spend, clear tracking and one review." },
+    { step: "6. Review next offer", detail: "Recommend staying foundational, repeating a test, or moving into the monthly growth system." }
   ];
   workflowTarget.innerHTML = workflow
     .map((item) => `
@@ -2095,6 +2547,137 @@ function renderTestJourney() {
         <p>${item.detail}</p>
       </article>
     `)
+    .join("");
+}
+
+function renderBusinessStrategy() {
+  const icpTarget = document.getElementById("icpProfileGrid");
+  const problemTarget = document.getElementById("customerProblemList");
+  const journeyTarget = document.getElementById("customerJourneyMap");
+  const offerTarget = document.getElementById("offerLadderGrid");
+  if (!icpTarget || !problemTarget || !journeyTarget || !offerTarget) return;
+
+  icpTarget.innerHTML = (state.icpProfile || defaultData.icpProfile)
+    .map((item) => `
+      <article class="strategy-card">
+        <p class="label">${item.section}</p>
+        <p>${item.detail}</p>
+      </article>
+    `)
+    .join("");
+
+  problemTarget.innerHTML = (state.customerProblems || defaultData.customerProblems)
+    .map((item) => `
+      <article class="problem-card">
+        <strong>${item.problem}</strong>
+        <p>${item.answer}</p>
+      </article>
+    `)
+    .join("");
+
+  journeyTarget.innerHTML = (state.customerJourneyMap || defaultData.customerJourneyMap)
+    .map((item) => `
+      <article class="journey-map-card">
+        <p class="label">${item.stage}</p>
+        <h3>${item.mindset}</h3>
+        <p>${item.xelloAction}</p>
+      </article>
+    `)
+    .join("");
+
+  offerTarget.innerHTML = (state.offerLadder || defaultData.offerLadder)
+    .map((item) => {
+      const defaultOffer = defaultData.offerLadder.find((offer) => offer.name === item.name) || {};
+      const actionPlan = item.actionPlan || defaultOffer.actionPlan || [];
+      const aiAutomation = item.aiAutomation || defaultOffer.aiAutomation || [];
+      const setupPlaybook = item.setupPlaybook || defaultOffer.setupPlaybook || [];
+      const playbookTitle = item.name === "Starter Offer"
+        ? "Starter Offer Setup Playbook"
+        : item.name === "Middle Offer"
+          ? "14-Day Test Playbook"
+          : "Monthly Growth Playbook";
+      const playbookSubtitle = item.name === "Starter Offer"
+        ? "How to build their online foundations"
+        : item.name === "Middle Offer"
+          ? "How to deliver the paid lead test"
+          : "How to run the retainer each month";
+      return `
+        <article class="offer-card">
+          <div class="card-title-row">
+            <div>
+              <p class="label">${item.positioning}</p>
+              <h2>${item.name}</h2>
+            </div>
+            <span class="offer-price">${item.price}</span>
+          </div>
+          <div class="offer-section">
+            <strong>Best for</strong>
+            <p>${item.bestFor}</p>
+          </div>
+          <div class="offer-section">
+            <strong>Deliverables</strong>
+            <p>${item.deliverables}</p>
+          </div>
+          <div class="offer-section">
+            <strong>Boundary</strong>
+            <p>${item.boundary}</p>
+          </div>
+          <div class="offer-section next">
+            <strong>Next step</strong>
+            <p>${item.nextStep}</p>
+          </div>
+          <div class="offer-action-plan">
+            <div class="card-title-row">
+              <div>
+                <p class="label">Delivery Action Plan</p>
+                <h3>Exact tasks to complete</h3>
+              </div>
+              <span class="mini-stat">${actionPlan.length} tasks</span>
+            </div>
+            <ol>
+              ${actionPlan.map((task) => `<li>${task}</li>`).join("")}
+            </ol>
+          </div>
+          <details class="offer-ai-plan">
+            <summary>
+              <span>
+                <small>AI Automation Layer</small>
+                <strong>Agents that reduce manual work</strong>
+              </span>
+              <em>${aiAutomation.length} agents</em>
+            </summary>
+            <div class="offer-ai-grid">
+              ${aiAutomation.map((item) => `
+                <article class="offer-ai-card">
+                  <strong>${item.agent}</strong>
+                  <p>${item.helpsWith}</p>
+                  <span>${item.humanCheck}</span>
+                </article>
+              `).join("")}
+            </div>
+          </details>
+          ${setupPlaybook.length ? `
+            <details class="starter-playbook">
+              <summary>
+                <span>
+                  <small>${playbookTitle}</small>
+                  <strong>${playbookSubtitle}</strong>
+                </span>
+                <em>${setupPlaybook.length} steps</em>
+              </summary>
+              <div class="starter-playbook-grid">
+                ${setupPlaybook.map((step) => `
+                  <article class="starter-playbook-card">
+                    <strong>${step.title}</strong>
+                    <p>${step.detail}</p>
+                  </article>
+                `).join("")}
+              </div>
+            </details>
+          ` : ""}
+        </article>
+      `;
+    })
     .join("");
 }
 
@@ -2389,7 +2972,7 @@ function runAllAgentsPractice() {
       insight: "Practice run confirmed the strongest workflow is research first, then outreach, then reply triage into a 10-minute call.",
       source: "Agent practice run",
       confidence: 85,
-      action: "Keep first touch light and explain the 14-day test only after a reply."
+      action: "Keep first touch light and explain starter foundations after a reply."
     },
     ...(state.memory || []).slice(0, 6)
   ];
@@ -2443,7 +3026,7 @@ function addLocalDemoReplies() {
       summary: isFirst
         ? `Demo reply: ${lead.company} said most of their work comes from referrals, but they would like more consistent website or Instagram enquiries and asked what you had in mind.`
         : `Demo reply: ${lead.company} said Instagram brings in a few people but nothing consistent, and asked what the process would involve.`,
-      nextAction: "Explain 14-day test and ask for 10-minute call",
+      nextAction: "Explain starter foundations and ask for 10-minute call",
       status: isFirst ? "Warm Reply" : "Follow Up",
       createdAt: "Demo"
     });
@@ -2457,7 +3040,7 @@ function addLocalDemoReplies() {
       date: "Next week",
       type: "10-minute intro call",
       outcome: "Demo booked call",
-      nextStep: "Explain the 14-day local lead test and confirm ad spend boundary",
+      nextStep: "Explain the starter foundations offer and decide whether a lead test comes later",
       value: 1500,
       status: "Call Booked"
     });
@@ -2465,10 +3048,10 @@ function addLocalDemoReplies() {
 
   state.prospects = state.prospects.map((lead) => {
     if (callLead && lead.company === callLead.company) {
-      return { ...lead, status: "Call Booked", nextAction: "Explain 14-day test on 10-minute call" };
+      return { ...lead, status: "Call Booked", nextAction: "Explain starter foundations on 10-minute call" };
     }
     if (replyProspects[1] && lead.company === replyProspects[1].company) {
-      return { ...lead, status: "Warm Reply", nextAction: "Send 14-day test outline" };
+      return { ...lead, status: "Warm Reply", nextAction: "Send starter foundations outline" };
     }
     return lead;
   });
@@ -2488,11 +3071,11 @@ function runLocalDemoJourney() {
       service: "Home renovation",
       score: 95,
       status: "Call Booked",
-      nextAction: "Prepare 14-day test call"
+      nextAction: "Prepare starter foundations call"
     });
   } else {
     state.prospects = state.prospects.map((lead) =>
-      lead.company === company ? { ...lead, status: "Call Booked", nextAction: "Prepare 14-day test call" } : lead
+      lead.company === company ? { ...lead, status: "Call Booked", nextAction: "Prepare starter foundations call" } : lead
     );
   }
 
@@ -2502,7 +3085,7 @@ function runLocalDemoJourney() {
       hook: "Local Brighton renovation company with strong before/after content potential.",
       painPoint: "Could turn more local interest into tracked quote enquiries with clearer ads and lead follow-up.",
       opportunity: "Use Sam's on-site filming setup to create a credible local Meta advert.",
-      angle: "Open with a friendly local 10-minute chat, then explain the capped 14-day test.",
+      angle: "Open with a friendly local 10-minute chat, then explain the starter foundations offer.",
       status: "Research complete"
     });
   }
@@ -2522,8 +3105,8 @@ function runLocalDemoJourney() {
       company,
       channel: "Email",
       type: "Interested",
-      summary: "Demo reply: they like the idea and are open to a short call to understand the 14-day test.",
-      nextAction: "Book 10-minute call and explain client covers Meta ad spend.",
+      summary: "Demo reply: they like the idea and are open to a short call to understand the starter foundations offer.",
+      nextAction: "Book 10-minute call and explain the foundation setup process.",
       status: "Warm Reply",
       createdAt: "Demo"
     });
@@ -2536,7 +3119,7 @@ function runLocalDemoJourney() {
       date: "This week",
       type: "10-minute intro call",
       outcome: "Demo booked",
-      nextStep: "Pitch capped 14-day lead test and confirm site visit date.",
+      nextStep: "Pitch starter foundations and confirm what accounts/assets they already have.",
       value: 1500,
       status: "Call Booked"
     });
@@ -2545,36 +3128,36 @@ function runLocalDemoJourney() {
   const existingDelivery = state.delivery.find((item) => item.client === company);
   if (existingDelivery) {
     Object.assign(existingDelivery, {
-      stage: "14-day test",
+      stage: "Starter foundations",
       health: "Demo",
       adSpend: existingDelivery.adSpend || 100,
       siteVisit: existingDelivery.siteVisit || "To schedule",
-      contentStatus: "Filming plan ready",
-      campaignStatus: "Awaiting ad spend confirmation",
-      nextReview: "After 14-day test",
-      nextAction: "Confirm filming date, ad spend and lead routing"
+      contentStatus: "Foundation plan ready",
+      campaignStatus: "Not ready for ads",
+      nextReview: "After starter setup",
+      nextAction: "Confirm missing socials, Google Business gaps and website basics"
     });
   } else {
     state.delivery.unshift({
       client: company,
-      stage: "14-day test",
-      checklist: "Site visit, filmed advert, Meta test, lead tracking and results review.",
+      stage: "Starter foundations",
+      checklist: "Social/GMB/website basics, content foundation and tracking setup.",
       health: "Demo",
-      adSpend: 100,
+      adSpend: 0,
       leads: 0,
       cpl: 0,
       bookedCalls: 0,
-      siteVisit: "To schedule",
-      contentStatus: "Filming plan ready",
-      campaignStatus: "Awaiting ad spend confirmation",
-      nextReview: "After 14-day test",
-      nextAction: "Confirm filming date, ad spend and lead routing"
+      siteVisit: "Optional",
+      contentStatus: "Foundation plan ready",
+      campaignStatus: "Not ready for ads",
+      nextReview: "After starter setup",
+      nextAction: "Confirm missing socials, Google Business gaps and website basics"
     });
   }
 
   state.testJourney = defaultData.testJourney.map((item) => ({
     ...item,
-    status: ["6. 14-day test", "7. Retainer follow-up"].includes(item.stage) ? item.status : "Complete"
+    status: ["7. 14-day lead test", "8. Retainer follow-up"].includes(item.stage) ? item.status : "Complete"
   }));
 
   addAgentLog("System", "Ran a full safe demo journey for First Touch Innovations.");
@@ -2591,6 +3174,7 @@ function renderAll() {
   renderWebsiteAudits();
   renderSocialAudits();
   renderContentIdeas();
+  renderFirstTouchLaunchPack();
   renderContentBriefs();
   renderXelloSocial();
   renderSocialCalendar();
@@ -2612,6 +3196,7 @@ function renderAll() {
   renderOutreachFeedback();
   renderPlaybooks();
   renderExperiments();
+  renderBusinessStrategy();
   renderDelivery();
   renderTestJourney();
   renderFinance();
@@ -3110,6 +3695,12 @@ document.addEventListener(
 document.querySelectorAll(".nav-item").forEach((button) => {
   button.addEventListener("click", () => {
     showView(button.dataset.view);
+  });
+});
+
+document.querySelectorAll("[data-view-jump]").forEach((button) => {
+  button.addEventListener("click", () => {
+    showView(button.dataset.viewJump);
   });
 });
 

@@ -48,6 +48,10 @@
 
           <details class="nav-folder">
             <summary>Business</summary>
+            <button class="nav-item" data-view="business-strategy">Business Strategy</button>
+            <button class="nav-item" data-view="ideal-client">Ideal Client</button>
+            <button class="nav-item" data-view="customer-journey">Customer Journey</button>
+            <button class="nav-item" data-view="offer-doc">Offer Doc</button>
             <button class="nav-item" data-view="pipeline">Pipeline</button>
             <button class="nav-item" data-view="test-journey">Test Journey</button>
             <button class="nav-item" data-view="delivery">Client Delivery</button>
@@ -59,8 +63,8 @@
 
         <div class="sidebar-card">
           <p class="label">Current offer</p>
-          <strong>14-day test</strong>
-          <span>Site visit, filmed advert, Meta test, lead tracking, then retainer if proven.</span>
+          <strong>Starter foundations</strong>
+          <span>Set up socials, Google Business, website basics, tracking and content foundations before paid ads.</span>
         </div>
       </aside>
 
@@ -379,7 +383,7 @@
                 <li>First touch = observation, compliment, simple question.</li>
                 <li>Do not explain the full service before they reply.</li>
                 <li>Use a 10-minute chat only as a soft next step, not a hard pitch.</li>
-                <li>The 14-day local lead test is explained after they respond or on the call.</li>
+                <li>Lead with the starter foundations offer first. Only move into the 14-day lead test when the basics are ready.</li>
                 <li>Do not mention the £1,500/month retainer in cold outreach.</li>
                 <li>Avoid fake case studies, guaranteed results and corporate fluff.</li>
                 <li>Draft only. Nothing sends without human approval.</li>
@@ -413,11 +417,24 @@
               </div>
               <div class="message-preview">
                 <p>The Company Research Agent identifies what makes each business stand out: local reputation, specialist services, proof, project style and likely homeowner pain points.</p>
-                <p>The Content Creation Agent turns that into practical filming angles, advert hooks, talking points and Meta ad ideas for the 14-day local lead test.</p>
+                <p>The Content Creation Agent turns that into profile setup ideas, starter content foundations, filming angles and advert ideas for when the business is ready for offer two.</p>
                 <p>This keeps content specific to the company instead of generic renovation ads.</p>
               </div>
             </section>
           </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">First Touch Innovations</p>
+                <h2>Advert Launch Pack</h2>
+              </div>
+              <div class="panel-actions">
+                <span class="pill">Shoot → Edit → Meta Test → Case Study</span>
+              </div>
+            </div>
+            <div class="launch-pack-grid" id="firstTouchLaunchPack"></div>
+          </section>
         </section>
 
         <section class="view" id="content-briefs">
@@ -666,7 +683,7 @@
                 <p class="label">Client operations</p>
                 <h2>Client Delivery Tracker</h2>
               </div>
-              <span class="pill">From site visit to retainer</span>
+              <span class="pill">Starter foundations → retainer</span>
             </div>
             <div class="delivery-grid" id="deliveryGrid"></div>
           </section>
@@ -675,7 +692,7 @@
             <section class="panel">
               <div class="panel-header">
                 <div>
-                  <p class="label">14-day test</p>
+                  <p class="label">Offer ladder</p>
                   <h2>Delivery Workflow</h2>
                 </div>
               </div>
@@ -690,11 +707,11 @@
                 </div>
               </div>
               <ul class="rules-list">
-                <li>Ad spend agreed and paid by the company.</li>
-                <li>Site visit date, content filmed and edits delivered.</li>
-                <li>Meta campaign status, leads generated and cost per lead.</li>
-                <li>Booked quote calls and whether the client followed up quickly.</li>
-                <li>Review call outcome and whether to pitch the retainer.</li>
+                <li>Which offer stage the client is in: starter, lead test or monthly growth.</li>
+                <li>Missing social accounts, Google Business gaps and website/CTA basics fixed.</li>
+                <li>Content foundations created: profile copy, ideas, footage list and proof assets.</li>
+                <li>If moving to offer two, ad spend agreed and paid by the company.</li>
+                <li>Review call outcome and whether to move into the next offer.</li>
               </ul>
             </section>
           </div>
@@ -722,7 +739,7 @@
               </div>
               <div class="message-preview">
                 <p>This page lets you test the entire business without contacting a real company.</p>
-                <p>Use First Touch Innovations as the example: prospect, research, draft, reply, call, 14-day trial, delivery and retainer follow-up.</p>
+                <p>Use First Touch Innovations as the example: prospect, research, draft, reply, call, starter foundations, optional 14-day test and retainer follow-up.</p>
                 <p>Once this looks right, you can confidently push the CRM online and use the same structure for real prospects.</p>
               </div>
             </section>
@@ -737,6 +754,89 @@
               <span class="pill">No external sending</span>
             </div>
             <div class="demo-proof-grid" id="demoProofGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="business-strategy">
+          <section class="panel strategy-hero">
+            <div class="panel-header">
+              <div>
+                <p class="label">Business strategy</p>
+                <h2>Xello Source Of Truth</h2>
+              </div>
+              <span class="pill">Source of truth before outreach</span>
+            </div>
+            <p>This page turns the marketing executive interview into the practical strategy for Xello. Use the three pages below before scanning, drafting or selling.</p>
+          </section>
+
+          <div class="strategy-summary-grid">
+            <article class="strategy-summary-card">
+              <p class="label">Page 1</p>
+              <h2>Ideal Client</h2>
+              <p>Who Xello should target, who to avoid, and what problems the owner is already feeling.</p>
+              <button class="small-button approve" data-view-jump="ideal-client">Open Ideal Client</button>
+            </article>
+            <article class="strategy-summary-card">
+              <p class="label">Page 2</p>
+              <h2>Customer Journey</h2>
+              <p>How a sceptical trade owner moves from ignoring marketing to trusting Xello enough to pay.</p>
+              <button class="small-button approve" data-view-jump="customer-journey">Open Journey Map</button>
+            </article>
+            <article class="strategy-summary-card">
+              <p class="label">Page 3</p>
+              <h2>Offer Doc</h2>
+              <p>Starter, middle and high-value offers with pricing, boundaries and what to sell next.</p>
+              <button class="small-button approve" data-view-jump="offer-doc">Open Offer Doc</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="ideal-client">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Ideal client profile</p>
+                <h2>Who Xello Should Target</h2>
+              </div>
+              <span class="pill">ICP before outreach</span>
+            </div>
+            <div class="strategy-grid" id="icpProfileGrid"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Problems & objections</p>
+                <h2>What They Are Worried About</h2>
+              </div>
+            </div>
+            <div class="problem-list" id="customerProblemList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="customer-journey">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Customer journey map</p>
+                <h2>How They Move From Sceptical To Paying</h2>
+              </div>
+              <span class="pill">Awareness → Retainer</span>
+            </div>
+            <div class="journey-map-grid" id="customerJourneyMap"></div>
+          </section>
+        </section>
+
+        <section class="view" id="offer-doc">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Refined offers</p>
+                <h2>Starter, Middle & High-Value Packages</h2>
+              </div>
+              <span class="pill">Do not sell the full retainer too early</span>
+            </div>
+            <div class="offer-ladder-grid" id="offerLadderGrid"></div>
           </section>
         </section>
 

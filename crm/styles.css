@@ -315,12 +315,6 @@ h2 {
   border: 1px solid var(--line);
 }
 
-.logout-link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
 .icon-button:hover,
 .ghost-button:hover,
 .small-button:hover,
@@ -377,10 +371,11 @@ h2 {
   width: 38px;
   height: 38px;
   border-radius: var(--radius);
-  background: var(--graphite);
+  border: 1px solid rgba(144, 200, 71, 0.45);
+  background: #edf8e4;
   display: grid;
   place-items: center;
-  color: var(--brand);
+  color: #2f5f18;
   font-weight: 900;
 }
 
@@ -510,6 +505,12 @@ tbody tr:hover {
 .voice-list,
 .content-idea-list,
 .content-brief-list,
+.launch-pack-grid,
+.strategy-summary-grid,
+.strategy-grid,
+.problem-list,
+.journey-map-grid,
+.offer-ladder-grid,
 .xello-social-list,
 .memory-list,
 .knowledge-list,
@@ -539,7 +540,13 @@ tbody tr:hover {
 .social-calendar-card,
 .pillar-card,
 .workflow-card,
-.journey-card {
+.journey-card,
+.launch-pack-card,
+.strategy-summary-card,
+.strategy-card,
+.problem-card,
+.journey-map-card,
+.offer-card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #ffffff;
@@ -550,7 +557,13 @@ tbody tr:hover {
 .social-calendar-card,
 .pillar-card,
 .workflow-card,
-.journey-card {
+.journey-card,
+.launch-pack-card,
+.strategy-summary-card,
+.strategy-card,
+.problem-card,
+.journey-map-card,
+.offer-card {
   display: grid;
   gap: 10px;
 }
@@ -560,10 +573,354 @@ tbody tr:hover {
 .social-calendar-card p,
 .pillar-card p,
 .workflow-card p,
-.journey-card p {
+.journey-card p,
+.launch-pack-card p,
+.strategy-summary-card p,
+.strategy-card p,
+.problem-card p,
+.journey-map-card p,
+.offer-card p,
+.compact-list {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
+}
+
+.strategy-hero {
+  background: linear-gradient(135deg, #101010, #1f2519);
+  color: #ffffff;
+}
+
+.strategy-hero h2,
+.strategy-hero .label,
+.strategy-hero p {
+  color: #ffffff;
+}
+
+.strategy-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.strategy-summary-grid,
+.journey-map-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.offer-ladder-grid {
+  grid-template-columns: 1fr;
+}
+
+.problem-card {
+  border-left: 4px solid var(--brand);
+}
+
+.journey-map-card {
+  align-content: start;
+}
+
+.journey-map-card h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.offer-card {
+  align-content: start;
+  border-color: rgba(144, 200, 71, 0.3);
+  padding: 22px;
+}
+
+.offer-price {
+  border-radius: 999px;
+  border: 1px solid rgba(144, 200, 71, 0.45);
+  background: #edf8e4;
+  color: #2f5f18;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.offer-card .card-title-row {
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.offer-card h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+}
+
+.offer-section {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.offer-section strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.offer-section.next {
+  border-color: rgba(144, 200, 71, 0.35);
+  background: #f5faee;
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.offer-action-plan {
+  border-top: 1px solid var(--line);
+  margin-top: 2px;
+  padding-top: 18px;
+}
+
+.offer-action-plan h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.offer-action-plan ol {
+  counter-reset: offer-steps;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.offer-action-plan li {
+  counter-increment: offer-steps;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: start;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.offer-action-plan li::before {
+  content: counter(offer-steps);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(144, 200, 71, 0.45);
+  background: #edf8e4;
+  color: #2f5f18;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.offer-ai-plan {
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+  padding-top: 20px;
+}
+
+.offer-ai-plan summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid rgba(16, 16, 16, 0.12);
+  border-radius: var(--radius);
+  background: #ffffff;
+  padding: 14px;
+}
+
+.offer-ai-plan summary::-webkit-details-marker {
+  display: none;
+}
+
+.offer-ai-plan summary span {
+  display: grid;
+  gap: 3px;
+}
+
+.offer-ai-plan summary small {
+  color: #3f6f1f;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.offer-ai-plan summary strong {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.offer-ai-plan summary em {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid rgba(144, 200, 71, 0.45);
+  background: #edf8e4;
+  color: #2f5f18;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.offer-ai-plan summary::after {
+  content: "Open";
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 16, 16, 0.16);
+  background: #f5faee;
+  color: var(--ink);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.offer-ai-plan[open] summary::after {
+  content: "Close";
+}
+
+.offer-ai-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.offer-ai-card {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(144, 200, 71, 0.28);
+  border-radius: var(--radius);
+  background: #fbfdf8;
+  padding: 14px;
+}
+
+.offer-ai-card strong {
+  color: var(--ink);
+}
+
+.offer-ai-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.offer-ai-card span {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  color: #3f6f1f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.starter-playbook {
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+  padding-top: 20px;
+}
+
+.starter-playbook summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid rgba(144, 200, 71, 0.35);
+  border-radius: var(--radius);
+  background: #f5faee;
+  padding: 14px;
+}
+
+.starter-playbook summary::-webkit-details-marker {
+  display: none;
+}
+
+.starter-playbook summary span {
+  display: grid;
+  gap: 3px;
+}
+
+.starter-playbook summary small {
+  color: #3f6f1f;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.starter-playbook summary strong {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.starter-playbook summary em {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid rgba(144, 200, 71, 0.45);
+  background: #edf8e4;
+  color: #2f5f18;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.starter-playbook summary::after {
+  content: "Open";
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 16, 16, 0.16);
+  background: #ffffff;
+  color: var(--ink);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.starter-playbook[open] summary::after {
+  content: "Close";
+}
+
+.starter-playbook-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.starter-playbook-card {
+  border: 1px solid rgba(144, 200, 71, 0.28);
+  border-radius: var(--radius);
+  background: #ffffff;
+  padding: 14px;
+}
+
+.starter-playbook-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.starter-playbook-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.launch-pack-card.featured {
+  border-color: rgba(144, 200, 71, 0.45);
+  background: linear-gradient(135deg, #f5faee, #ffffff);
+}
+
+.compact-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.compact-list li + li {
+  margin-top: 6px;
 }
 
 .setup-check-card {
@@ -1240,7 +1597,13 @@ label select {
   .ceo-grid,
   .agent-detail-grid,
   .large-list,
-  .demo-proof-grid {
+  .demo-proof-grid,
+  .strategy-summary-grid,
+  .strategy-grid,
+  .journey-map-grid,
+  .offer-ai-grid,
+  .starter-playbook-grid,
+  .offer-ladder-grid {
     grid-template-columns: 1fr;
   }
 }
