@@ -17,6 +17,8 @@ const defaultData = {
     { company: "Example draft", channel: "Instagram", feedback: "Too salesy", lesson: "Reduce pitch language and ask one simple question instead.", createdAt: "Demo" }
   ],
   companyResearch: [
+    { company: "First Touch Innovations", hook: "Trial client for Xello's starter foundations process with real renovation/home improvement proof potential.", painPoint: "Online foundations, proof assets and enquiry tracking need to be checked before any paid lead test.", opportunity: "Use the starter project to improve social, Google Business, website basics, content foundations and CRM tracking.", angle: "Treat as a real starter client: audit first, build trust proof, then decide if a small local lead test is ready." },
+    { company: "M8 Designs", hook: "Trial client for the starter foundations process; exact service niche and strongest offer need confirming in discovery.", painPoint: "The offer, ideal customer, proof assets and enquiry path need to be made clear before content or ads are planned.", opportunity: "Use the starter project to clarify positioning, profile/portfolio presentation, proof assets and tracking.", angle: "Start with a proper discovery and foundation audit, then build a simple content and visibility plan." },
     { company: "Hove Kitchen Studio", hook: "Positioned around kitchen work in Hove with strong visual project potential.", painPoint: "Could turn more project visitors into quote enquiries.", opportunity: "Lead with website conversion and Meta retargeting.", angle: "Free growth audit focused on quote journey." },
     { company: "Worthing Loft Co.", hook: "Loft conversion firms usually have high-ticket projects and clear local demand.", painPoint: "Trust signals and follow-up speed can decide who gets the quote.", opportunity: "Audit landing page, proof and enquiry flow.", angle: "Free audit for more qualified loft enquiries." }
   ],
@@ -108,9 +110,302 @@ const defaultData = {
     { company: "Hove Kitchen Studio", contact: "Owner", date: "Next Tuesday", type: "Growth audit", outcome: "Booked", nextStep: "Prepare website and Meta audit notes", value: 1500, status: "Call Booked" }
   ],
   clients: [
-    { company: "First client target", retainer: "£1,500/mo", status: "Not won yet", note: "Goal: close first 3 clients from audit calls." },
+    { company: "First Touch Innovations", retainer: "Starter foundations trial", status: "Trial client", note: "Treat as a real starter foundations client: research, audit, setup plan, content base and readiness decision before any paid test." },
+    { company: "M8 Designs", retainer: "Starter foundations trial", status: "Trial client", note: "Treat as a real starter foundations client. Confirm niche, best services, proof assets and current online setup during discovery." },
     { company: "Client delivery checklist", retainer: "Template", status: "Ready", note: "Meta access, website access, service areas, budget, lead tracking." },
     { company: "Reporting cadence", retainer: "Weekly", status: "Ready", note: "Leads, CPL, booked quotes, follow-up speed, next tests." }
+  ],
+  clientOwnerResponses: {
+    "First Touch Innovations": {
+      raw: "Owner transcript summary: First Touch wants more loft conversions, extensions and full refurbs. The aim is fewer, higher-value projects rather than lots of smaller low-value jobs. Smaller jobs are still worth taking when they are profitable or can lead to referrals and future larger work. Best enquiry route is direct phone, text or WhatsApp. The owner personally replies to enquiries, with response time depending on job size and information needed, sometimes up to around a week for bigger jobs. They have lots of photos, videos and 5-star reviews available. Main customer worries are timeframes and hidden costs, especially when project changes happen during the job. A key growth route is building relationships with architects, because one strong architect relationship can become a long-term stream of larger projects.",
+      updatedAt: "05/05/2026, 16:55",
+      summary: {
+        bestServices: "Priority projects: loft conversions, extensions and full refurbs. The commercial goal is fewer higher-value projects, such as several larger jobs around GBP 100k, instead of many smaller GBP 10k jobs.",
+        avoidJobs: "No job type is automatically ruled out. Smaller jobs can still be profitable and can create referrals or future bigger work, so the CRM should filter by value, fit and relationship potential rather than dismissing all small jobs.",
+        enquiryRoute: "Best route: direct phone call, text or WhatsApp. The owner handles enquiries personally and response time depends on job size and how much information needs gathering, sometimes around a week for bigger projects.",
+        proofAssets: "Strong proof available: lots of project photos, videos and 5-star reviews. Use the most detailed reviews and strongest project footage as trust assets.",
+        starterPriorities: "Position the business around loft conversions, extensions and full refurbs. Organise the proof library, tighten enquiry/follow-up expectations, create content around timeframes and cost clarity, and build a relationship-led route for architect referrals.",
+        leadTestAngle: "Later lead test angle: larger local renovation enquiries for loft conversions, extensions and full refurbs around Brighton/Hove. Paid ads should stay gated until the proof library, enquiry route and tracking are ready."
+      }
+    },
+    "M8 Designs": {
+      raw: "Owner transcript summary: M8 Designs sells full construction and home improvement project delivery, especially new builds and extensions, with bathrooms, rendering, plastering, painting/decorating and related trades as supporting services. The strongest fit is a start-to-finish project where M8 can control the site and manage the process from the beginning to the end. Ideal customers are mainly private homeowners, with landlords, businesses and designers also possible. They would rather avoid working as a subcontractor for other builders because they want control over methods, standards and the site. Best projects are proper projects with enough time and value behind them, not small handyman jobs. New builds, extensions and bathrooms can be profitable when priced and delivered well. Good job fit also depends on practical access: parking, material drop-off, storage and site security matter. Difficult access, city-centre parking problems and high-rise flat jobs are less attractive. Best enquiry routes are phone and email, with both available through TikTok bio and the website contact page. M8 has lots of website photos but may need to organise higher-quality image files into a folder. They are not focused on Google Business right now and currently see the website, portfolio, contact page and word of mouth as more important. Website reviews may be added manually. The owner was unsure what would make the starter project useful, so the next step should be explaining how the process helps clarify offer, improve profile, strengthen content and generate better enquiries.",
+      updatedAt: "05/05/2026, 18:22",
+      summary: {
+        bestServices: "Priority services: new builds and extensions, with bathrooms, rendering, plastering and finishing trades as supporting services. The strongest offer is a start-to-finish project where M8 controls the process from beginning to end.",
+        avoidJobs: "Avoid promoting small handyman jobs, tiny repair work, difficult-access jobs, high-rise flat work, heavy city-centre parking situations and subcontractor work for other builders where M8 loses control over site standards and methods.",
+        enquiryRoute: "Best enquiry routes: phone and email. These are already available through the TikTok bio and website contact page, so the starter work should make those routes clearer and easier to trust.",
+        proofAssets: "Proof exists on the website through project photos, but the owner may need to send a cleaner high-quality folder. Build a proof library around new builds, extensions, bathrooms, rendering and start-to-finish project delivery.",
+        starterPriorities: "Clarify the core offer around new builds and extensions, make the website/contact route feel more premium, organise high-quality portfolio assets, explain why M8 is best for full-site control, and decide whether Google Business is worth setting up later.",
+        leadTestAngle: "Later lead test angle: larger homeowner enquiries for new builds and extensions around Brighton/Hove, with supporting content showing complete project delivery. Keep paid ads gated until the offer, proof assets, enquiry route and tracking are ready."
+      }
+    }
+  },
+  clientAnalyses: [
+    {
+      company: "First Touch Innovations",
+      viewId: "client-first-touch",
+      status: "Starter foundations trial",
+      relationship: "Mate / trial client",
+      offerStage: "Starter foundations",
+      serviceCategory: "Home renovation / home improvement services",
+      area: "Brighton, Hove and nearby Sussex areas",
+      researchStatus: "Company Research Agent sheet ready",
+      objective: "Use the starter offer exactly as if this were a paying client: understand the business, improve online trust, create content foundations and decide whether a 14-day lead test is actually ready.",
+      identityCheck: {
+        confidence: "Needs evidence",
+        humanStatus: "Sam to confirm",
+        logoStatus: "Logo supplied by Sam",
+        decisionRule: "Only treat a profile as confirmed when the name, location/service fit, logo or visual brand, and at least one contact detail all line up.",
+        evidence: [
+          { signal: "Business name", expected: "First Touch Innovations", found: "To confirm from website/social/Google results", status: "Missing" },
+          { signal: "Logo / visual brand", expected: "Use official website logo or known profile image as reference", found: "First Touch website logo found", status: "Likely" },
+          { signal: "Location and service fit", expected: "Brighton/Hove/Sussex home renovation or home improvement", found: "Expected from trial context, needs public-source confirmation", status: "Likely" },
+          { signal: "Website or portfolio", expected: "Official domain controlled by the business", found: "Not added yet", status: "Missing" },
+          { signal: "Social profiles", expected: "Same name/logo plus matching services or contact details", found: "Not audited yet", status: "Missing" },
+          { signal: "Google Business", expected: "Same name/location/category with matching photos/reviews/contact", found: "Google panel screenshot: 5.0 rating, 7 reviews, contractor category, address and phone match", status: "Verified from screenshot" }
+        ],
+        agentRules: [
+          "Use logo matching as supporting evidence, not the only proof.",
+          "If only the name matches, mark it as Needs human check.",
+          "If name, location, service, logo and contact detail match, mark it as Confirmed match.",
+          "If any signal conflicts, pause the research and ask Sam before using the data."
+        ]
+      },
+      icp: [
+        { label: "Best-fit customer", value: "Local homeowners planning renovation, repair, upgrade or improvement work who want a trustworthy local team and clear communication before requesting a quote." },
+        { label: "Buyer trigger", value: "A room, property or project now feels dated, broken, unfinished or too small, and the homeowner is starting to compare local options." },
+        { label: "Main worries", value: "Choosing the wrong contractor, unclear price, disruption at home, poor communication, unreliable timelines and not knowing whether the team is genuinely trustworthy." },
+        { label: "Trust proof needed", value: "Finished project photos, team/process clips, before-and-after examples, customer comments, service areas, clear quote route and visible local presence." },
+        { label: "Avoid for now", value: "People wanting instant bargain work, unrealistic deadlines, no budget clarity, or projects outside the company capacity and service area." }
+      ],
+      businessAnalysis: [
+        { label: "Positioning angle", value: "A local, trustworthy home improvement team that can show real workmanship and help homeowners feel safer before they enquire." },
+        { label: "Likely growth gap", value: "The business needs stronger visible proof, clearer enquiry routes and consistent content foundations before paid traffic would be useful." },
+        { label: "Starter offer focus", value: "Social profile cleanup, Google Business improvements, website/enquiry basics, proof asset list, CRM lead tracking and a simple content plan." },
+        { label: "Possible offer two", value: "Only after foundations are ready: one local lead test using real project footage, three vertical adverts, a Meta lead form and client-paid ad spend." }
+      ],
+      foundations: [
+        { area: "Social profiles", currentState: "Needs real audit", starterAction: "Check Instagram, Facebook, TikTok and YouTube Shorts presence; improve bio, CTA, highlights and proof posts.", status: "To audit" },
+        { area: "Google Business", currentState: "Profile found: 5.0 rating, 7 reviews, contractor in Brighton and Hove, phone and address visible.", starterAction: "Check categories, service areas, photos, review replies, quote/contact route and recent activity.", status: "Found - audit next" },
+        { area: "Website/enquiry journey", currentState: "Needs real audit", starterAction: "Check whether the website has clear services, project proof, call/quote CTA, mobile layout and form tracking.", status: "To audit" },
+        { area: "Tracking", currentState: "Not confirmed", starterAction: "Create a lead source field, call notes, quote status and follow-up owner inside the CRM.", status: "Build now" },
+        { area: "Content proof", currentState: "Trial content planned", starterAction: "Collect finished work, process shots, team clips, FAQs, service areas and homeowner objections.", status: "Planned" }
+      ],
+      foundationAudit: {
+        score: 72,
+        status: "Strategy clarified - optimise before ads",
+        summary: "First Touch has the important visibility base and the owner has now confirmed the commercial direction: loft conversions, extensions and full refurbs, with architect relationships as a serious growth route. The starter work should now package proof, tighten the WhatsApp/phone enquiry route, add tracking and position the business around bigger renovation projects before any 14-day lead test.",
+        lastRun: "AI owner-response audit",
+        sources: "Official website, official website Instagram link, Sam-supplied TikTok, Sam Google screenshot, owner WhatsApp transcript",
+        rows: [
+          { area: "Identity and trust", agent: "Company Research Agent", score: 82, status: "Strong base", finding: "Business name, local contractor positioning, website, social handles and Google listing all point to the same Brighton/Hove business.", recommendation: "Confirm logo/profile image with owner and keep one consistent visual identity across website, Instagram, TikTok and Google." },
+          { area: "Website and enquiry route", agent: "Website Audit Agent", score: 58, status: "Needs optimisation", finding: "Website exists with Home, Work and Contact routes plus Sussex construction/carpentry positioning, but the visible copy is broad and the enquiry flow still needs checking.", recommendation: "Add clearer high-value services, stronger quote CTA, phone/WhatsApp path, proof sections, and basic tracking for form/call/social enquiries." },
+          { area: "Google Business Profile", agent: "Local Visibility Agent", score: 74, status: "Good base", finding: "Google panel shows contractor category, 5.0 rating, 7 reviews, address, phone and opening status.", recommendation: "Audit services, service areas, photos, review replies, posts, quote link and UTM/tracking route. Add fresh project photos weekly if possible." },
+          { area: "Social profiles", agent: "Social Audit Agent", score: 62, status: "Accounts found", finding: "Instagram is linked from the website and TikTok was supplied by Sam. Content quality, bio clarity, highlights and CTA still need manual review.", recommendation: "Make bio say what they do, where they work and how to enquire. Pin best proof, add before/after posts and reuse project footage across Reels/TikTok." },
+          { area: "Proof and content assets", agent: "Content Creation Agent", score: 72, status: "Assets available", finding: "The owner confirmed lots of photos, videos and 5-star reviews are available. The gap is organisation and choosing the strongest proof for bigger projects.", recommendation: "Build a proof library around lofts, extensions, refurbs, detailed reviews, timeframe clarity and no-hidden-cost messaging." },
+          { area: "Lead tracking and follow-up", agent: "Tracking Agent", score: 42, status: "Needs setup", finding: "The owner handles enquiries personally through phone, text or WhatsApp, but lead source, project value, reply time and quote stage are not tracked in the CRM yet.", recommendation: "Track source, project type, estimated value, architect/referral source, response time, quote status and next follow-up." }
+        ],
+        priorities: [
+          "Position the business around loft conversions, extensions and full refurbs.",
+          "Create a proof library from the strongest photos, videos and 5-star reviews.",
+          "Build an architect-referral proof pack for larger project relationships.",
+          "Tighten the phone/text/WhatsApp enquiry route and response expectations.",
+          "Create content that answers timeframe and hidden-cost worries.",
+          "Add lead tracking before considering any paid test."
+        ]
+      },
+      competitorBenchmark: {
+        status: "Public competitor scan complete",
+        currentScore: 68,
+        competitorAverage: "79%",
+        bestCompetitor: "Hove Renovations - 84%",
+        targetScore: "78%+ before paid lead test",
+        summary: "Public scan compared First Touch against 3 Brighton/Hove renovation and home improvement competitors. Competitors with clearer service pages, project proof, stronger enquiry routes and more complete trust signals create the benchmark First Touch needs to catch before paid traffic.",
+        competitors: [
+          { name: "Hove Renovations", score: 84, source: "https://hoverenovations.com/", fit: "Direct local renovation/building competitor", strengths: "Design-led positioning, clear service categories, selected projects, FMB trust signal, consultation CTA and detailed FAQs.", gapToClient: "First Touch needs clearer high-value service pages, stronger project proof organisation and a tighter quote journey." },
+          { name: "Martyr Group", score: 82, source: "https://martyr-group.co.uk/brighton-sussex", fit: "Premium Brighton/Sussex construction, renovation and carpentry competitor", strengths: "Premium positioning, renovation/carpentry service page, high-spec project language, FMB-accredited trust signal and clear service coverage.", gapToClient: "First Touch can borrow the premium proof structure: high-value project types, trust badges, project delivery language and stronger finish-quality proof." },
+          { name: "Complete Home Improvements", score: 70, source: "https://complete-homeimprovements.com/", fit: "Local carpentry/building/home improvement competitor", strengths: "Broad local service menu, quote CTA, contact details, Facebook/Instagram links and service categories covering renovations/installations.", gapToClient: "First Touch already has stronger Google review proof, but should make its services and proof library easier to scan." }
+        ],
+        rows: [
+          { area: "Website clarity", current: "Website exists with Home, Work and Contact routes, but high-value services and quote journey need checking.", competitorCheck: "Hove Renovations and Martyr Group explain renovation/carpentry services, project types and consultation routes more clearly.", pitchUse: "Show why clearer service pages can turn more visitors into quote enquiries." },
+          { area: "Google Business", current: "5.0 rating from 7 reviews, contractor category, address and phone visible.", competitorCheck: "Manual Google/Maps check still needed for competitor review counts, photos and categories.", pitchUse: "Explain whether First Touch needs more photos, reviews or Google activity to look equally trusted." },
+          { area: "Project proof", current: "Proof exists, but usable before/after library is not organised yet.", competitorCheck: "Hove Renovations and Martyr Group show selected/recent projects as part of the website journey.", pitchUse: "Turn missing proof into a simple content and website asset list." },
+          { area: "Social presence", current: "Instagram and TikTok found; content quality, bio and pinned proof still need manual review.", competitorCheck: "Complete Home Improvements exposes Facebook/Instagram links; other competitor social quality needs manual platform review.", pitchUse: "Show what a stronger profile needs before ads send people there." },
+          { area: "Enquiry route", current: "Phone/website/social routes exist, but tracking and fastest route need confirming.", competitorCheck: "Competitors use quote/contact/consultation CTAs more prominently on key pages.", pitchUse: "Recommend the simplest enquiry path and tracking setup." },
+          { area: "Tracking readiness", current: "Lead-source and quote-stage tracking not confirmed.", competitorCheck: "Public sites rarely show tracking. This remains Xello's internal advantage.", pitchUse: "Explain why Xello tracks enquiries before recommending paid traffic." }
+        ],
+        nextSteps: [
+          "Manually check Google/Maps review counts and photos for the 3 competitors.",
+          "Review competitor Instagram/TikTok profiles for recent project proof.",
+          "Update the benchmark scores if manual social/Google checks change the picture.",
+          "Turn the top 3 gaps into the starter foundations pitch."
+        ]
+      },
+      agentOutputs: [
+        { agent: "Company Research Agent", output: "Create business context, ICP, pain points, proof gaps and outreach/sales notes for the starter plan.", nextAction: "Confirm facts with the owner before presenting recommendations." },
+        { agent: "Website Audit Agent", output: "Check CTA clarity, trust proof, mobile experience, quote route and tracking readiness.", nextAction: "Turn findings into a one-page starter report." },
+        { agent: "Social Audit Agent", output: "Review profile setup, recent proof, local CTA and content gaps.", nextAction: "Create profile fixes and first content ideas." },
+        { agent: "Content Creation Agent", output: "Build filming shot list, starter content hooks and future ad concepts.", nextAction: "Film usable vertical proof before any Meta test." },
+        { agent: "Client Strategy Agent", output: "Turn owner goals, best jobs and capacity into clear delivery priorities.", nextAction: "Decide which services are worth promoting first." }
+      ],
+      contentAngles: [
+        "Before-and-after project reveal with a simple homeowner problem.",
+        "Owner/team trust clip explaining how the process works.",
+        "Detail shots showing workmanship, clean finish and care in the home.",
+        "FAQ Reel answering what homeowners should know before starting.",
+        "Local proof post showing service areas and real project context."
+      ],
+      discoveryQuestions: [
+        "Which type of project usually brings in the most money or profit for you, and why is it worth chasing?",
+        "Roughly what is a good project worth to you, even as a ballpark range?",
+        "Which jobs are not worth chasing because they are too small, awkward, low-margin, slow to finish or just not the kind of work you want?",
+        "When someone wants a quote, what is the best route right now: call, text, WhatsApp, website form, Instagram DM or something else?",
+        "Who normally replies to enquiries, and roughly how quickly can you get back to people on a normal workday?",
+        "What photos, videos, finished projects, reviews or customer messages are you happy for us to use as proof?",
+        "What do customers usually ask or worry about before they book you?",
+        "For this trial to feel genuinely useful to you, what would you want to understand or improve by the end?"
+      ],
+      nextActions: [
+        "Complete the real website/social/Google Business audit.",
+        "Collect current assets and access details.",
+        "Write the starter foundations report.",
+        "Create the first 3-5 content ideas and shot list.",
+        "Only decide on a 14-day lead test once the foundations score as ready."
+      ]
+    },
+    {
+      company: "M8 Designs",
+      viewId: "client-m8-designs",
+      status: "Starter foundations trial",
+      relationship: "Mate / trial client",
+      offerStage: "Starter foundations",
+      serviceCategory: "Construction / home improvement project delivery",
+      area: "Brighton, Hove and nearby local areas",
+      researchStatus: "Owner response captured",
+      objective: "Use M8 Designs as a real starter foundations client: package the full-project construction offer, make the website/contact route feel premium, organise proof assets and build tracking before thinking about ads.",
+      identityCheck: {
+        confidence: "Strong match",
+        humanStatus: "Sam supplied official website",
+        logoStatus: "Logo supplied by Sam",
+        decisionRule: "Only treat a profile as confirmed when the name, exact service niche, logo or visual brand, and at least one contact detail all line up.",
+        evidence: [
+          { signal: "Business name", expected: "M8 Designs", found: "M8 Designs Ltd on official website", status: "Confirmed" },
+          { signal: "Logo / visual brand", expected: "Use uploaded logo or known profile image as reference", found: "Sam supplied logo matches the CRM reference for M8 Designs", status: "Confirmed" },
+          { signal: "Location and service fit", expected: "Construction/home improvement work around Brighton, Hove and Sussex", found: "Official website says Sussex / Brighton and Hove construction services", status: "Confirmed" },
+          { signal: "Website or portfolio", expected: "Official portfolio/domain controlled by M8 Designs", found: "https://www.m8designs.co.uk/", status: "Confirmed" },
+          { signal: "Social profiles", expected: "Same name/logo plus matching portfolio/service details", found: "TikTok @m8.designs supplied by Sam; other socials still unconfirmed", status: "Partial" },
+          { signal: "Google Business", expected: "Same name/location/category with matching photos/reviews/contact, if local search matters", found: "Sam thinks there may not be a Google presence yet", status: "Likely missing" }
+        ],
+        agentRules: [
+          "Do not assume the first M8 Designs result is the right business.",
+          "Use the logo/profile image to compare candidate pages when names are similar.",
+          "Mark conflicting services, cities or contact details as a mismatch.",
+          "Ask Sam to confirm before filling any analysis fields from an uncertain source."
+        ]
+      },
+      icp: [
+        { label: "Best-fit customer", value: "Private homeowners around Brighton, Hove and Sussex who want a proper construction project handled from start to finish, especially new builds, extensions, bathrooms or larger refurb-style work." },
+        { label: "Buyer trigger", value: "They are planning a serious home improvement project and want one team who can control the site, manage standards and make the process feel less risky." },
+        { label: "Main worries", value: "Choosing the wrong builder, unclear timelines, messy site management, poor finish quality, hidden costs, parking/access disruption and whether the team can actually manage the full project." },
+        { label: "Trust proof needed", value: "High-quality project photos, before-and-after examples, website portfolio sections, customer comments, clear contact routes, service areas and proof that M8 can manage the whole job properly." },
+        { label: "Avoid for now", value: "Handyman jobs, tiny repairs, difficult-access high-rise jobs, heavy city-centre parking issues and subcontractor work where M8 cannot control site standards." }
+      ],
+      businessAnalysis: [
+        { label: "Positioning angle", value: "A Sussex construction team for homeowners who want full-project delivery, with new builds and extensions as the strongest top-level message." },
+        { label: "Likely growth gap", value: "M8 has a website and proof route, but the public presence still needs to make the premium project fit, contact path and strongest portfolio examples instantly obvious." },
+        { label: "Starter offer focus", value: "Tighten the website/contact journey, organise proof assets, improve TikTok/profile CTA, decide on Google Business and build lead tracking before visibility work." },
+        { label: "Possible offer two", value: "Only after the portfolio, enquiry route and tracking are ready: test one focused local visibility angle for new builds or extensions with client-paid ad spend." }
+      ],
+      foundations: [
+        { area: "Offer clarity", currentState: "Owner and website confirm new builds, extensions, bathrooms, refurbishments and supporting trades.", starterAction: "Lead with full-project delivery, new builds and extensions; keep bathrooms/rendering/plastering as supporting proof.", status: "Clarified" },
+        { area: "Social profiles", currentState: "Needs real audit", starterAction: "Check Instagram, Facebook, TikTok/YouTube and portfolio links for proof, bio clarity and enquiry CTA.", status: "To audit" },
+        { area: "Google Business", currentState: "Likely not set up yet", starterAction: "Confirm whether local search matters, then create or claim a profile with logo, services, photos, hours and review plan if useful.", status: "Likely missing" },
+        { area: "Website/portfolio", currentState: "Official website supplied: https://www.m8designs.co.uk/.", starterAction: "Audit portfolio flow, service explanations, calls to action, contact route and mobile presentation.", status: "Found - audit next" },
+        { area: "Tracking", currentState: "Not confirmed", starterAction: "Create a simple lead tracker: source, service wanted, budget signal, stage, next action and follow-up owner.", status: "Build now" }
+      ],
+      foundationAudit: {
+        score: 49,
+        status: "Offer clarified - foundations still need building",
+        summary: "M8 now has a clearer commercial direction: full construction projects, especially new builds and extensions, with bathrooms, rendering, plastering and finishing trades as supporting proof. The starter work should make the brand look premium, organise portfolio assets, sharpen the contact route and decide whether Google Business is worth adding before any visibility push.",
+        lastRun: "AI owner-response audit",
+        sources: "Official M8 website, Sam-supplied logo, Sam-supplied TikTok, public company index, public search mismatch review, owner WhatsApp transcript",
+        rows: [
+          { area: "Identity and trust", agent: "Company Research Agent", score: 72, status: "Strong match", finding: "Sam supplied the official m8designs.co.uk website, which matches the M8 Designs Ltd construction context, local Sussex/Brighton and Hove positioning, services and owner transcript.", recommendation: "Use m8designs.co.uk as the main identity source, while still confirming any extra social or Google profiles before adding them." },
+          { area: "Offer clarity", agent: "Client Strategy Agent", score: 68, status: "Owner clarified", finding: "The owner confirmed M8 wants proper projects: new builds, extensions, bathrooms, rendering and full start-to-finish work, not handyman jobs.", recommendation: "Position M8 around controlled, full-project delivery for homeowners, with new builds and extensions as the top offer." },
+          { area: "Website and portfolio", agent: "Website Audit Agent", score: 52, status: "Found - needs polish", finding: "The official website exists and supports the owner transcript with construction, new builds, extensions, refurbishments, bathrooms and contact routes. The next job is conversion polish and proof order.", recommendation: "Build a clean portfolio proof order, make phone/email obvious and show full-project capability above smaller trade services." },
+          { area: "Google Business Profile", agent: "Local Visibility Agent", score: 14, status: "Likely missing", finding: "The owner is not focused on Google Business right now and Sam thinks there may not be a Google presence yet.", recommendation: "Keep this as a strategic decision: set it up if local search is a priority, but do not let it block website/social proof improvements." },
+          { area: "Social profiles", agent: "Social Audit Agent", score: 48, status: "TikTok found", finding: "TikTok @m8.designs is owner-supplied. The profile should now clearly push full projects, new builds and extensions rather than looking like general trades.", recommendation: "Update bio, pinned videos and CTA around proper projects, phone/email and Brighton/Hove service area." },
+          { area: "Proof and tracking", agent: "Tracking Agent", score: 36, status: "Needs setup", finding: "Proof exists on the website, but high-quality folders, testimonial structure, enquiry owner, source tracking and quote-stage tracking are not set up in the CRM yet.", recommendation: "Collect assets by project type and create a tracker for source, project type, access/parking fit, estimated value, stage and next action." }
+        ],
+        priorities: [
+          "Position M8 around new builds, extensions and full-project delivery.",
+          "Avoid promoting handyman jobs, difficult access, high-rise flats and subcontractor work.",
+          "Organise high-quality proof assets from the website and owner files.",
+          "Make phone/email and website contact routes clearer.",
+          "Create tracking before any paid activity."
+        ]
+      },
+      competitorBenchmark: {
+        status: "Provisional competitor scan complete",
+        currentScore: 49,
+        competitorAverage: "77%",
+        bestCompetitor: "Hove Renovations - 84%",
+        targetScore: "60%+ before visibility push",
+        summary: "Public scan compared M8 against local construction, renovation and home-improvement competitors. Now the official website is confirmed, this benchmark can be used to show how M8's portfolio, offer clarity, enquiry route and trust proof compare with stronger local alternatives.",
+        competitors: [
+          { name: "Hove Renovations", score: 84, source: "https://hoverenovations.com/", fit: "Design-led renovation/building benchmark", strengths: "Clear design-led positioning, service categories, selected projects, FMB trust signal, consultation CTA and FAQs.", gapToClient: "M8 needs a clear offer, portfolio route and proof structure before it can compete visually." },
+          { name: "Soundhouse Build", score: 78, source: "https://www.soundhousebuild.co.uk/", fit: "Thoughtful local renovation/refurbishment benchmark", strengths: "Strong positioning around smart planning, local projects, careful craftsmanship and getting in touch.", gapToClient: "M8 needs similar clarity around what problem it solves, who it serves and why people should enquire." },
+          { name: "Complete Home Improvements", score: 70, source: "https://complete-homeimprovements.com/", fit: "Broad local home improvement benchmark", strengths: "Simple local service menu, quote CTA, contact details and social links.", gapToClient: "M8 can beat broad competitors by being more specific, but only after the core offer and proof route are clear." }
+        ],
+        rows: [
+          { area: "Offer clarity", current: "Owner and website confirm new builds, extensions, refurbishments, bathrooms and full construction project delivery.", competitorCheck: "Hove Renovations and Soundhouse Build make their proposition clear quickly: design-led renovation/building, careful planning and local projects.", pitchUse: "Use the gap to sharpen M8's public message around proper projects rather than broad trade work." },
+          { area: "Portfolio route", current: "Official website is confirmed at https://www.m8designs.co.uk/ and now needs a conversion/proof audit.", competitorCheck: "Hove Renovations has selected recent projects; Soundhouse uses visual project/planning proof; Complete Home Improvements has broad service sections.", pitchUse: "Show how M8 can make the website feel more premium and easier to enquire through." },
+          { area: "Google Business", current: "Likely not set up yet.", competitorCheck: "Manual Google/Maps check still needed for competitor local pack/review comparison.", pitchUse: "Decide whether Google Business is a foundation priority or whether TikTok/portfolio should come first." },
+          { area: "Social proof", current: "TikTok @m8.designs found; other profiles and proof depth unconfirmed.", competitorCheck: "Complete Home Improvements exposes Facebook/Instagram links; platform quality still needs manual review.", pitchUse: "Show what M8 needs to look credible from social traffic." },
+          { area: "Trust signals", current: "Logo supplied, but testimonials, examples and customer proof are not confirmed.", competitorCheck: "Hove Renovations uses FMB membership and project examples; competitors show local service proof and contact details.", pitchUse: "Turn missing trust into a proof collection task." },
+          { area: "Enquiry and tracking", current: "Contact route and follow-up owner are not confirmed.", competitorCheck: "Competitors make contact/quote/get in touch routes visible.", pitchUse: "Create one clean contact path and CRM tracking fields." }
+        ],
+        nextSteps: [
+          "Audit m8designs.co.uk page-by-page for portfolio, CTA, proof order and mobile trust.",
+          "Replace any provisional competitor that does not match M8's confirmed construction/new-build/extension offer.",
+          "Manually check Google/Maps and social profiles once the final competitor set is chosen.",
+          "Use the biggest gap to shape the starter foundations plan."
+        ]
+      },
+      agentOutputs: [
+        { agent: "Company Research Agent", output: "Create ICP, buyer triggers, proof gaps, positioning notes and discovery questions.", nextAction: "Use the sheet in the first proper client conversation." },
+        { agent: "Website Audit Agent", output: "Review portfolio clarity, enquiry route, mobile trust and conversion basics.", nextAction: "Turn findings into starter recommendations." },
+        { agent: "Social Audit Agent", output: "Review whether the profile explains the offer quickly and shows enough proof.", nextAction: "Create profile fixes and content pillars." },
+        { agent: "Content Creation Agent", output: "Turn the best proof into portfolio posts, process clips, FAQs and future ad concepts.", nextAction: "Plan the first filming/content session once the offer is clear." },
+        { agent: "Client Strategy Agent", output: "Map best services, ideal projects and capacity into a simple 30-day starter plan.", nextAction: "Prioritise the services M8 actually wants to sell." }
+      ],
+      contentAngles: [
+        "Process post showing how an idea becomes a finished direction.",
+        "Portfolio breakdown explaining the problem, decision and final result.",
+        "FAQ content about timelines, pricing signals and how to start.",
+        "Behind-the-scenes clip showing tools, sketches, planning or production.",
+        "Local proof post showing the type of client/project M8 wants more of."
+      ],
+      discoveryQuestions: [
+        "In one simple sentence, what does M8 Designs sell or help people with right now?",
+        "Who is the ideal customer: homeowners, builders, landlords, businesses, designers or someone else?",
+        "Which type of project usually makes the most money or profit for M8 Designs, and what makes it worth chasing?",
+        "Roughly what is a good project worth to you, even as a ballpark range?",
+        "What work should we avoid promoting because it is not profitable, takes too long, is awkward to deliver or is not the direction you want M8 to go?",
+        "Where should people contact you first: TikTok, Instagram, WhatsApp, phone, email, website/portfolio or something else?",
+        "Do you already have any portfolio photos, videos, customer messages, drawings, mockups or finished examples we can use?",
+        "Do you want a Google Business Profile set up, or would it make more sense to focus on TikTok/portfolio first?",
+        "What would make this starter project useful: clearer offer, more enquiries, better profile, better content ideas, or understanding the process?"
+      ],
+      nextActions: [
+        "Run the full discovery conversation and confirm the exact niche.",
+        "Audit every public profile and portfolio route.",
+        "Build a clean ICP and service positioning statement.",
+        "Create the starter content/portfolio improvement plan.",
+        "Wait until proof and enquiry flow are ready before considering a lead test."
+      ]
+    }
   ],
   spend: [
     { item: "OpenAI audits + drafts", cost: 1.14, limit: "£10 starting balance" },
@@ -182,7 +477,8 @@ const defaultData = {
     { name: "Brighton vs Worthing", hypothesis: "Brighton/Hove firms have higher budget but more competition.", status: "Running", result: "Brighton has stronger lead scores", learning: "Prioritise high-ticket areas first." }
   ],
   delivery: [
-    { client: "First Touch Innovations", stage: "Starter foundations", checklist: "Social/GMB/website basics, content plan and tracking foundations before any paid test.", health: "Demo", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Optional", contentStatus: "Foundation plan ready", campaignStatus: "Not ready for ads", nextReview: "After starter setup", nextAction: "Confirm missing socials, Google Business gaps and website basics" },
+    { client: "First Touch Innovations", stage: "Starter foundations", checklist: "Social/GMB/website basics, content plan and tracking foundations before any paid test.", health: "Trial", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Optional", contentStatus: "Foundation plan ready", campaignStatus: "Not ready for ads", nextReview: "After starter setup", nextAction: "Confirm missing socials, Google Business gaps and website basics" },
+    { client: "M8 Designs", stage: "Starter foundations", checklist: "Clarify offer, ICP, social/profile setup, portfolio or website route, proof assets, tracking and first content foundations.", health: "Trial", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "To confirm", contentStatus: "Discovery needed", campaignStatus: "Not ready for ads", nextReview: "After starter discovery", nextAction: "Confirm exact niche, best services, target area and current online presence" },
     { client: "New Client Template", stage: "Starter onboarding", checklist: "Social access, website access, Google Business access, photos, testimonials, logo, services and tracking route.", health: "Ready", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Not set", contentStatus: "Waiting", campaignStatus: "Waiting", nextReview: "Not set", nextAction: "Collect access and foundation details" },
     { client: "Offer Two Template", stage: "14-day lead test", checklist: "Campaign angle, lead form, conversion tracking, ad spend boundary, first creatives.", health: "Template", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "To schedule", contentStatus: "Create first adverts", campaignStatus: "Draft", nextReview: "Launch + 3 days", nextAction: "Only launch after starter foundations are ready" },
     { client: "Weekly Reporting", stage: "Retain", checklist: "Leads, CPL, booked quotes, follow-up speed, best ads, next actions.", health: "Template", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Complete", contentStatus: "Ongoing", campaignStatus: "Optimising", nextReview: "Every Friday", nextAction: "Prepare client summary and retainer next steps" }
@@ -439,6 +735,106 @@ const buttonFlashTimers = new Map();
 let state = loadState();
 let liveMode = Boolean(localStorage.getItem(apiUrlKey));
 
+const identityResearchDrafts = {
+  "First Touch Innovations": {
+    confidence: "Likely match - strong evidence",
+    humanStatus: "Awaiting Sam review",
+    logoStatus: "Website visual brand found - confirm against known logo",
+    logoPreview: {
+      imageUrl: "https://www.firsttouchinnovations.co.uk/cdn/shop/files/FRONT_First_Touch_Innovations_Master_logo_80mm.png?height=628&pad_color=ffffff&v=1723057732&width=1200",
+      label: "Logo found on official website",
+      note: "Compare this with the logo/profile image your mate sends you before confirming."
+    },
+    socialScan: {
+      summary: "First Touch now has Instagram, TikTok and Google Business evidence. Instagram is linked from the official website, TikTok was supplied by Sam, and Google Business is verified from Sam's screenshot with rating, reviews, category, address and phone visible.",
+      platforms: [
+        { platform: "Instagram", result: "Found: @firsttouch_innovations", url: "https://www.instagram.com/firsttouch_innovations/", evidence: "Linked from the official First Touch Innovations website", status: "Strong match" },
+        { platform: "Facebook", result: "Not found", url: "", evidence: "No official website link or reliable public result found", status: "Ask owner" },
+        { platform: "TikTok", result: "Found: @firsttouch_innovations", url: "https://www.tiktok.com/@firsttouch_innovations?lang=en-GB", evidence: "Owner-supplied link from Sam; compare profile image/content against the First Touch brand", status: "Trusted owner link" },
+        { platform: "YouTube", result: "Not found", url: "", evidence: "No official website link or reliable public result found", status: "Ask owner" },
+        { platform: "LinkedIn", result: "Not found", url: "", evidence: "Search results showed unrelated FirstTouch/First Touch companies, not this Sussex construction business", status: "Do not assume" },
+        { platform: "Google Business", result: "Found: 5.0 rating, 7 reviews", url: "", evidence: "Sam screenshot shows Contractor in Brighton and Hove, 12 Franklin Rd, phone 07943 574948, open/closes 5pm", status: "Verified from screenshot" }
+      ]
+    },
+    summary: "The agent found an official website for First Touch Innovations and a matching UK company record for FIRST TOUCH INNOVATIONS LIMITED in Brighton/Portslade. Service language and company category both point toward construction/building work.",
+    fields: [
+      { label: "Provided identity", value: "First Touch Innovations / FIRST TOUCH INNOVATIONS LIMITED", source: "Official website + Companies House", status: "Likely match" },
+      { label: "Official website", value: "https://www.firsttouchinnovations.co.uk/", source: "Website result", status: "Found" },
+      { label: "Public positioning", value: "Comprehensive construction and carpentry solutions in Sussex.", source: "Official website", status: "Found" },
+      { label: "Company number", value: "15731472", source: "Companies House", status: "Found" },
+      { label: "Registered office", value: "12 Franklin Road, Portslade, Brighton, England, BN41 1AF", source: "Companies House", status: "Found" },
+      { label: "Company status", value: "Active", source: "Companies House", status: "Found" },
+      { label: "Business activity", value: "41100 - Development of building projects", source: "Companies House SIC", status: "Found" },
+      { label: "TikTok profile", value: "https://www.tiktok.com/@firsttouch_innovations?lang=en-GB", source: "Owner-supplied link from Sam", status: "Trusted owner link" },
+      { label: "Google Business category", value: "Contractor in Brighton and Hove, England", source: "Sam screenshot", status: "Verified from screenshot" },
+      { label: "Google rating", value: "5.0 stars from 7 Google reviews", source: "Sam screenshot", status: "Verified from screenshot" },
+      { label: "Google Business address", value: "12 Franklin Rd, Brighton and Hove, Brighton BN41 1AF", source: "Sam screenshot", status: "Verified from screenshot" },
+      { label: "Google Business phone", value: "07943 574948", source: "Sam screenshot", status: "Verified from screenshot" },
+      { label: "Google Business hours", value: "Open - closes 5pm", source: "Sam screenshot", status: "Needs full hours check" },
+      { label: "Logo check", value: "Visual brand should be compared with the owner's known logo/profile image before confirming.", source: "Human review", status: "Needs check" }
+    ],
+    sources: [
+      { label: "Official website", url: "https://www.firsttouchinnovations.co.uk/" },
+      { label: "Instagram from official website", url: "https://www.instagram.com/firsttouch_innovations/" },
+      { label: "First Touch TikTok", url: "https://www.tiktok.com/@firsttouch_innovations?lang=en-GB" },
+      { label: "Companies House", url: "https://find-and-update.company-information.service.gov.uk/company/15731472" }
+    ],
+    gaps: [
+      "Confirm the logo/profile image with the owner.",
+      "Confirm the Instagram and TikTok profiles are controlled by the same business and ask if there are any private/new accounts.",
+      "Copy the Google Business/Profile share link when possible so the CRM can open the exact listing later.",
+      "Audit Google Business photos, services, review replies, description, service areas and enquiry route.",
+      "Confirm phone/email and who handles enquiries."
+    ]
+  },
+  "M8 Designs": {
+    confidence: "Strong match - official website supplied",
+    humanStatus: "Sam supplied official website",
+    logoStatus: "Logo supplied by Sam - compare candidate profiles against it",
+    logoPreview: {
+      imageUrl: "assets/m8-designs-logo.png",
+      label: "Logo supplied by Sam",
+      note: "Use this as the visual reference. Candidate websites/social profiles should match this M8 Designs logo before you confirm them."
+    },
+    socialScan: {
+      summary: "Owner-supplied scan now has one trusted website and one trusted social account: m8designs.co.uk and TikTok @m8.designs. Other public social platforms still need owner links or manual confirmation. The visible m8designs.com result is a different business selling boat/fishing accessories in Ohio, so it should not be used.",
+      platforms: [
+        { platform: "Website", result: "Found: m8designs.co.uk", url: "https://www.m8designs.co.uk/", evidence: "Owner-supplied link from Sam; website presents M8 Designs Ltd construction services in Sussex / Brighton and Hove", status: "Trusted owner link" },
+        { platform: "Instagram", result: "Not found", url: "", evidence: "No reliable public profile found that matches the supplied logo and Hove construction context", status: "Ask owner" },
+        { platform: "Facebook", result: "Not found", url: "", evidence: "No reliable public profile found that matches the supplied logo and Hove construction context", status: "Ask owner" },
+        { platform: "TikTok", result: "Found: @m8.designs", url: "https://www.tiktok.com/@m8.designs?lang=en-GB", evidence: "Owner-supplied link from Sam; compare profile image/content against the supplied M8 Designs logo", status: "Trusted owner link" },
+        { platform: "YouTube", result: "Not found", url: "", evidence: "No reliable public profile found that matches the supplied logo and Hove construction context", status: "Ask owner" },
+        { platform: "LinkedIn", result: "Not found", url: "", evidence: "Search results showed unrelated M8 companies, not this supplied logo/business", status: "Do not assume" },
+        { platform: "Google Business", result: "Likely not set up yet", url: "", evidence: "Sam does not think M8 currently has a Google presence; confirm with owner before creating or claiming one", status: "Likely missing" },
+        { platform: "Wrong public match", result: "Mismatch: m8designs.com", url: "https://www.m8designs.com/", evidence: "Boat/fishing accessories business near Macedonia, Ohio; does not match Sam's supplied logo or local construction context", status: "Reject" }
+      ]
+    },
+    summary: "Sam supplied the official M8 Designs website at m8designs.co.uk. It matches the owner transcript, Sussex/Brighton and Hove construction context and the M8 Designs Ltd identity. The separate m8designs.com fishing accessories website in Ohio remains a rejected mismatch.",
+    fields: [
+      { label: "Provided identity", value: "M8 DESIGNS LTD", source: "Public company index", status: "Likely match" },
+      { label: "Official website", value: "https://www.m8designs.co.uk/", source: "Owner-supplied link from Sam", status: "Trusted owner link" },
+      { label: "Company number", value: "15672323", source: "Public company index", status: "Found" },
+      { label: "Registered office", value: "16 Blatchington Road, Hove, United Kingdom, BN3 3YN", source: "Public company index", status: "Found" },
+      { label: "Company status", value: "Active", source: "Public company index", status: "Found" },
+      { label: "Business activity", value: "Construction of commercial buildings, other construction installation, building completion and finishing.", source: "SIC codes", status: "Found" },
+      { label: "Previous company name", value: "LION CONSTRUCTION SOUTHERN LTD", source: "Public company index", status: "Found" },
+      { label: "TikTok profile", value: "https://www.tiktok.com/@m8.designs?lang=en-GB", source: "Owner-supplied link from Sam", status: "Trusted owner link" },
+      { label: "Likely wrong match", value: "m8designs.com appears to be boat/fishing accessories in Macedonia, Ohio.", source: "Web result", status: "Mismatch" },
+      { label: "Logo check", value: "Trusted M8 Designs logo supplied by Sam and saved in CRM assets.", source: "Human reference", status: "Reference ready" }
+    ],
+    sources: [
+      { label: "M8 Designs official website", url: "https://www.m8designs.co.uk/" },
+      { label: "Public company index", url: "https://www.companiesintheuk.co.uk/ltd/m8-designs" },
+      { label: "M8 Designs TikTok", url: "https://www.tiktok.com/@m8.designs?lang=en-GB" },
+      { label: "Possible wrong M8 Designs result", url: "https://www.m8designs.com/" }
+    ],
+    gaps: [
+      "Ask for Instagram, Facebook, YouTube, LinkedIn and Google Business links that use this logo/profile image, if they exist.",
+      "Confirm exact niche and whether the old company name matters."
+    ]
+  }
+};
+
 const agentDetails = {
   "Prospect Scanner": {
     purpose: "Finds renovation, building and home improvement companies across the target locations and turns them into structured CRM prospects.",
@@ -579,6 +975,8 @@ function loadState() {
   const data = saved ? safeParse(saved) : structuredClone(defaultData);
   const merged = { ...structuredClone(defaultData), ...data };
   merged.agents = mergeByName(merged.agents || [], defaultData.agents);
+  merged.clients = mergeByField(merged.clients || [], defaultData.clients, "company");
+  merged.clientAnalyses = mergeByField(merged.clientAnalyses || [], defaultData.clientAnalyses, "company");
   merged.delivery = mergeByField(merged.delivery || [], defaultData.delivery, "client");
   merged.xelloSocial = mergeByField(merged.xelloSocial || [], defaultData.xelloSocial, "hook");
   merged.outreachFeedback = merged.outreachFeedback || defaultData.outreachFeedback;
@@ -603,6 +1001,10 @@ function loadState() {
   merged.customerJourneyMap = merged.customerJourneyMap || defaultData.customerJourneyMap;
   merged.offerLadder = merged.offerLadder || defaultData.offerLadder;
   merged.outreachTraining = merged.outreachTraining || defaultData.outreachTraining;
+  merged.clientOwnerResponses = {
+    ...(defaultData.clientOwnerResponses || {}),
+    ...(merged.clientOwnerResponses || {})
+  };
   return migrateOfferStrategy(merged);
 }
 
@@ -610,6 +1012,48 @@ function migrateOfferStrategy(data) {
   const byTitle = (rows = [], title) => rows.find((row) => row.title === title);
   const byName = (rows = [], name) => rows.find((row) => row.name === name);
   const byClient = (rows = [], client) => rows.find((row) => row.client === client);
+  const trialClientNames = ["First Touch Innovations", "M8 Designs"];
+
+  const starterClientRows = trialClientNames.map((company) => {
+    const defaultClient = defaultData.clients.find((row) => row.company === company);
+    const existingClient = (data.clients || []).find((row) => row.company === company);
+    return { ...defaultClient, ...existingClient };
+  });
+  data.clients = [
+    ...starterClientRows,
+    ...(data.clients || []).filter((row) => row.company && !trialClientNames.includes(row.company) && row.company !== "First client target")
+  ];
+
+  data.clientAnalyses = (data.clientAnalyses || []).map((analysis) => {
+    if (!trialClientNames.includes(analysis.company)) return analysis;
+    const latest = defaultData.clientAnalyses.find((row) => row.company === analysis.company);
+    if (!latest) return analysis;
+    return {
+      ...analysis,
+      status: latest.status,
+      relationship: latest.relationship,
+      offerStage: latest.offerStage,
+      serviceCategory: latest.serviceCategory,
+      area: latest.area,
+      researchStatus: latest.researchStatus,
+      objective: latest.objective,
+      icp: structuredClone(latest.icp),
+      businessAnalysis: structuredClone(latest.businessAnalysis),
+      discoveryQuestions: structuredClone(latest.discoveryQuestions),
+      foundations: structuredClone(latest.foundations),
+      foundationAudit: structuredClone(latest.foundationAudit),
+      competitorBenchmark: structuredClone(latest.competitorBenchmark),
+      identityCheck: {
+        ...(analysis.identityCheck || {}),
+        confidence: latest.identityCheck?.confidence || analysis.identityCheck?.confidence,
+        humanStatus: latest.identityCheck?.humanStatus || analysis.identityCheck?.humanStatus,
+        logoStatus: latest.identityCheck?.logoStatus || analysis.identityCheck?.logoStatus,
+        decisionRule: latest.identityCheck?.decisionRule || analysis.identityCheck?.decisionRule,
+        evidence: structuredClone(latest.identityCheck?.evidence || analysis.identityCheck?.evidence || []),
+        agentRules: structuredClone(latest.identityCheck?.agentRules || analysis.identityCheck?.agentRules || [])
+      }
+    };
+  });
 
   const oldProof = (data.outreachTraining || []).find((row) => row.rule === "Proof Offer");
   if (oldProof) {
@@ -934,6 +1378,38 @@ function averageAuditScore(scores) {
   return Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
 }
 
+function percent(value, target) {
+  const safeTarget = Number(target) || 1;
+  return Math.max(0, Math.min(100, Math.round((Number(value) / safeTarget) * 100)));
+}
+
+function renderProgressBar(value, target, label = "") {
+  const progress = percent(value, target);
+  return `
+    <div class="progress-template" aria-label="${label || "Progress"} ${progress}%">
+      <div class="progress-template-top">
+        <span>${label}</span>
+        <strong>${progress}%</strong>
+      </div>
+      <div class="progress-template-track">
+        <span style="width:${progress}%"></span>
+      </div>
+    </div>
+  `;
+}
+
+function renderLeadScore(score = 0) {
+  const safeScore = Math.max(0, Math.min(100, Number(score) || 0));
+  const label = safeScore >= 85 ? "Prime" : safeScore >= 70 ? "Warm" : safeScore >= 50 ? "Nurture" : "Low";
+  return `
+    <div class="lead-score">
+      <strong>${safeScore}</strong>
+      <span>${label}</span>
+      <div class="lead-score-track"><i style="width:${safeScore}%"></i></div>
+    </div>
+  `;
+}
+
 function scoreGrid(scores = {}) {
   const labels = {
     cta: "CTA",
@@ -997,14 +1473,14 @@ function calculateMetrics() {
   const apiSpend = state.spend.reduce((sum, item) => sum + Number(item.cost || 0), 0);
 
   return [
-    { label: "Prospects", value: prospects.length, note: "Companies tracked", icon: "S" },
-    { label: "AI drafts", value: drafts.filter((draft) => draft.status !== "Approved").length, note: "Need approval", icon: "A" },
-    { label: "Outreach sent", value: prospects.filter((lead) => sentStatuses.includes(lead.status)).length, note: "Email + IG tasks", icon: "O" },
-    { label: "Replies", value: replies, note: "Warm pipeline", icon: "R" },
-    { label: "Calls booked", value: calls, note: "Audit calls", icon: "C" },
-    { label: "Pipeline value", value: `£${(pipelineValue / 1000).toFixed(1)}k`, note: "Monthly retainer", icon: "P" },
+    { label: "Prospects", value: prospects.length, note: "Companies tracked", icon: "S", progressValue: prospects.length, progressTarget: 25, progressLabel: "Scan target" },
+    { label: "AI drafts", value: drafts.filter((draft) => draft.status !== "Approved").length, note: "Need approval", icon: "A", progressValue: drafts.filter((draft) => draft.status === "Approved").length, progressTarget: Math.max(1, drafts.length), progressLabel: "Approved" },
+    { label: "Outreach sent", value: prospects.filter((lead) => sentStatuses.includes(lead.status)).length, note: "Email + IG tasks", icon: "O", progressValue: prospects.filter((lead) => sentStatuses.includes(lead.status)).length, progressTarget: Math.max(1, prospects.length), progressLabel: "Contacted" },
+    { label: "Replies", value: replies, note: "Warm pipeline", icon: "R", progressValue: replies, progressTarget: 5, progressLabel: "Reply goal" },
+    { label: "Calls booked", value: calls, note: "Audit calls", icon: "C", progressValue: calls, progressTarget: 3, progressLabel: "Call goal" },
+    { label: "Pipeline value", value: `£${(pipelineValue / 1000).toFixed(1)}k`, note: "Monthly retainer", icon: "P", progressValue: pipelineValue, progressTarget: 4500, progressLabel: "3-client target" },
     { label: "API spend", value: money(apiSpend), note: "Tracked budget", icon: "£" },
-    { label: "Won clients", value: won, note: "Target: 3", icon: "W" }
+    { label: "Won clients", value: won, note: "Target: 3", icon: "W", progressValue: won, progressTarget: 3, progressLabel: "Retainer goal" }
   ];
 }
 
@@ -1082,12 +1558,71 @@ function renderMetricCards(targetId, metrics) {
         </div>
         <p class="label">${metric.label}</p>
         <p class="metric-value">${metric.value}</p>
+        ${metric.progressTarget ? renderProgressBar(metric.progressValue, metric.progressTarget, metric.progressLabel) : ""}
       </article>
     `)
     .join("");
 }
 
+function calculatePerformance() {
+  const approvedDrafts = state.drafts.filter((draft) => draft.status === "Approved" || draft.status === "Sent manually").length;
+  const warm = state.prospects.filter((lead) => ["Warm Reply", "Call Booked", "Proposal Sent", "Won"].includes(lead.status)).length;
+  const calls = state.calls?.length || state.prospects.filter((lead) => lead.status === "Call Booked").length;
+  const completedTasks = state.agentTasks.filter((task) => String(task.status).toLowerCase().includes("complete")).length;
+  const reviewedOutputs = [
+    ...(state.websiteAudits || []),
+    ...(state.socialAudits || []),
+    ...(state.contentBriefs || []),
+    ...(state.agentOutputs || [])
+  ].filter((item) => ["Approved", "Used", "Archived"].includes(normaliseStatus(item.status))).length;
+  const pipelineValue = state.prospects.filter((lead) => ["Call Booked", "Proposal Sent", "Won"].includes(lead.status)).length * 1500;
+  const points = approvedDrafts * 15 + warm * 25 + calls * 40 + completedTasks * 20 + reviewedOutputs * 10;
+  const level = Math.max(1, Math.floor(points / 250) + 1);
+  const nextLevelPoints = level * 250;
+
+  const badges = [
+    { title: "Follow-up Streak", detail: warm ? `${warm} warm conversation${warm === 1 ? "" : "s"} active` : "Build by creating warm replies", active: warm > 0 },
+    { title: "Pipeline Builder", detail: pipelineValue ? `£${pipelineValue.toLocaleString()}/mo in motion` : "Book calls to unlock", active: pipelineValue > 0 },
+    { title: "Approval Captain", detail: approvedDrafts ? `${approvedDrafts} draft${approvedDrafts === 1 ? "" : "s"} approved/sent` : "Approve drafts to unlock", active: approvedDrafts > 0 },
+    { title: "Foundation First", detail: "Lead test stays gated until basics are ready", active: true }
+  ];
+
+  return { points, level, nextLevelPoints, approvedDrafts, warm, calls, pipelineValue, badges };
+}
+
+function renderPerformancePanel() {
+  const target = document.getElementById("performancePanel");
+  if (!target) return;
+  const performance = calculatePerformance();
+  target.innerHTML = `
+    <div class="performance-main">
+      <div>
+        <p class="label">Operating level</p>
+        <h2>Level ${performance.level} CRM Operator</h2>
+        <p>Earn points by approving work, following up warm leads, booking calls and moving starter foundations forward.</p>
+      </div>
+      <div class="level-card">
+        <strong>${performance.points}</strong>
+        <span>CRM points</span>
+        ${renderProgressBar(performance.points, performance.nextLevelPoints, "Next level")}
+      </div>
+    </div>
+    <div class="performance-badges">
+      ${performance.badges.map((badge) => `
+        <article class="achievement-badge ${badge.active ? "active" : ""}">
+          <span>${badge.active ? "✓" : "·"}</span>
+          <div>
+            <strong>${badge.title}</strong>
+            <p>${badge.detail}</p>
+          </div>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderMetrics() {
+  renderPerformancePanel();
   renderMetricCards("metricGrid", calculateMetrics());
   renderMetricCards("agentMetricGrid", calculateAgentMetrics());
   renderMetricCards("todayMetricGrid", calculateTodayMetrics());
@@ -1100,14 +1635,14 @@ function renderHotLeads() {
   document.getElementById("hotLeadsTable").innerHTML = hot
     .map((lead) => `
       <tr>
-        <td><strong>${lead.company}</strong></td>
+        <td><strong>${lead.company}</strong>${lead.score >= 85 ? `<span class="priority-chip">Priority</span>` : ""}</td>
         <td>${lead.area}</td>
         <td>${lead.service}</td>
-        <td><strong>${lead.score}</strong></td>
+        <td>${renderLeadScore(lead.score)}</td>
         <td><span class="${statusClass(lead.status)}">${lead.status}</span></td>
       </tr>
     `)
-    .join("");
+    .join("") || `<tr><td colspan="5"><div class="empty-state"><strong>No hot leads yet.</strong><p>Add prospects or run a scan to build the priority list.</p></div></td></tr>`;
 }
 
 function renderProspects(filter = "") {
@@ -1118,7 +1653,7 @@ function renderProspects(filter = "") {
         <td><strong>${lead.company}</strong></td>
         <td>${lead.area}</td>
         <td>${lead.service}</td>
-        <td><strong>${lead.score}</strong></td>
+        <td>${renderLeadScore(lead.score)}</td>
         <td><span class="${statusClass(lead.status)}">${lead.status}</span></td>
         <td>${lead.nextAction}</td>
         <td><button class="small-button" data-open-profile="${escapeHtml(lead.company)}">Open</button></td>
@@ -1139,18 +1674,21 @@ function renderTasks() {
   const igTasks = state.drafts.filter((draft) => draft.channel === "Instagram").length;
   const warm = state.prospects.filter((lead) => ["Warm Reply", "Call Booked"].includes(lead.status)).length;
   const tasks = [
-    `Approve ${needsApproval} AI outreach drafts.`,
-    `Send ${igTasks} manual Instagram DM tasks.`,
-    `Follow up ${warm} warm opportunities.`,
-    "Run the next 25-prospect scan.",
-    "Check spend before the next AI batch."
+    { text: `Approve ${needsApproval} AI outreach drafts.`, priority: needsApproval ? "High" : "Low", progress: percent(state.drafts.length - needsApproval, Math.max(1, state.drafts.length)) },
+    { text: `Send ${igTasks} manual Instagram DM tasks.`, priority: igTasks ? "Medium" : "Low", progress: igTasks ? 45 : 100 },
+    { text: `Follow up ${warm} warm opportunities.`, priority: warm ? "High" : "Low", progress: percent(warm, 5) },
+    { text: "Run the next 25-prospect scan.", priority: "Medium", progress: percent(state.prospects.length, 25) },
+    { text: "Check spend before the next AI batch.", priority: "Low", progress: percent(10 - state.spend.reduce((sum, item) => sum + Number(item.cost || 0), 0), 10) }
   ];
 
   document.getElementById("taskList").innerHTML = tasks
     .map((task) => `
-      <div class="task-item">
-        <span class="task-check">✓</span>
-        <span>${task}</span>
+      <div class="task-item priority-${String(task.priority).toLowerCase()}">
+        <span class="task-check">${task.priority === "High" ? "!" : "✓"}</span>
+        <div>
+          <span>${task.text}</span>
+          <div class="task-progress"><span style="width:${task.progress}%"></span></div>
+        </div>
       </div>
     `)
     .join("");
@@ -1233,7 +1771,7 @@ function renderTodayActions() {
 
   actionTarget.innerHTML = getTodayActions()
     .map((item) => `
-      <article class="today-action-card">
+      <article class="today-action-card priority-${String(item.priority).toLowerCase()}">
         <div class="card-title-row">
           <div>
             <p class="label">${item.owner}</p>
@@ -1279,6 +1817,7 @@ function groupByStage() {
 
 function renderPipeline() {
   const grouped = groupByStage();
+  const maxStageCount = Math.max(1, ...grouped.map((group) => group.leads.length));
   document.getElementById("pipelineRow").innerHTML = grouped
     .slice(0, 6)
     .map((group) => `
@@ -1286,6 +1825,7 @@ function renderPipeline() {
         <p>${group.stage}</p>
         <strong>${group.leads.length}</strong>
         <span>${group.leads.length * 1500 ? `£${(group.leads.length * 1500).toLocaleString()}/mo potential` : "Build pipeline"}</span>
+        ${renderProgressBar(group.leads.length, maxStageCount, "Stage weight")}
       </article>
     `)
     .join("");
@@ -2730,6 +3270,671 @@ function renderCeoBrief() {
     .join("");
 }
 
+function auditScoreBand(score = 0) {
+  if (score >= 75) return { label: "Strong", className: "strong" };
+  if (score >= 55) return { label: "Needs polish", className: "medium" };
+  if (score >= 35) return { label: "Needs work", className: "low" };
+  return { label: "Build first", className: "critical" };
+}
+
+function renderAuditScore(score = 0, size = "full") {
+  const safeScore = Math.max(0, Math.min(100, Number(score) || 0));
+  const band = auditScoreBand(safeScore);
+  return `
+    <div class="audit-score-template ${size} ${band.className}" aria-label="Foundation score ${safeScore} out of 100">
+      <div class="audit-score-top">
+        <strong>${safeScore}%</strong>
+        <span>${band.label}</span>
+      </div>
+      <div class="audit-score-track">
+        <span style="width: ${safeScore}%"></span>
+      </div>
+    </div>
+  `;
+}
+
+function renderTemplateCard(item, index, variant) {
+  const initials = String(item.label || "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase() || String(index + 1);
+  return `
+    <article class="template-card ${variant}">
+      <div class="template-card-marker">${initials}</div>
+      <div>
+        <p class="label">${item.label}</p>
+        <h3>${item.label}</h3>
+        <p>${item.value}</p>
+      </div>
+    </article>
+  `;
+}
+
+function renderSectionPreview(text, items = []) {
+  return `
+    <p class="section-preview-copy">${text}</p>
+    ${items.length ? `
+      <div class="section-stat-strip">
+        ${items.map((item) => `
+          <span>
+            <strong>${item.value}</strong>
+            ${item.label}
+          </span>
+        `).join("")}
+      </div>
+    ` : ""}
+  `;
+}
+
+function numberFromPercent(value) {
+  return Number(String(value || "").replace(/[^\d]/g, "")) || 0;
+}
+
+function auditRowScore(audit, keywords = []) {
+  const row = audit?.rows?.find((item) =>
+    keywords.some((keyword) => String(item.area || "").toLowerCase().includes(keyword))
+  );
+  return Number(row?.score || 0);
+}
+
+function readinessLabel(score) {
+  if (score >= 78) return { label: "Ready for lead test", className: "ready" };
+  if (score >= 55) return { label: "Nearly ready", className: "nearly" };
+  return { label: "Not ready for ads", className: "blocked" };
+}
+
+function readinessItemLabel(score) {
+  if (score >= 75) return "Strong";
+  if (score >= 55) return "Needs polish";
+  if (score >= 35) return "Needs work";
+  return "Build first";
+}
+
+function getOwnerSummary(analysis) {
+  const saved = state.clientOwnerResponses?.[analysis.company] || defaultData.clientOwnerResponses?.[analysis.company] || {};
+  return saved.summary || analyseOwnerResponse(saved.raw || "", analysis);
+}
+
+function getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark) {
+  const owner = getOwnerSummary(analysis);
+  const isFirstTouch = analysis.company === "First Touch Innovations";
+  const competitorTarget = competitorBenchmark?.targetScore || "ready score";
+
+  if (isFirstTouch) {
+    return {
+      headline: "Package First Touch as a bigger-project renovation specialist before sending paid traffic.",
+      decision: "Not ready for a paid lead test yet. The offer is clearer now, but proof, tracking and the enquiry route need tightening first.",
+      target: "Loft conversions, extensions and full refurbs around Brighton/Hove, with architect referrals treated as a serious second channel.",
+      scoreNote: `Move from ${foundationAudit?.score || 72}% toward ${competitorTarget} by making proof and enquiry handling easier to trust.`,
+      strategyCards: [
+        { label: "Primary offer", value: owner.bestServices },
+        { label: "Sales filter", value: "Prioritise larger projects, but keep smaller profitable jobs when they have referral or future-project potential." },
+        { label: "Best route", value: owner.enquiryRoute },
+        { label: "Growth channel", value: "Create architect-facing proof: best projects, reliability signals, timeframe clarity and a simple referral conversation." }
+      ],
+      sprint: [
+        { phase: "1. Positioning", tasks: ["Rewrite profile language around lofts, extensions and refurbs.", "Use GBP 100k-style project ambition as internal targeting, not a public promise.", "Keep smaller work as a secondary route, not the main message."] },
+        { phase: "2. Proof", tasks: ["Collect top 10 photos/videos from larger jobs.", "Choose the most detailed 5-star reviews.", "Create before/after and process proof folders."] },
+        { phase: "3. Architect pack", tasks: ["Create a simple referral PDF or web page.", "Show best larger projects, reviews and reliability proof.", "Explain what makes First Touch easy for architects to recommend."] },
+        { phase: "4. Enquiry route", tasks: ["Make phone/text/WhatsApp the main contact path.", "Add response expectations for bigger jobs.", "Prepare questions that qualify project type, timeline and budget signal."] },
+        { phase: "5. Tracking", tasks: ["Track source, project type, estimated value and quote stage.", "Mark architect/referral leads separately.", "Review weekly before considering ads."] }
+      ],
+      trackingFields: [
+        "Lead source",
+        "Project type",
+        "Estimated project size",
+        "Architect or homeowner",
+        "Contact route",
+        "Response time",
+        "Quote stage",
+        "Next follow-up"
+      ],
+      proofRequest: "Ask for the strongest loft, extension and refurb photos/videos, the most detailed 5-star reviews, and any examples that show reliability, clean finishes, timeframe management or cost clarity.",
+      proofFolder: {
+        label: "First Touch upload folder",
+        url: "https://drive.google.com/drive/folders/1r6D7-zJuTw7RWqXDGpWYRl94Qr8iKiBv",
+        note: "Anyone with the link can upload/edit. Send this to First Touch for photos, videos, reviews, brand files and process proof."
+      },
+      architectPack: {
+        title: "Architect Referral Proof Pack",
+        purpose: "Give First Touch something polished to send or show when meeting architects, so architects can quickly understand what projects they are right for and why they are safe to recommend.",
+        format: "Start with a short PDF. Later, turn the same content into a website page if the referral route proves useful.",
+        sections: [
+          { label: "Who First Touch helps", value: "Homeowners planning loft conversions, extensions and full refurbs around Brighton/Hove and nearby Sussex areas." },
+          { label: "Why architects should care", value: "First Touch wants strong communication, reliable delivery, clean proof and a builder relationship that protects the architect's reputation with the client." },
+          { label: "Proof to include", value: "Best project photos, before/after examples, detailed 5-star reviews, process shots, finished details and any evidence of tidy site management." },
+          { label: "Project fit", value: "Larger renovation work, extensions, loft conversions and full refurb projects where a reliable local contractor is needed after drawings or planning." },
+          { label: "Referral CTA", value: "If you have a client looking for a trusted local team to price or discuss the build, contact First Touch by phone, text or WhatsApp." }
+        ],
+        nextSteps: [
+          "Collect 3 strongest larger-project examples.",
+          "Choose 3 detailed reviews that mention trust, communication, quality or reliability.",
+          "Write a short founder/business intro.",
+          "Create a one-page PDF first, then consider a web page later."
+        ]
+      },
+      questionsForSam: [
+        "Confirm the official First Touch website URL if you want the CRM to link directly to the exact page.",
+        "Ask the owner to send the best project photos/videos in one folder.",
+        "Ask the owner for 3 larger projects and 3 detailed reviews that would make architects feel safe recommending them."
+      ]
+    };
+  }
+
+  return {
+    headline: "Turn M8 from a broad trades profile into a premium full-project construction offer.",
+    decision: "Do not push ads yet. The offer is now clearer, but the proof, website/contact route, Google decision and tracking are still foundations work.",
+    target: "Homeowners in Brighton/Hove who want new builds, extensions or proper start-to-finish projects where M8 controls the site and standard.",
+    scoreNote: `Move from ${foundationAudit?.score || 49}% toward ${competitorTarget} by making the portfolio, contact route and project fit obvious.`,
+    strategyCards: [
+      { label: "Primary offer", value: owner.bestServices },
+      { label: "Sales filter", value: owner.avoidJobs },
+      { label: "Best route", value: owner.enquiryRoute },
+      { label: "Google decision", value: "Create Google Business if local search matters, but the immediate priority is a premium portfolio/contact route and proof library." }
+    ],
+    sprint: [
+      { phase: "1. Positioning", tasks: ["Lead with new builds, extensions and full-project delivery.", "Move bathrooms, rendering and plastering into supporting proof.", "Make site control and high standards part of the message."] },
+      { phase: "2. Proof", tasks: ["Organise website photos into high-quality folders.", "Separate proof by new builds, extensions, bathrooms and rendering.", "Add testimonials or manual review snippets if available."] },
+      { phase: "3. Enquiry route", tasks: ["Make phone/email obvious on TikTok and website.", "Create a simple project-fit qualifier.", "Filter out handyman jobs, awkward access and subcontractor work."] },
+      { phase: "4. Tracking", tasks: ["Track project type, access/parking fit and estimated value.", "Mark source from TikTok, website, referral or word of mouth.", "Review poor-fit enquiries so content can repel them earlier."] }
+      ],
+    trackingFields: [
+      "Lead source",
+      "Project type",
+      "Access and parking fit",
+      "Estimated value",
+      "Homeowner or other buyer",
+      "Contact route",
+      "Quote stage",
+      "Poor-fit reason"
+    ],
+    proofRequest: "Ask for the highest-quality images from new builds, extensions, bathrooms, rendering and start-to-finish projects, plus any customer messages that prove trust, finish quality and site control.",
+    proofFolder: {
+      label: "M8 Designs upload folder",
+      url: "https://drive.google.com/drive/folders/1xEiwFqK8yFS9CPbEQwsQwrfoI11e5dZZ",
+      note: "Anyone with the link can upload/edit. Send this to M8 for photos, videos, reviews, brand files and process proof."
+    },
+    questionsForSam: [
+      "Audit m8designs.co.uk for proof order, contact clarity and mobile trust.",
+      "Ask the owner to export high-quality photos into one folder rather than relying only on website downloads.",
+      "Decide whether M8 wants Google Business now or whether website/TikTok proof comes first."
+    ]
+  };
+}
+
+function renderDoneForYouFoundationPlan(analysis, foundationAudit, competitorBenchmark) {
+  const plan = getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark);
+  return `
+    <section class="panel done-for-you-plan-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Done-for-you plan</p>
+          <h2>Starter Foundations Workplan</h2>
+          ${renderSectionPreview(plan.headline, [
+            { value: "Ads gated", label: "decision" },
+            { value: `${foundationAudit?.score || competitorBenchmark?.currentScore || 0}%`, label: "current score" }
+          ])}
+        </div>
+        <span class="pill">Use this next</span>
+      </div>
+      <div class="foundation-plan-hero">
+        <article>
+          <p class="label">Client-facing decision</p>
+          <strong>${escapeHtml(plan.decision)}</strong>
+        </article>
+        <article>
+          <p class="label">Best target</p>
+          <strong>${escapeHtml(plan.target)}</strong>
+        </article>
+        <article>
+          <p class="label">Score movement</p>
+          <strong>${escapeHtml(plan.scoreNote)}</strong>
+        </article>
+      </div>
+      <div class="foundation-strategy-grid">
+        ${plan.strategyCards.map((card) => `
+          <article>
+            <span>${escapeHtml(card.label)}</span>
+            <strong>${escapeHtml(card.value)}</strong>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderFoundationSprintBoard(analysis, foundationAudit, competitorBenchmark) {
+  const plan = getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark);
+  return `
+    <section class="panel foundation-sprint-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Delivery sprint</p>
+          <h2>What Xello Should Do First</h2>
+          ${renderSectionPreview("A practical delivery board for turning the owner replies into real starter foundations work.", [
+            { value: plan.sprint.length, label: "work phases" },
+            { value: "Foundations", label: "offer stage" }
+          ])}
+        </div>
+      </div>
+      <div class="foundation-sprint-grid">
+        ${plan.sprint.map((phase) => `
+          <article>
+            <span>${escapeHtml(phase.phase)}</span>
+            <ol class="analysis-checklist">
+              ${phase.tasks.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+            </ol>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderArchitectReferralPack(analysis, foundationAudit, competitorBenchmark) {
+  const plan = getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark);
+  if (!plan.architectPack) return "";
+  const pack = plan.architectPack;
+  return `
+    <section class="panel architect-pack-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Referral asset</p>
+          <h2>${escapeHtml(pack.title)}</h2>
+          ${renderSectionPreview(pack.purpose, [
+            { value: pack.format, label: "first format" },
+            { value: pack.sections.length, label: "pack sections" }
+          ])}
+        </div>
+        <span class="pill">Architect route</span>
+      </div>
+      <div class="architect-pack-layout">
+        <article class="architect-pack-intro">
+          <p class="label">Why make this</p>
+          <strong>${escapeHtml(pack.purpose)}</strong>
+          <span>${escapeHtml(pack.format)}</span>
+        </article>
+        <div class="architect-pack-grid">
+          ${pack.sections.map((section) => `
+            <article>
+              <span>${escapeHtml(section.label)}</span>
+              <strong>${escapeHtml(section.value)}</strong>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+      <div class="architect-pack-actions">
+        <p class="label">Build checklist</p>
+        <ol class="analysis-checklist">
+          ${pack.nextSteps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}
+        </ol>
+      </div>
+    </section>
+  `;
+}
+
+function renderLeadTrackingBlueprint(analysis, foundationAudit, competitorBenchmark) {
+  const plan = getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark);
+  return `
+    <section class="panel lead-tracking-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Tracking setup</p>
+          <h2>Lead Tracker Blueprint</h2>
+          ${renderSectionPreview("These are the fields to track before any lead test, so you know which enquiries are good instead of guessing.", [
+            { value: plan.trackingFields.length, label: "fields" },
+            { value: "Required", label: "before ads" }
+          ])}
+        </div>
+      </div>
+      <div class="tracking-blueprint-grid">
+        ${plan.trackingFields.map((field, index) => `
+          <article>
+            <span>${String(index + 1).padStart(2, "0")}</span>
+            <strong>${escapeHtml(field)}</strong>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderProofAndHelpPanel(analysis, foundationAudit, competitorBenchmark) {
+  const plan = getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark);
+  return `
+    <section class="panel proof-help-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">What still needs human help</p>
+          <h2>Proof Pack + Missing Details</h2>
+          ${renderSectionPreview("Most of the strategy is now done. These are the only human inputs that will make the audit stronger.", [
+            { value: "Proof pack", label: "main ask" },
+            { value: plan.questionsForSam.length, label: "open items" }
+          ])}
+        </div>
+      </div>
+      <div class="proof-help-layout">
+        <article class="proof-request-card">
+          <p class="label">Message to client</p>
+          <strong>${escapeHtml(plan.proofRequest)}</strong>
+        </article>
+        ${plan.proofFolder ? `
+          <article class="proof-folder-card">
+            <p class="label">Google Drive upload folder</p>
+            <strong>${escapeHtml(plan.proofFolder.label)}</strong>
+            <span>${escapeHtml(plan.proofFolder.note)}</span>
+            <a href="${plan.proofFolder.url}" target="_blank" rel="noreferrer">Open proof folder</a>
+          </article>
+        ` : ""}
+        <article>
+          <p class="label">Ask Sam / owner next</p>
+          <ol class="analysis-checklist">
+            ${plan.questionsForSam.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ol>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+function getReadinessItems(analysis, foundationAudit, competitorBenchmark) {
+  const currentScore = Number(foundationAudit?.score || competitorBenchmark?.currentScore || 0);
+  const competitorAverage = numberFromPercent(competitorBenchmark?.competitorAverage);
+  const competitorGapScore = competitorAverage ? Math.max(0, Math.min(100, currentScore + (100 - competitorAverage))) : currentScore;
+  return [
+    {
+      label: "Google presence",
+      score: auditRowScore(foundationAudit, ["google"]) || (analysis.company === "M8 Designs" ? 12 : 74),
+      detail: analysis.company === "M8 Designs" ? "Likely missing, create or claim if local search matters." : "Profile found, now optimise services, photos and review activity."
+    },
+    {
+      label: "Website/enquiry route",
+      score: auditRowScore(foundationAudit, ["website", "portfolio"]) || 35,
+      detail: "Make services, proof and the fastest quote route clear before sending traffic."
+    },
+    {
+      label: "Social proof",
+      score: auditRowScore(foundationAudit, ["social"]) || 40,
+      detail: "Clean profile bio, pinned proof, local CTA and recent project content."
+    },
+    {
+      label: "Content assets",
+      score: auditRowScore(foundationAudit, ["proof", "content"]) || 38,
+      detail: "Collect finished work, before/after visuals, reviews, FAQs and process clips."
+    },
+    {
+      label: "Tracking",
+      score: auditRowScore(foundationAudit, ["tracking", "follow-up"]) || 25,
+      detail: "Track source, service wanted, value, reply speed, quote stage and follow-up."
+    },
+    {
+      label: "Competitor gap",
+      score: competitorGapScore,
+      detail: competitorAverage ? `Current score compared with a ${competitorAverage}% local benchmark.` : "Benchmark against 3 strong local alternatives."
+    }
+  ];
+}
+
+function renderClientReadinessBoard(analysis, foundationAudit, competitorBenchmark) {
+  const score = Number(foundationAudit?.score || competitorBenchmark?.currentScore || 0);
+  const status = readinessLabel(score);
+  const items = getReadinessItems(analysis, foundationAudit, competitorBenchmark);
+  return `
+    <section class="panel readiness-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Client readiness score</p>
+          <h2>Lead Test Readiness Gate</h2>
+          ${renderSectionPreview("A simple decision board showing whether this client is ready for paid visibility, nearly ready, or still needs starter foundations first.", [
+            { value: `${score}%`, label: "foundation score" },
+            { value: status.label, label: "current decision" }
+          ])}
+        </div>
+        <span class="readiness-decision ${status.className}">${status.label}</span>
+      </div>
+      <div class="readiness-hero-card">
+        <div>
+          <span>Readiness</span>
+          <strong>${score}%</strong>
+          <p>${status.label}. Keep the 14-day lead test gated until the basics are strong enough to convert attention into enquiries.</p>
+        </div>
+        ${renderProgressBar(score, 100, "Foundation readiness")}
+      </div>
+      <div class="readiness-grid">
+        ${items.map((item) => `
+          <article class="readiness-item ${auditScoreBand(item.score).className}">
+            <div class="card-title-row">
+              <strong>${item.label}</strong>
+              <span>${item.score}%</span>
+            </div>
+            <div class="readiness-meter"><span style="width:${Math.max(4, Math.min(100, item.score))}%"></span></div>
+            <p>${item.detail}</p>
+            <em>${readinessItemLabel(item.score)}</em>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function splitOwnerResponseSentences(raw = "") {
+  return String(raw)
+    .replace(/\s+/g, " ")
+    .split(/(?<=[.!?])\s+|\n+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function analyseOwnerResponse(raw = "", analysis = {}) {
+  const text = String(raw || "").trim();
+  const lower = text.toLowerCase();
+  const serviceKeywords = ["kitchen", "bathroom", "extension", "new build", "build", "loft", "refurb", "renovation", "carpentry", "joinery", "wardrobe", "rendering", "plastering", "painting", "decorating", "design", "garden", "driveway", "flooring", "media wall"];
+  const foundServices = serviceKeywords.filter((keyword) => lower.includes(keyword));
+  const sentences = splitOwnerResponseSentences(text);
+  const avoidLine = sentences.find((sentence) => /avoid|don't|do not|not want|too small|cheap|low.margin|awkward|hassle/i.test(sentence));
+  const proofLine = sentences.find((sentence) => /photo|video|review|testimonial|portfolio|before|after|case study|project/i.test(sentence));
+  const enquiryLine = sentences.find((sentence) => /call|text|whatsapp|form|instagram|dm|email|reply|enquir/i.test(sentence));
+  const mainService = foundServices[0] || "";
+
+  return {
+    bestServices: foundServices.length
+      ? `Likely high-value focus: ${foundServices.slice(0, 3).map((item) => item.replace(/\b\w/g, (letter) => letter.toUpperCase())).join(", ")}. Confirm margin and capacity before promoting.`
+      : "Highest-income service still needs owner confirmation. Ask which work creates the best margin, not just the most enquiries.",
+    avoidJobs: avoidLine || "Poor-fit jobs still need confirming: small, low-margin, awkward or slow jobs should be filtered out before outreach.",
+    enquiryRoute: enquiryLine || "Best enquiry route still needs confirming: call, WhatsApp, form, Instagram DM or email.",
+    proofAssets: proofLine || "Ask for finished project photos, before/after shots, reviews, FAQs, process clips and any customer messages that can be used as proof.",
+    starterPriorities: (analysis.foundationAudit?.priorities || analysis.nextActions || []).slice(0, 3).join(" "),
+    leadTestAngle: lower.includes("architect")
+      ? "Possible later growth angle: build authority and referral assets for architects as well as homeowner-facing proof. Paid lead tests can come later once the foundations are ready."
+      : mainService
+      ? `Possible later test angle: local ${mainService} enquiries around Brighton/Hove, only after the profile, proof and tracking foundations are ready.`
+      : "Possible later test angle depends on the high-value service they confirm. Keep paid ads gated for now."
+  };
+}
+
+function renderOwnerResponseInbox(analysis) {
+  const saved = state.clientOwnerResponses?.[analysis.company] || {};
+  const summary = saved.summary || analyseOwnerResponse(saved.raw || "", analysis);
+  return `
+    <section class="panel owner-response-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Owner response inbox</p>
+          <h2>Paste WhatsApp Replies Here</h2>
+          ${renderSectionPreview("When your mates reply, paste the message here and the CRM turns it into service priorities, proof gaps and starter actions.", [
+            { value: saved.updatedAt ? "Captured" : "Waiting", label: "response status" },
+            { value: "Local only", label: "stored in browser" }
+          ])}
+        </div>
+        <button class="small-button approve" data-owner-response-save="${analysis.company}">Save + Summarise</button>
+      </div>
+      <textarea class="owner-response-textarea" data-owner-response-input placeholder="Paste the WhatsApp reply from ${analysis.company} here...">${escapeHtml(saved.raw || "")}</textarea>
+      ${saved.updatedAt ? `<p class="owner-response-saved">Last saved ${saved.updatedAt}</p>` : ""}
+      <div class="owner-summary-grid">
+        <article><p class="label">Best services</p><strong>${escapeHtml(summary.bestServices)}</strong></article>
+        <article><p class="label">Jobs to avoid</p><strong>${escapeHtml(summary.avoidJobs)}</strong></article>
+        <article><p class="label">Enquiry route</p><strong>${escapeHtml(summary.enquiryRoute)}</strong></article>
+        <article><p class="label">Proof needed</p><strong>${escapeHtml(summary.proofAssets)}</strong></article>
+        <article class="wide"><p class="label">Starter priorities</p><strong>${escapeHtml(summary.starterPriorities)}</strong></article>
+        <article class="wide"><p class="label">Later lead test angle</p><strong>${escapeHtml(summary.leadTestAngle)}</strong></article>
+      </div>
+    </section>
+  `;
+}
+
+function renderPitchView(analysis, foundationAudit, competitorBenchmark) {
+  const competitorName = String(competitorBenchmark?.bestCompetitor || "strong local competitors");
+  return `
+    <section class="panel pitch-view-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Client pitch view</p>
+          <h2>Before / After Story</h2>
+          ${renderSectionPreview("A clean client-facing explanation of why starter foundations come first and what improves before any lead test.", [
+            { value: "4 steps", label: "pitch story" },
+            { value: "No ad rush", label: "positioning" }
+          ])}
+        </div>
+        <span class="pill">Show this on calls</span>
+      </div>
+      <div class="pitch-grid">
+        <article>
+          <span>01</span>
+          <p class="label">Where you are now</p>
+          <h3>${foundationAudit?.status || "Foundations need checking"}</h3>
+          <p>${foundationAudit?.summary || analysis.objective}</p>
+        </article>
+        <article>
+          <span>02</span>
+          <p class="label">What competitors do better</p>
+          <h3>${competitorName}</h3>
+          <p>${competitorBenchmark?.summary || "Competitors are used as the practical benchmark for proof, clarity and enquiry routes."}</p>
+        </article>
+        <article>
+          <span>03</span>
+          <p class="label">What Xello fixes first</p>
+          <h3>Starter foundations</h3>
+          <p>Profile clarity, Google Business, website/enquiry basics, proof assets, content plan and lead tracking.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <p class="label">What happens after</p>
+          <h3>Lead test only when ready</h3>
+          <p>Once the foundations can convert attention, test one local angle with real content, Meta lead tracking and client-paid ad spend.</p>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+function getContentAssets(analysis) {
+  const firstTouch = analysis.company === "First Touch Innovations";
+  const m8 = analysis.company === "M8 Designs";
+  return [
+    { item: "Finished project photos", status: firstTouch ? "Likely available" : "Ask owner", detail: "Use as website/social proof and future ad creative." },
+    { item: "Before/after shots", status: "Ask owner", detail: "Best proof format for homeowners comparing options." },
+    { item: "Short process clips", status: "Needed", detail: "Useful for Reels, TikTok and trust-building content." },
+    { item: "Customer reviews/messages", status: firstTouch ? "Google reviews found" : "Needed", detail: "Use real trust proof, never fake results." },
+    { item: "Logo and brand files", status: m8 ? "Logo supplied" : "Confirm final logo", detail: "Keeps profiles, reports and content consistent." },
+    { item: "FAQs and objections", status: "Ask owner", detail: "Turns customer worries into useful posts and call prep." },
+    { item: "Portfolio/contact route", status: firstTouch ? "Website found" : "Needs route", detail: "Gives attention a clear place to convert." },
+    { item: "Lead tracking fields", status: "Build now", detail: "Source, service wanted, value, quote stage and next follow-up." }
+  ];
+}
+
+function renderContentAssetChecklist(analysis) {
+  const assets = getContentAssets(analysis);
+  const readyCount = assets.filter((asset) => /found|supplied|available/i.test(asset.status)).length;
+  const score = Math.round((readyCount / assets.length) * 100);
+  return `
+    <section class="panel content-assets-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Content asset checklist</p>
+          <h2>Proof Library Readiness</h2>
+          ${renderSectionPreview("A practical checklist of what we need before the client looks polished enough for stronger visibility.", [
+            { value: `${score}%`, label: "asset readiness" },
+            { value: assets.length, label: "proof items" }
+          ])}
+        </div>
+        ${renderAuditScore(score)}
+      </div>
+      <div class="asset-checklist-grid">
+        ${assets.map((asset) => `
+          <article class="asset-card ${/found|supplied|available/i.test(asset.status) ? "ready" : /needed|needs|build/i.test(asset.status) ? "needed" : "ask"}">
+            <span>${asset.status}</span>
+            <strong>${asset.item}</strong>
+            <p>${asset.detail}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderCompetitorVisualComparison(competitorBenchmark) {
+  if (!competitorBenchmark) return "";
+  const current = Number(competitorBenchmark.currentScore || 0);
+  const competitorAverage = numberFromPercent(competitorBenchmark.competitorAverage);
+  const target = numberFromPercent(competitorBenchmark.targetScore) || 78;
+  const rows = [
+    { label: "Client current", value: current, note: "Where the foundations are today" },
+    { label: "Competitor average", value: competitorAverage, note: "Local benchmark from public scan" },
+    { label: "Ready target", value: target, note: "Minimum before pushing paid lead generation" }
+  ].filter((row) => row.value);
+  return `
+    <div class="competitor-visual-panel">
+      ${rows.map((row) => `
+        <article>
+          <div class="card-title-row">
+            <strong>${row.label}</strong>
+            <span>${row.value}%</span>
+          </div>
+          <div class="comparison-bar"><span style="width:${Math.min(100, row.value)}%"></span></div>
+          <p>${row.note}</p>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderStarterTimeline(analysis) {
+  const steps = [
+    { day: "Day 1", title: "Confirm owner answers", detail: "Paste WhatsApp replies, define high-income services, poor-fit jobs, proof assets and enquiry owner." },
+    { day: "Day 2", title: "Audit public foundations", detail: "Check Google Business, website/portfolio, social profiles, trust proof and current enquiry route." },
+    { day: "Day 3", title: "Fix visible trust", detail: "Tighten bios, CTAs, service wording, proof order, review plan and contact route." },
+    { day: "Day 4", title: "Build proof library", detail: "Collect photos, before/after shots, process clips, reviews, FAQs and strongest project examples." },
+    { day: "Day 5", title: "Set tracking", detail: "Create lead source, project value, quote stage, response speed and follow-up fields in the CRM." },
+    { day: "Day 6", title: "Readiness decision", detail: "Score the foundations. If ready, plan one 14-day lead test angle. If not, keep polishing." }
+  ];
+  return `
+    <section class="panel starter-timeline-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Task timeline</p>
+          <h2>Starter Foundations Timeline</h2>
+          ${renderSectionPreview(`A simple working timeline for ${analysis.company}, built around foundations first and paid ads only after readiness.`, [
+            { value: "6 days", label: "starter sprint" },
+            { value: "Decision gate", label: "final step" }
+          ])}
+        </div>
+      </div>
+      <div class="starter-timeline">
+        ${steps.map((step) => `
+          <article>
+            <span>${step.day}</span>
+            <strong>${step.title}</strong>
+            <p>${step.detail}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
 function renderClients() {
   document.getElementById("clientGrid").innerHTML = state.clients
     .map((client) => `
@@ -2738,9 +3943,716 @@ function renderClients() {
         <h2>${client.company}</h2>
         <strong>${client.retainer}</strong>
         <span>${client.note}</span>
+        ${client.company === "First Touch Innovations" ? `<button class="small-button approve" data-view-jump="client-first-touch">Open Analysis Sheet</button>` : ""}
+        ${client.company === "M8 Designs" ? `<button class="small-button approve" data-view-jump="client-m8-designs">Open Analysis Sheet</button>` : ""}
       </article>
     `)
     .join("");
+
+  const auditTarget = document.getElementById("clientFoundationAuditGrid");
+  if (!auditTarget) return;
+  const audits = (state.clientAnalyses || defaultData.clientAnalyses).filter((analysis) => analysis.foundationAudit);
+  auditTarget.innerHTML = audits
+    .map((analysis) => {
+      const audit = analysis.foundationAudit;
+      return `
+        <article class="foundation-audit-card">
+          <div class="card-title-row">
+            <div>
+              <p class="label">${audit.lastRun}</p>
+              <h3>${analysis.company}</h3>
+            </div>
+            ${renderAuditScore(audit.score)}
+          </div>
+          <strong>${audit.status}</strong>
+          <p>${audit.summary}</p>
+          <div class="audit-mini-list">
+            ${audit.priorities.slice(0, 3).map((item) => `<span>${item}</span>`).join("")}
+          </div>
+          ${analysis.company === "First Touch Innovations" ? `<button class="small-button approve" data-view-jump="client-first-touch">Open Full Audit</button>` : ""}
+          ${analysis.company === "M8 Designs" ? `<button class="small-button approve" data-view-jump="client-m8-designs">Open Full Audit</button>` : ""}
+        </article>
+      `;
+    })
+    .join("") || `<p class="metric-note">No foundations audits yet.</p>`;
+}
+
+function renderClientAnalyses() {
+  renderClientAnalysisSheet("clientFirstTouchSheet", "First Touch Innovations");
+  renderClientAnalysisSheet("clientM8Sheet", "M8 Designs");
+}
+
+function setupClientSectionExpansion() {
+  document.querySelectorAll(".client-analysis-view .panel:not(.client-analysis-hero)").forEach((panel) => {
+    const header = panel.querySelector(":scope > .panel-header");
+    if (!header) return;
+
+    panel.classList.add("analysis-expandable-panel");
+    panel.classList.remove("is-expanded");
+
+    let actions = header.querySelector(":scope > .panel-actions");
+    if (!actions) {
+      actions = document.createElement("div");
+      actions.className = "panel-actions";
+      [...header.children].forEach((child) => {
+        if (!child.matches("div")) actions.appendChild(child);
+      });
+      header.appendChild(actions);
+    }
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "small-button section-toggle-button";
+    toggle.dataset.analysisToggle = "true";
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.textContent = "Expand";
+    actions.appendChild(toggle);
+  });
+}
+
+function toggleClientAnalysisSection(button) {
+  const panel = button.closest(".analysis-expandable-panel");
+  if (!panel) return;
+  const isExpanded = panel.classList.toggle("is-expanded");
+  button.setAttribute("aria-expanded", String(isExpanded));
+  button.textContent = isExpanded ? "Collapse" : "Expand";
+}
+
+function renderClientAnalysisSheet(targetId, company) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  const analysis = (state.clientAnalyses || defaultData.clientAnalyses).find((item) => item.company === company);
+  if (!analysis) {
+    target.innerHTML = `<p class="metric-note">No client analysis sheet found yet.</p>`;
+    return;
+  }
+  const defaultAnalysis = defaultData.clientAnalyses.find((item) => item.company === company) || {};
+  const identityCheck = analysis.identityCheck || defaultAnalysis.identityCheck;
+  const logoPreview = identityCheck?.candidate?.logoPreview?.imageUrl
+    ? identityCheck.candidate.logoPreview
+    : identityResearchDrafts[analysis.company]?.logoPreview;
+  const socialScan = identityResearchDrafts[analysis.company]?.socialScan || identityCheck?.candidate?.socialScan;
+  const foundationAudit = analysis.foundationAudit || defaultAnalysis.foundationAudit;
+  const competitorBenchmark = analysis.competitorBenchmark || defaultAnalysis.competitorBenchmark;
+  const auditScore = foundationAudit?.score || 0;
+  const benchmarkGap = competitorBenchmark?.competitorAverage
+    ? `${Math.max(0, Number(String(competitorBenchmark.competitorAverage).replace(/\D/g, "")) - auditScore)}% gap`
+    : "Benchmark ready";
+
+  const sheetRows = [
+    { label: "Company", value: analysis.company },
+    { label: "Relationship", value: analysis.relationship },
+    { label: "Current offer stage", value: analysis.offerStage },
+    { label: "Service category", value: analysis.serviceCategory },
+    { label: "Area", value: analysis.area },
+    { label: "Research status", value: analysis.researchStatus }
+  ];
+
+  target.innerHTML = `
+    <section class="panel client-analysis-hero">
+      <div class="client-hero-layout">
+        <div>
+          <p class="label">${analysis.status}</p>
+          <h2>${analysis.company}</h2>
+          <p>${analysis.objective}</p>
+        </div>
+        <div class="client-hero-stats">
+          <article>
+            <span>Current phase</span>
+            <strong>${analysis.offerStage}</strong>
+          </article>
+          <article>
+            <span>Audit score</span>
+            <strong>${auditScore ? `${auditScore}%` : "Ready"}</strong>
+          </article>
+          <article>
+            <span>Paid ads</span>
+            <strong>Gated</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel snapshot-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Client sheet</p>
+          <h2>Business Snapshot</h2>
+          ${renderSectionPreview("The quick context card for who they are, what stage they are in and what still needs confirming.", [
+            { value: analysis.relationship, label: "Relationship" },
+            { value: analysis.area, label: "Coverage" }
+          ])}
+        </div>
+        <span class="pill">Do not skip discovery</span>
+      </div>
+      <div class="analysis-sheet-table">
+        ${sheetRows.map((row) => `
+          <div class="analysis-sheet-row">
+            <strong>${row.label}</strong>
+            <span>${row.value}</span>
+          </div>
+        `).join("")}
+      </div>
+    </section>
+
+    ${renderClientReadinessBoard(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderOwnerResponseInbox(analysis)}
+
+    ${renderDoneForYouFoundationPlan(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderFoundationSprintBoard(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderArchitectReferralPack(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderLeadTrackingBlueprint(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderProofAndHelpPanel(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderPitchView(analysis, foundationAudit, competitorBenchmark)}
+
+    ${identityCheck ? `
+      <section class="panel identity-check-panel premium-section-card">
+        <div class="panel-header">
+          <div>
+            <p class="label">Business identity check</p>
+            <h2>Correct Business Detection</h2>
+            ${renderSectionPreview("Confirm the exact business identity before using any AI-found public data in the client plan.", [
+              { value: identityCheck.humanStatus, label: "Human check" },
+              { value: identityCheck.logoStatus, label: "Logo" }
+            ])}
+          </div>
+          <div class="panel-actions">
+            <span class="pill">${identityCheck.confidence}</span>
+            <button class="small-button approve" data-identity-action="run" data-identity-company="${analysis.company}">Run AI Identity Search</button>
+          </div>
+        </div>
+        <div class="identity-summary-grid">
+          <article class="identity-summary-card">
+            <p class="label">Human status</p>
+            <strong>${identityCheck.humanStatus}</strong>
+          </article>
+          <article class="identity-summary-card">
+            <p class="label">Logo status</p>
+            <strong>${identityCheck.logoStatus}</strong>
+          </article>
+          <article class="identity-summary-card wide">
+            <p class="label">Decision rule</p>
+            <strong>${identityCheck.decisionRule}</strong>
+          </article>
+        </div>
+        ${identityCheck.candidate ? `
+          <div class="identity-candidate-card">
+            <div class="card-title-row">
+              <div>
+                <p class="label">Provided identity</p>
+                <h3>Agent-found candidate</h3>
+              </div>
+              <span class="${statusClass(identityCheck.reviewStatus || identityCheck.candidate.confidence)}">${identityCheck.reviewStatus || identityCheck.candidate.confidence}</span>
+            </div>
+            ${logoPreview ? `
+              <div class="identity-logo-preview">
+                <div class="identity-logo-frame ${logoPreview.imageUrl ? "" : "empty"}">
+                  ${logoPreview.imageUrl ? `<img src="${logoPreview.imageUrl}" alt="${analysis.company} logo preview" />` : `<span>No logo</span>`}
+                </div>
+                <div>
+                  <p class="label">${logoPreview.label}</p>
+                  <strong>Visual confirmation</strong>
+                  <span>${logoPreview.note}</span>
+                </div>
+              </div>
+            ` : ""}
+            ${socialScan ? `
+              <div class="social-scan-card">
+                <div>
+                  <p class="label">Social platform scan</p>
+                  <strong>Existing Accounts Found</strong>
+                  <span>${socialScan.summary}</span>
+                </div>
+                <div class="social-scan-table">
+                  <div class="social-scan-row social-scan-head">
+                    <strong>Platform</strong>
+                    <strong>Result</strong>
+                    <strong>Evidence</strong>
+                    <strong>Status</strong>
+                  </div>
+                  ${socialScan.platforms.map((item) => `
+                    <div class="social-scan-row">
+                      <strong>${item.platform}</strong>
+                      <span>${item.url ? `<a href="${item.url}" target="_blank" rel="noreferrer">${item.result}</a>` : item.result}</span>
+                      <span>${item.evidence}</span>
+                      <span class="status">${item.status}</span>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            ` : ""}
+            <p>${identityCheck.candidate.summary}</p>
+            <div class="provided-identity-table">
+              <div class="provided-identity-row provided-identity-head">
+                <strong>Detail</strong>
+                <strong>Value found</strong>
+                <strong>Source</strong>
+                <strong>Status</strong>
+              </div>
+              ${identityCheck.candidate.fields.map((field) => `
+                <div class="provided-identity-row">
+                  <strong>${field.label}</strong>
+                  <span>${field.value}</span>
+                  <span>${field.source}</span>
+                  <span class="status">${field.status}</span>
+                </div>
+              `).join("")}
+            </div>
+            <div class="identity-source-list">
+              ${identityCheck.candidate.sources.map((source) => `
+                <a href="${source.url}" target="_blank" rel="noreferrer">${source.label}</a>
+              `).join("")}
+            </div>
+            <div class="identity-gap-list">
+              <p class="label">Still ask owner</p>
+              <ol class="analysis-checklist">
+                ${identityCheck.candidate.gaps.map((gap) => `<li>${gap}</li>`).join("")}
+              </ol>
+            </div>
+            <div class="identity-review-actions">
+              <button class="small-button approve" data-identity-action="confirm" data-identity-company="${analysis.company}">Confirm Match</button>
+              <button class="small-button danger" data-identity-action="deny" data-identity-company="${analysis.company}">Deny Match</button>
+            </div>
+          </div>
+        ` : `
+          <div class="identity-empty-state">
+            <strong>No agent-provided identity yet.</strong>
+            <p>Run the identity search to let the Company Research Agent collect a candidate business identity, sources and missing owner questions.</p>
+          </div>
+        `}
+        <div class="identity-evidence-table">
+          <div class="identity-evidence-row identity-evidence-head">
+            <strong>Signal</strong>
+            <strong>Expected</strong>
+            <strong>Found</strong>
+            <strong>Status</strong>
+          </div>
+          ${identityCheck.evidence.map((item) => `
+            <div class="identity-evidence-row">
+              <strong>${item.signal}</strong>
+              <span>${item.expected}</span>
+              <span>${item.found}</span>
+              <span class="status">${item.status}</span>
+            </div>
+          `).join("")}
+        </div>
+        <details class="identity-rules">
+          <summary>
+            <span>
+              <small>Company Research Agent</small>
+              <strong>Matching rules before using public data</strong>
+            </span>
+            <em>${identityCheck.agentRules.length} rules</em>
+          </summary>
+          <ol class="analysis-checklist">
+            ${identityCheck.agentRules.map((rule) => `<li>${rule}</li>`).join("")}
+          </ol>
+        </details>
+      </section>
+    ` : ""}
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">ICP</p>
+          <h2>Ideal Customer Profile</h2>
+          ${renderSectionPreview("A sharper view of who is worth attracting, what they care about and what proof they need before enquiring.", [
+            { value: analysis.icp.length, label: "buyer signals" },
+            { value: "Local", label: "homeowner market" }
+          ])}
+        </div>
+      </div>
+      <div class="analysis-grid">
+        ${analysis.icp.map((item, index) => renderTemplateCard(item, index, "icp-template")).join("")}
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">AI research</p>
+          <h2>Business Analysis</h2>
+          ${renderSectionPreview("Positioning, growth gaps and the starter foundations work that should happen before any lead test.", [
+            { value: analysis.businessAnalysis.length, label: "strategic notes" },
+            { value: analysis.offerStage, label: "offer stage" }
+          ])}
+        </div>
+      </div>
+      <div class="analysis-grid">
+        ${analysis.businessAnalysis.map((item, index) => renderTemplateCard(item, index, "business-template")).join("")}
+      </div>
+    </section>
+
+    ${foundationAudit ? `
+      <section class="panel ai-foundation-audit-panel">
+        <div class="panel-header">
+          <div>
+            <p class="label">AI agent audit</p>
+            <h2>Starter Foundations Audit</h2>
+            ${renderSectionPreview(foundationAudit.summary, [
+              { value: `${foundationAudit.score}%`, label: "current readiness" },
+              { value: foundationAudit.rows.length, label: "audit areas" }
+            ])}
+          </div>
+          <div class="panel-actions">
+            <span class="pill">${foundationAudit.lastRun}</span>
+            ${renderAuditScore(foundationAudit.score)}
+          </div>
+        </div>
+        <p class="audit-summary">${foundationAudit.summary}</p>
+        <div class="audit-source-line">
+          <strong>Sources used</strong>
+          <span>${foundationAudit.sources}</span>
+        </div>
+        <div class="agent-audit-table">
+          <div class="agent-audit-row agent-audit-head">
+            <strong>Area</strong>
+            <strong>Agent</strong>
+            <strong>Finding</strong>
+            <strong>Starter action</strong>
+            <strong>Status</strong>
+          </div>
+          ${foundationAudit.rows.map((row) => `
+            <div class="agent-audit-row">
+              <strong>${row.area}${renderAuditScore(row.score, "mini")}</strong>
+              <span>${row.agent}</span>
+              <span>${row.finding}</span>
+              <span>${row.recommendation}</span>
+              <span class="status">${row.status}</span>
+            </div>
+          `).join("")}
+        </div>
+        <details class="identity-rules audit-priorities">
+          <summary>
+            <span>
+              <small>Delivery Agent</small>
+              <strong>Priority moves while waiting for replies</strong>
+            </span>
+            <em>${foundationAudit.priorities.length} actions</em>
+          </summary>
+          <ol class="analysis-checklist">
+            ${foundationAudit.priorities.map((item) => `<li>${item}</li>`).join("")}
+          </ol>
+        </details>
+      </section>
+    ` : ""}
+
+    ${competitorBenchmark ? `
+      <section class="panel competitor-benchmark-panel">
+        <div class="panel-header">
+          <div>
+            <p class="label">Competitor benchmark</p>
+            <h2>Local Foundations Comparison</h2>
+            ${renderSectionPreview("See how the client’s current foundations compare with stronger local competitors, then turn the gaps into the pitch.", [
+              { value: competitorBenchmark.competitorAverage, label: "competitor average" },
+              { value: benchmarkGap, label: "to close" }
+            ])}
+          </div>
+          <div class="panel-actions">
+            <span class="pill">${competitorBenchmark.status}</span>
+          </div>
+        </div>
+        <p class="audit-summary">${competitorBenchmark.summary}</p>
+        ${renderCompetitorVisualComparison(competitorBenchmark)}
+        <div class="benchmark-summary-grid">
+          <article class="benchmark-score-card">
+            <p class="label">Current score</p>
+            ${renderAuditScore(competitorBenchmark.currentScore)}
+          </article>
+          <article class="benchmark-score-card">
+            <p class="label">Competitor average</p>
+            <strong>${competitorBenchmark.competitorAverage}</strong>
+            <span>Add after scanning 3 local competitors.</span>
+          </article>
+          <article class="benchmark-score-card">
+            <p class="label">Best competitor</p>
+            <strong>${competitorBenchmark.bestCompetitor}</strong>
+            <span>Use the strongest local example as the practical benchmark.</span>
+          </article>
+          <article class="benchmark-score-card">
+            <p class="label">Target</p>
+            <strong>${competitorBenchmark.targetScore}</strong>
+            <span>Foundation target before pushing paid visibility.</span>
+          </article>
+        </div>
+        ${competitorBenchmark.competitors?.length ? `
+          <div class="competitor-card-grid">
+            ${competitorBenchmark.competitors.map((competitor) => `
+              <article class="competitor-card">
+                <div class="card-title-row">
+                  <div>
+                    <p class="label">${competitor.fit}</p>
+                    <h3>${competitor.name}</h3>
+                  </div>
+                  ${renderAuditScore(competitor.score, "mini")}
+                </div>
+                <p><strong>Strengths:</strong> ${competitor.strengths}</p>
+                <p><strong>Gap to client:</strong> ${competitor.gapToClient}</p>
+                <a href="${competitor.source}" target="_blank" rel="noreferrer">Open source</a>
+              </article>
+            `).join("")}
+          </div>
+        ` : ""}
+        <div class="benchmark-table">
+          <div class="benchmark-row benchmark-head">
+            <strong>Area</strong>
+            <strong>Client now</strong>
+            <strong>Competitor check</strong>
+            <strong>Pitch use</strong>
+          </div>
+          ${competitorBenchmark.rows.map((row) => `
+            <div class="benchmark-row">
+              <strong>${row.area}</strong>
+              <span>${row.current}</span>
+              <span>${row.competitorCheck}</span>
+              <span>${row.pitchUse}</span>
+            </div>
+          `).join("")}
+        </div>
+        <details class="identity-rules audit-priorities">
+          <summary>
+            <span>
+              <small>Benchmark Agent</small>
+              <strong>How to run this comparison</strong>
+            </span>
+            <em>${competitorBenchmark.nextSteps.length} steps</em>
+          </summary>
+          <ol class="analysis-checklist">
+            ${competitorBenchmark.nextSteps.map((item) => `<li>${item}</li>`).join("")}
+          </ol>
+        </details>
+      </section>
+    ` : ""}
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Starter offer</p>
+          <h2>Foundations Audit Sheet</h2>
+          ${renderSectionPreview("The practical starter checklist: fix the visible trust, enquiry and tracking basics before paid visibility.", [
+            { value: analysis.foundations.length, label: "foundation areas" },
+            { value: "Ads gated", label: "rule" }
+          ])}
+        </div>
+        <span class="pill">Ads stay gated</span>
+      </div>
+      <div class="foundation-table">
+        <div class="foundation-row foundation-head">
+          <strong>Area</strong>
+          <strong>Current state</strong>
+          <strong>Starter action</strong>
+          <strong>Status</strong>
+        </div>
+        ${analysis.foundations.map((item) => `
+          <div class="foundation-row">
+            <strong>${item.area}</strong>
+            <span>${item.currentState}</span>
+            <span>${item.starterAction}</span>
+            <span class="status">${item.status}</span>
+          </div>
+        `).join("")}
+      </div>
+    </section>
+
+    ${renderContentAssetChecklist(analysis)}
+
+    ${renderStarterTimeline(analysis)}
+
+    <div class="two-column client-analysis-columns">
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="label">Agent outputs</p>
+            <h2>What Each AI Agent Creates</h2>
+            ${renderSectionPreview("A clear view of which AI agent owns each part of the research, audit and delivery prep.", [
+              { value: analysis.agentOutputs.length, label: "agents" },
+              { value: "Human review", label: "required" }
+            ])}
+          </div>
+        </div>
+        <div class="analysis-list">
+          ${analysis.agentOutputs.map((item) => `
+            <article class="analysis-card">
+              <div class="card-title-row">
+                <strong>${item.agent}</strong>
+                <span class="mini-stat">Review</span>
+              </div>
+              <p>${item.output}</p>
+              <span>${item.nextAction}</span>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="label">Content</p>
+            <h2>Starter Content Angles</h2>
+            ${renderSectionPreview("Useful proof-led angles to film or collect before building campaigns.", [
+              { value: analysis.contentAngles.length, label: "angles" },
+              { value: "Proof first", label: "creative rule" }
+            ])}
+          </div>
+        </div>
+        <ol class="analysis-checklist">
+          ${analysis.contentAngles.map((item) => `<li>${item}</li>`).join("")}
+        </ol>
+      </section>
+    </div>
+
+    <div class="two-column client-analysis-columns">
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="label">Discovery</p>
+            <h2>Questions For The Owner</h2>
+            ${renderSectionPreview("Only ask the questions that public research cannot answer confidently.", [
+              { value: analysis.discoveryQuestions.length, label: "owner gaps" },
+              { value: "Short ask", label: "format" }
+            ])}
+          </div>
+        </div>
+        <ol class="analysis-checklist">
+          ${analysis.discoveryQuestions.map((item) => `<li>${item}</li>`).join("")}
+        </ol>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="label">Next actions</p>
+            <h2>Starter Delivery Plan</h2>
+            ${renderSectionPreview("The action plan for moving this trial client through starter foundations professionally.", [
+              { value: analysis.nextActions.length, label: "moves" },
+              { value: "Foundation first", label: "sequence" }
+            ])}
+          </div>
+        </div>
+        <ol class="analysis-checklist">
+          ${analysis.nextActions.map((item) => `<li>${item}</li>`).join("")}
+        </ol>
+      </section>
+    </div>
+  `;
+}
+
+function getClientAnalysis(company) {
+  state.clientAnalyses = state.clientAnalyses || structuredClone(defaultData.clientAnalyses);
+  let analysis = state.clientAnalyses.find((item) => item.company === company);
+  if (!analysis) {
+    const defaultAnalysis = defaultData.clientAnalyses.find((item) => item.company === company);
+    if (!defaultAnalysis) return null;
+    analysis = structuredClone(defaultAnalysis);
+    state.clientAnalyses.push(analysis);
+  }
+  const defaultAnalysis = defaultData.clientAnalyses.find((item) => item.company === company) || {};
+  analysis.identityCheck = analysis.identityCheck || structuredClone(defaultAnalysis.identityCheck || {});
+  return analysis;
+}
+
+function runIdentityResearch(company) {
+  const analysis = getClientAnalysis(company);
+  const draft = identityResearchDrafts[company];
+  if (!analysis || !draft) return;
+
+  analysis.identityCheck = {
+    ...(analysis.identityCheck || {}),
+    confidence: draft.confidence,
+    humanStatus: draft.humanStatus,
+    logoStatus: draft.logoStatus,
+    reviewStatus: "Awaiting Sam review",
+    candidate: structuredClone(draft),
+    evidence: draft.fields.map((field) => ({
+      signal: field.label,
+      expected: field.label === "Logo check" ? "Known logo/profile image should match" : "Should match the real business",
+      found: field.value,
+      status: field.status
+    }))
+  };
+
+  addAgentOutput({
+    agent: "Company Research Agent",
+    company,
+    type: "Business identity candidate",
+    result: draft.summary,
+    nextAction: "Sam should confirm or deny the candidate before the agent uses it for deeper research.",
+    status: "Needs Review"
+  });
+  addAgentLog("Company Research Agent", `Found a candidate identity for ${company}; waiting for Sam to confirm or deny it.`);
+  saveState();
+  renderAll();
+  showView(analysis.viewId);
+}
+
+function reviewIdentityCandidate(company, verdict) {
+  const analysis = getClientAnalysis(company);
+  if (!analysis?.identityCheck?.candidate) return;
+
+  const confirmed = verdict === "confirm";
+  analysis.identityCheck.reviewStatus = confirmed ? "Confirmed match" : "Denied match";
+  analysis.identityCheck.confidence = confirmed ? "Confirmed match" : "Denied - do not use";
+  analysis.identityCheck.humanStatus = confirmed ? "Sam confirmed" : "Sam denied";
+  analysis.identityCheck.evidence = (analysis.identityCheck.evidence || []).map((item) => ({
+    ...item,
+    status: confirmed && !String(item.status).toLowerCase().includes("mismatch") ? "Confirmed" : confirmed ? item.status : "Do not use"
+  }));
+
+  addAgentLog("Company Research Agent", `${company} identity candidate was ${confirmed ? "confirmed" : "denied"} by Sam.`);
+  addAgentOutput({
+    agent: "Company Research Agent",
+    company,
+    type: "Identity review",
+    result: confirmed ? "Sam confirmed the candidate identity. Agent can use this business for research." : "Sam denied the candidate identity. Agent must not use this data.",
+    nextAction: confirmed ? "Continue with company research, foundation audit and missing-info questions." : "Ask for exact website, logo or social links before continuing.",
+    status: confirmed ? "Approved" : "Needs Review"
+  });
+  saveState();
+  renderAll();
+  showView(analysis.viewId);
+}
+
+function saveClientOwnerResponse(button) {
+  const company = button.dataset.ownerResponseSave;
+  const analysis = getClientAnalysis(company);
+  const panel = button.closest(".owner-response-panel");
+  const textarea = panel?.querySelector("[data-owner-response-input]");
+  if (!analysis || !textarea) return;
+
+  const raw = textarea.value.trim();
+  state.clientOwnerResponses = state.clientOwnerResponses || {};
+  if (!raw) {
+    delete state.clientOwnerResponses[company];
+    saveState();
+    renderAll();
+    showView(analysis.viewId);
+    return;
+  }
+
+  state.clientOwnerResponses[company] = {
+    raw,
+    summary: analyseOwnerResponse(raw, analysis),
+    updatedAt: displayDate()
+  };
+
+  addAgentOutput({
+    agent: "Client Strategy Agent",
+    company,
+    type: "Owner response summary",
+    result: raw ? `Captured owner answers and converted them into starter priorities for ${company}.` : `Created a placeholder owner response summary for ${company}.`,
+    nextAction: "Use the summary to update service priorities, proof gaps and the starter delivery plan.",
+    status: raw ? "Used" : "Needs Review"
+  });
+  addAgentLog("Client Strategy Agent", `Saved owner response notes for ${company}.`);
+  saveState();
+  renderAll();
+  showView(analysis.viewId);
 }
 
 function renderSpend() {
@@ -3083,8 +4995,8 @@ function runLocalDemoJourney() {
     state.companyResearch.unshift({
       company,
       hook: "Local Brighton renovation company with strong before/after content potential.",
-      painPoint: "Could turn more local interest into tracked quote enquiries with clearer ads and lead follow-up.",
-      opportunity: "Use Sam's on-site filming setup to create a credible local Meta advert.",
+      painPoint: "Could turn more local interest into tracked quote enquiries once the online foundations, proof and enquiry route are stronger.",
+      opportunity: "Use the starter project to audit socials, Google Business, website basics, tracking and the first content foundation.",
       angle: "Open with a friendly local 10-minute chat, then explain the starter foundations offer.",
       status: "Research complete"
     });
@@ -3094,9 +5006,9 @@ function runLocalDemoJourney() {
     state.drafts.unshift({
       channel: "Email",
       company,
-      subject: "Quick local marketing idea for First Touch Innovations",
+      subject: "Quick starter foundations idea for First Touch Innovations",
       status: "Approved",
-      message: "Hi First Touch Innovations team, I’m Sam from Xello Media. I’m based around Brighton/Hove, studied Digital Marketing at Falmouth University and I’m looking to work with local renovation companies. I had a couple of ideas around filming a proper local advert and tracking enquiries from Meta. Would you be open to a quick 10-minute chat?"
+      message: "Hi First Touch Innovations team, I’m Sam from Xello Media. I’m based around Brighton/Hove and I’m working with local renovation companies on the basics first: social setup, Google Business, website/enquiry route, tracking and starter content. I had a few ideas for tightening those foundations before any paid ads. Would you be open to a quick 10-minute chat?"
     });
   }
 
@@ -3203,6 +5115,8 @@ function renderAll() {
   renderRisks();
   renderCeoBrief();
   renderClients();
+  renderClientAnalyses();
+  setupClientSectionExpansion();
   renderSpend();
   updateConnectionBar();
   bindStatusButtons();
@@ -3687,6 +5601,13 @@ document.addEventListener(
   (event) => {
     const button = event.target.closest("button");
     if (!button) return;
+    if (button.dataset.analysisToggle) toggleClientAnalysisSection(button);
+    if (button.dataset.identityAction === "run") runIdentityResearch(button.dataset.identityCompany);
+    if (button.dataset.identityAction === "confirm" || button.dataset.identityAction === "deny") {
+      reviewIdentityCandidate(button.dataset.identityCompany, button.dataset.identityAction);
+    }
+    if (button.dataset.ownerResponseSave) saveClientOwnerResponse(button);
+    if (button.dataset.viewJump) showView(button.dataset.viewJump);
     markButtonClicked(button);
   },
   true

@@ -46,6 +46,14 @@
             <button class="nav-item" data-view="xello-social">Xello Social</button>
           </details>
 
+          <details class="nav-folder" open>
+            <summary>Clients</summary>
+            <button class="nav-item" data-view="clients">Client Overview</button>
+            <button class="nav-item" data-view="client-first-touch">First Touch Innovations</button>
+            <button class="nav-item" data-view="client-m8-designs">M8 Designs</button>
+            <button class="nav-item" data-view="delivery">Client Delivery</button>
+          </details>
+
           <details class="nav-folder">
             <summary>Business</summary>
             <button class="nav-item" data-view="business-strategy">Business Strategy</button>
@@ -54,8 +62,6 @@
             <button class="nav-item" data-view="offer-doc">Offer Doc</button>
             <button class="nav-item" data-view="pipeline">Pipeline</button>
             <button class="nav-item" data-view="test-journey">Test Journey</button>
-            <button class="nav-item" data-view="delivery">Client Delivery</button>
-            <button class="nav-item" data-view="clients">Clients</button>
             <button class="nav-item" data-view="finance">Finance</button>
             <button class="nav-item" data-view="spend">Spend</button>
           </details>
@@ -80,7 +86,6 @@
             <button class="icon-button" id="connectSheetBtn" title="Connect Google Sheet backend">Connect Sheet</button>
             <button class="icon-button" id="exportBtn" title="Export data">Export</button>
             <button class="primary-button" id="addLeadBtn">Add Prospect</button>
-            <a class="icon-button logout-link" href="/crm/api/logout" title="Log out of the private dashboard">Log Out</a>
           </div>
         </header>
 
@@ -90,6 +95,8 @@
         </div>
 
         <section class="view active" id="overview">
+          <section class="performance-panel" id="performancePanel" aria-label="CRM performance progress"></section>
+
           <div class="metric-grid" id="metricGrid"></div>
 
           <div class="two-column">
@@ -897,13 +904,32 @@
           <section class="panel">
             <div class="panel-header">
               <div>
-                <p class="label">Delivery</p>
+                <p class="label">Trial delivery</p>
                 <h2>Clients</h2>
               </div>
-              <span class="pill">Target: 3 clients</span>
+              <span class="pill">Treat as real starter offers</span>
             </div>
             <div class="client-grid" id="clientGrid"></div>
           </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">AI agent audit</p>
+                <h2>Starter Foundations Status</h2>
+              </div>
+              <span class="pill">Pre-response draft</span>
+            </div>
+            <div class="foundation-audit-grid" id="clientFoundationAuditGrid"></div>
+          </section>
+        </section>
+
+        <section class="view client-analysis-view" id="client-first-touch">
+          <div id="clientFirstTouchSheet"></div>
+        </section>
+
+        <section class="view client-analysis-view" id="client-m8-designs">
+          <div id="clientM8Sheet"></div>
         </section>
 
         <section class="view" id="spend">
