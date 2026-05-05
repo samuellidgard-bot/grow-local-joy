@@ -3640,6 +3640,165 @@ function renderProofAndHelpPanel(analysis, foundationAudit, competitorBenchmark)
   `;
 }
 
+function getStarterDeliveryPrep(analysis, foundationAudit, competitorBenchmark) {
+  const isFirstTouch = analysis.company === "First Touch Innovations";
+  const auditScore = foundationAudit?.score || competitorBenchmark?.currentScore || 0;
+
+  if (isFirstTouch) {
+    return {
+      score: auditScore,
+      nowTasks: [
+        "Write the bigger-project positioning brief around loft conversions, extensions and full refurbs.",
+        "Draft the architect referral proof pack structure before photos arrive.",
+        "Prepare the lead tracker fields for project type, source, quote stage and architect/referral source.",
+        "Turn owner worries into FAQ prompts: timeframes, hidden costs, changes during the job and communication."
+      ],
+      waitingTasks: [
+        "Choose 5-10 best larger-project photos/videos from the Drive folder.",
+        "Select 3 detailed 5-star reviews that mention trust, quality, reliability or communication.",
+        "Build before/after proof once the strongest project files have been uploaded.",
+        "Add real project examples into the architect proof pack."
+      ],
+      strategyBrief: [
+        { label: "Positioning", value: "First Touch should be presented as a trusted local renovation team for bigger homeowner projects, not a small-job handyman option." },
+        { label: "Best work", value: "Loft conversions, extensions and full refurbs. Smaller jobs stay acceptable when profitable or likely to create referrals." },
+        { label: "Buyer", value: "Brighton/Hove homeowners planning serious home improvement work, plus architects who can refer suitable build projects." },
+        { label: "Proof needed", value: "Finished project visuals, detailed reviews, process shots, clean site evidence and examples that reduce risk for architects/homeowners." }
+      ],
+      offerAngles: [
+        "Trusted Brighton/Hove team for loft conversions, extensions and full refurb projects.",
+        "Bigger renovation projects handled with clear communication and strong local proof.",
+        "Architect-friendly build partner for homeowners who need a reliable contractor after drawings or planning.",
+        "Clearer project conversations around timelines, changes and cost expectations before work starts."
+      ],
+      contentTemplates: [
+        { format: "Project proof post", title: "From plan to finished space", hook: "Show a full refurb or extension in stages so homeowners can see the quality and process.", proof: "Before photo, process clip, finished result and one review line." },
+        { format: "Trust Reel", title: "What makes a renovation less stressful", hook: "Explain timeframes, communication and how changes are handled during bigger jobs.", proof: "Owner talking clip plus finished detail shots." },
+        { format: "Architect pack section", title: "Why architects can recommend First Touch", hook: "Make it easy for an architect to understand fit, reliability and referral route.", proof: "Three larger projects, three reviews and contact CTA." }
+      ],
+      reportSections: [
+        "Current foundation score and why ads stay gated.",
+        "Best project types to target first.",
+        "Competitor benchmark and what stronger local companies show better.",
+        "Proof library gaps from the Drive folder.",
+        "30-day starter foundations plan.",
+        "Architect referral proof pack recommendation.",
+        "Lead test readiness decision."
+      ]
+    };
+  }
+
+  return {
+    score: auditScore,
+    nowTasks: [
+      "Rewrite the strategy brief around new builds, extensions and full start-to-finish construction projects.",
+      "Audit m8designs.co.uk for proof order, mobile clarity, contact CTA and project fit language.",
+      "Prepare a project-fit qualifier that filters out handyman jobs, awkward access and subcontractor work.",
+      "Decide how Google Business fits the plan without making it the only foundation priority."
+    ],
+    waitingTasks: [
+      "Pull high-quality project photos into separate folders for new builds, extensions, bathrooms and rendering.",
+      "Collect any customer messages or review snippets that can be used on the website.",
+      "Choose the strongest visuals for a premium portfolio order.",
+      "Add real project proof into the content templates."
+    ],
+    strategyBrief: [
+      { label: "Positioning", value: "M8 should look like a premium project delivery company for proper construction work, not a general small-jobs page." },
+      { label: "Best work", value: "New builds, extensions, bathrooms and rendering, with full start-to-finish projects as the main commercial direction." },
+      { label: "Buyer", value: "Brighton/Hove homeowners who want a proper project handled with control, standards and clear site management." },
+      { label: "Filter", value: "Avoid handyman requests, difficult access, city-centre parking-heavy jobs and subcontractor work under other builders." }
+    ],
+    offerAngles: [
+      "Start-to-finish construction projects for Brighton/Hove homeowners.",
+      "New builds and extensions delivered with control over the full site and standard.",
+      "Premium bathroom, rendering and finish work used as proof of larger project quality.",
+      "Better-fit enquiries by showing exactly what M8 does and does not want."
+    ],
+    contentTemplates: [
+      { format: "Portfolio post", title: "Built from start to finish", hook: "Show M8 as the team that can manage the whole journey, not just one trade.", proof: "Project sequence, finished result and contact CTA." },
+      { format: "Fit-filter post", title: "What kind of project is right for M8", hook: "Attract proper projects while quietly repelling handyman requests.", proof: "Examples of new builds, extensions, bathrooms or rendering." },
+      { format: "Website section", title: "Project types we take on", hook: "Make the website instantly clear for homeowners comparing builders.", proof: "Service tiles, strongest project photos and phone/email CTA." }
+    ],
+    reportSections: [
+      "Current foundation score and why the profile needs tightening before ads.",
+      "Best project types to promote.",
+      "Website/contact route audit.",
+      "Competitor benchmark and proof gaps.",
+      "Drive folder asset review.",
+      "30-day starter foundations plan.",
+      "Google Business recommendation and lead test readiness decision."
+    ]
+  };
+}
+
+function renderStarterDeliveryPrepPanel(analysis, foundationAudit, competitorBenchmark) {
+  const prep = getStarterDeliveryPrep(analysis, foundationAudit, competitorBenchmark);
+  const readyCount = prep.nowTasks.length;
+  const waitingCount = prep.waitingTasks.length;
+  return `
+    <section class="panel starter-delivery-prep-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Delivery command centre</p>
+          <h2>Starter Foundations Prep</h2>
+          ${renderSectionPreview("Everything Xello can prepare while the Google Drive folders are being filled out, plus the exact sections to finish once proof arrives.", [
+            { value: readyCount, label: "can do now" },
+            { value: waitingCount, label: "waiting on assets" },
+            { value: `${prep.score}%`, label: "audit score" }
+          ])}
+        </div>
+        <span class="pill">Ready to work</span>
+      </div>
+      <div class="delivery-prep-hero">
+        <article>
+          <p class="label">Can do now</p>
+          <ol class="analysis-checklist">
+            ${prep.nowTasks.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+          </ol>
+        </article>
+        <article>
+          <p class="label">Finish when assets arrive</p>
+          <ol class="analysis-checklist">
+            ${prep.waitingTasks.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+          </ol>
+        </article>
+      </div>
+      <div class="delivery-brief-grid">
+        ${prep.strategyBrief.map((item) => `
+          <article>
+            <span>${escapeHtml(item.label)}</span>
+            <strong>${escapeHtml(item.value)}</strong>
+          </article>
+        `).join("")}
+      </div>
+      <div class="delivery-template-layout">
+        <article class="delivery-offer-card">
+          <p class="label">Starter offer angles</p>
+          <ol class="analysis-checklist">
+            ${prep.offerAngles.map((angle) => `<li>${escapeHtml(angle)}</li>`).join("")}
+          </ol>
+        </article>
+        <article class="delivery-report-card">
+          <p class="label">Client report structure</p>
+          <ol class="analysis-checklist">
+            ${prep.reportSections.map((section) => `<li>${escapeHtml(section)}</li>`).join("")}
+          </ol>
+        </article>
+      </div>
+      <div class="content-template-grid">
+        ${prep.contentTemplates.map((template) => `
+          <article>
+            <span>${escapeHtml(template.format)}</span>
+            <strong>${escapeHtml(template.title)}</strong>
+            <p>${escapeHtml(template.hook)}</p>
+            <em>${escapeHtml(template.proof)}</em>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
 function getReadinessItems(analysis, foundationAudit, competitorBenchmark) {
   const currentScore = Number(foundationAudit?.score || competitorBenchmark?.currentScore || 0);
   const competitorAverage = numberFromPercent(competitorBenchmark?.competitorAverage);
@@ -4108,6 +4267,8 @@ function renderClientAnalysisSheet(targetId, company) {
     ${renderLeadTrackingBlueprint(analysis, foundationAudit, competitorBenchmark)}
 
     ${renderProofAndHelpPanel(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderStarterDeliveryPrepPanel(analysis, foundationAudit, competitorBenchmark)}
 
     ${renderPitchView(analysis, foundationAudit, competitorBenchmark)}
 
