@@ -3799,6 +3799,120 @@ function renderStarterDeliveryPrepPanel(analysis, foundationAudit, competitorBen
   `;
 }
 
+function getStarterDeliveryPack(analysis) {
+  const isFirstTouch = analysis.company === "First Touch Innovations";
+
+  if (isFirstTouch) {
+    return {
+      headline: "First Touch should be packaged around fewer, higher-value renovation enquiries, with architect referrals treated as a serious growth channel.",
+      assetChecklist: [
+        { item: "Best larger-project photos", status: "Waiting", note: "Lofts, extensions and full refurb shots that show finished quality." },
+        { item: "Before and after examples", status: "Waiting", note: "Use to make the transformation obvious in reports and social content." },
+        { item: "Owner/process videos", status: "Waiting", note: "Short clips explaining trust, timeframes, communication and how changes are handled." },
+        { item: "Detailed 5-star reviews", status: "Available", note: "Pick the strongest reviews for the website, proof pack and architect PDF." },
+        { item: "Architect proof pack assets", status: "Build next", note: "Needs 3 larger projects, 3 reviews, intro copy and a simple referral CTA." }
+      ],
+      monthPlan: [
+        { week: "Week 1", focus: "Positioning and proof audit", action: "Confirm strongest high-value services, organise proof folders and write the client-facing positioning brief." },
+        { week: "Week 2", focus: "Visible trust upgrades", action: "Tighten website/social language, Google Business proof, enquiry route and FAQs around timeframes and cost clarity." },
+        { week: "Week 3", focus: "Architect referral asset", action: "Build the one-page architect referral PDF with project proof, reviews and contact route." },
+        { week: "Week 4", focus: "Readiness decision", action: "Score the foundations again and decide whether a small lead test is now sensible." }
+      ],
+      clientScript: [
+        "The main thing I have taken from your answers is that we should not position First Touch around small odd jobs.",
+        "The strongest angle is bigger renovation work: lofts, extensions and full refurbs, with smaller jobs kept as a referral route rather than the main message.",
+        "Before we do anything with ads, I want to make the proof, enquiry route and tracking stronger so better leads do not get wasted.",
+        "A useful extra asset for you is an architect referral pack, because architects could become a long-term source of bigger work."
+      ],
+      nextDecisions: [
+        "Which 3 larger projects best prove First Touch can handle bigger work?",
+        "Which reviews would make an architect or homeowner feel safest?",
+        "Does the architect pack need to be a PDF first, a website page later, or both?"
+      ]
+    };
+  }
+
+  return {
+    headline: "M8 should be packaged as a premium full-project construction team, with clear filtering so the content attracts proper projects instead of handyman requests.",
+    assetChecklist: [
+      { item: "New build project proof", status: "Waiting", note: "Best start-to-finish visuals, ideally showing scale and quality." },
+      { item: "Extension project proof", status: "Waiting", note: "Use as the main homeowner-facing proof for higher-value enquiries." },
+      { item: "Bathrooms and rendering", status: "Waiting", note: "Use as supporting proof that shows finish quality and seasonal demand." },
+      { item: "Website portfolio images", status: "Available", note: "Audit the current website order, then replace with higher-quality uploads where possible." },
+      { item: "Review/testimonial snippets", status: "Needed", note: "If Google is not the focus yet, add believable website review snippets from real messages." }
+    ],
+    monthPlan: [
+      { week: "Week 1", focus: "Offer clarity", action: "Rewrite positioning around new builds, extensions and full start-to-finish project delivery." },
+      { week: "Week 2", focus: "Website and profile cleanup", action: "Improve project order, contact CTA, service wording and mobile proof clarity." },
+      { week: "Week 3", focus: "Content and filters", action: "Create content that attracts proper projects and filters out handyman, awkward-access and subcontractor work." },
+      { week: "Week 4", focus: "Google and readiness decision", action: "Decide whether Google Business is needed now, then rescore before any lead test." }
+    ],
+    clientScript: [
+      "The strongest message for M8 is not that you do a bit of everything. It is that you can take proper projects from start to finish.",
+      "The content should lead with new builds and extensions, then use bathrooms, rendering and finish work as proof of quality.",
+      "We should also make the poor-fit jobs clearer, so the marketing does not create loads of small handyman enquiries.",
+      "Before any ads, I want the website/contact route and proof library to look premium enough to match the type of projects you want."
+    ],
+    nextDecisions: [
+      "Which project category should be the first public focus: new builds, extensions, or bathrooms/rendering?",
+      "Do you want Google Business set up now, or should the website/TikTok proof come first?",
+      "Which images are high-quality enough to represent M8 as premium?"
+    ]
+  };
+}
+
+function renderStarterDeliveryPackPanel(analysis) {
+  const pack = getStarterDeliveryPack(analysis);
+  return `
+    <section class="panel starter-delivery-pack-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Client-ready materials</p>
+          <h2>Starter Delivery Pack</h2>
+          ${renderSectionPreview(pack.headline, [
+            { value: pack.assetChecklist.length, label: "asset checks" },
+            { value: "30 days", label: "delivery plan" },
+            { value: pack.clientScript.length, label: "talking points" }
+          ])}
+        </div>
+        <span class="pill">Use on next call</span>
+      </div>
+      <div class="starter-pack-grid">
+        <article class="starter-pack-feature">
+          <p class="label">Client call script</p>
+          <ol class="analysis-checklist">
+            ${pack.clientScript.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}
+          </ol>
+        </article>
+        <article>
+          <p class="label">Next decisions</p>
+          <ol class="analysis-checklist">
+            ${pack.nextDecisions.map((decision) => `<li>${escapeHtml(decision)}</li>`).join("")}
+          </ol>
+        </article>
+      </div>
+      <div class="asset-intake-grid">
+        ${pack.assetChecklist.map((asset) => `
+          <article class="${asset.status === "Available" ? "ready" : asset.status === "Needed" ? "needed" : "waiting"}">
+            <span>${escapeHtml(asset.status)}</span>
+            <strong>${escapeHtml(asset.item)}</strong>
+            <p>${escapeHtml(asset.note)}</p>
+          </article>
+        `).join("")}
+      </div>
+      <div class="month-plan-grid">
+        ${pack.monthPlan.map((week) => `
+          <article>
+            <span>${escapeHtml(week.week)}</span>
+            <strong>${escapeHtml(week.focus)}</strong>
+            <p>${escapeHtml(week.action)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
 function getReadinessItems(analysis, foundationAudit, competitorBenchmark) {
   const currentScore = Number(foundationAudit?.score || competitorBenchmark?.currentScore || 0);
   const competitorAverage = numberFromPercent(competitorBenchmark?.competitorAverage);
@@ -4269,6 +4383,8 @@ function renderClientAnalysisSheet(targetId, company) {
     ${renderProofAndHelpPanel(analysis, foundationAudit, competitorBenchmark)}
 
     ${renderStarterDeliveryPrepPanel(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderStarterDeliveryPackPanel(analysis)}
 
     ${renderPitchView(analysis, foundationAudit, competitorBenchmark)}
 
