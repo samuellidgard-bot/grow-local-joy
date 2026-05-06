@@ -958,21 +958,45 @@ tbody tr:hover {
   background: linear-gradient(90deg, var(--brand-dark), var(--brand));
 }
 
-.client-current-action-shell {
-  margin-top: 14px;
+.client-progress-summary-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  align-items: stretch;
+}
+
+.client-progress-summary-row span {
+  display: inline-grid;
+  gap: 2px;
+  min-height: 38px;
+  border: 1px solid rgba(144, 200, 71, 0.3);
+  border-radius: var(--radius);
+  background: rgba(237, 248, 228, 0.66);
+  color: var(--muted);
+  padding: 6px 9px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.client-progress-summary-row strong {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.1;
 }
 
 .client-current-action-toggle {
   background: #edf8e4;
   border-color: rgba(144, 200, 71, 0.44);
   color: var(--brand-dark);
+  min-height: 38px;
 }
 
 .client-current-action-plan {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.25fr) minmax(220px, 0.7fr);
   gap: 14px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .client-current-action-plan[hidden] {

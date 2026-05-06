@@ -3749,9 +3749,6 @@ function renderClientCurrentStageActionPlan(progress) {
   if (!step) return "";
   return `
     <div class="client-current-action-shell">
-      <button type="button" class="small-button client-current-action-toggle" data-current-action-toggle="true" aria-expanded="false">
-        Show current action plan
-      </button>
       <div class="client-current-action-plan" hidden>
         <div class="client-current-action-copy">
           <p class="label">Current stage action plan</p>
@@ -3783,11 +3780,24 @@ function renderClientProgressTracker(analysis) {
         <div>
           <p class="label">Client progress</p>
           <h2>Offer Stage Tracker</h2>
-          ${renderSectionPreview(progress.note, [
-            { value: progress.currentOffer, label: "current offer" },
-            { value: `${progress.currentStep}/8`, label: "current step" },
-            { value: `${activePercent}%`, label: "phase progress" }
-          ])}
+          <p class="section-preview-copy">${escapeHtml(progress.note)}</p>
+          <div class="client-progress-summary-row">
+            <span>
+              <strong>${escapeHtml(progress.currentOffer)}</strong>
+              current offer
+            </span>
+            <span>
+              <strong>${progress.currentStep}/8</strong>
+              current step
+            </span>
+            <span>
+              <strong>${activePercent}%</strong>
+              phase progress
+            </span>
+            <button type="button" class="small-button client-current-action-toggle" data-current-action-toggle="true" aria-expanded="false">
+              Show current action plan
+            </button>
+          </div>
         </div>
         <span class="pill">${escapeHtml(progress.currentStepLabel)}</span>
       </div>
@@ -4702,8 +4712,8 @@ function toggleProgressStepDescription(button) {
 }
 
 function toggleCurrentStageActionPlan(button) {
-  const shell = button.closest(".client-current-action-shell");
-  const plan = shell?.querySelector(".client-current-action-plan");
+  const panel = button.closest(".client-progress-panel");
+  const plan = panel?.querySelector(".client-current-action-plan");
   if (!plan) return;
   const isOpen = button.getAttribute("aria-expanded") === "true";
   plan.hidden = isOpen;
