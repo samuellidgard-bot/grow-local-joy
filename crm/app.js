@@ -3913,6 +3913,161 @@ function renderStarterDeliveryPackPanel(analysis) {
   `;
 }
 
+function getPreAssetWorkbench(analysis, foundationAudit, competitorBenchmark) {
+  const isFirstTouch = analysis.company === "First Touch Innovations";
+  const score = foundationAudit?.score || competitorBenchmark?.currentScore || 0;
+
+  if (isFirstTouch) {
+    return {
+      reportTitle: "First Touch Innovations - Starter Foundations Report",
+      summary: "First Touch already has strong trust potential through 5-star reviews and a clear owner ambition to win bigger renovation projects. The current work is to package that properly before sending paid traffic.",
+      clientUpdate: "I have built the strategy side while waiting for your photos/videos. The direction is bigger renovation projects first: lofts, extensions and full refurbs, with architect referrals as a serious growth route. Once your proof folder is filled, I can turn this into a polished report and referral pack.",
+      profileCopy: [
+        { label: "Short positioning line", value: "Local Brighton/Hove renovation team for loft conversions, extensions and full refurb projects." },
+        { label: "Enquiry CTA", value: "Call, text or WhatsApp to discuss your project and the best next step." },
+        { label: "Trust message", value: "5-star local reviews, practical communication and a focus on projects where the client needs reliability, not just labour." },
+        { label: "Architect angle", value: "A reliable local build partner for architects who need a trusted contractor to discuss or price homeowner projects." }
+      ],
+      reportBlocks: [
+        { label: "Current score", value: `${score}% starter foundation readiness. Paid lead testing stays gated until proof and tracking improve.` },
+        { label: "What is working", value: "Clear owner direction, strong review base, valuable project types and a sensible architect referral opportunity." },
+        { label: "What is missing", value: "Organised proof library, project examples, stronger enquiry tracking and a client-facing architect proof pack." },
+        { label: "30-day outcome", value: "A sharper public profile, proof pack, architect referral asset and lead tracker ready for better-quality enquiries." }
+      ],
+      trackerRows: [
+        { field: "Lead source", example: "Architect referral / Google / WhatsApp / Facebook / Instagram" },
+        { field: "Project type", example: "Loft conversion, extension, full refurb, smaller referral job" },
+        { field: "Project value signal", example: "Small, medium, high, or owner-estimated range" },
+        { field: "Quote stage", example: "New enquiry, info needed, site visit, quote sent, follow-up due" },
+        { field: "Next follow-up", example: "Date and exact next action" }
+      ],
+      contentCalendar: [
+        { day: "Post 1", idea: "Why bigger renovation projects need clearer communication before work starts." },
+        { day: "Post 2", idea: "Before/after or project-stage story from a loft, extension or refurb once assets arrive." },
+        { day: "Post 3", idea: "What architects need from a reliable build partner." },
+        { day: "Post 4", idea: "Review-led trust post using one detailed 5-star review." }
+      ],
+      nextWork: [
+        "Draft the one-page architect referral PDF structure.",
+        "Prepare the project proof selection criteria.",
+        "Build the lead tracker columns in the CRM or Google Sheet.",
+        "Write the first version of the client-facing report without photos.",
+        "Add photos/reviews once the Drive folder is ready."
+      ]
+    };
+  }
+
+  return {
+    reportTitle: "M8 Designs - Starter Foundations Report",
+    summary: "M8 has a strong project-delivery angle, but the message needs to move away from broad trades and toward premium start-to-finish projects before any paid lead generation is considered.",
+    clientUpdate: "I have built the strategy side while waiting for your project files. The direction is full-project construction first: new builds, extensions and proper start-to-finish work, with bathrooms/rendering used as proof of quality. Once your folder is filled, I can turn this into a premium profile/report.",
+    profileCopy: [
+      { label: "Short positioning line", value: "Start-to-finish construction projects, extensions and premium home improvements across Brighton/Hove." },
+      { label: "Enquiry CTA", value: "Call or email to discuss your project, access, timeline and the best way to quote it properly." },
+      { label: "Trust message", value: "A project-led team focused on site control, finish quality and proper work rather than small handyman jobs." },
+      { label: "Filter message", value: "Best suited to proper projects with sensible access, parking/material drop-off and enough scope to do the work properly." }
+    ],
+    reportBlocks: [
+      { label: "Current score", value: `${score}% starter foundation readiness. Ads stay gated while the profile, proof and enquiry route are tightened.` },
+      { label: "What is working", value: "Clear desire for proper projects, existing website/TikTok presence, strong service range and visual portfolio potential." },
+      { label: "What is missing", value: "Sharper project hierarchy, organised proof, review snippets, Google Business decision and poor-fit enquiry filters." },
+      { label: "30-day outcome", value: "A cleaner premium profile, stronger website sections, better-fit enquiry wording and a practical lead tracking process." }
+    ],
+    trackerRows: [
+      { field: "Lead source", example: "Website / TikTok / referral / word of mouth / future Google" },
+      { field: "Project type", example: "New build, extension, bathroom, rendering, other" },
+      { field: "Access fit", example: "Good parking/storage, okay, difficult access, high-rise/city-centre issue" },
+      { field: "Fit decision", example: "Strong fit, possible fit, poor fit, reject" },
+      { field: "Quote stage", example: "New enquiry, info needed, site visit, quote sent, follow-up due" }
+    ],
+    contentCalendar: [
+      { day: "Post 1", idea: "What makes a project right for M8: proper scope, access and start-to-finish delivery." },
+      { day: "Post 2", idea: "New build or extension project proof once strongest assets arrive." },
+      { day: "Post 3", idea: "Bathroom/rendering finish-quality proof as supporting content." },
+      { day: "Post 4", idea: "Website/contact post explaining how to enquire and what info to send." }
+    ],
+    nextWork: [
+      "Draft homepage/profile wording around full-project delivery.",
+      "Prepare the website service section order.",
+      "Create the poor-fit enquiry filter wording.",
+      "Build the lead tracker columns in the CRM or Google Sheet.",
+      "Add best images/testimonials once the Drive folder is ready."
+    ]
+  };
+}
+
+function renderPreAssetWorkbenchPanel(analysis, foundationAudit, competitorBenchmark) {
+  const workbench = getPreAssetWorkbench(analysis, foundationAudit, competitorBenchmark);
+  return `
+    <section class="panel pre-asset-workbench-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">No-assets workbench</p>
+          <h2>Everything To Complete Before Drive Uploads</h2>
+          ${renderSectionPreview(workbench.summary, [
+            { value: "No photos needed", label: "status" },
+            { value: workbench.trackerRows.length, label: "tracker fields" },
+            { value: workbench.contentCalendar.length, label: "content prompts" }
+          ])}
+        </div>
+        <span class="pill">Do this now</span>
+      </div>
+      <div class="pre-asset-report-card">
+        <div>
+          <p class="label">One-page report draft</p>
+          <h3>${escapeHtml(workbench.reportTitle)}</h3>
+          <p>${escapeHtml(workbench.summary)}</p>
+        </div>
+        <article>
+          <p class="label">Message to send while waiting</p>
+          <strong>${escapeHtml(workbench.clientUpdate)}</strong>
+        </article>
+      </div>
+      <div class="pre-asset-copy-grid">
+        ${workbench.profileCopy.map((item) => `
+          <article>
+            <span>${escapeHtml(item.label)}</span>
+            <strong>${escapeHtml(item.value)}</strong>
+          </article>
+        `).join("")}
+      </div>
+      <div class="pre-asset-report-grid">
+        ${workbench.reportBlocks.map((block) => `
+          <article>
+            <span>${escapeHtml(block.label)}</span>
+            <strong>${escapeHtml(block.value)}</strong>
+          </article>
+        `).join("")}
+      </div>
+      <div class="pre-asset-operating-grid">
+        <article>
+          <p class="label">Lead tracker setup</p>
+          <div class="mini-table">
+            ${workbench.trackerRows.map((row) => `
+              <div>
+                <strong>${escapeHtml(row.field)}</strong>
+                <span>${escapeHtml(row.example)}</span>
+              </div>
+            `).join("")}
+          </div>
+        </article>
+        <article>
+          <p class="label">Content prompts ready</p>
+          <ol class="analysis-checklist">
+            ${workbench.contentCalendar.map((item) => `<li><strong>${escapeHtml(item.day)}:</strong> ${escapeHtml(item.idea)}</li>`).join("")}
+          </ol>
+        </article>
+        <article>
+          <p class="label">Next work queue</p>
+          <ol class="analysis-checklist">
+            ${workbench.nextWork.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ol>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
 function getReadinessItems(analysis, foundationAudit, competitorBenchmark) {
   const currentScore = Number(foundationAudit?.score || competitorBenchmark?.currentScore || 0);
   const competitorAverage = numberFromPercent(competitorBenchmark?.competitorAverage);
@@ -4385,6 +4540,8 @@ function renderClientAnalysisSheet(targetId, company) {
     ${renderStarterDeliveryPrepPanel(analysis, foundationAudit, competitorBenchmark)}
 
     ${renderStarterDeliveryPackPanel(analysis)}
+
+    ${renderPreAssetWorkbenchPanel(analysis, foundationAudit, competitorBenchmark)}
 
     ${renderPitchView(analysis, foundationAudit, competitorBenchmark)}
 
