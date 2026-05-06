@@ -1070,6 +1070,31 @@ tbody tr:hover {
   text-transform: uppercase;
 }
 
+.client-current-task-list li.is-next {
+  border: 1px solid rgba(130, 200, 50, 0.42);
+  border-radius: 8px;
+  background: #fbfdf8;
+  padding: 8px 10px;
+  font-weight: 800;
+}
+
+.client-current-task-list li.is-next::marker {
+  color: var(--brand-dark);
+  font-weight: 900;
+}
+
+.client-current-task-list li.is-next strong {
+  display: inline-block;
+  margin-left: 8px;
+  border-radius: 999px;
+  background: #e7f5d7;
+  color: var(--brand-dark);
+  padding: 4px 7px;
+  font-size: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .client-current-done-card {
   display: grid;
   align-content: start;

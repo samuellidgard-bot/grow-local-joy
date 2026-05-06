@@ -3781,7 +3781,12 @@ function renderClientCurrentStageActionPlan(progress) {
   if (!step) return "";
   const key = leaderPlanKey(progress);
   const isOpen = state.openCurrentActionPlanKey === key;
-  const completions = state.leaderTaskCompletions?.[key] || {};
+  const tasks = step.tasks || [];
+  const completions = {
+    ...getDefaultCurrentStageTaskCompletions(progress),
+    ...(state.leaderTaskCompletions?.[key] || {})
+  };
+  const nextTaskIndex = tasks.findIndex((_, index) => !completions[index]);
   return `
     <div class="client-current-action-shell">
       <div class="client-current-action-plan" ${isOpen ? "" : "hidden"}>
@@ -3793,10 +3798,10 @@ function renderClientCurrentStageActionPlan(progress) {
         <div class="client-current-task-list">
           <p class="label">Exact tasks to complete now</p>
           <ol>
-            ${(step.tasks || []).map((task, index) => `
-              <li class="${completions[index] ? "is-complete" : ""}">
+            ${tasks.map((task, index) => `
+              <li class="${completions[index] ? "is-complete" : index === nextTaskIndex ? "is-next" : ""}">
                 <span>${escapeHtml(task)}</span>
-                ${completions[index] ? "<strong>Done</strong>" : ""}
+                ${completions[index] ? "<strong>Done</strong>" : index === nextTaskIndex ? "<strong>Next</strong>" : ""}
               </li>
             `).join("")}
           </ol>
@@ -3809,6 +3814,13 @@ function renderClientCurrentStageActionPlan(progress) {
       </div>
     </div>
   `;
+}
+
+function getDefaultCurrentStageTaskCompletions(progress) {
+  if (progress.currentStepLabel !== "Missing foundations") return {};
+  if (progress.company === "First Touch Innovations") return { 0: true, 1: true };
+  if (progress.company === "M8 Designs") return { 0: true };
+  return {};
 }
 
 function leaderPlanKey(progress) {
