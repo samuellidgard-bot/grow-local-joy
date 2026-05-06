@@ -3835,9 +3835,11 @@ function renderLeaderCommandPanel(progress) {
   const key = leaderPlanKey(progress);
   const run = state.leaderRuns?.[key];
   const completions = state.leaderTaskCompletions?.[key] || {};
-  const assignments = buildLeaderAssignments(progress);
+  const localAssignments = buildLeaderAssignments(progress);
+  const assignments = run?.assignments?.length ? run.assignments : localAssignments;
   const delegatedAgents = [...new Set(assignments.map((assignment) => assignment.agent))].join("|");
   const completeCount = assignments.filter((assignment) => completions[assignment.index]).length;
+  const taskPayload = encodeURIComponent(JSON.stringify(localAssignments.map((assignment) => assignment.task)));
   return `
     <div class="leader-command-panel">
       <div class="leader-command-head">
@@ -3847,8 +3849,9 @@ function renderLeaderCommandPanel(progress) {
           <p>Leader reads the current tasks, commands the specialist agents, collects their relay notes and lets you tick off tasks once reviewed.</p>
         </div>
         <div class="leader-command-actions">
+          ${run?.mode ? `<span class="pill">${run.mode === "server-runner" ? "backend runner" : "local fallback"}</span>` : ""}
           <span class="pill">${completeCount}/${assignments.length} complete</span>
-          <button type="button" class="small-button approve" data-leader-run="${escapeHtml(key)}" data-leader-company="${escapeHtml(progress.company)}" data-leader-agents="${escapeHtml(delegatedAgents)}">
+          <button type="button" class="small-button approve" data-leader-run="${escapeHtml(key)}" data-leader-company="${escapeHtml(progress.company)}" data-leader-stage="${escapeHtml(progress.currentStepLabel)}" data-leader-offer="${escapeHtml(progress.currentOffer)}" data-leader-tasks="${taskPayload}" data-leader-agents="${escapeHtml(delegatedAgents)}">
             ${run ? "Rerun Leader" : "Run Leader agent"}
           </button>
         </div>
@@ -4834,16 +4837,49 @@ function toggleCurrentStageActionPlan(button) {
   saveState();
 }
 
-function runLeaderAgent(button) {
+async function requestLeaderRun(payload) {
+  if (window.location.protocol === "file:") return null;
+  try {
+    const response = await fetch("api/leader/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) return null;
+    const result = await response.json();
+    return result?.ok ? result : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+async function runLeaderAgent(button) {
   const key = button.dataset.leaderRun;
   const company = button.dataset.leaderCompany || "client";
   const delegatedAgents = String(button.dataset.leaderAgents || "").split("|").filter(Boolean);
+  let tasks = [];
+  try {
+    tasks = JSON.parse(decodeURIComponent(button.dataset.leaderTasks || "%5B%5D"));
+  } catch (error) {
+    tasks = [];
+  }
   if (!key) return;
+  button.disabled = true;
   state.leaderRuns = state.leaderRuns || {};
   state.leaderTaskCompletions = state.leaderTaskCompletions || {};
+  const serverRun = await requestLeaderRun({
+    key,
+    company,
+    stage: button.dataset.leaderStage || "",
+    offer: button.dataset.leaderOffer || "",
+    tasks
+  });
   state.leaderRuns[key] = {
     ranAt: displayDate(),
-    company
+    company,
+    mode: serverRun?.mode || "local-fallback",
+    assignments: serverRun?.assignments || null
   };
   state.openCurrentActionPlanKey = key;
 
@@ -4865,12 +4901,12 @@ function runLeaderAgent(button) {
     agent.nextRun = "After Leader command";
   });
 
-  addAgentLog("Leader", `Leader read the current stage tasks for ${company}, delegated them to specialist agents and opened the relay board.`);
+  addAgentLog("Leader", `Leader read the current stage tasks for ${company}, delegated them to specialist agents and opened the relay board${serverRun ? " using the backend runner" : " using local fallback mode"}.`);
   addAgentOutput({
     agent: "Leader",
     company,
     type: "Stage command plan",
-    result: `Delegated the current stage action plan for ${company} to specialist agents and prepared task tick-off controls.`,
+    result: `${serverRun?.summary || `Delegated the current stage action plan for ${company} to specialist agents and prepared task tick-off controls.`}`,
     nextAction: "Review each relay note, then mark tasks done once the evidence is good enough.",
     status: "Needs Review"
   });

@@ -64,7 +64,54 @@ export default async function handler(req, res) {
     return sendText(res, "ok", "text/plain; charset=utf-8");
   }
 
+  if (routePath === "/api/leader/run" && req.method === "POST") {
+    return handleLeaderRun(req, res);
+  }
+
   return serveAppFile(routePath, res);
+}
+
+async function handleLeaderRun(req, res) {
+  try {
+    const payload = JSON.parse(await readBody(req) || "{}");
+    const company = String(payload.company || "client");
+    const tasks = Array.isArray(payload.tasks) ? payload.tasks.map(String).filter(Boolean) : [];
+    const assignments = tasks.map((task, index) => {
+      const agent = getLeaderAgentForTask(task);
+      return {
+        index,
+        task,
+        agent,
+        command: `${agent}, handle this for ${company}: ${task}`,
+        relay: "Relay back to Leader with: evidence found, recommended status, human approval needed, and whether this can be ticked off."
+      };
+    });
+
+    return sendJson(res, {
+      ok: true,
+      mode: "server-runner",
+      autonomousLevel: "approval-gated",
+      ranAt: new Date().toISOString(),
+      company,
+      key: payload.key || "",
+      stage: payload.stage || "",
+      assignments,
+      summary: `Leader created ${assignments.length} specialist command${assignments.length === 1 ? "" : "s"} for ${company}.`
+    });
+  } catch (error) {
+    res.statusCode = 400;
+    return sendJson(res, { ok: false, error: "Leader could not read the task payload." });
+  }
+}
+
+function getLeaderAgentForTask(task) {
+  const text = String(task || "").toLowerCase();
+  if (text.includes("website") || text.includes("contact route") || text.includes("form")) return "Website Audit Agent";
+  if (text.includes("instagram") || text.includes("tiktok") || text.includes("facebook") || text.includes("social") || text.includes("google business") || text.includes("profile")) return "Social Audit Agent";
+  if (text.includes("proof") || text.includes("photos") || text.includes("videos") || text.includes("content") || text.includes("assets")) return "Content Creation Agent";
+  if (text.includes("track") || text.includes("status") || text.includes("source") || text.includes("field")) return "Tracking Agent";
+  if (text.includes("owner") || text.includes("access") || text.includes("password") || text.includes("confirm")) return "Client Strategy Agent";
+  return "Company Research Agent";
 }
 
 function sendLogin(res, error = "") {
@@ -239,6 +286,13 @@ function sendText(res, body, contentType) {
   res.statusCode = 200;
   res.setHeader("Content-Type", contentType);
   res.end(body);
+}
+
+function sendJson(res, payload) {
+  res.statusCode = res.statusCode && res.statusCode !== 200 ? res.statusCode : 200;
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store");
+  res.end(JSON.stringify(payload));
 }
 
 function escapeHtml(value = "") {
