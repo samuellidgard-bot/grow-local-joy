@@ -3827,9 +3827,91 @@ function buildLeaderAssignments(progress) {
       task,
       agent,
       command: `${agent}, handle this for ${progress.company}: ${task}`,
-      relay: `Relay back to Leader with: evidence found, recommended status, human approval needed, and whether this can be ticked off.`
+      relay: `Relay back to Leader with: platform status if relevant, evidence found, human approval needed, and whether this can be ticked off.`
     };
   });
+}
+
+function getClientPlatformStatusPlan(analysis) {
+  const firstTouch = analysis.company === "First Touch Innovations";
+  if (firstTouch) {
+    return {
+      summary: "First Touch has enough public foundations to work with, but the visible route needs polishing and Facebook needs a deliberate create-or-skip decision.",
+      rows: [
+        { platform: "Website", status: "Needs polish", evidence: "Official website and Work/Contact routes are known.", action: "Audit service wording, larger-project proof, WhatsApp/phone CTA and mobile enquiry route.", ownerDecision: "Confirm the official URL and whether Xello can suggest copy changes.", priority: "Now" },
+        { platform: "Instagram", status: "Needs polish", evidence: "Official website links to @firsttouch_innovations.", action: "Check bio, pinned proof, highlights, service area and CTA for lofts/extensions/refurbs.", ownerDecision: "Ask for admin invite only if profile edits are approved.", priority: "Now" },
+        { platform: "TikTok", status: "Needs polish", evidence: "Sam supplied @firsttouch_innovations as the trusted link.", action: "Check profile image, bio, recent proof and whether the same enquiry route is visible.", ownerDecision: "Confirm whether TikTok should mirror Instagram or stay lighter.", priority: "Now" },
+        { platform: "Google Business", status: "Needs polish", evidence: "Sam screenshot shows 5.0 rating, 7 reviews, contractor category, address and phone.", action: "Audit photos, services, review replies, posts, service areas and quote/contact route.", ownerDecision: "Ask owner before changing categories, hours or public details.", priority: "Now" },
+        { platform: "Facebook", status: "Create", evidence: "No reliable official page has been found yet.", action: "Create or tidy only if it helps local trust, reviews, messaging or older homeowner discovery.", ownerDecision: "Sam/owner must decide create versus skip.", priority: "Decision" },
+        { platform: "YouTube", status: "Skip", evidence: "No official useful channel found.", action: "Do not create now; reuse vertical proof on Instagram/TikTok first.", ownerDecision: "Revisit only when video volume justifies it.", priority: "Later" }
+      ]
+    };
+  }
+
+  return {
+    summary: "M8 has a trusted website and TikTok base. The main decision is whether to create missing local-search/social foundations or keep the starter work focused on website, proof and contact route.",
+    rows: [
+      { platform: "Website", status: "Needs polish", evidence: "Owner-supplied m8designs.co.uk is the trusted source.", action: "Audit portfolio order, premium service hierarchy, phone/email CTA, mobile layout and project-fit wording.", ownerDecision: "Confirm which site edits the owner is comfortable making first.", priority: "Now" },
+      { platform: "TikTok", status: "Needs polish", evidence: "Sam supplied @m8.designs as the trusted TikTok link.", action: "Make bio and pinned proof point at proper projects, new builds, extensions and contact route.", ownerDecision: "Confirm whether TikTok should be the main social proof channel for now.", priority: "Now" },
+      { platform: "Google Business", status: "Create", evidence: "Owner is not focused on Google and Sam thinks there may be no profile yet.", action: "Create or claim only if local search matters now; add logo, services, photos, hours and review plan.", ownerDecision: "Owner must approve setup because public business details are involved.", priority: "Decision" },
+      { platform: "Instagram", status: "Create", evidence: "No reliable matching profile found yet.", action: "Create only if M8 can keep it consistent with website proof and has enough quality images.", ownerDecision: "Ask whether Instagram exists already before creating anything.", priority: "Decision" },
+      { platform: "Facebook", status: "Skip", evidence: "No reliable matching page found yet.", action: "Skip for now unless the owner already has a page or local referrals use Facebook heavily.", ownerDecision: "Confirm skip so Xello does not waste setup time.", priority: "Later" },
+      { platform: "Wrong M8 result", status: "Skip", evidence: "m8designs.com is a boat/fishing accessories business in Ohio.", action: "Do not use this result for research, screenshots, links or client planning.", ownerDecision: "No action, just keep the rejection visible.", priority: "Guardrail" }
+    ]
+  };
+}
+
+function platformStatusClass(status = "") {
+  return String(status).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "unknown";
+}
+
+function renderClientPlatformStatusBoard(analysis) {
+  const plan = getClientPlatformStatusPlan(analysis);
+  const counts = plan.rows.reduce((totals, row) => {
+    totals[row.status] = (totals[row.status] || 0) + 1;
+    return totals;
+  }, {});
+  return `
+    <section class="panel client-platform-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Platform status board</p>
+          <h2>Foundations Account Decisions</h2>
+          ${renderSectionPreview(plan.summary, [
+            { value: counts["Needs polish"] || 0, label: "polish" },
+            { value: counts.Found || 0, label: "found" },
+            { value: counts.Create || 0, label: "create" },
+            { value: counts.Skip || 0, label: "skip" }
+          ])}
+        </div>
+        <span class="pill">Found / polish / create / skip</span>
+      </div>
+      <div class="platform-status-summary">
+        ${["Needs polish", "Found", "Create", "Skip"].map((status) => `
+          <span class="${platformStatusClass(status)}">
+            <strong>${counts[status] || 0}</strong>
+            ${status}
+          </span>
+        `).join("")}
+      </div>
+      <div class="platform-status-grid">
+        ${plan.rows.map((row) => `
+          <article class="platform-status-card ${platformStatusClass(row.status)}">
+            <div class="card-title-row">
+              <div>
+                <p class="label">${escapeHtml(row.priority)}</p>
+                <h3>${escapeHtml(row.platform)}</h3>
+              </div>
+              <span>${escapeHtml(row.status)}</span>
+            </div>
+            <p><strong>Evidence:</strong> ${escapeHtml(row.evidence)}</p>
+            <p><strong>Starter action:</strong> ${escapeHtml(row.action)}</p>
+            <em>${escapeHtml(row.ownerDecision)}</em>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
 }
 
 function renderLeaderCommandPanel(progress) {
@@ -3873,9 +3955,15 @@ function renderLeaderCommandPanel(progress) {
                   <strong>${escapeHtml(assignment.task)}</strong>
                   <span>${escapeHtml(assignment.command)}</span>
                   <small>${escapeHtml(assignment.relay)}</small>
+                  <div class="leader-relay-fields" aria-label="Relay note checklist">
+                    <span>Platform status</span>
+                    <span>Evidence</span>
+                    <span>Approval needed</span>
+                    <span>Tick-off decision</span>
+                  </div>
                   <div class="leader-relay-note">
                     <label for="leader-evidence-${assignment.index}-${escapeHtml(key)}">Relay evidence note</label>
-                    <textarea id="leader-evidence-${assignment.index}-${escapeHtml(key)}" data-leader-evidence-input="${escapeHtml(key)}" data-leader-task-index="${assignment.index}" placeholder="Paste the agent relay here: evidence found, recommended status, human approval needed, and whether this can be ticked off.">${escapeHtml(evidence)}</textarea>
+                    <textarea id="leader-evidence-${assignment.index}-${escapeHtml(key)}" data-leader-evidence-input="${escapeHtml(key)}" data-leader-task-index="${assignment.index}" placeholder="Status: Found / Needs polish / Create / Skip&#10;Evidence: ...&#10;Approval needed: ...&#10;Tick-off decision: yes/no and why">${escapeHtml(evidence)}</textarea>
                     <div>
                       <span>${evidence.trim() ? "Evidence saved for Leader review" : "No relay note saved yet"}</span>
                       <button type="button" class="small-button" data-leader-evidence-save="${escapeHtml(key)}" data-leader-task-index="${assignment.index}">Save relay note</button>
@@ -5099,6 +5187,8 @@ function renderClientAnalysisSheet(targetId, company) {
     </section>
 
     ${renderClientReadinessBoard(analysis, foundationAudit, competitorBenchmark)}
+
+    ${renderClientPlatformStatusBoard(analysis)}
 
     ${renderOwnerResponseInbox(analysis)}
 

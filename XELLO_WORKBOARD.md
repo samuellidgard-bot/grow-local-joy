@@ -70,7 +70,7 @@ Rules:
 - Keep design simple, readable, green/graphite and professional.
 
 Status:
-- Ready.
+- Ready - Factory Build improvements have been synced into `grow-local-joy/crm` by Master Control for deployment.
 
 ### 3. Client Delivery
 
@@ -90,7 +90,7 @@ Rules:
 - Prefer practical delivery tasks over theory.
 
 Status:
-- Ready.
+- Latest starter foundations delivery plan prepared in `client-delivery/STARTER_FOUNDATIONS_DELIVERY_PLAN_2026-05-06.md`; awaiting proof asset uploads and account/platform confirmations.
 
 ### 4. QA / Launch
 
@@ -110,7 +110,14 @@ Required checks when relevant:
 - Browser check on local/live CRM.
 
 Status:
-- Ready.
+- Completed launch QA on 2026-05-06.
+
+Latest QA / Launch notes:
+- Master Control resolved the source-of-truth sync on 2026-05-06: local CRM platform status board and Leader relay UI changes are now copied into `grow-local-joy/crm/app.js` and `grow-local-joy/crm/styles.css`.
+- Live unauthenticated `/crm/login` has a broken Xello logo because `/crm/assets/xello-media-logo-transparent.png` redirects to `/crm/login` before authentication.
+- Automated checks passed in `grow-local-joy` after sync: `node --check api/crm.js`, `node --check crm/app.js`, `npm test`, and `npm run build`.
+- Local and live dashboard smoke checks loaded without console errors; live authenticated dashboard was checked from the existing browser session, while clean headless live access correctly redirected to `/crm/login`.
+- Mobile viewport checks found no horizontal overflow or clipped text, but the local CRM mobile layout shows the full sidebar before the dashboard content, so mobile usability needs a small follow-up before treating mobile as polished.
 
 ### 5. AI Automation
 
@@ -148,7 +155,7 @@ Rules:
 - Do not jump into paid ad campaign build before readiness.
 
 Status:
-- Parked until client assets arrive.
+- Active for planning - starter foundations content framework created in `content-engine/STARTER_FOUNDATIONS_CONTENT_FRAMEWORK_2026-05-06.md`; waiting for First Touch and M8 Drive assets before asset-specific briefs.
 
 ## File Ownership Rules
 
@@ -173,9 +180,11 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 
 - Confirm First Touch current account list: website, Instagram, TikTok, Google Business, Facebook decision.
 - Confirm M8 current account list: website, TikTok, Google Business decision, Instagram/Facebook status.
-- Create clear statuses for each useful platform: Found, Needs polish, Create, Skip.
+- Use the CRM Platform Status Board to confirm each useful platform status: Found, Needs polish, Create, or Skip.
 - Prepare proof asset review once Drive folders have uploads.
+- Use `content-engine/STARTER_FOUNDATIONS_CONTENT_FRAMEWORK_2026-05-06.md` to score assets and create starter-only briefs once uploads are available.
 - Create client-facing starter foundations summaries once assets are available.
+- Use `client-delivery/STARTER_FOUNDATIONS_DELIVERY_PLAN_2026-05-06.md` as the next Client Delivery handoff for First Touch and M8.
 
 ## Latest Decisions
 
@@ -196,6 +205,9 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 
 ## Completed Changes
 
+- CRM client pages now include a Platform Status Board for First Touch and M8 with Found / Needs polish / Create / Skip account decisions, synced into the deployable live repo copy.
+- Leader relay notes now prompt for platform status, evidence, approval needed and tick-off decision.
+- Client Delivery prepared the next First Touch and M8 starter foundations delivery plan.
 - CRM client pages now have offer stage trackers.
 - Current stage action plan is collapsible.
 - Leader Agent Command Centre delegates current tasks to specialist agents.
@@ -204,6 +216,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - `CRON_SECRET` has been added in Vercel.
 - GitHub CLI is authenticated and Codex can now push commits.
 - Leader relay evidence notes have been added and pushed.
+- Content Engine prepared the active-client-only starter foundations content framework.
 
 ## Next Handoff
 

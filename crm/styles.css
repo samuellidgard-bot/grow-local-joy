@@ -1157,6 +1157,23 @@ tbody tr:hover {
   padding: 10px;
 }
 
+.leader-relay-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.leader-relay-fields span {
+  border: 1px solid rgba(144, 200, 71, 0.3);
+  border-radius: 7px;
+  background: #edf8e4;
+  color: var(--brand-dark);
+  padding: 5px 7px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
 .leader-relay-note label {
   color: var(--brand-dark);
   font-size: 11px;
@@ -1672,6 +1689,7 @@ tbody tr:hover {
 
 .readiness-item,
 .asset-card,
+.platform-status-card,
 .pitch-grid article,
 .owner-summary-grid article,
 .competitor-visual-panel article,
@@ -1694,6 +1712,132 @@ tbody tr:hover {
   border-radius: var(--radius);
   background: #ffffff;
   padding: 14px;
+}
+
+.client-platform-panel {
+  border-top: 3px solid rgba(130, 200, 50, 0.78);
+  background:
+    linear-gradient(135deg, rgba(237, 248, 228, 0.62), rgba(255, 255, 255, 0.98)),
+    #ffffff;
+}
+
+.client-platform-panel:not(.is-expanded) {
+  border-color: rgba(130, 200, 50, 0.38);
+}
+
+.platform-status-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.platform-status-summary span {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  gap: 6px;
+  align-items: center;
+  min-height: 36px;
+  border: 1px solid rgba(144, 200, 71, 0.3);
+  border-radius: var(--radius);
+  background: #ffffff;
+  color: var(--muted);
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.platform-status-summary strong {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.platform-status-summary .needs-polish,
+.platform-status-card.needs-polish > .card-title-row > span {
+  background: #fff4df;
+  color: var(--warning);
+}
+
+.platform-status-summary .found,
+.platform-status-card.found > .card-title-row > span {
+  background: #e7f5d7;
+  color: var(--brand-dark);
+}
+
+.platform-status-summary .create,
+.platform-status-card.create > .card-title-row > span {
+  background: #edf8e4;
+  color: var(--brand-dark);
+}
+
+.platform-status-summary .skip,
+.platform-status-card.skip > .card-title-row > span {
+  background: #eef1ea;
+  color: #60695d;
+}
+
+.platform-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.platform-status-card {
+  align-content: start;
+  border-color: rgba(35, 39, 33, 0.12);
+}
+
+.platform-status-card.needs-polish {
+  border-color: rgba(162, 112, 24, 0.24);
+  background: #fffdf8;
+}
+
+.platform-status-card.create,
+.platform-status-card.found {
+  border-color: rgba(144, 200, 71, 0.36);
+  background: #fbfdf8;
+}
+
+.platform-status-card.skip {
+  background: #f7f9f5;
+}
+
+.platform-status-card h3 {
+  margin: 4px 0 0;
+  color: var(--ink);
+  font-size: 21px;
+}
+
+.platform-status-card > .card-title-row > span {
+  align-self: start;
+  border-radius: 7px;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.platform-status-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.platform-status-card p strong {
+  color: var(--ink);
+}
+
+.platform-status-card em {
+  display: block;
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+  color: var(--brand-dark);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .done-for-you-plan-panel {
@@ -4144,6 +4288,7 @@ label select {
   .readiness-hero-card,
   .readiness-grid,
   .asset-checklist-grid,
+  .platform-status-grid,
   .owner-summary-grid,
   .pitch-grid,
   .competitor-visual-panel,
