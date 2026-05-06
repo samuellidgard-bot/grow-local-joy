@@ -996,7 +996,7 @@ tbody tr:hover {
   gap: 8px;
 }
 
-.client-progress-steps article {
+.client-progress-steps button {
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 8px;
@@ -1005,6 +1005,18 @@ tbody tr:hover {
   border-radius: var(--radius);
   background: #ffffff;
   padding: 10px;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.client-progress-steps button:hover {
+  border-color: rgba(130, 200, 50, 0.52);
+  background: #fbfdf8;
+}
+
+.client-progress-steps button:focus-visible {
+  outline-offset: 3px;
 }
 
 .client-progress-steps span {
@@ -1025,32 +1037,37 @@ tbody tr:hover {
   line-height: 1.25;
 }
 
-.client-progress-steps article.complete {
+.client-progress-steps button.complete {
   border-color: rgba(79, 135, 29, 0.36);
   background: rgba(237, 248, 228, 0.82);
 }
 
-.client-progress-steps article.complete span {
+.client-progress-steps button.complete span {
   background: var(--brand-dark);
   color: #ffffff;
 }
 
-.client-progress-steps article.current {
+.client-progress-steps button.current {
   border-color: rgba(130, 200, 50, 0.9);
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(130, 200, 50, 0.16);
 }
 
-.client-progress-steps article.current span {
+.client-progress-steps button.current span {
   background: var(--brand);
   color: var(--ink);
 }
 
-.client-progress-steps article.pending {
+.client-progress-steps button.pending {
   color: var(--muted);
 }
 
-.client-progress-steps.locked article {
+.client-progress-steps button.is-detail-open {
+  border-color: rgba(130, 200, 50, 0.85);
+  box-shadow: 0 0 0 3px rgba(130, 200, 50, 0.14);
+}
+
+.client-progress-steps.locked button {
   border-color: rgba(35, 39, 33, 0.08);
   background: rgba(255, 255, 255, 0.58);
   opacity: 0.62;
@@ -1059,6 +1076,40 @@ tbody tr:hover {
 .client-progress-steps.locked span {
   background: #dfe3dc;
   color: #687063;
+}
+
+.client-progress-detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 12px;
+  border: 1px solid rgba(130, 200, 50, 0.28);
+  border-radius: var(--radius);
+  background: #fbfdf8;
+  padding: 14px;
+}
+
+.client-progress-detail[hidden] {
+  display: none;
+}
+
+.client-progress-detail h3 {
+  margin: 4px 0 6px;
+  color: var(--ink);
+  font-size: 20px;
+}
+
+.client-progress-detail p:not(.label) {
+  max-width: 940px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.client-progress-detail .pill {
+  align-self: flex-start;
+  white-space: nowrap;
 }
 
 .analysis-expandable-panel {
@@ -3985,8 +4036,17 @@ label select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .client-progress-steps article {
+  .client-progress-steps button {
     min-height: 86px;
+  }
+
+  .client-progress-detail {
+    flex-direction: column;
+  }
+
+  .client-progress-detail .pill {
+    align-self: flex-start;
+    white-space: normal;
   }
 
   .section-stat-strip span {

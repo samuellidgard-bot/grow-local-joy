@@ -3626,31 +3626,31 @@ function renderLeadTrackingBlueprint(analysis, foundationAudit, competitorBenchm
 
 function getClientProgressPlan(analysis) {
   const starterSteps = [
-    "Discovery + identity",
-    "Missing foundations",
-    "Profile polish",
-    "Proof asset intake",
-    "Website/enquiry route",
-    "Lead tracker setup",
-    "Starter content plan",
-    "Readiness review"
+    { title: "Discovery + identity", description: "Confirm the exact business, owner, offer stage, service area, website, socials and Google presence so Xello is working from the right company profile." },
+    { title: "Missing foundations", description: "Create or improve only the useful missing accounts and basics, such as Instagram, Facebook Page, Google Business Profile, TikTok, website contact route and clear enquiry details." },
+    { title: "Profile polish", description: "Make the visible profiles look credible: consistent logo, bio, service list, location, contact route, proof highlights and a clear reason to enquire." },
+    { title: "Proof asset intake", description: "Collect the photos, videos, reviews, project notes, before-and-after proof and brand files needed to make the business look trusted before paid traffic." },
+    { title: "Website/enquiry route", description: "Check that people can understand the offer and contact the business quickly through phone, WhatsApp, email or form without confusion." },
+    { title: "Lead tracker setup", description: "Set up the simple tracking fields for every enquiry: source, project type, value, location, reply speed, quote status and whether it became a good opportunity." },
+    { title: "Starter content plan", description: "Turn the confirmed services, proof assets and customer worries into starter content ideas before generating bigger campaign briefs." },
+    { title: "Readiness review", description: "Review the foundations score and decide whether the client is ready for the 14-day lead test or still needs more trust, proof or enquiry setup." }
   ];
   const middleOfferSteps = [
-    "Confirm test angle",
-    "Collect/film assets",
-    "Create 3 adverts",
-    "Build lead form",
-    "Set ad spend",
-    "Launch 14-day test",
-    "Track + follow up",
-    "Review next offer"
+    { title: "Confirm test angle", description: "Choose one focused lead test angle based on the best service, strongest proof and most valuable local enquiry type." },
+    { title: "Collect/film assets", description: "Film or collect the exact clips, project visuals, owner talking points and proof needed for the chosen lead test angle." },
+    { title: "Create 3 adverts", description: "Produce a small set of vertical ad variations with different hooks, proof moments and calls to action for the same offer." },
+    { title: "Build lead form", description: "Create the lead form questions and follow-up route so enquiries arrive with enough detail to judge quality." },
+    { title: "Set ad spend", description: "Confirm the client-paid Meta budget, campaign dates, location targeting and daily spend limit before launch." },
+    { title: "Launch 14-day test", description: "Run the gated local visibility test only after foundations are ready and all tracking/follow-up basics are in place." },
+    { title: "Track + follow up", description: "Record every lead, response speed, project type, quote quality and follow-up action so the test is judged properly." },
+    { title: "Review next offer", description: "Use the results to decide whether to improve foundations, run another test or pitch the monthly growth retainer." }
   ];
   const currentStarterStep = 2;
   const starterComplete = currentStarterStep > starterSteps.length;
   return {
     currentOffer: starterComplete ? "14-day local visibility / lead test" : "Starter foundations",
     currentStep: starterComplete ? 1 : currentStarterStep,
-    currentStepLabel: starterComplete ? middleOfferSteps[0] : starterSteps[currentStarterStep - 1],
+    currentStepLabel: starterComplete ? middleOfferSteps[0].title : starterSteps[currentStarterStep - 1].title,
     starterSteps,
     middleOfferSteps,
     starterComplete,
@@ -3666,14 +3666,16 @@ function renderStepLane(steps, currentStep, locked = false) {
       ${steps.map((step, index) => {
         const stepNumber = index + 1;
         const stateClass = locked ? "locked" : stepNumber < currentStep ? "complete" : stepNumber === currentStep ? "current" : "pending";
+        const statusLabel = locked ? "Future step" : stateClass === "complete" ? "Covered" : stateClass === "current" ? "Current focus" : "Upcoming";
         return `
-          <article class="${stateClass}" ${stateClass === "current" ? 'aria-current="step"' : ""} ${locked ? 'aria-disabled="true"' : ""}>
+          <button type="button" class="${stateClass}" data-progress-step-toggle="true" data-step-number="${stepNumber}" data-step-title="${escapeHtml(step.title)}" data-step-description="${escapeHtml(step.description)}" data-step-status="${statusLabel}" aria-expanded="false" ${stateClass === "current" ? 'aria-current="step"' : ""} ${locked ? 'aria-disabled="true"' : ""}>
             <span>${stepNumber}</span>
-            <strong>${escapeHtml(step)}</strong>
-          </article>
+            <strong>${escapeHtml(step.title)}</strong>
+          </button>
         `;
       }).join("")}
     </div>
+    <div class="client-progress-detail" hidden></div>
   `;
 }
 
@@ -4558,6 +4560,36 @@ function toggleClientAnalysisSection(button) {
   const isExpanded = panel.classList.toggle("is-expanded");
   button.setAttribute("aria-expanded", String(isExpanded));
   button.textContent = isExpanded ? "Close" : "View";
+}
+
+function toggleProgressStepDescription(button) {
+  const lane = button.closest(".client-progress-lane");
+  const detail = lane?.querySelector(".client-progress-detail");
+  if (!lane || !detail) return;
+
+  const isOpen = button.getAttribute("aria-expanded") === "true";
+  lane.querySelectorAll("[data-progress-step-toggle]").forEach((stepButton) => {
+    stepButton.setAttribute("aria-expanded", "false");
+    stepButton.classList.remove("is-detail-open");
+  });
+
+  if (isOpen) {
+    detail.hidden = true;
+    detail.innerHTML = "";
+    return;
+  }
+
+  button.setAttribute("aria-expanded", "true");
+  button.classList.add("is-detail-open");
+  detail.hidden = false;
+  detail.innerHTML = `
+    <div>
+      <p class="label">Step ${escapeHtml(button.dataset.stepNumber)}</p>
+      <h3>${escapeHtml(button.dataset.stepTitle)}</h3>
+      <p>${escapeHtml(button.dataset.stepDescription)}</p>
+    </div>
+    <span class="pill">${escapeHtml(button.dataset.stepStatus)}</span>
+  `;
 }
 
 function renderClientAnalysisSheet(targetId, company) {
@@ -6221,6 +6253,7 @@ document.addEventListener(
     const button = event.target.closest("button");
     if (!button) return;
     if (button.dataset.analysisToggle) toggleClientAnalysisSection(button);
+    if (button.dataset.progressStepToggle) toggleProgressStepDescription(button);
     if (button.dataset.identityAction === "run") runIdentityResearch(button.dataset.identityCompany);
     if (button.dataset.identityAction === "confirm" || button.dataset.identityAction === "deny") {
       reviewIdentityCandidate(button.dataset.identityCompany, button.dataset.identityAction);
