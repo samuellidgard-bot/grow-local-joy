@@ -12,5 +12,11 @@
       "source": "/crm/:path*",
       "destination": "/api/crm?path=:path*"
     }
+  ],
+  "crons": [
+    {
+      "path": "/crm/api/leader/cron",
+      "schedule": "0 8 * * *"
+    }
   ]
 }

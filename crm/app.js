@@ -3850,6 +3850,7 @@ function renderLeaderCommandPanel(progress) {
         </div>
         <div class="leader-command-actions">
           ${run?.mode ? `<span class="pill">${run.mode === "server-runner" ? "backend runner" : "local fallback"}</span>` : ""}
+          ${run?.persisted ? `<span class="pill">${run.persisted === "kv" ? "saved to server" : "browser saved"}</span>` : ""}
           <span class="pill">${completeCount}/${assignments.length} complete</span>
           <button type="button" class="small-button approve" data-leader-run="${escapeHtml(key)}" data-leader-company="${escapeHtml(progress.company)}" data-leader-stage="${escapeHtml(progress.currentStepLabel)}" data-leader-offer="${escapeHtml(progress.currentOffer)}" data-leader-tasks="${taskPayload}" data-leader-agents="${escapeHtml(delegatedAgents)}">
             ${run ? "Rerun Leader" : "Run Leader agent"}
@@ -4854,6 +4855,23 @@ async function requestLeaderRun(payload) {
   }
 }
 
+async function requestLeaderTaskToggle(payload) {
+  if (window.location.protocol === "file:") return null;
+  try {
+    const response = await fetch("api/leader/task", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) return null;
+    const result = await response.json();
+    return result?.ok ? result : null;
+  } catch (error) {
+    return null;
+  }
+}
+
 async function runLeaderAgent(button) {
   const key = button.dataset.leaderRun;
   const company = button.dataset.leaderCompany || "client";
@@ -4879,6 +4897,7 @@ async function runLeaderAgent(button) {
     ranAt: displayDate(),
     company,
     mode: serverRun?.mode || "local-fallback",
+    persisted: serverRun?.persisted || "local",
     assignments: serverRun?.assignments || null
   };
   state.openCurrentActionPlanKey = key;
@@ -4914,13 +4933,18 @@ async function runLeaderAgent(button) {
   renderAll();
 }
 
-function toggleLeaderTask(button) {
+async function toggleLeaderTask(button) {
   const key = button.dataset.leaderTaskToggle;
   const index = button.dataset.leaderTaskIndex;
   if (!key || index === undefined) return;
   state.leaderTaskCompletions = state.leaderTaskCompletions || {};
   state.leaderTaskCompletions[key] = state.leaderTaskCompletions[key] || {};
-  state.leaderTaskCompletions[key][index] = !state.leaderTaskCompletions[key][index];
+  const nextValue = !state.leaderTaskCompletions[key][index];
+  button.disabled = true;
+  const serverResult = await requestLeaderTaskToggle({ key, index, complete: nextValue });
+  state.leaderTaskCompletions[key][index] = typeof serverResult?.complete === "boolean"
+    ? serverResult.complete
+    : nextValue;
   state.openCurrentActionPlanKey = key;
   addAgentLog("Leader", `${state.leaderTaskCompletions[key][index] ? "Ticked off" : "Reopened"} a current-stage task after Leader review.`);
   saveState();

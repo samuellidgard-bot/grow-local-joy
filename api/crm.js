@@ -8,6 +8,7 @@ const appDir = path.join(__dirname, "..", "crm");
 const cookieName = "xello_crm_session";
 const oneWeek = 60 * 60 * 24 * 7;
 const basePath = "/crm";
+const leaderStateKey = "xello:crm:leader-state";
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -54,6 +55,10 @@ export default async function handler(req, res) {
     return res.end();
   }
 
+  if (routePath === "/api/leader/cron" && req.method === "GET") {
+    return handleLeaderCron(req, res);
+  }
+
   if (!isAuthenticated(req)) {
     res.statusCode = 302;
     res.setHeader("Location", `${basePath}/login`);
@@ -68,6 +73,14 @@ export default async function handler(req, res) {
     return handleLeaderRun(req, res);
   }
 
+  if (routePath === "/api/leader/task" && req.method === "POST") {
+    return handleLeaderTaskToggle(req, res);
+  }
+
+  if (routePath === "/api/leader/state" && req.method === "GET") {
+    return handleLeaderState(req, res);
+  }
+
   return serveAppFile(routePath, res);
 }
 
@@ -76,6 +89,7 @@ async function handleLeaderRun(req, res) {
     const payload = JSON.parse(await readBody(req) || "{}");
     const company = String(payload.company || "client");
     const tasks = Array.isArray(payload.tasks) ? payload.tasks.map(String).filter(Boolean) : [];
+    const key = String(payload.key || createLeaderKey(company, payload.offer, payload.stage));
     const assignments = tasks.map((task, index) => {
       const agent = getLeaderAgentForTask(task);
       return {
@@ -86,15 +100,33 @@ async function handleLeaderRun(req, res) {
         relay: "Relay back to Leader with: evidence found, recommended status, human approval needed, and whether this can be ticked off."
       };
     });
-
-    return sendJson(res, {
-      ok: true,
+    const store = await readLeaderStore();
+    const run = {
+      key,
+      company,
+      stage: payload.stage || "",
+      offer: payload.offer || "",
       mode: "server-runner",
       autonomousLevel: "approval-gated",
       ranAt: new Date().toISOString(),
+      assignments
+    };
+
+    store.runs[key] = run;
+    store.latestPayloads[key] = { key, company, stage: run.stage, offer: run.offer, tasks };
+    store.events.unshift({
+      at: run.ranAt,
+      type: "leader-run",
+      message: `Leader created ${assignments.length} specialist command${assignments.length === 1 ? "" : "s"} for ${company}.`
+    });
+    trimLeaderStore(store);
+    const savedStore = await writeLeaderStore(store);
+
+    return sendJson(res, {
+      ok: true,
+      ...run,
+      persisted: savedStore.storageMode,
       company,
-      key: payload.key || "",
-      stage: payload.stage || "",
       assignments,
       summary: `Leader created ${assignments.length} specialist command${assignments.length === 1 ? "" : "s"} for ${company}.`
     });
@@ -102,6 +134,100 @@ async function handleLeaderRun(req, res) {
     res.statusCode = 400;
     return sendJson(res, { ok: false, error: "Leader could not read the task payload." });
   }
+}
+
+async function handleLeaderTaskToggle(req, res) {
+  try {
+    const payload = JSON.parse(await readBody(req) || "{}");
+    const key = String(payload.key || "");
+    const index = String(payload.index ?? "");
+    if (!key || index === "") {
+      res.statusCode = 400;
+      return sendJson(res, { ok: false, error: "Missing Leader task key or index." });
+    }
+
+    const store = await readLeaderStore();
+    store.completions[key] = store.completions[key] || {};
+    const nextValue = typeof payload.complete === "boolean"
+      ? payload.complete
+      : !store.completions[key][index];
+    store.completions[key][index] = nextValue;
+    store.events.unshift({
+      at: new Date().toISOString(),
+      type: "leader-task",
+      message: `${nextValue ? "Completed" : "Reopened"} Leader task ${index} for ${key}.`
+    });
+    trimLeaderStore(store);
+    const savedStore = await writeLeaderStore(store);
+    return sendJson(res, { ok: true, key, index, complete: nextValue, persisted: savedStore.storageMode });
+  } catch (error) {
+    res.statusCode = 400;
+    return sendJson(res, { ok: false, error: "Leader could not update that task." });
+  }
+}
+
+async function handleLeaderState(req, res) {
+  const store = await readLeaderStore();
+  return sendJson(res, {
+    ok: true,
+    storageMode: store.storageMode,
+    runs: store.runs,
+    completions: store.completions,
+    latestCronAt: store.latestCronAt || "",
+    events: store.events.slice(0, 25)
+  });
+}
+
+async function handleLeaderCron(req, res) {
+  if (!isCronAuthorized(req)) {
+    res.statusCode = 401;
+    return sendJson(res, { ok: false, error: "Unauthorized cron request." });
+  }
+
+  const store = await readLeaderStore();
+  const now = new Date().toISOString();
+  const payloads = Object.values(store.latestPayloads || {});
+  payloads.forEach((payload) => {
+    const company = String(payload.company || "client");
+    const tasks = Array.isArray(payload.tasks) ? payload.tasks.map(String).filter(Boolean) : [];
+    const key = String(payload.key || createLeaderKey(company, payload.offer, payload.stage));
+    const assignments = tasks.map((task, index) => {
+      const agent = getLeaderAgentForTask(task);
+      return {
+        index,
+        task,
+        agent,
+        command: `${agent}, handle this for ${company}: ${task}`,
+        relay: "Relay back to Leader with: evidence found, recommended status, human approval needed, and whether this can be ticked off."
+      };
+    });
+    store.runs[key] = {
+      key,
+      company,
+      stage: payload.stage || "",
+      offer: payload.offer || "",
+      mode: "cron-runner",
+      autonomousLevel: "approval-gated",
+      ranAt: store.runs[key]?.ranAt || now,
+      lastCronAt: now,
+      assignments
+    };
+  });
+  store.latestCronAt = now;
+  store.events.unshift({
+    at: now,
+    type: "leader-cron",
+    message: `Leader cron checked ${payloads.length} active stage plan${payloads.length === 1 ? "" : "s"}.`
+  });
+  trimLeaderStore(store);
+  const savedStore = await writeLeaderStore(store);
+
+  return sendJson(res, {
+    ok: true,
+    checkedPlans: payloads.length,
+    latestCronAt: now,
+    storageMode: savedStore.storageMode
+  });
 }
 
 function getLeaderAgentForTask(task) {
@@ -112,6 +238,92 @@ function getLeaderAgentForTask(task) {
   if (text.includes("track") || text.includes("status") || text.includes("source") || text.includes("field")) return "Tracking Agent";
   if (text.includes("owner") || text.includes("access") || text.includes("password") || text.includes("confirm")) return "Client Strategy Agent";
   return "Company Research Agent";
+}
+
+function createLeaderKey(company, offer = "", stage = "") {
+  return `${company || "client"}::${offer || "offer"}::${stage || "stage"}`.replace(/\s+/g, "-").toLowerCase();
+}
+
+function isCronAuthorized(req) {
+  const expected = process.env.CRON_SECRET || "";
+  if (!expected) return false;
+  return req.headers.authorization === `Bearer ${expected}`;
+}
+
+async function readLeaderStore() {
+  const kv = getKvConfig();
+  if (kv.url && kv.token) {
+    try {
+      const response = await fetch(`${kv.url}/get/${encodeURIComponent(leaderStateKey)}`, {
+        headers: { Authorization: `Bearer ${kv.token}` }
+      });
+      if (response.ok) {
+        const payload = await response.json();
+        const raw = payload?.result;
+        const parsed = raw ? JSON.parse(raw) : {};
+        return normaliseLeaderStore(parsed, "kv");
+      }
+    } catch (error) {
+      return getMemoryLeaderStore();
+    }
+  }
+
+  return getMemoryLeaderStore();
+}
+
+async function writeLeaderStore(store) {
+  const kv = getKvConfig();
+  const normalised = normaliseLeaderStore(store, kv.url && kv.token ? "kv" : "memory");
+
+  if (kv.url && kv.token) {
+    try {
+      const response = await fetch(`${kv.url}/set/${encodeURIComponent(leaderStateKey)}/${encodeURIComponent(JSON.stringify(normalised))}`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${kv.token}` }
+      });
+      if (response.ok) {
+        normalised.storageMode = "kv";
+        return normalised;
+      }
+    } catch (error) {
+      normalised.storageMode = "memory";
+    }
+  }
+
+  globalThis.__xelloLeaderStore = normaliseLeaderStore(normalised, "memory");
+  return globalThis.__xelloLeaderStore;
+}
+
+function getKvConfig() {
+  return {
+    url: (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || "").replace(/\/$/, ""),
+    token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || ""
+  };
+}
+
+function getMemoryLeaderStore() {
+  globalThis.__xelloLeaderStore = globalThis.__xelloLeaderStore || getEmptyLeaderStore("memory");
+  return globalThis.__xelloLeaderStore;
+}
+
+function getEmptyLeaderStore(storageMode = "memory") {
+  return normaliseLeaderStore({}, storageMode);
+}
+
+function normaliseLeaderStore(store = {}, storageMode = "memory") {
+  return {
+    storageMode,
+    runs: store.runs || {},
+    completions: store.completions || {},
+    latestPayloads: store.latestPayloads || {},
+    latestCronAt: store.latestCronAt || "",
+    events: Array.isArray(store.events) ? store.events : []
+  };
+}
+
+function trimLeaderStore(store) {
+  store.events = (store.events || []).slice(0, 100);
+  return store;
 }
 
 function sendLogin(res, error = "") {
