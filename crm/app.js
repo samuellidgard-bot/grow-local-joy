@@ -3767,6 +3767,7 @@ function renderStepLane(steps, currentStep, locked = false) {
           <button type="button" class="${stateClass}" data-progress-step-toggle="true" data-step-number="${stepNumber}" data-step-title="${escapeHtml(step.title)}" data-step-description="${escapeHtml(step.description)}" data-step-tasks="${encodeURIComponent(JSON.stringify(step.tasks || []))}" data-step-done="${escapeHtml(step.doneWhen || "")}" data-step-status="${statusLabel}" aria-expanded="false" ${stateClass === "current" ? 'aria-current="step"' : ""} ${locked ? 'aria-disabled="true"' : ""}>
             <span>${stepNumber}</span>
             <strong>${escapeHtml(step.title)}</strong>
+            <small>${escapeHtml(statusLabel)}</small>
           </button>
         `;
       }).join("")}

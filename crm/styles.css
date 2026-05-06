@@ -1263,9 +1263,9 @@ tbody tr:hover {
 
 .client-progress-steps button {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
   gap: 8px;
-  min-height: 96px;
+  min-height: 112px;
   border: 1px solid rgba(35, 39, 33, 0.12);
   border-radius: var(--radius);
   background: #ffffff;
@@ -1302,12 +1302,31 @@ tbody tr:hover {
   line-height: 1.25;
 }
 
+.client-progress-steps small {
+  align-self: end;
+  justify-self: start;
+  border-radius: 999px;
+  background: #eef1ea;
+  color: #60695d;
+  padding: 4px 7px;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .client-progress-steps button.complete {
-  border-color: rgba(79, 135, 29, 0.36);
-  background: rgba(237, 248, 228, 0.82);
+  border-color: rgba(53, 118, 25, 0.78);
+  background: #edf8e4;
+  box-shadow: inset 0 0 0 1px rgba(53, 118, 25, 0.12);
 }
 
 .client-progress-steps button.complete span {
+  background: var(--brand-dark);
+  color: #ffffff;
+}
+
+.client-progress-steps button.complete small {
   background: var(--brand-dark);
   color: #ffffff;
 }
@@ -1321,6 +1340,11 @@ tbody tr:hover {
 .client-progress-steps button.current span {
   background: var(--brand);
   color: var(--ink);
+}
+
+.client-progress-steps button.current small {
+  background: #e7f5d7;
+  color: var(--brand-dark);
 }
 
 .client-progress-steps button.pending {
