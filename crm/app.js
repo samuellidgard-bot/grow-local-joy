@@ -1055,6 +1055,18 @@ function migrateOfferStrategy(data) {
     };
   });
 
+  const starterAnalyses = (data.clientAnalyses || []).filter((analysis) => trialClientNames.includes(analysis.company));
+  const starterIdeas = starterAnalyses.flatMap(getStarterClientContentIdeas);
+  const starterBriefs = starterAnalyses.flatMap(getStarterClientContentBriefs);
+  data.contentIdeas = [
+    ...starterIdeas,
+    ...(data.contentIdeas || []).filter((item) => !trialClientNames.includes(item.company))
+  ];
+  data.contentBriefs = [
+    ...starterBriefs,
+    ...(data.contentBriefs || []).filter((item) => !trialClientNames.includes(item.company))
+  ];
+
   const oldProof = (data.outreachTraining || []).find((row) => row.rule === "Proof Offer");
   if (oldProof) {
     oldProof.rule = "Starter Offer First";
@@ -2604,6 +2616,12 @@ function runProfileWebsiteAudit(company) {
 }
 
 function generateProfileContentBrief(company) {
+  if (!isStarterFoundationClient(company)) {
+    addAgentLog("Content Creation Agent", `Skipped content brief for ${company}; content is gated to starter-foundations clients.`);
+    setConnectionStatus("Content briefs are only generated for clients who have agreed to starter foundations.", false);
+    showView("content-briefs");
+    return;
+  }
   const lead = leadForCompany(company);
   const research = ensureProfileResearch(company);
   const service = lead.service || "local renovation";
@@ -2767,12 +2785,13 @@ function renderSocialAudits() {
 function renderContentIdeas() {
   const target = document.getElementById("contentIdeaList");
   if (!target) return;
-  target.innerHTML = (state.contentIdeas || [])
+  const starterIdeas = (state.contentIdeas || []).filter((item) => isStarterFoundationClient(item.company));
+  target.innerHTML = starterIdeas
     .map((item) => `
       <article class="knowledge-card">
         <div class="card-title-row">
           <strong>${item.company}</strong>
-          <span class="mini-stat">Content Creation Agent</span>
+          <span class="mini-stat">Starter client</span>
         </div>
         <p><strong>Ad hook:</strong> ${item.hook}</p>
         <p><strong>What to film:</strong> ${item.filming}</p>
@@ -2780,7 +2799,7 @@ function renderContentIdeas() {
         <p><strong>Talking points:</strong> ${item.talkingPoints}</p>
       </article>
     `)
-    .join("") || `<p class="metric-note">No content ideas yet. Sync company research first.</p>`;
+    .join("") || `<p class="metric-note">No starter-client content ideas yet. Generate ideas only after a company has agreed to starter foundations.</p>`;
 }
 
 function listMarkup(items = []) {
@@ -2848,8 +2867,11 @@ function renderFirstTouchLaunchPack() {
 function renderContentBriefs() {
   const target = document.getElementById("contentBriefList");
   if (!target) return;
-  target.innerHTML = (state.contentBriefs || [])
-    .map((item, index) => `
+  const starterBriefs = (state.contentBriefs || [])
+    .map((item, index) => ({ ...item, originalIndex: index }))
+    .filter((item) => isStarterFoundationClient(item.company));
+  target.innerHTML = starterBriefs
+    .map((item) => `
       <article class="knowledge-card">
         <div class="card-title-row">
           <div>
@@ -2863,10 +2885,10 @@ function renderContentBriefs() {
         <p><strong>Scenes:</strong> ${item.scenes}</p>
         <p><strong>CTA:</strong> ${item.cta}</p>
         <p class="metric-note">Source: ${item.source || "Content Creation Agent"}</p>
-        ${statusButtons("contentBriefs", index, item.status)}
+        ${statusButtons("contentBriefs", item.originalIndex, item.status)}
       </article>
     `)
-    .join("") || `<p class="metric-note">No content briefs yet. Generate briefs from company research.</p>`;
+    .join("") || `<p class="metric-note">No starter-client content briefs yet. Briefs are gated until a company agrees to the starter foundations offer.</p>`;
 }
 
 function renderAgentOutputs() {
@@ -5191,28 +5213,97 @@ function generateLocalSocialAudits() {
   showView("social-audits");
 }
 
-function generateContentBriefsFromResearch() {
-  const researchRows = (state.companyResearch || []).slice(0, 8);
-  state.contentBriefs = researchRows.map((item) => ({
-    company: item.company,
-    title: `${item.company} advert/content brief`,
-    hook: item.hook || `Show what makes ${item.company} worth enquiring with.`,
-    format: "30-second Reel / Meta ad concept",
-    scenes: buildFilmingIdea(item),
-    cta: "Ask viewers to enquire, book a viewing, request a quote or arrange a 10-minute call.",
-    source: "Company Research Agent",
-    status: "Needs Review"
-  }));
+function getStarterClientAnalyses() {
+  const analyses = state.clientAnalyses || defaultData.clientAnalyses || [];
+  return analyses.filter((analysis) => isStarterFoundationClient(analysis.company));
+}
+
+function isStarterFoundationClient(company = "") {
+  const safeCompany = String(company || "").trim();
+  if (!safeCompany) return false;
+  const analysis = (state.clientAnalyses || defaultData.clientAnalyses || []).find((item) => item.company === safeCompany);
+  if (analysis && /starter foundations/i.test(`${analysis.offerStage || ""} ${analysis.status || ""}`)) return true;
+  const client = (state.clients || defaultData.clients || []).find((item) => item.company === safeCompany);
+  return /starter foundations/i.test(`${client?.retainer || ""} ${client?.status || ""} ${client?.note || ""}`);
+}
+
+function getStarterClientContentIdeas(analysis) {
+  if (analysis.company === "First Touch Innovations") {
+    return [
+      { company: analysis.company, hook: "Planning a bigger renovation in Brighton or Hove?", filming: "Use a calm owner/talking clip, finished-detail shots and any larger-project walkthroughs once proof arrives.", adAngle: "Organic starter content first: position First Touch around lofts, extensions and full refurbs before any paid lead test.", talkingPoints: "Bigger projects, communication, 5-star reviews, local trust and clear next-step conversation." },
+      { company: analysis.company, hook: "What homeowners should ask before starting an extension", filming: "Owner explains three useful questions, cut with project/process shots and finished work.", adAngle: "Education-led authority post for homeowners comparing builders.", talkingPoints: "Timeline, changes, hidden cost worries, quote process and reliability." },
+      { company: analysis.company, hook: "Why architects need builders they can safely recommend", filming: "Use meeting/process visuals, project proof and review snippets in a polished referral-style Reel.", adAngle: "Architect referral proof content, not paid ads yet.", talkingPoints: "Trust, communication, protecting the architect relationship and larger renovation fit." },
+      { company: analysis.company, hook: "From small job to future larger project", filming: "Explain how small profitable jobs can lead to referrals or future extensions/refurbs.", adAngle: "Shows commercial realism while keeping the public message focused on quality.", talkingPoints: "Referral value, homeowner trust, long-term relationships and good-fit work." },
+      { company: analysis.company, hook: "What a good renovation enquiry should include", filming: "Direct-to-camera checklist with simple on-screen bullets.", adAngle: "Improves lead quality by teaching homeowners what to send before asking for a quote.", talkingPoints: "Project type, area, timeline, drawings, photos, access and best contact route." },
+      { company: analysis.company, hook: "5-star local proof before paid ads", filming: "Use review screenshots or text overlays with finished work and owner context.", adAngle: "Trust-building starter content while proof assets are being organised.", talkingPoints: "Reviews, reliability, Brighton/Hove local proof and no rushed ad spend." }
+    ];
+  }
+
+  return [
+    { company: analysis.company, hook: "M8 Designs is built for proper projects, not handyman jobs", filming: "Owner/talking clip explaining project fit, mixed with website/project visuals once assets arrive.", adAngle: "Fit-filter content that attracts better enquiries and repels small odd jobs.", talkingPoints: "New builds, extensions, full-project delivery, site control and access fit." },
+    { company: analysis.company, hook: "From start to finish: what M8 wants to be known for", filming: "Use staged project visuals: early site, work in progress, finish details and final reveal.", adAngle: "Premium positioning around full-project construction.", talkingPoints: "Control, quality, process, standards and project delivery." },
+    { company: analysis.company, hook: "What makes a project easier to quote properly?", filming: "Direct-to-camera checklist: plans, scope, access, parking/materials and timeline.", adAngle: "Lead-quality content for homeowners before they enquire.", talkingPoints: "Access, parking, materials, proper scope and realistic conversations." },
+    { company: analysis.company, hook: "Extensions and new builds are the main event", filming: "Use strongest extension/new-build proof first, with bathrooms/rendering as supporting finish-quality clips.", adAngle: "Move public attention away from broad trades into higher-value projects.", talkingPoints: "Extensions, new builds, finish quality, proper projects and Brighton/Hove homeowners." },
+    { company: analysis.company, hook: "Why M8 prefers control over the whole site", filming: "Explain site control, standards and why subcontractor-style work is less ideal.", adAngle: "Differentiates M8 from general builders and contractors.", talkingPoints: "Methods, quality control, site standards and customer outcome." },
+    { company: analysis.company, hook: "Summer rendering and finish-quality proof", filming: "Render/bathroom/detail shots with a short explanation of why finish work shows standards.", adAngle: "Seasonal supporting content while keeping the main offer focused on larger projects.", talkingPoints: "Rendering, bathrooms, finish detail, weather timing and portfolio proof." }
+  ];
+}
+
+function getStarterClientContentBriefs(analysis) {
+  if (analysis.company === "First Touch Innovations") {
+    return [
+      { company: analysis.company, title: "Bigger renovation projects positioning Reel", hook: "Planning a loft, extension or full refurb around Brighton/Hove?", format: "30-second Reel / profile proof video", scenes: "Owner hook, finished project details, review proof, simple explanation of ideal project fit, WhatsApp/text CTA.", cta: "Message First Touch to discuss the project type, timeline and next step.", source: "Starter Client Content Gate", status: "Needs Review" },
+      { company: analysis.company, title: "Architect referral proof brief", hook: "A local build team architects can feel safe recommending.", format: "Referral PDF section / short Reel script", scenes: "Project proof, detailed review snippet, reliability/communication message, referral CTA for architects.", cta: "Architects can contact First Touch if they have a homeowner needing a trusted local contractor.", source: "Starter Client Content Gate", status: "Needs Review" },
+      { company: analysis.company, title: "Renovation enquiry quality brief", hook: "What to send before asking for a renovation quote.", format: "Educational carousel or talking-head Reel", scenes: "Project type, area, drawings/photos, timeline, access and preferred contact route.", cta: "Send the project details by phone, text or WhatsApp.", source: "Starter Client Content Gate", status: "Needs Review" }
+    ];
+  }
+
+  return [
+    { company: analysis.company, title: "Full-project delivery positioning Reel", hook: "M8 Designs is for proper projects from start to finish.", format: "30-second Reel / website hero video concept", scenes: "Owner hook, project category proof, finish details, site-control explanation and phone/email CTA.", cta: "Call or email M8 to discuss project scope, access and timeline.", source: "Starter Client Content Gate", status: "Needs Review" },
+    { company: analysis.company, title: "Project-fit filter brief", hook: "The kind of project that is right for M8.", format: "Educational carousel / talking-head Reel", scenes: "New builds, extensions, proper access, good scope, avoid handyman/small odd jobs, contact route.", cta: "Send project details through the website, phone or email.", source: "Starter Client Content Gate", status: "Needs Review" },
+    { company: analysis.company, title: "Premium proof hierarchy brief", hook: "New builds and extensions first, finish-quality proof second.", format: "Website section / portfolio post", scenes: "New build proof, extension proof, bathroom/rendering finish details and enquiry CTA.", cta: "Use the contact page to discuss a proper project.", source: "Starter Client Content Gate", status: "Needs Review" }
+    ];
+}
+
+function generateStarterClientContentIdeas() {
+  const starterClients = getStarterClientAnalyses();
+  const ideas = starterClients.flatMap(getStarterClientContentIdeas);
+  state.contentIdeas = [
+    ...ideas,
+    ...(state.contentIdeas || []).filter((item) => !isStarterFoundationClient(item.company))
+  ];
   addAgentOutput({
     agent: "Content Creation Agent",
-    company: "Research batch",
-    type: "Content briefs",
-    result: `Created ${state.contentBriefs.length} content brief(s) from company research.`,
-    nextAction: "Use briefs for filming plans, client calls and Meta test concepts.",
+    company: "Starter clients",
+    type: "Content ideas",
+    result: `Created ${ideas.length} content idea(s) for ${starterClients.length} starter-foundations client(s).`,
+    nextAction: "Use these for organic starter content and proof planning before any paid lead test.",
     approval: "No",
     status: "Needs Review"
   });
-  addAgentLog("Content Creation Agent", `Generated ${state.contentBriefs.length} content briefs from research.`);
+  addAgentLog("Content Creation Agent", `Generated ${ideas.length} starter-client content ideas without using the prospect batch.`);
+  saveState();
+  renderAll();
+  showView("content");
+}
+
+function generateStarterClientContentBriefs() {
+  const starterClients = getStarterClientAnalyses();
+  const briefs = starterClients.flatMap(getStarterClientContentBriefs);
+  state.contentBriefs = [
+    ...briefs,
+    ...(state.contentBriefs || []).filter((item) => !isStarterFoundationClient(item.company))
+  ];
+  addAgentOutput({
+    agent: "Content Creation Agent",
+    company: "Starter clients",
+    type: "Content briefs",
+    result: `Created ${briefs.length} content brief(s) for ${starterClients.length} starter-foundations client(s).`,
+    nextAction: "Use briefs for client calls, proof planning and organic content. Keep paid ads gated until readiness improves.",
+    approval: "No",
+    status: "Needs Review"
+  });
+  addAgentLog("Content Creation Agent", `Generated ${briefs.length} starter-client content briefs and skipped unaccepted prospects.`);
   saveState();
   renderAll();
   showView("content-briefs");
@@ -6072,7 +6163,7 @@ document.getElementById("websiteAuditForm").addEventListener("submit", (event) =
 
 document.getElementById("generateSocialAuditsLocalBtn").addEventListener("click", generateLocalSocialAudits);
 
-document.getElementById("generateContentBriefsBtn").addEventListener("click", generateContentBriefsFromResearch);
+document.getElementById("generateContentBriefsBtn").addEventListener("click", generateStarterClientContentBriefs);
 
 const dialog = document.getElementById("leadDialog");
 document.getElementById("addLeadBtn").addEventListener("click", () => dialog.showModal());
@@ -6196,11 +6287,11 @@ document.getElementById("auditSocialsAgentBtn").addEventListener("click", () => 
 });
 
 document.getElementById("generateContentAgentBtn").addEventListener("click", () => {
-  callSheetAction("generateContentIdeas", {}, "Content Creation Agent is turning research into ad ideas...");
+  generateStarterClientContentIdeas();
 });
 
 document.getElementById("generateContentIdeasBtn").addEventListener("click", () => {
-  callSheetAction("generateContentIdeas", {}, "Content Creation Agent is turning research into ad ideas...");
+  generateStarterClientContentIdeas();
 });
 
 document.getElementById("generateSocialPlanBtn").addEventListener("click", () => {
