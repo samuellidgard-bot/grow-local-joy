@@ -3946,7 +3946,10 @@ function renderClientPlatformStatusBoard(analysis) {
 function renderLeaderCommandPanel(progress) {
   const key = leaderPlanKey(progress);
   const run = state.leaderRuns?.[key];
-  const completions = state.leaderTaskCompletions?.[key] || {};
+  const completions = {
+    ...getDefaultCurrentStageTaskCompletions(progress),
+    ...(state.leaderTaskCompletions?.[key] || {})
+  };
   const evidenceNotes = state.leaderTaskEvidence?.[key] || {};
   const localAssignments = buildLeaderAssignments(progress);
   const assignments = run?.assignments?.length ? run.assignments : localAssignments;
