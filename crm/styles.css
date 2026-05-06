@@ -958,6 +958,68 @@ tbody tr:hover {
   background: linear-gradient(90deg, var(--brand-dark), var(--brand));
 }
 
+.client-current-action-plan {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.25fr) minmax(220px, 0.7fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.client-current-action-plan > div {
+  border: 1px solid rgba(144, 200, 71, 0.3);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.78);
+  padding: 14px;
+}
+
+.client-current-action-copy {
+  background:
+    linear-gradient(135deg, rgba(237, 248, 228, 0.9), rgba(255, 255, 255, 0.86)) !important;
+}
+
+.client-current-action-plan h3 {
+  margin: 4px 0 8px;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.client-current-action-plan p:not(.label) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.client-current-task-list ol,
+.client-progress-detail-tasks {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 0;
+  padding-left: 20px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.client-current-task-list li,
+.client-progress-detail-tasks li {
+  padding-left: 3px;
+}
+
+.client-current-done-card {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  background: #f8f1df !important;
+  border-color: rgba(162, 112, 24, 0.2) !important;
+}
+
+.client-current-done-card strong {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
 .client-progress-lane {
   margin-top: 18px;
   border: 1px solid rgba(144, 200, 71, 0.28);
@@ -1105,6 +1167,16 @@ tbody tr:hover {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.5;
+}
+
+.client-progress-done-note {
+  margin-top: 12px !important;
+  border-left: 3px solid var(--brand);
+  padding-left: 10px;
+}
+
+.client-progress-done-note strong {
+  color: var(--ink);
 }
 
 .client-progress-detail .pill {
@@ -3914,6 +3986,10 @@ label select {
 
   .client-progress-steps {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .client-current-action-plan {
+    grid-template-columns: 1fr;
   }
 
   .owner-summary-grid article.wide {

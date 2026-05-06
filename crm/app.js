@@ -3625,28 +3625,92 @@ function renderLeadTrackingBlueprint(analysis, foundationAudit, competitorBenchm
 }
 
 function getClientProgressPlan(analysis) {
+  const missingFoundationTasks = analysis.company === "First Touch Innovations"
+    ? [
+      "Mark website, Instagram, TikTok and Google Business as found in the identity check.",
+      "Confirm whether First Touch wants Xello to create or tidy a Facebook Page, or leave Facebook out for now.",
+      "Check the Instagram bio, TikTok bio and Google Business contact details all point to the same phone/WhatsApp route.",
+      "Ask the owner for access only where needed, never for personal passwords: use page admin invites or owner-led setup.",
+      "Update the CRM social scan with one clear status per platform: Found, Needs polish, Create, or Skip."
+    ]
+    : analysis.company === "M8 Designs"
+      ? [
+        "Mark the M8 website and supplied TikTok link as found in the identity check.",
+        "Confirm whether M8 has Instagram or Facebook accounts already, and add the links if they exist.",
+        "Decide whether M8 should create a Google Business Profile now, since there is no strong Google presence yet.",
+        "Check the website contact route and make sure phone/email are clear before any content or lead work.",
+        "Update the CRM social scan with one clear status per platform: Found, Needs polish, Create, or Skip."
+      ]
+      : [
+        "List every existing useful profile: website, Google Business, Instagram, Facebook, TikTok, LinkedIn and YouTube.",
+        "Decide which missing accounts are actually worth creating for this client.",
+        "Confirm the best enquiry route and make sure every useful profile points there.",
+        "Avoid asking for passwords by using owner-led setup, admin invites or screen-share setup.",
+        "Update the CRM social scan with one clear status per platform: Found, Needs polish, Create, or Skip."
+      ];
   const starterSteps = [
-    { title: "Discovery + identity", description: "Confirm the exact business, owner, offer stage, service area, website, socials and Google presence so Xello is working from the right company profile." },
-    { title: "Missing foundations", description: "Create or improve only the useful missing accounts and basics, such as Instagram, Facebook Page, Google Business Profile, TikTok, website contact route and clear enquiry details." },
-    { title: "Profile polish", description: "Make the visible profiles look credible: consistent logo, bio, service list, location, contact route, proof highlights and a clear reason to enquire." },
-    { title: "Proof asset intake", description: "Collect the photos, videos, reviews, project notes, before-and-after proof and brand files needed to make the business look trusted before paid traffic." },
-    { title: "Website/enquiry route", description: "Check that people can understand the offer and contact the business quickly through phone, WhatsApp, email or form without confusion." },
-    { title: "Lead tracker setup", description: "Set up the simple tracking fields for every enquiry: source, project type, value, location, reply speed, quote status and whether it became a good opportunity." },
-    { title: "Starter content plan", description: "Turn the confirmed services, proof assets and customer worries into starter content ideas before generating bigger campaign briefs." },
-    { title: "Readiness review", description: "Review the foundations score and decide whether the client is ready for the 14-day lead test or still needs more trust, proof or enquiry setup." }
+    {
+      title: "Discovery + identity",
+      description: "Confirm the exact business, owner, offer stage, service area, website, socials and Google presence so Xello is working from the right company profile.",
+      tasks: ["Confirm official business name, owner contact and service area.", "Add website, socials, Google Business and logo evidence into the CRM.", "Confirm the best enquiry route and current offer stage.", "Mark the identity check as confirmed or list what still needs proof."],
+      doneWhen: "The CRM has one confirmed identity, one preferred enquiry route and no obvious business mix-up risk."
+    },
+    {
+      title: "Missing foundations",
+      description: "Create or improve only the useful missing accounts and basics, such as Instagram, Facebook Page, Google Business Profile, TikTok, website contact route and clear enquiry details.",
+      tasks: missingFoundationTasks,
+      doneWhen: "Every useful foundation has a status: keep, polish, create or skip, and the client knows exactly which accounts Xello needs them to create or grant access to."
+    },
+    {
+      title: "Profile polish",
+      description: "Make the visible profiles look credible: consistent logo, bio, service list, location, contact route, proof highlights and a clear reason to enquire.",
+      tasks: ["Write a simple one-line positioning statement for the business.", "Tighten bios so they mention location, main services and enquiry route.", "Use the same logo/name/contact details across useful platforms.", "Add service highlights and proof points where the platform allows it."],
+      doneWhen: "A prospect can land on any main profile and understand who the business helps, what they do and how to enquire."
+    },
+    {
+      title: "Proof asset intake",
+      description: "Collect the photos, videos, reviews, project notes, before-and-after proof and brand files needed to make the business look trusted before paid traffic.",
+      tasks: ["Send or chase the Google Drive proof folder.", "Collect best project photos, vertical videos, reviews and before/after examples.", "Sort assets into project type, proof type and quality level.", "Flag missing proof needed for the best service angle."],
+      doneWhen: "There is enough proof to build credible starter content without scraping random low-quality assets."
+    },
+    {
+      title: "Website/enquiry route",
+      description: "Check that people can understand the offer and contact the business quickly through phone, WhatsApp, email or form without confusion.",
+      tasks: ["Check the homepage explains the main services clearly.", "Check phone, WhatsApp, email or form links work.", "Make the highest-value services obvious.", "Write a simple enquiry route recommendation for the owner."],
+      doneWhen: "A local prospect can go from profile or website to enquiry in under one minute."
+    },
+    {
+      title: "Lead tracker setup",
+      description: "Set up the simple tracking fields for every enquiry: source, project type, value, location, reply speed, quote status and whether it became a good opportunity.",
+      tasks: ["Create the enquiry tracking fields in the CRM or sheet.", "Agree what counts as a good lead.", "Add source, project type, estimated value, area and follow-up status fields.", "Test the tracker with one fake enquiry example."],
+      doneWhen: "Every new enquiry can be logged consistently before any paid traffic is switched on."
+    },
+    {
+      title: "Starter content plan",
+      description: "Turn the confirmed services, proof assets and customer worries into starter content ideas before generating bigger campaign briefs.",
+      tasks: ["Choose the main service angles from the owner answers.", "Match each angle to available proof assets.", "Write starter ideas for trust, process, project type, local proof and enquiry CTA.", "Avoid paid ad briefs until the foundation score is ready."],
+      doneWhen: "There is a practical first batch of organic/proof-led content ideas based on confirmed client information."
+    },
+    {
+      title: "Readiness review",
+      description: "Review the foundations score and decide whether the client is ready for the 14-day lead test or still needs more trust, proof or enquiry setup.",
+      tasks: ["Review identity, socials, Google, website, proof, content and tracking scores.", "Compare against local competitor baseline.", "List final blockers before paid visibility.", "Make a clear decision: ready, nearly ready or not ready."],
+      doneWhen: "The CRM has a written readiness decision and the 14-day test stays gated unless the foundations are strong enough."
+    }
   ];
   const middleOfferSteps = [
-    { title: "Confirm test angle", description: "Choose one focused lead test angle based on the best service, strongest proof and most valuable local enquiry type." },
-    { title: "Collect/film assets", description: "Film or collect the exact clips, project visuals, owner talking points and proof needed for the chosen lead test angle." },
-    { title: "Create 3 adverts", description: "Produce a small set of vertical ad variations with different hooks, proof moments and calls to action for the same offer." },
-    { title: "Build lead form", description: "Create the lead form questions and follow-up route so enquiries arrive with enough detail to judge quality." },
-    { title: "Set ad spend", description: "Confirm the client-paid Meta budget, campaign dates, location targeting and daily spend limit before launch." },
-    { title: "Launch 14-day test", description: "Run the gated local visibility test only after foundations are ready and all tracking/follow-up basics are in place." },
-    { title: "Track + follow up", description: "Record every lead, response speed, project type, quote quality and follow-up action so the test is judged properly." },
-    { title: "Review next offer", description: "Use the results to decide whether to improve foundations, run another test or pitch the monthly growth retainer." }
+    { title: "Confirm test angle", description: "Choose one focused lead test angle based on the best service, strongest proof and most valuable local enquiry type.", tasks: ["Pick one service to test.", "Confirm the local area and ideal enquiry type.", "Write the lead promise and CTA.", "Get owner approval before creating ads."], doneWhen: "The test has one approved service angle, one audience and one enquiry route." },
+    { title: "Collect/film assets", description: "Film or collect the exact clips, project visuals, owner talking points and proof needed for the chosen lead test angle.", tasks: ["Create a shot list for the chosen angle.", "Collect or film vertical clips.", "Capture owner talking points and trust proof.", "Save all assets in the client proof folder."], doneWhen: "There is enough usable footage and proof for at least three ad variations." },
+    { title: "Create 3 adverts", description: "Produce a small set of vertical ad variations with different hooks, proof moments and calls to action for the same offer.", tasks: ["Write three hooks for the same service.", "Edit three vertical adverts.", "Check captions, CTA and branding.", "Send previews for owner approval."], doneWhen: "Three approved adverts are ready to upload." },
+    { title: "Build lead form", description: "Create the lead form questions and follow-up route so enquiries arrive with enough detail to judge quality.", tasks: ["Write qualifying questions.", "Add contact fields.", "Add project type, location and timeframe fields.", "Test the form and lead notification route."], doneWhen: "A test lead arrives with enough detail to follow up properly." },
+    { title: "Set ad spend", description: "Confirm the client-paid Meta budget, campaign dates, location targeting and daily spend limit before launch.", tasks: ["Confirm client-paid budget.", "Set daily spend and dates.", "Confirm targeting radius.", "Make sure spend is attached to the client's ad account/payment method."], doneWhen: "Budget, dates, targeting and payment responsibility are written down before launch." },
+    { title: "Launch 14-day test", description: "Run the gated local visibility test only after foundations are ready and all tracking/follow-up basics are in place.", tasks: ["Final pre-launch check.", "Publish campaign.", "Check delivery after launch.", "Record launch date in CRM."], doneWhen: "The campaign is live and the CRM knows when the 14-day window started." },
+    { title: "Track + follow up", description: "Record every lead, response speed, project type, quote quality and follow-up action so the test is judged properly.", tasks: ["Log each lead source and project type.", "Track reply speed.", "Mark quote/site visit/booked status.", "Note lead quality and owner feedback."], doneWhen: "Every lead has a follow-up status and quality note." },
+    { title: "Review next offer", description: "Use the results to decide whether to improve foundations, run another test or pitch the monthly growth retainer.", tasks: ["Summarise spend, leads, quality and lessons.", "Compare results against the goal.", "Decide next recommendation.", "Prepare the retainer or next-test pitch if justified."], doneWhen: "The client has a clear next-step recommendation based on evidence, not guesswork." }
   ];
   const currentStarterStep = 2;
   const starterComplete = currentStarterStep > starterSteps.length;
+  const currentStepDetail = starterComplete ? middleOfferSteps[0] : starterSteps[currentStarterStep - 1];
   return {
     currentOffer: starterComplete ? "14-day local visibility / lead test" : "Starter foundations",
     currentStep: starterComplete ? 1 : currentStarterStep,
@@ -3654,6 +3718,7 @@ function getClientProgressPlan(analysis) {
     starterSteps,
     middleOfferSteps,
     starterComplete,
+    currentStepDetail,
     note: starterComplete
       ? "Starter foundations are complete. Move into the gated 14-day lead test with client-paid ad spend."
       : `${analysis.company} is currently in Phase 2: create or optimise only the useful missing foundations before moving into profile polish.`
@@ -3668,7 +3733,7 @@ function renderStepLane(steps, currentStep, locked = false) {
         const stateClass = locked ? "locked" : stepNumber < currentStep ? "complete" : stepNumber === currentStep ? "current" : "pending";
         const statusLabel = locked ? "Future step" : stateClass === "complete" ? "Covered" : stateClass === "current" ? "Current focus" : "Upcoming";
         return `
-          <button type="button" class="${stateClass}" data-progress-step-toggle="true" data-step-number="${stepNumber}" data-step-title="${escapeHtml(step.title)}" data-step-description="${escapeHtml(step.description)}" data-step-status="${statusLabel}" aria-expanded="false" ${stateClass === "current" ? 'aria-current="step"' : ""} ${locked ? 'aria-disabled="true"' : ""}>
+          <button type="button" class="${stateClass}" data-progress-step-toggle="true" data-step-number="${stepNumber}" data-step-title="${escapeHtml(step.title)}" data-step-description="${escapeHtml(step.description)}" data-step-tasks="${encodeURIComponent(JSON.stringify(step.tasks || []))}" data-step-done="${escapeHtml(step.doneWhen || "")}" data-step-status="${statusLabel}" aria-expanded="false" ${stateClass === "current" ? 'aria-current="step"' : ""} ${locked ? 'aria-disabled="true"' : ""}>
             <span>${stepNumber}</span>
             <strong>${escapeHtml(step.title)}</strong>
           </button>
@@ -3676,6 +3741,30 @@ function renderStepLane(steps, currentStep, locked = false) {
       }).join("")}
     </div>
     <div class="client-progress-detail" hidden></div>
+  `;
+}
+
+function renderClientCurrentStageActionPlan(progress) {
+  const step = progress.currentStepDetail;
+  if (!step) return "";
+  return `
+    <div class="client-current-action-plan">
+      <div class="client-current-action-copy">
+        <p class="label">Current stage action plan</p>
+        <h3>${escapeHtml(step.title)}</h3>
+        <p>${escapeHtml(step.description)}</p>
+      </div>
+      <div class="client-current-task-list">
+        <p class="label">Exact tasks to complete now</p>
+        <ol>
+          ${(step.tasks || []).map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+        </ol>
+      </div>
+      <div class="client-current-done-card">
+        <p class="label">Done when</p>
+        <strong>${escapeHtml(step.doneWhen)}</strong>
+      </div>
+    </div>
   `;
 }
 
@@ -3700,6 +3789,7 @@ function renderClientProgressTracker(analysis) {
       <div class="client-progress-meter" aria-label="${activePercent}% complete">
         <span style="width:${activePercent}%"></span>
       </div>
+      ${renderClientCurrentStageActionPlan(progress)}
       <div class="client-progress-lane">
         <div class="client-progress-lane-header">
           <strong>Starter foundations</strong>
@@ -4581,12 +4671,26 @@ function toggleProgressStepDescription(button) {
 
   button.setAttribute("aria-expanded", "true");
   button.classList.add("is-detail-open");
+  let tasks = [];
+  try {
+    tasks = JSON.parse(decodeURIComponent(button.dataset.stepTasks || "%5B%5D"));
+  } catch (error) {
+    tasks = [];
+  }
   detail.hidden = false;
   detail.innerHTML = `
     <div>
       <p class="label">Step ${escapeHtml(button.dataset.stepNumber)}</p>
       <h3>${escapeHtml(button.dataset.stepTitle)}</h3>
       <p>${escapeHtml(button.dataset.stepDescription)}</p>
+      ${tasks.length ? `
+        <ol class="client-progress-detail-tasks">
+          ${tasks.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+        </ol>
+      ` : ""}
+      ${button.dataset.stepDone ? `
+        <p class="client-progress-done-note"><strong>Done when:</strong> ${escapeHtml(button.dataset.stepDone)}</p>
+      ` : ""}
     </div>
     <span class="pill">${escapeHtml(button.dataset.stepStatus)}</span>
   `;
