@@ -1058,6 +1058,11 @@ tbody tr:hover {
   font-weight: 900;
 }
 
+.client-current-task-list li.is-complete span {
+  color: var(--brand-dark);
+  font-weight: 900;
+}
+
 .client-current-task-list li.is-complete strong {
   display: inline-block;
   margin-left: 8px;
@@ -1074,8 +1079,14 @@ tbody tr:hover {
   border: 1px solid rgba(130, 200, 50, 0.42);
   border-radius: 8px;
   background: #fbfdf8;
+  color: var(--brand-dark);
   padding: 8px 10px;
   font-weight: 800;
+}
+
+.client-current-task-list li.is-next span {
+  color: #2f5f18;
+  font-weight: 850;
 }
 
 .client-current-task-list li.is-next::marker {
