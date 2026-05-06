@@ -53,17 +53,23 @@ const defaultData = {
     { pillar: "Local proof", goal: "Build credibility around Brighton/Hove renovation marketing without inventing results.", examples: "Local market observations, anonymised audits, before/after creative concepts, test structure." }
   ],
   firstTouchProduction: [
-    { stage: "Shoot goal", detail: "Film enough real vertical footage to create 5 short Meta adverts for First Touch Innovations.", checklist: "50 usable clips, 5 talking clips, trust shots, work quality shots, process shots, local proof and CTA shots." },
-    { stage: "Must-have shots", detail: "Capture owner/team, finished details, hands working, clean site, exterior/local proof, before-after assets and final CTA clips.", checklist: "Film vertical first, keep clips steady, record 10 seconds per shot and avoid private client details." },
-    { stage: "Owner prompts", detail: "Ask what work they specialise in, what areas they cover, what makes them different and what homeowners should do for a quote.", checklist: "Keep answers natural, short and human. They do not need to sound like actors." },
-    { stage: "Editing rule", detail: "Every advert should follow: hook, proof, trust, offer, CTA.", checklist: "15-30 seconds, captions on, readable mobile text, strong first 2 seconds, no over-editing." }
+    { stage: "Shoot mission", detail: "Build a proof library, not just adverts: profile proof, website proof, Google photos, architect referral proof and future gated lead-test footage.", checklist: "Minimum: 70 usable vertical clips, 20 still photos, 5 owner talking clips, 3 review snippets and 3 project notes." },
+    { stage: "Priority services", detail: "Lead the shoot around loft conversions, extensions and full refurbs across Brighton/Hove/Sussex.", checklist: "Capture larger-project proof first; keep smaller jobs only as finish-quality or referral proof." },
+    { stage: "Must-have proof", detail: "Film finished wide reveals, close finish details, before/during/after sequences, process clips, clean site care and local context.", checklist: "Tag every clip after the shoot as hook, trust, process, detail, before-after, CTA or review." },
+    { stage: "Sonny trust clips", detail: "Record Sonny answering what work he wants more of, how he communicates, what homeowners worry about and why architects can trust First Touch.", checklist: "Keep answers natural and short; redo once in a cleaner one-sentence version if needed." },
+    { stage: "Contact-route clips", detail: "Capture call/text/WhatsApp CTA lines for homeowners planning lofts, extensions or refurbs.", checklist: "Get one clean CTA clip before leaving site." },
+    { stage: "Proof collection", detail: "Ask for original/high-res photos, videos, review screenshots and project notes while you are with Sonny.", checklist: "Collect or request 3 project examples, 3 reviews and permission notes for anything filmed in a client home." },
+    { stage: "First edit batch", detail: "After the shoot, sort assets, pick the 10 strongest clips/photos, create one pinned proof post, one review/proof post and one quote-route post.", checklist: "Do not launch ads until proof, enquiry route, tracker and readiness review are complete." }
   ],
   firstTouchAdAngles: [
-    { title: "Local Trust Ad", hook: "Planning a home renovation around Brighton or Hove?", structure: "Finished/detail shot, owner/team, work in progress, finished result, CTA.", cta: "Message First Touch Innovations for a free quote." },
-    { title: "Problem/Solution Ad", hook: "Worried about choosing the wrong renovation company?", structure: "Unfinished space, team working, trust clip, clean finish, CTA.", cta: "Ask about your renovation project." },
-    { title: "Before/After Ad", hook: "This is what better home renovation can look like.", structure: "Before shot, fast transition, after shot, detail close-ups, team/trust shot.", cta: "Thinking about a renovation? Send an enquiry." },
-    { title: "Founder/Team-Led Ad", hook: "Meet a local renovation team in Brighton and Hove.", structure: "Owner direct-to-camera, work clips, finished result, CTA.", cta: "Message the team to talk through your project." },
-    { title: "Fast Reel Ad", hook: "Renovating in Brighton or Hove?", structure: "1-second finished shot, process, detail, team, reveal, CTA.", cta: "Send a message to First Touch Innovations." }
+    { title: "Pinned Profile Proof", hook: "Planning a loft, extension or refurb around Brighton/Hove?", structure: "Best finished shot, Sonny trust line, process/detail proof, clear WhatsApp CTA.", cta: "Call or WhatsApp First Touch to talk through your project." },
+    { title: "Wrong Builder Fear", hook: "Worried about choosing the wrong builder?", structure: "Owner trust clip, tidy process, review proof, finished result.", cta: "Ask First Touch about your renovation project." },
+    { title: "Quote Route Explainer", hook: "What should you send before asking for a renovation quote?", structure: "Sonny answer, examples of drawings/photos, phone/WhatsApp CTA.", cta: "Send project details, photos and timing by WhatsApp." },
+    { title: "Architect Referral Proof", hook: "A local build team architects can safely recommend.", structure: "Project proof, communication answer, detail/process shots, referral CTA.", cta: "Architects can call or WhatsApp to discuss a client project." },
+    { title: "Before/After Proof", hook: "From unused space to proper living space.", structure: "Before or during shot, transition, finished reveal, detail shots.", cta: "Thinking about a bigger renovation? Send an enquiry." },
+    { title: "Finish Quality Reel", hook: "Small details that make a renovation feel finished.", structure: "Close-ups of clean finishes, checking details, final reveal.", cta: "Message First Touch for lofts, extensions and refurbs." },
+    { title: "Timeframes And Hidden Costs", hook: "What affects the timeframe or cost on a bigger renovation?", structure: "Sonny answer, process clips, project proof, calm CTA.", cta: "Talk through the project early so the next step is clear." },
+    { title: "Google Business Photo Set", hook: "Recent project proof around Brighton and Hove.", structure: "Best still photos, local service caption, phone/website route.", cta: "Call First Touch Innovations for local renovation enquiries." }
   ],
   firstTouchMetaPlan: [
     { area: "Campaign objective", instruction: "Use Leads first because it is simple to test and track.", status: "Planned" },
@@ -74,11 +80,12 @@ const defaultData = {
     { area: "Success tracking", instruction: "Track spend, leads, cost per lead, best ad, lead quality, replies, calls booked and quotes requested.", status: "Ready" }
   ],
   firstTouchLearningPlan: [
-    { day: "Days 1-2", focus: "Study good renovation ads and prepare the shoot plan.", output: "Shot list, questions, location/time and equipment ready." },
-    { day: "Day 3", focus: "Film First Touch Innovations.", output: "50+ vertical clips, owner/team soundbites and proof footage." },
-    { day: "Days 4-8", focus: "Organise footage and edit 5 advert versions.", output: "Local Trust, Problem/Solution, Before/After, Founder/Team and Fast Reel ads." },
-    { day: "Days 9-11", focus: "Review ads, pick best 3 and set up Meta lead campaign.", output: "Small test ready to launch with tracking sheet." },
-    { day: "Days 12-14", focus: "Read early data, improve one thing and write case study notes.", output: "First Xello proof project documented." }
+    { day: "Before shoot", focus: "Confirm location, permission boundaries, kit, Sonny questions and asset request list.", output: "Shoot-day checklist ready; phone/WhatsApp bio copy ready to show Sonny." },
+    { day: "Shoot day", focus: "Capture proof library first, then Sonny trust clips, process clips, CTA clips and review/project notes.", output: "70+ clips, 20 photos, 5 talking clips, 3 reviews/project notes requested or captured." },
+    { day: "Same day backup", focus: "Back up files and separate unusable/private clips from usable proof.", output: "Raw asset safety copy and first quick shortlist." },
+    { day: "Days 1-2 after", focus: "Sort into proof folders and tag assets by hook/trust/process/detail/before-after/CTA/review.", output: "Proof library organised; CRM proof intake can advance." },
+    { day: "Days 3-5 after", focus: "Create starter proof content before any ad setup.", output: "Pinned proof post, review/proof post, quote-route post and Google Business photo shortlist." },
+    { day: "After foundations review", focus: "Only then review future lead-test creative angles.", output: "Gated Meta test decision based on proof, enquiry route and tracker readiness." }
   ],
   firstTouchCaseStudy: [
     { section: "Starting point", prompt: "Document their current website/social presence, content they already have and what work they want more of." },
