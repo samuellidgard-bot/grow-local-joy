@@ -3678,6 +3678,19 @@ function getClientProgressPlan(analysis) {
         "Avoid asking for passwords by using owner-led setup, admin invites or screen-share setup.",
         "Update the CRM social scan with one clear status per platform: Found, Needs polish, Create, or Skip."
       ];
+  const proofAssetTasks = analysis.company === "First Touch Innovations"
+    ? [
+      "Mark public proof as found: website Work page project photos, TikTok profile proof, Google photos and 5-star review proof.",
+      "Collect original/high-res project photos, vertical videos and review screenshots on shoot day with Sonny.",
+      "Sort assets into project type, proof type and quality level.",
+      "Flag missing larger-project proof needed for lofts, extensions and full refurbs."
+    ]
+    : [
+      "Send or chase the Google Drive proof folder.",
+      "Collect best project photos, vertical videos, reviews and before/after examples.",
+      "Sort assets into project type, proof type and quality level.",
+      "Flag missing proof needed for the best service angle."
+    ];
   const starterSteps = [
     {
       title: "Discovery + identity",
@@ -3700,7 +3713,7 @@ function getClientProgressPlan(analysis) {
     {
       title: "Proof asset intake",
       description: "Collect the photos, videos, reviews, project notes, before-and-after proof and brand files needed to make the business look trusted before paid traffic.",
-      tasks: ["Send or chase the Google Drive proof folder.", "Collect best project photos, vertical videos, reviews and before/after examples.", "Sort assets into project type, proof type and quality level.", "Flag missing proof needed for the best service angle."],
+      tasks: proofAssetTasks,
       doneWhen: "There is enough proof to build credible starter content without scraping random low-quality assets."
     },
     {
@@ -3738,16 +3751,20 @@ function getClientProgressPlan(analysis) {
     { title: "Track + follow up", description: "Record every lead, response speed, project type, quote quality and follow-up action so the test is judged properly.", tasks: ["Log each lead source and project type.", "Track reply speed.", "Mark quote/site visit/booked status.", "Note lead quality and owner feedback."], doneWhen: "Every lead has a follow-up status and quality note." },
     { title: "Review next offer", description: "Use the results to decide whether to improve foundations, run another test or pitch the monthly growth retainer.", tasks: ["Summarise spend, leads, quality and lessons.", "Compare results against the goal.", "Decide next recommendation.", "Prepare the retainer or next-test pitch if justified."], doneWhen: "The client has a clear next-step recommendation based on evidence, not guesswork." }
   ];
-  const missingFoundationKey = `${analysis.company}::Starter foundations::Missing foundations`.replace(/\s+/g, "-").toLowerCase();
-  const missingFoundationCompletions = {
-    ...getDefaultCurrentStageTaskCompletions({
+  const currentStarterStepIndex = starterSteps.findIndex((step) => {
+    const stepProgress = {
       company: analysis.company,
-      currentStepLabel: "Missing foundations"
-    }),
-    ...(state.leaderTaskCompletions?.[missingFoundationKey] || {})
-  };
-  const missingFoundationsComplete = missingFoundationTasks.every((_, index) => missingFoundationCompletions[index]);
-  const currentStarterStep = missingFoundationsComplete ? 3 : 2;
+      currentOffer: "Starter foundations",
+      currentStepLabel: step.title
+    };
+    const key = leaderPlanKey(stepProgress);
+    const completions = {
+      ...getDefaultCurrentStageTaskCompletions(stepProgress),
+      ...(state.leaderTaskCompletions?.[key] || {})
+    };
+    return !step.tasks.every((_, index) => completions[index]);
+  });
+  const currentStarterStep = currentStarterStepIndex === -1 ? starterSteps.length + 1 : currentStarterStepIndex + 1;
   const starterComplete = currentStarterStep > starterSteps.length;
   const currentStepDetail = starterComplete ? middleOfferSteps[0] : starterSteps[currentStarterStep - 1];
   return {
@@ -3826,8 +3843,10 @@ function renderClientCurrentStageActionPlan(progress) {
 }
 
 function getDefaultCurrentStageTaskCompletions(progress) {
+  if (progress.currentStepLabel === "Discovery + identity") return { 0: true, 1: true, 2: true, 3: true };
   if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Missing foundations") return { 0: true, 1: true, 2: true, 3: true, 4: true };
-  if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Profile polish") return { 0: true, 1: true };
+  if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Profile polish") return { 0: true, 1: true, 2: true, 3: true };
+  if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Proof asset intake") return { 0: true };
   if (progress.currentStepLabel !== "Missing foundations") return {};
   if (progress.company === "M8 Designs") return { 0: true };
   return {};
