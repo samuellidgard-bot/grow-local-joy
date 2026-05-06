@@ -3624,6 +3624,98 @@ function renderLeadTrackingBlueprint(analysis, foundationAudit, competitorBenchm
   `;
 }
 
+function getClientProgressPlan(analysis) {
+  const starterSteps = [
+    "Discovery + identity",
+    "Missing foundations",
+    "Profile polish",
+    "Proof asset intake",
+    "Website/enquiry route",
+    "Lead tracker setup",
+    "Starter content plan",
+    "Readiness review"
+  ];
+  const middleOfferSteps = [
+    "Confirm test angle",
+    "Collect/film assets",
+    "Create 3 adverts",
+    "Build lead form",
+    "Set ad spend",
+    "Launch 14-day test",
+    "Track + follow up",
+    "Review next offer"
+  ];
+  const currentStarterStep = 2;
+  const starterComplete = currentStarterStep > starterSteps.length;
+  return {
+    currentOffer: starterComplete ? "14-day local visibility / lead test" : "Starter foundations",
+    currentStep: starterComplete ? 1 : currentStarterStep,
+    currentStepLabel: starterComplete ? middleOfferSteps[0] : starterSteps[currentStarterStep - 1],
+    starterSteps,
+    middleOfferSteps,
+    starterComplete,
+    note: starterComplete
+      ? "Starter foundations are complete. Move into the gated 14-day lead test with client-paid ad spend."
+      : `${analysis.company} is currently in Phase 2: create or optimise only the useful missing foundations before moving into profile polish.`
+  };
+}
+
+function renderStepLane(steps, currentStep, locked = false) {
+  return `
+    <div class="client-progress-steps ${locked ? "locked" : ""}">
+      ${steps.map((step, index) => {
+        const stepNumber = index + 1;
+        const stateClass = locked ? "locked" : stepNumber < currentStep ? "complete" : stepNumber === currentStep ? "current" : "pending";
+        return `
+          <article class="${stateClass}" ${stateClass === "current" ? 'aria-current="step"' : ""} ${locked ? 'aria-disabled="true"' : ""}>
+            <span>${stepNumber}</span>
+            <strong>${escapeHtml(step)}</strong>
+          </article>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
+function renderClientProgressTracker(analysis) {
+  const progress = getClientProgressPlan(analysis);
+  const activeSteps = progress.starterComplete ? progress.middleOfferSteps : progress.starterSteps;
+  const activePercent = Math.round((progress.currentStep / activeSteps.length) * 100);
+  return `
+    <section class="panel client-progress-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Client progress</p>
+          <h2>Offer Stage Tracker</h2>
+          ${renderSectionPreview(progress.note, [
+            { value: progress.currentOffer, label: "current offer" },
+            { value: `${progress.currentStep}/8`, label: "current step" },
+            { value: `${activePercent}%`, label: "phase progress" }
+          ])}
+        </div>
+        <span class="pill">${escapeHtml(progress.currentStepLabel)}</span>
+      </div>
+      <div class="client-progress-meter" aria-label="${activePercent}% complete">
+        <span style="width:${activePercent}%"></span>
+      </div>
+      <div class="client-progress-lane">
+        <div class="client-progress-lane-header">
+          <strong>Starter foundations</strong>
+          <span>${progress.starterComplete ? "Complete" : `Step ${progress.currentStep} of 8`}</span>
+        </div>
+        ${renderStepLane(progress.starterSteps, progress.starterComplete ? 9 : progress.currentStep)}
+      </div>
+      <div class="client-progress-lane next-offer">
+        <div class="client-progress-lane-header">
+          <strong>Middle offer: 14-day lead test</strong>
+          <span>${progress.starterComplete ? "Active" : "Locked until starter foundations are complete"}</span>
+        </div>
+        ${renderStepLane(progress.middleOfferSteps, progress.starterComplete ? progress.currentStep : 0, !progress.starterComplete)}
+      </div>
+    </section>
+  `;
+}
+
 function renderProofAndHelpPanel(analysis, foundationAudit, competitorBenchmark) {
   const plan = getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark);
   return `
@@ -4433,7 +4525,7 @@ function renderClientAnalyses() {
 }
 
 function setupClientSectionExpansion() {
-  document.querySelectorAll(".client-analysis-view .panel:not(.client-analysis-hero)").forEach((panel) => {
+  document.querySelectorAll(".client-analysis-view .panel:not(.client-analysis-hero):not(.client-progress-panel)").forEach((panel) => {
     const header = panel.querySelector(":scope > .panel-header");
     if (!header) return;
 
@@ -4522,6 +4614,8 @@ function renderClientAnalysisSheet(targetId, company) {
         </div>
       </div>
     </section>
+
+    ${renderClientProgressTracker(analysis)}
 
     <section class="panel snapshot-panel">
       <div class="panel-header">
