@@ -1027,6 +1027,11 @@ function loadState() {
   merged.firstTouchMetaPlan = merged.firstTouchMetaPlan || defaultData.firstTouchMetaPlan;
   merged.firstTouchLearningPlan = merged.firstTouchLearningPlan || defaultData.firstTouchLearningPlan;
   merged.firstTouchCaseStudy = merged.firstTouchCaseStudy || defaultData.firstTouchCaseStudy;
+  if (hasLegacyFirstTouchShootStrategy(merged)) {
+    merged.firstTouchProduction = defaultData.firstTouchProduction;
+    merged.firstTouchAdAngles = defaultData.firstTouchAdAngles;
+    merged.firstTouchLearningPlan = defaultData.firstTouchLearningPlan;
+  }
   merged.testJourney = merged.testJourney || defaultData.testJourney;
   merged.demoProof = merged.demoProof || defaultData.demoProof;
   merged.icpProfile = merged.icpProfile || defaultData.icpProfile;
@@ -1043,6 +1048,15 @@ function loadState() {
   merged.leaderTaskEvidence = merged.leaderTaskEvidence || {};
   merged.openCurrentActionPlanKey = merged.openCurrentActionPlanKey || "";
   return migrateOfferStrategy(merged);
+}
+
+function hasLegacyFirstTouchShootStrategy(data) {
+  const productionText = JSON.stringify(data.firstTouchProduction || []);
+  const angleText = JSON.stringify(data.firstTouchAdAngles || []);
+  const learningText = JSON.stringify(data.firstTouchLearningPlan || []);
+  return productionText.includes("Film enough real vertical footage to create 5 short Meta adverts")
+    || angleText.includes("Local Trust Ad")
+    || learningText.includes("Days 9-11");
 }
 
 function migrateOfferStrategy(data) {
