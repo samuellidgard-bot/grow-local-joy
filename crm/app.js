@@ -3694,7 +3694,7 @@ function getClientProgressPlan(analysis) {
     {
       title: "Profile polish",
       description: "Make the visible profiles look credible: consistent logo, bio, service list, location, contact route, proof highlights and a clear reason to enquire.",
-      tasks: ["Write a simple one-line positioning statement for the business.", "Tighten bios so they mention location, main services and enquiry route.", "Use the same logo/name/contact details across useful platforms.", "Add service highlights and proof points where the platform allows it."],
+      tasks: ["Write a simple one-line positioning statement for the business.", "Prepare tightened bio/contact-route copy for Instagram, TikTok and Google; owner implementation can wait until Sam's shoot day with Sonny.", "Use the same logo/name/contact details across useful platforms.", "Add service highlights and proof points where the platform allows it."],
       doneWhen: "A prospect can land on any main profile and understand who the business helps, what they do and how to enquire."
     },
     {
@@ -3826,8 +3826,9 @@ function renderClientCurrentStageActionPlan(progress) {
 }
 
 function getDefaultCurrentStageTaskCompletions(progress) {
+  if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Missing foundations") return { 0: true, 1: true, 2: true, 3: true, 4: true };
+  if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Profile polish") return { 0: true, 1: true };
   if (progress.currentStepLabel !== "Missing foundations") return {};
-  if (progress.company === "First Touch Innovations") return { 0: true, 1: true };
   if (progress.company === "M8 Designs") return { 0: true };
   return {};
 }
