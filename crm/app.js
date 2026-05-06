@@ -4433,7 +4433,7 @@ function setupClientSectionExpansion() {
     toggle.className = "small-button section-toggle-button";
     toggle.dataset.analysisToggle = "true";
     toggle.setAttribute("aria-expanded", "false");
-    toggle.textContent = "Expand";
+    toggle.textContent = "View";
     actions.appendChild(toggle);
   });
 }
@@ -4443,7 +4443,7 @@ function toggleClientAnalysisSection(button) {
   if (!panel) return;
   const isExpanded = panel.classList.toggle("is-expanded");
   button.setAttribute("aria-expanded", String(isExpanded));
-  button.textContent = isExpanded ? "Collapse" : "Expand";
+  button.textContent = isExpanded ? "Close" : "View";
 }
 
 function renderClientAnalysisSheet(targetId, company) {
