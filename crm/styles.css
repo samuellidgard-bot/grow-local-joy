@@ -1044,6 +1044,32 @@ tbody tr:hover {
   padding-left: 3px;
 }
 
+.client-current-task-list li.is-complete {
+  border: 1px solid rgba(53, 118, 25, 0.22);
+  border-radius: 8px;
+  background: #edf8e4;
+  color: var(--brand-dark);
+  padding: 8px 10px;
+  font-weight: 800;
+}
+
+.client-current-task-list li.is-complete::marker {
+  color: var(--brand-dark);
+  font-weight: 900;
+}
+
+.client-current-task-list li.is-complete strong {
+  display: inline-block;
+  margin-left: 8px;
+  border-radius: 999px;
+  background: var(--brand-dark);
+  color: #ffffff;
+  padding: 4px 7px;
+  font-size: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .client-current-done-card {
   display: grid;
   align-content: start;

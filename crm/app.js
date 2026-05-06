@@ -3781,6 +3781,7 @@ function renderClientCurrentStageActionPlan(progress) {
   if (!step) return "";
   const key = leaderPlanKey(progress);
   const isOpen = state.openCurrentActionPlanKey === key;
+  const completions = state.leaderTaskCompletions?.[key] || {};
   return `
     <div class="client-current-action-shell">
       <div class="client-current-action-plan" ${isOpen ? "" : "hidden"}>
@@ -3792,7 +3793,12 @@ function renderClientCurrentStageActionPlan(progress) {
         <div class="client-current-task-list">
           <p class="label">Exact tasks to complete now</p>
           <ol>
-            ${(step.tasks || []).map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+            ${(step.tasks || []).map((task, index) => `
+              <li class="${completions[index] ? "is-complete" : ""}">
+                <span>${escapeHtml(task)}</span>
+                ${completions[index] ? "<strong>Done</strong>" : ""}
+              </li>
+            `).join("")}
           </ol>
         </div>
         <div class="client-current-done-card">
