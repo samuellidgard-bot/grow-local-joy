@@ -3738,7 +3738,16 @@ function getClientProgressPlan(analysis) {
     { title: "Track + follow up", description: "Record every lead, response speed, project type, quote quality and follow-up action so the test is judged properly.", tasks: ["Log each lead source and project type.", "Track reply speed.", "Mark quote/site visit/booked status.", "Note lead quality and owner feedback."], doneWhen: "Every lead has a follow-up status and quality note." },
     { title: "Review next offer", description: "Use the results to decide whether to improve foundations, run another test or pitch the monthly growth retainer.", tasks: ["Summarise spend, leads, quality and lessons.", "Compare results against the goal.", "Decide next recommendation.", "Prepare the retainer or next-test pitch if justified."], doneWhen: "The client has a clear next-step recommendation based on evidence, not guesswork." }
   ];
-  const currentStarterStep = 2;
+  const missingFoundationKey = `${analysis.company}::Starter foundations::Missing foundations`.replace(/\s+/g, "-").toLowerCase();
+  const missingFoundationCompletions = {
+    ...getDefaultCurrentStageTaskCompletions({
+      company: analysis.company,
+      currentStepLabel: "Missing foundations"
+    }),
+    ...(state.leaderTaskCompletions?.[missingFoundationKey] || {})
+  };
+  const missingFoundationsComplete = missingFoundationTasks.every((_, index) => missingFoundationCompletions[index]);
+  const currentStarterStep = missingFoundationsComplete ? 3 : 2;
   const starterComplete = currentStarterStep > starterSteps.length;
   const currentStepDetail = starterComplete ? middleOfferSteps[0] : starterSteps[currentStarterStep - 1];
   return {
