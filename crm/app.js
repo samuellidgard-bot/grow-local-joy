@@ -3658,7 +3658,7 @@ function getClientProgressPlan(analysis) {
   const missingFoundationTasks = analysis.company === "First Touch Innovations"
     ? [
       "Mark website, Instagram, TikTok and Google Business as found in the identity check.",
-      "Confirm whether First Touch wants Xello to create or tidy a Facebook Page, or leave Facebook out for now.",
+      "Treat the First Touch Facebook Page as approved for creation; prepare the page setup plan and only pause for the admin invite or final public publish.",
       "Check the Instagram bio, TikTok bio and Google Business contact details all point to the same phone/WhatsApp route.",
       "Ask the owner for access only where needed, never for personal passwords: use page admin invites or owner-led setup.",
       "Update the CRM social scan with one clear status per platform: Found, Needs polish, Create, or Skip."
@@ -3689,7 +3689,7 @@ function getClientProgressPlan(analysis) {
       title: "Missing foundations",
       description: "Create or improve only the useful missing accounts and basics, such as Instagram, Facebook Page, Google Business Profile, TikTok, website contact route and clear enquiry details.",
       tasks: missingFoundationTasks,
-      doneWhen: "Every useful foundation has a status: keep, polish, create or skip, and the client knows exactly which accounts Xello needs them to create or grant access to."
+      doneWhen: "Every useful foundation has a status: keep, polish, create or skip, and Leader has auto-prepared everything possible before any access, publish, spend or password boundary."
     },
     {
       title: "Profile polish",
@@ -3827,7 +3827,7 @@ function buildLeaderAssignments(progress) {
       task,
       agent,
       command: `${agent}, handle this for ${progress.company}: ${task}`,
-      relay: `Relay back to Leader with: platform status if relevant, evidence found, human approval needed, and whether this can be ticked off.`
+      relay: `Relay back to Leader with: platform status if relevant, evidence found, auto-complete decision, and only flag human approval for access, public publishing, passwords or spend.`
     };
   });
 }
@@ -3836,13 +3836,13 @@ function getClientPlatformStatusPlan(analysis) {
   const firstTouch = analysis.company === "First Touch Innovations";
   if (firstTouch) {
     return {
-      summary: "First Touch has enough public foundations to work with, but the visible route needs polishing and Facebook needs a deliberate create-or-skip decision.",
+      summary: "First Touch has enough public foundations to work with. Facebook Page creation is approved, so Leader should auto-prepare setup details and only pause at admin invite or public publish.",
       rows: [
         { platform: "Website", status: "Needs polish", evidence: "Official website and Work/Contact routes are known.", action: "Audit service wording, larger-project proof, WhatsApp/phone CTA and mobile enquiry route.", ownerDecision: "Confirm the official URL and whether Xello can suggest copy changes.", priority: "Now" },
         { platform: "Instagram", status: "Needs polish", evidence: "Official website links to @firsttouch_innovations.", action: "Check bio, pinned proof, highlights, service area and CTA for lofts/extensions/refurbs.", ownerDecision: "Ask for admin invite only if profile edits are approved.", priority: "Now" },
         { platform: "TikTok", status: "Needs polish", evidence: "Sam supplied @firsttouch_innovations as the trusted link.", action: "Check profile image, bio, recent proof and whether the same enquiry route is visible.", ownerDecision: "Confirm whether TikTok should mirror Instagram or stay lighter.", priority: "Now" },
         { platform: "Google Business", status: "Needs polish", evidence: "Sam screenshot shows 5.0 rating, 7 reviews, contractor category, address and phone.", action: "Audit photos, services, review replies, posts, service areas and quote/contact route.", ownerDecision: "Ask owner before changing categories, hours or public details.", priority: "Now" },
-        { platform: "Facebook", status: "Create", evidence: "No reliable official page has been found yet.", action: "Create or tidy only if it helps local trust, reviews, messaging or older homeowner discovery.", ownerDecision: "Sam/owner must decide create versus skip.", priority: "Decision" },
+        { platform: "Facebook", status: "Create", evidence: "No reliable official page has been found yet; Sam has approved creation.", action: "Prepare the Facebook Page setup: name, category, bio, service area, contact route, logo and first proof posts. Pause only for admin invite or final publish.", ownerDecision: "Approved for creation by Sam; no further create-or-skip approval needed.", priority: "Now" },
         { platform: "YouTube", status: "Skip", evidence: "No official useful channel found.", action: "Do not create now; reuse vertical proof on Instagram/TikTok first.", ownerDecision: "Revisit only when video volume justifies it.", priority: "Later" }
       ]
     };
@@ -3958,12 +3958,12 @@ function renderLeaderCommandPanel(progress) {
                   <div class="leader-relay-fields" aria-label="Relay note checklist">
                     <span>Platform status</span>
                     <span>Evidence</span>
-                    <span>Approval needed</span>
+                    <span>Only true approval gates</span>
                     <span>Tick-off decision</span>
                   </div>
                   <div class="leader-relay-note">
                     <label for="leader-evidence-${assignment.index}-${escapeHtml(key)}">Relay evidence note</label>
-                    <textarea id="leader-evidence-${assignment.index}-${escapeHtml(key)}" data-leader-evidence-input="${escapeHtml(key)}" data-leader-task-index="${assignment.index}" placeholder="Status: Found / Needs polish / Create / Skip&#10;Evidence: ...&#10;Approval needed: ...&#10;Tick-off decision: yes/no and why">${escapeHtml(evidence)}</textarea>
+                    <textarea id="leader-evidence-${assignment.index}-${escapeHtml(key)}" data-leader-evidence-input="${escapeHtml(key)}" data-leader-task-index="${assignment.index}" placeholder="Status: Found / Needs polish / Create / Skip&#10;Evidence: ...&#10;Auto-complete decision: yes/no and why&#10;Approval gate only if access, public publishing, passwords or spend are involved">${escapeHtml(evidence)}</textarea>
                     <div>
                       <span>${evidence.trim() ? "Evidence saved for Leader review" : "No relay note saved yet"}</span>
                       <button type="button" class="small-button" data-leader-evidence-save="${escapeHtml(key)}" data-leader-task-index="${assignment.index}">Save relay note</button>

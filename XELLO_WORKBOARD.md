@@ -114,6 +114,7 @@ Status:
 
 Latest QA / Launch notes:
 - Master Control resolved the source-of-truth sync on 2026-05-06: local CRM platform status board and Leader relay UI changes are now copied into `grow-local-joy/crm/app.js` and `grow-local-joy/crm/styles.css`.
+- Vercel `CRON_SECRET` was rotated on 2026-05-06 to remove the whitespace blocker; production redeploy succeeded at commit `285a001`, and live CRM verification showed the Platform Status Board on `https://www.xellomedia.co.uk/crm/`.
 - Live unauthenticated `/crm/login` has a broken Xello logo because `/crm/assets/xello-media-logo-transparent.png` redirects to `/crm/login` before authentication.
 - Automated checks passed in `grow-local-joy` after sync: `node --check api/crm.js`, `node --check crm/app.js`, `npm test`, and `npm run build`.
 - Local and live dashboard smoke checks loaded without console errors; live authenticated dashboard was checked from the existing browser session, while clean headless live access correctly redirected to `/crm/login`.
@@ -131,9 +132,9 @@ Primary files:
 - Agent workflow docs.
 
 Rules:
-- Approval-gated autonomy only.
+- Approval-gated autonomy only, but avoid repeat approvals after Master Control has made a clear decision.
 - No secret values committed to Git.
-- No external account creation, messaging, ads or client-facing actions without human approval.
+- No external account creation, messaging, ads or client-facing actions without human approval; once approved, Leader can auto-prepare details and only pause at access, public publish, password or spend boundaries.
 
 Status:
 - Parked until Master Control asks.
@@ -173,12 +174,12 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 ### In Progress
 
 - Wait for First Touch and M8 Google Drive folders to be filled with photo/video proof assets.
-- Use Leader relay notes inside each client task to record evidence found and human approval needed.
+- Use Leader relay notes inside each client task to record evidence found, auto-complete decisions and only true approval gates.
 - Keep clients in Starter foundations phase until missing useful foundations are created or deliberately skipped.
 
 ### Next Practical Tasks
 
-- Confirm First Touch current account list: website, Instagram, TikTok, Google Business, Facebook decision.
+- Confirm First Touch current account list: website, Instagram, TikTok and Google Business; Facebook Page creation is already approved.
 - Confirm M8 current account list: website, TikTok, Google Business decision, Instagram/Facebook status.
 - Use the CRM Platform Status Board to confirm each useful platform status: Found, Needs polish, Create, or Skip.
 - Prepare proof asset review once Drive folders have uploads.
@@ -194,19 +195,20 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - M8 does not want small handyman-style jobs.
 - Brighton/Hove and nearby local coverage is assumed for both.
 - Content ideas/briefs should only be produced for active starter foundation clients to save API/useful thinking.
-- The Leader workflow should collect relay evidence notes under each task before task completion.
+- The Leader workflow should auto-complete research/status/setup-prep tasks where possible and collect relay evidence notes before task completion.
+- First Touch Facebook Page creation is approved by Sam; Leader should prepare setup details and only pause for admin invite/final public publish.
 
 ## Open Questions
 
-- Do First Touch and M8 want Xello to create missing accounts for them, or guide owner-led setup?
-- Should First Touch create/tidy a Facebook Page, or skip Facebook for now?
+- For M8, should Xello create missing accounts directly, or guide owner-led setup?
 - Does M8 want a Google Business Profile despite initial hesitation?
 - Which uploaded Drive assets are best enough to use as proof?
 
 ## Completed Changes
 
 - CRM client pages now include a Platform Status Board for First Touch and M8 with Found / Needs polish / Create / Skip account decisions, synced into the deployable live repo copy.
-- Leader relay notes now prompt for platform status, evidence, approval needed and tick-off decision.
+- Leader relay notes now prompt for platform status, evidence, auto-complete decisions and only true approval gates.
+- First Touch Facebook Page creation has been approved and reflected in the CRM task language.
 - Client Delivery prepared the next First Touch and M8 starter foundations delivery plan.
 - CRM client pages now have offer stage trackers.
 - Current stage action plan is collapsible.

@@ -97,7 +97,7 @@ async function handleLeaderRun(req, res) {
         task,
         agent,
         command: `${agent}, handle this for ${company}: ${task}`,
-        relay: "Relay back to Leader with: evidence found, recommended status, human approval needed, and whether this can be ticked off."
+        relay: "Relay back to Leader with: evidence found, recommended status, auto-complete decision, and only flag human approval for access, public publishing, passwords or spend."
       };
     });
     const store = await readLeaderStore();
@@ -211,7 +211,7 @@ async function handleLeaderCron(req, res) {
         task,
         agent,
         command: `${agent}, handle this for ${company}: ${task}`,
-        relay: "Relay back to Leader with: evidence found, recommended status, human approval needed, and whether this can be ticked off."
+        relay: "Relay back to Leader with: evidence found, recommended status, auto-complete decision, and only flag human approval for access, public publishing, passwords or spend."
       };
     });
     store.runs[key] = {
