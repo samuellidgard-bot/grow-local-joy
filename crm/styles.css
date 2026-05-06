@@ -1058,6 +1058,103 @@ tbody tr:hover {
   line-height: 1.45;
 }
 
+.leader-command-panel {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(35, 39, 33, 0.14);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(35, 39, 33, 0.04), rgba(237, 248, 228, 0.62)),
+    #ffffff;
+  padding: 14px;
+}
+
+.leader-command-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.leader-command-head h3 {
+  margin: 4px 0 6px;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.leader-command-head p:not(.label),
+.leader-empty-state {
+  max-width: 860px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.leader-command-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 220px;
+}
+
+.leader-assignment-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.leader-assignment-list article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  border: 1px solid rgba(144, 200, 71, 0.24);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.78);
+  padding: 12px;
+}
+
+.leader-assignment-list article.is-complete {
+  border-color: rgba(79, 135, 29, 0.42);
+  background: rgba(237, 248, 228, 0.8);
+}
+
+.leader-assignment-list strong,
+.leader-assignment-list span,
+.leader-assignment-list small {
+  display: block;
+}
+
+.leader-assignment-list strong {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.leader-assignment-list span {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.leader-assignment-list small {
+  margin-top: 6px;
+  color: var(--brand-dark);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.leader-empty-state {
+  margin-top: 12px;
+  border: 1px dashed rgba(144, 200, 71, 0.38);
+  border-radius: var(--radius);
+  background: rgba(237, 248, 228, 0.42);
+  padding: 12px;
+}
+
 .client-progress-lane {
   margin-top: 18px;
   border: 1px solid rgba(144, 200, 71, 0.28);
@@ -4028,6 +4125,20 @@ label select {
 
   .client-current-action-plan {
     grid-template-columns: 1fr;
+  }
+
+  .leader-command-head,
+  .leader-assignment-list article {
+    grid-template-columns: 1fr;
+  }
+
+  .leader-command-head {
+    flex-direction: column;
+  }
+
+  .leader-command-actions {
+    justify-content: flex-start;
+    min-width: 0;
   }
 
   .owner-summary-grid article.wide {

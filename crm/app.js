@@ -413,6 +413,7 @@ const defaultData = {
     { item: "Email sending", cost: 0, limit: "Provider/inbox based" }
   ],
   agents: [
+    { name: "Leader", purpose: "Reads the current client stage tasks, delegates them to specialist agents, collects their relay notes and tracks what is ready to tick off.", status: "Queued", currentTask: "Waiting for a client stage action plan to command", progress: 10, lastRun: "Not run yet", nextRun: "Manual from client page", cost: 0, outputs: 0 },
     { name: "Prospect Scanner", purpose: "Finds renovation companies across Brighton, Hove and Sussex.", status: "Running", currentTask: "Scanning builders and extension firms in Brighton", progress: 68, lastRun: "Today 09:20", nextRun: "Today 16:00", cost: 0.42, outputs: 37 },
     { name: "Company Research Agent", purpose: "Builds personalised hooks and pain points for each company before outreach is written.", status: "Queued", currentTask: "Waiting for new prospects to research", progress: 10, lastRun: "Not run yet", nextRun: "After prospect scan", cost: 0, outputs: 0 },
     { name: "Content Creation Agent", purpose: "Turns company research into advert hooks, filming plans and Meta content ideas.", status: "Queued", currentTask: "Waiting for researched companies", progress: 10, lastRun: "Not run yet", nextRun: "After company research", cost: 0, outputs: 0 },
@@ -422,6 +423,7 @@ const defaultData = {
     { name: "Outreach Writer", purpose: "Drafts personalised emails, follow-ups and Instagram DMs.", status: "Waiting Approval", currentTask: "42 drafts need review", progress: 100, lastRun: "Today 10:05", nextRun: "After approvals", cost: 0.56, outputs: 42 },
     { name: "Reply Triage Agent", purpose: "Categorises replies and suggests the next step.", status: "Complete", currentTask: "Tagged 8 warm replies", progress: 100, lastRun: "Today 11:30", nextRun: "Every morning", cost: 0.08, outputs: 14 },
     { name: "Client Strategy Agent", purpose: "Turns client goals, services and capacity into clear monthly priorities.", status: "Queued", currentTask: "Waiting for first retained client", progress: 10, lastRun: "Not run yet", nextRun: "On client onboarding", cost: 0, outputs: 0 },
+    { name: "Tracking Agent", purpose: "Sets up enquiry tracking fields, lead status rules and follow-up checks before any paid visibility work.", status: "Queued", currentTask: "Waiting for starter tracking setup", progress: 10, lastRun: "Not run yet", nextRun: "Before lead test readiness review", cost: 0, outputs: 0 },
     { name: "Meta Test Planner", purpose: "Prepares campaign structure, lead forms and tracking fields for offer two: the 14-day lead test.", status: "Queued", currentTask: "Waiting for a client with foundations ready", progress: 10, lastRun: "Not run yet", nextRun: "Before campaign launch", cost: 0, outputs: 0 },
     { name: "Reporting Agent", purpose: "Summarises pipeline, spend, booked calls and weekly priorities.", status: "Idle", currentTask: "Weekly report due Friday", progress: 0, lastRun: "Not run yet", nextRun: "Friday 09:00", cost: 0, outputs: 0 }
   ],
@@ -836,6 +838,18 @@ const identityResearchDrafts = {
 };
 
 const agentDetails = {
+  "Leader": {
+    purpose: "Coordinates the specialist AI agents for the active client stage, then turns their returned notes into a clear completion checklist for Sam.",
+    responsibilities: [
+      "Reads the current stage action plan on the client page.",
+      "Decides which specialist agent should own each task.",
+      "Creates a command for each agent and captures the relay note back.",
+      "Only marks work as complete when Sam reviews and ticks the task."
+    ],
+    inputs: "Current client, active offer stage, exact task list, identity/social/website/proof/tracking status and existing CRM notes.",
+    outputs: "Delegated agent commands, relay summaries, completion status and the next blocker.",
+    guardrails: "Coordinator only. It does not create accounts, request passwords, send client messages or publish anything without Sam."
+  },
   "Prospect Scanner": {
     purpose: "Finds renovation, building and home improvement companies across the target locations and turns them into structured CRM prospects.",
     responsibilities: [
@@ -956,6 +970,18 @@ const agentDetails = {
     outputs: "Campaign plan, advert copy, lead form questions, tracking setup list and launch checklist.",
     guardrails: "It never launches ads or changes budgets. Sam manually checks and launches inside Meta."
   },
+  "Tracking Agent": {
+    purpose: "Makes sure enquiries, sources and follow-up stages can be tracked before any paid traffic is considered.",
+    responsibilities: [
+      "Creates the lead tracking fields for the current client stage.",
+      "Checks whether every enquiry source has a simple status.",
+      "Flags missing source, project type, value, area, quote stage and next-action fields.",
+      "Feeds Leader with whether a task is trackable and ready to tick off."
+    ],
+    inputs: "Current client action plan, enquiry route, social scan status, CRM fields and owner follow-up notes.",
+    outputs: "Tracking field checklist, task status notes and follow-up rules.",
+    guardrails: "It tracks and recommends only. It does not contact leads or change client systems automatically."
+  },
   "Reporting Agent": {
     purpose: "Summarises what is happening in the agency so you can see the business clearly each week.",
     responsibilities: [
@@ -1005,6 +1031,9 @@ function loadState() {
     ...(defaultData.clientOwnerResponses || {}),
     ...(merged.clientOwnerResponses || {})
   };
+  merged.leaderRuns = merged.leaderRuns || {};
+  merged.leaderTaskCompletions = merged.leaderTaskCompletions || {};
+  merged.openCurrentActionPlanKey = merged.openCurrentActionPlanKey || "";
   return migrateOfferStrategy(merged);
 }
 
@@ -3712,6 +3741,7 @@ function getClientProgressPlan(analysis) {
   const starterComplete = currentStarterStep > starterSteps.length;
   const currentStepDetail = starterComplete ? middleOfferSteps[0] : starterSteps[currentStarterStep - 1];
   return {
+    company: analysis.company,
     currentOffer: starterComplete ? "14-day local visibility / lead test" : "Starter foundations",
     currentStep: starterComplete ? 1 : currentStarterStep,
     currentStepLabel: starterComplete ? middleOfferSteps[0].title : starterSteps[currentStarterStep - 1].title,
@@ -3747,9 +3777,11 @@ function renderStepLane(steps, currentStep, locked = false) {
 function renderClientCurrentStageActionPlan(progress) {
   const step = progress.currentStepDetail;
   if (!step) return "";
+  const key = leaderPlanKey(progress);
+  const isOpen = state.openCurrentActionPlanKey === key;
   return `
     <div class="client-current-action-shell">
-      <div class="client-current-action-plan" hidden>
+      <div class="client-current-action-plan" ${isOpen ? "" : "hidden"}>
         <div class="client-current-action-copy">
           <p class="label">Current stage action plan</p>
           <h3>${escapeHtml(step.title)}</h3>
@@ -3765,7 +3797,84 @@ function renderClientCurrentStageActionPlan(progress) {
           <p class="label">Done when</p>
           <strong>${escapeHtml(step.doneWhen)}</strong>
         </div>
+        ${renderLeaderCommandPanel(progress)}
       </div>
+    </div>
+  `;
+}
+
+function leaderPlanKey(progress) {
+  return `${progress.company}::${progress.currentOffer}::${progress.currentStepLabel}`.replace(/\s+/g, "-").toLowerCase();
+}
+
+function getLeaderAgentForTask(task) {
+  const text = String(task || "").toLowerCase();
+  if (text.includes("website") || text.includes("contact route") || text.includes("form")) return "Website Audit Agent";
+  if (text.includes("instagram") || text.includes("tiktok") || text.includes("facebook") || text.includes("social") || text.includes("google business") || text.includes("profile")) return "Social Audit Agent";
+  if (text.includes("proof") || text.includes("photos") || text.includes("videos") || text.includes("content") || text.includes("assets")) return "Content Creation Agent";
+  if (text.includes("track") || text.includes("status") || text.includes("source") || text.includes("field")) return "Tracking Agent";
+  if (text.includes("owner") || text.includes("access") || text.includes("password") || text.includes("confirm")) return "Client Strategy Agent";
+  return "Company Research Agent";
+}
+
+function buildLeaderAssignments(progress) {
+  const tasks = progress.currentStepDetail?.tasks || [];
+  return tasks.map((task, index) => {
+    const agent = getLeaderAgentForTask(task);
+    return {
+      index,
+      task,
+      agent,
+      command: `${agent}, handle this for ${progress.company}: ${task}`,
+      relay: `Relay back to Leader with: evidence found, recommended status, human approval needed, and whether this can be ticked off.`
+    };
+  });
+}
+
+function renderLeaderCommandPanel(progress) {
+  const key = leaderPlanKey(progress);
+  const run = state.leaderRuns?.[key];
+  const completions = state.leaderTaskCompletions?.[key] || {};
+  const assignments = buildLeaderAssignments(progress);
+  const delegatedAgents = [...new Set(assignments.map((assignment) => assignment.agent))].join("|");
+  const completeCount = assignments.filter((assignment) => completions[assignment.index]).length;
+  return `
+    <div class="leader-command-panel">
+      <div class="leader-command-head">
+        <div>
+          <p class="label">Leader agent</p>
+          <h3>Command Centre</h3>
+          <p>Leader reads the current tasks, commands the specialist agents, collects their relay notes and lets you tick off tasks once reviewed.</p>
+        </div>
+        <div class="leader-command-actions">
+          <span class="pill">${completeCount}/${assignments.length} complete</span>
+          <button type="button" class="small-button approve" data-leader-run="${escapeHtml(key)}" data-leader-company="${escapeHtml(progress.company)}" data-leader-agents="${escapeHtml(delegatedAgents)}">
+            ${run ? "Rerun Leader" : "Run Leader agent"}
+          </button>
+        </div>
+      </div>
+      ${run ? `
+        <div class="leader-assignment-list">
+          ${assignments.map((assignment) => {
+            const done = Boolean(completions[assignment.index]);
+            return `
+              <article class="${done ? "is-complete" : ""}">
+                <div>
+                  <p class="label">${escapeHtml(assignment.agent)}</p>
+                  <strong>${escapeHtml(assignment.task)}</strong>
+                  <span>${escapeHtml(assignment.command)}</span>
+                  <small>${escapeHtml(assignment.relay)}</small>
+                </div>
+                <button type="button" class="small-button ${done ? "" : "approve"}" data-leader-task-toggle="${escapeHtml(key)}" data-leader-task-index="${assignment.index}" aria-pressed="${done}">
+                  ${done ? "Done" : "Mark done"}
+                </button>
+              </article>
+            `;
+          }).join("")}
+        </div>
+      ` : `
+        <p class="leader-empty-state">Click Run Leader agent to create the agent commands for this stage.</p>
+      `}
     </div>
   `;
 }
@@ -3774,6 +3883,8 @@ function renderClientProgressTracker(analysis) {
   const progress = getClientProgressPlan(analysis);
   const activeSteps = progress.starterComplete ? progress.middleOfferSteps : progress.starterSteps;
   const activePercent = Math.round((progress.currentStep / activeSteps.length) * 100);
+  const actionPlanKey = leaderPlanKey(progress);
+  const actionPlanOpen = state.openCurrentActionPlanKey === actionPlanKey;
   return `
     <section class="panel client-progress-panel">
       <div class="panel-header">
@@ -3794,8 +3905,8 @@ function renderClientProgressTracker(analysis) {
               <strong>${activePercent}%</strong>
               phase progress
             </span>
-            <button type="button" class="small-button client-current-action-toggle" data-current-action-toggle="true" aria-expanded="false">
-              Show current action plan
+            <button type="button" class="small-button client-current-action-toggle" data-current-action-toggle="true" data-current-action-key="${escapeHtml(actionPlanKey)}" aria-expanded="${actionPlanOpen}">
+              ${actionPlanOpen ? "Hide current action plan" : "Show current action plan"}
             </button>
           </div>
         </div>
@@ -4719,6 +4830,65 @@ function toggleCurrentStageActionPlan(button) {
   plan.hidden = isOpen;
   button.setAttribute("aria-expanded", String(!isOpen));
   button.textContent = isOpen ? "Show current action plan" : "Hide current action plan";
+  state.openCurrentActionPlanKey = isOpen ? "" : button.dataset.currentActionKey || "";
+  saveState();
+}
+
+function runLeaderAgent(button) {
+  const key = button.dataset.leaderRun;
+  const company = button.dataset.leaderCompany || "client";
+  const delegatedAgents = String(button.dataset.leaderAgents || "").split("|").filter(Boolean);
+  if (!key) return;
+  state.leaderRuns = state.leaderRuns || {};
+  state.leaderTaskCompletions = state.leaderTaskCompletions || {};
+  state.leaderRuns[key] = {
+    ranAt: displayDate(),
+    company
+  };
+  state.openCurrentActionPlanKey = key;
+
+  const leader = state.agents.find((agent) => agent.name === "Leader");
+  if (leader) {
+    leader.status = "Running";
+    leader.currentTask = `Commanding specialist agents for ${company}`;
+    leader.progress = 72;
+    leader.lastRun = "Just now";
+    leader.outputs = Number(leader.outputs || 0) + 1;
+  }
+
+  delegatedAgents.forEach((agentName) => {
+    const agent = state.agents.find((row) => row.name === agentName);
+    if (!agent) return;
+    agent.status = "Queued";
+    agent.currentTask = `Command from Leader for ${company}`;
+    agent.progress = Math.max(Number(agent.progress || 0), 35);
+    agent.nextRun = "After Leader command";
+  });
+
+  addAgentLog("Leader", `Leader read the current stage tasks for ${company}, delegated them to specialist agents and opened the relay board.`);
+  addAgentOutput({
+    agent: "Leader",
+    company,
+    type: "Stage command plan",
+    result: `Delegated the current stage action plan for ${company} to specialist agents and prepared task tick-off controls.`,
+    nextAction: "Review each relay note, then mark tasks done once the evidence is good enough.",
+    status: "Needs Review"
+  });
+  saveState();
+  renderAll();
+}
+
+function toggleLeaderTask(button) {
+  const key = button.dataset.leaderTaskToggle;
+  const index = button.dataset.leaderTaskIndex;
+  if (!key || index === undefined) return;
+  state.leaderTaskCompletions = state.leaderTaskCompletions || {};
+  state.leaderTaskCompletions[key] = state.leaderTaskCompletions[key] || {};
+  state.leaderTaskCompletions[key][index] = !state.leaderTaskCompletions[key][index];
+  state.openCurrentActionPlanKey = key;
+  addAgentLog("Leader", `${state.leaderTaskCompletions[key][index] ? "Ticked off" : "Reopened"} a current-stage task after Leader review.`);
+  saveState();
+  renderAll();
 }
 
 function renderClientAnalysisSheet(targetId, company) {
@@ -6384,6 +6554,8 @@ document.addEventListener(
     if (button.dataset.analysisToggle) toggleClientAnalysisSection(button);
     if (button.dataset.progressStepToggle) toggleProgressStepDescription(button);
     if (button.dataset.currentActionToggle) toggleCurrentStageActionPlan(button);
+    if (button.dataset.leaderRun) runLeaderAgent(button);
+    if (button.dataset.leaderTaskToggle) toggleLeaderTask(button);
     if (button.dataset.identityAction === "run") runIdentityResearch(button.dataset.identityCompany);
     if (button.dataset.identityAction === "confirm" || button.dataset.identityAction === "deny") {
       reviewIdentityCandidate(button.dataset.identityCompany, button.dataset.identityAction);
