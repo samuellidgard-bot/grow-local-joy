@@ -3761,7 +3761,7 @@ function getClientProgressPlan(analysis) {
     currentStepDetail,
     note: starterComplete
       ? "Starter foundations are complete. Move into the gated 14-day lead test with client-paid ad spend."
-      : `${analysis.company} is currently in Phase 2: create or optimise only the useful missing foundations before moving into profile polish.`
+      : `${analysis.company} is currently in Phase ${currentStarterStep}: ${currentStepDetail.description}`
   };
 }
 
