@@ -1033,6 +1033,7 @@ function loadState() {
   };
   merged.leaderRuns = merged.leaderRuns || {};
   merged.leaderTaskCompletions = merged.leaderTaskCompletions || {};
+  merged.leaderTaskEvidence = merged.leaderTaskEvidence || {};
   merged.openCurrentActionPlanKey = merged.openCurrentActionPlanKey || "";
   return migrateOfferStrategy(merged);
 }
@@ -3835,10 +3836,12 @@ function renderLeaderCommandPanel(progress) {
   const key = leaderPlanKey(progress);
   const run = state.leaderRuns?.[key];
   const completions = state.leaderTaskCompletions?.[key] || {};
+  const evidenceNotes = state.leaderTaskEvidence?.[key] || {};
   const localAssignments = buildLeaderAssignments(progress);
   const assignments = run?.assignments?.length ? run.assignments : localAssignments;
   const delegatedAgents = [...new Set(assignments.map((assignment) => assignment.agent))].join("|");
   const completeCount = assignments.filter((assignment) => completions[assignment.index]).length;
+  const evidenceCount = assignments.filter((assignment) => String(evidenceNotes[assignment.index] || "").trim()).length;
   const taskPayload = encodeURIComponent(JSON.stringify(localAssignments.map((assignment) => assignment.task)));
   return `
     <div class="leader-command-panel">
@@ -3851,6 +3854,7 @@ function renderLeaderCommandPanel(progress) {
         <div class="leader-command-actions">
           ${run?.mode ? `<span class="pill">${run.mode === "server-runner" ? "backend runner" : "local fallback"}</span>` : ""}
           ${run?.persisted ? `<span class="pill">${run.persisted === "kv" ? "saved to server" : "browser saved"}</span>` : ""}
+          <span class="pill">${evidenceCount}/${assignments.length} relay notes</span>
           <span class="pill">${completeCount}/${assignments.length} complete</span>
           <button type="button" class="small-button approve" data-leader-run="${escapeHtml(key)}" data-leader-company="${escapeHtml(progress.company)}" data-leader-stage="${escapeHtml(progress.currentStepLabel)}" data-leader-offer="${escapeHtml(progress.currentOffer)}" data-leader-tasks="${taskPayload}" data-leader-agents="${escapeHtml(delegatedAgents)}">
             ${run ? "Rerun Leader" : "Run Leader agent"}
@@ -3861,6 +3865,7 @@ function renderLeaderCommandPanel(progress) {
         <div class="leader-assignment-list">
           ${assignments.map((assignment) => {
             const done = Boolean(completions[assignment.index]);
+            const evidence = String(evidenceNotes[assignment.index] || "");
             return `
               <article class="${done ? "is-complete" : ""}">
                 <div>
@@ -3868,6 +3873,14 @@ function renderLeaderCommandPanel(progress) {
                   <strong>${escapeHtml(assignment.task)}</strong>
                   <span>${escapeHtml(assignment.command)}</span>
                   <small>${escapeHtml(assignment.relay)}</small>
+                  <div class="leader-relay-note">
+                    <label for="leader-evidence-${assignment.index}-${escapeHtml(key)}">Relay evidence note</label>
+                    <textarea id="leader-evidence-${assignment.index}-${escapeHtml(key)}" data-leader-evidence-input="${escapeHtml(key)}" data-leader-task-index="${assignment.index}" placeholder="Paste the agent relay here: evidence found, recommended status, human approval needed, and whether this can be ticked off.">${escapeHtml(evidence)}</textarea>
+                    <div>
+                      <span>${evidence.trim() ? "Evidence saved for Leader review" : "No relay note saved yet"}</span>
+                      <button type="button" class="small-button" data-leader-evidence-save="${escapeHtml(key)}" data-leader-task-index="${assignment.index}">Save relay note</button>
+                    </div>
+                  </div>
                 </div>
                 <button type="button" class="small-button ${done ? "" : "approve"}" data-leader-task-toggle="${escapeHtml(key)}" data-leader-task-index="${assignment.index}" aria-pressed="${done}">
                   ${done ? "Done" : "Mark done"}
@@ -4872,6 +4885,31 @@ async function requestLeaderTaskToggle(payload) {
   }
 }
 
+async function requestLeaderState() {
+  if (window.location.protocol === "file:") return null;
+  try {
+    const response = await fetch("api/leader/state", {
+      method: "GET",
+      credentials: "same-origin"
+    });
+    if (!response.ok) return null;
+    const result = await response.json();
+    return result?.ok ? result : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+async function hydrateLeaderState() {
+  const serverState = await requestLeaderState();
+  if (!serverState) return;
+  state.leaderRuns = { ...(state.leaderRuns || {}), ...(serverState.runs || {}) };
+  state.leaderTaskCompletions = { ...(state.leaderTaskCompletions || {}), ...(serverState.completions || {}) };
+  state.leaderTaskEvidence = { ...(state.leaderTaskEvidence || {}), ...(serverState.evidence || {}) };
+  saveState();
+  renderAll();
+}
+
 async function runLeaderAgent(button) {
   const key = button.dataset.leaderRun;
   const company = button.dataset.leaderCompany || "client";
@@ -4886,6 +4924,7 @@ async function runLeaderAgent(button) {
   button.disabled = true;
   state.leaderRuns = state.leaderRuns || {};
   state.leaderTaskCompletions = state.leaderTaskCompletions || {};
+  state.leaderTaskEvidence = state.leaderTaskEvidence || {};
   const serverRun = await requestLeaderRun({
     key,
     company,
@@ -4939,14 +4978,43 @@ async function toggleLeaderTask(button) {
   if (!key || index === undefined) return;
   state.leaderTaskCompletions = state.leaderTaskCompletions || {};
   state.leaderTaskCompletions[key] = state.leaderTaskCompletions[key] || {};
+  state.leaderTaskEvidence = state.leaderTaskEvidence || {};
+  state.leaderTaskEvidence[key] = state.leaderTaskEvidence[key] || {};
+  const noteInput = button.closest("article")?.querySelector(`[data-leader-evidence-input="${CSS.escape(key)}"][data-leader-task-index="${CSS.escape(index)}"]`);
+  const evidence = noteInput?.value || state.leaderTaskEvidence[key][index] || "";
   const nextValue = !state.leaderTaskCompletions[key][index];
   button.disabled = true;
-  const serverResult = await requestLeaderTaskToggle({ key, index, complete: nextValue });
+  const serverResult = await requestLeaderTaskToggle({ key, index, complete: nextValue, evidence });
   state.leaderTaskCompletions[key][index] = typeof serverResult?.complete === "boolean"
     ? serverResult.complete
     : nextValue;
+  state.leaderTaskEvidence[key][index] = typeof serverResult?.evidence === "string"
+    ? serverResult.evidence
+    : evidence;
   state.openCurrentActionPlanKey = key;
   addAgentLog("Leader", `${state.leaderTaskCompletions[key][index] ? "Ticked off" : "Reopened"} a current-stage task after Leader review.`);
+  saveState();
+  renderAll();
+}
+
+async function saveLeaderEvidenceNote(button) {
+  const key = button.dataset.leaderEvidenceSave;
+  const index = button.dataset.leaderTaskIndex;
+  if (!key || index === undefined) return;
+  const noteInput = button.closest("article")?.querySelector(`[data-leader-evidence-input="${CSS.escape(key)}"][data-leader-task-index="${CSS.escape(index)}"]`);
+  const evidence = noteInput?.value || "";
+  state.leaderTaskEvidence = state.leaderTaskEvidence || {};
+  state.leaderTaskEvidence[key] = state.leaderTaskEvidence[key] || {};
+  state.leaderTaskCompletions = state.leaderTaskCompletions || {};
+  state.leaderTaskCompletions[key] = state.leaderTaskCompletions[key] || {};
+  button.disabled = true;
+  const complete = Boolean(state.leaderTaskCompletions[key][index]);
+  const serverResult = await requestLeaderTaskToggle({ key, index, complete, evidence });
+  state.leaderTaskEvidence[key][index] = typeof serverResult?.evidence === "string"
+    ? serverResult.evidence
+    : evidence;
+  state.openCurrentActionPlanKey = key;
+  addAgentLog("Leader", `Saved a relay evidence note for current-stage task ${Number(index) + 1}.`);
   saveState();
   renderAll();
 }
@@ -6616,6 +6684,7 @@ document.addEventListener(
     if (button.dataset.currentActionToggle) toggleCurrentStageActionPlan(button);
     if (button.dataset.leaderRun) runLeaderAgent(button);
     if (button.dataset.leaderTaskToggle) toggleLeaderTask(button);
+    if (button.dataset.leaderEvidenceSave) saveLeaderEvidenceNote(button);
     if (button.dataset.identityAction === "run") runIdentityResearch(button.dataset.identityCompany);
     if (button.dataset.identityAction === "confirm" || button.dataset.identityAction === "deny") {
       reviewIdentityCandidate(button.dataset.identityCompany, button.dataset.identityAction);
@@ -6837,3 +6906,4 @@ document.getElementById("simulateAgentRun").addEventListener("click", () => {
 
 renderAll();
 if (getApiUrl()) updateConnectionBar();
+hydrateLeaderState();

@@ -148,18 +148,30 @@ async function handleLeaderTaskToggle(req, res) {
 
     const store = await readLeaderStore();
     store.completions[key] = store.completions[key] || {};
+    store.evidence = store.evidence || {};
+    store.evidence[key] = store.evidence[key] || {};
     const nextValue = typeof payload.complete === "boolean"
       ? payload.complete
-      : !store.completions[key][index];
+      : Boolean(store.completions[key][index]);
+    if (typeof payload.evidence === "string") {
+      store.evidence[key][index] = payload.evidence.slice(0, 4000);
+    }
     store.completions[key][index] = nextValue;
     store.events.unshift({
       at: new Date().toISOString(),
       type: "leader-task",
-      message: `${nextValue ? "Completed" : "Reopened"} Leader task ${index} for ${key}.`
+      message: `${nextValue ? "Completed" : "Reopened"} Leader task ${index} for ${key}${typeof payload.evidence === "string" ? " with relay evidence" : ""}.`
     });
     trimLeaderStore(store);
     const savedStore = await writeLeaderStore(store);
-    return sendJson(res, { ok: true, key, index, complete: nextValue, persisted: savedStore.storageMode });
+    return sendJson(res, {
+      ok: true,
+      key,
+      index,
+      complete: nextValue,
+      evidence: store.evidence[key][index] || "",
+      persisted: savedStore.storageMode
+    });
   } catch (error) {
     res.statusCode = 400;
     return sendJson(res, { ok: false, error: "Leader could not update that task." });
@@ -173,6 +185,7 @@ async function handleLeaderState(req, res) {
     storageMode: store.storageMode,
     runs: store.runs,
     completions: store.completions,
+    evidence: store.evidence || {},
     latestCronAt: store.latestCronAt || "",
     events: store.events.slice(0, 25)
   });
@@ -315,6 +328,7 @@ function normaliseLeaderStore(store = {}, storageMode = "memory") {
     storageMode,
     runs: store.runs || {},
     completions: store.completions || {},
+    evidence: store.evidence || {},
     latestPayloads: store.latestPayloads || {},
     latestCronAt: store.latestCronAt || "",
     events: Array.isArray(store.events) ? store.events : []
@@ -484,7 +498,7 @@ function readBody(req) {
     let body = "";
     req.on("data", (chunk) => {
       body += chunk;
-      if (body.length > 10000) {
+      if (body.length > 50000) {
         reject(new Error("Request body too large"));
         req.destroy();
       }
