@@ -3748,21 +3748,26 @@ function renderClientCurrentStageActionPlan(progress) {
   const step = progress.currentStepDetail;
   if (!step) return "";
   return `
-    <div class="client-current-action-plan">
-      <div class="client-current-action-copy">
-        <p class="label">Current stage action plan</p>
-        <h3>${escapeHtml(step.title)}</h3>
-        <p>${escapeHtml(step.description)}</p>
-      </div>
-      <div class="client-current-task-list">
-        <p class="label">Exact tasks to complete now</p>
-        <ol>
-          ${(step.tasks || []).map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
-        </ol>
-      </div>
-      <div class="client-current-done-card">
-        <p class="label">Done when</p>
-        <strong>${escapeHtml(step.doneWhen)}</strong>
+    <div class="client-current-action-shell">
+      <button type="button" class="small-button client-current-action-toggle" data-current-action-toggle="true" aria-expanded="false">
+        Show current action plan
+      </button>
+      <div class="client-current-action-plan" hidden>
+        <div class="client-current-action-copy">
+          <p class="label">Current stage action plan</p>
+          <h3>${escapeHtml(step.title)}</h3>
+          <p>${escapeHtml(step.description)}</p>
+        </div>
+        <div class="client-current-task-list">
+          <p class="label">Exact tasks to complete now</p>
+          <ol>
+            ${(step.tasks || []).map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+          </ol>
+        </div>
+        <div class="client-current-done-card">
+          <p class="label">Done when</p>
+          <strong>${escapeHtml(step.doneWhen)}</strong>
+        </div>
       </div>
     </div>
   `;
@@ -4694,6 +4699,16 @@ function toggleProgressStepDescription(button) {
     </div>
     <span class="pill">${escapeHtml(button.dataset.stepStatus)}</span>
   `;
+}
+
+function toggleCurrentStageActionPlan(button) {
+  const shell = button.closest(".client-current-action-shell");
+  const plan = shell?.querySelector(".client-current-action-plan");
+  if (!plan) return;
+  const isOpen = button.getAttribute("aria-expanded") === "true";
+  plan.hidden = isOpen;
+  button.setAttribute("aria-expanded", String(!isOpen));
+  button.textContent = isOpen ? "Show current action plan" : "Hide current action plan";
 }
 
 function renderClientAnalysisSheet(targetId, company) {
@@ -6358,6 +6373,7 @@ document.addEventListener(
     if (!button) return;
     if (button.dataset.analysisToggle) toggleClientAnalysisSection(button);
     if (button.dataset.progressStepToggle) toggleProgressStepDescription(button);
+    if (button.dataset.currentActionToggle) toggleCurrentStageActionPlan(button);
     if (button.dataset.identityAction === "run") runIdentityResearch(button.dataset.identityCompany);
     if (button.dataset.identityAction === "confirm" || button.dataset.identityAction === "deny") {
       reviewIdentityCandidate(button.dataset.identityCompany, button.dataset.identityAction);

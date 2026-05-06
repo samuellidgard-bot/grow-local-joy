@@ -958,11 +958,25 @@ tbody tr:hover {
   background: linear-gradient(90deg, var(--brand-dark), var(--brand));
 }
 
+.client-current-action-shell {
+  margin-top: 14px;
+}
+
+.client-current-action-toggle {
+  background: #edf8e4;
+  border-color: rgba(144, 200, 71, 0.44);
+  color: var(--brand-dark);
+}
+
 .client-current-action-plan {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.25fr) minmax(220px, 0.7fr);
   gap: 14px;
-  margin-top: 18px;
+  margin-top: 12px;
+}
+
+.client-current-action-plan[hidden] {
+  display: none;
 }
 
 .client-current-action-plan > div {
