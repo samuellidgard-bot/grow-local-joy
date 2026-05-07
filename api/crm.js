@@ -349,9 +349,10 @@ function sendLogin(res, error = "") {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xello Operating Hub Login</title>
-    <link rel="icon" href="/favicon.ico?v=20260507-x-only-2" sizes="any" />
-    <link rel="icon" type="image/png" href="/xello-favicon-clean-x.png?v=20260507-x-only-2" sizes="512x512" />
-    <link rel="apple-touch-icon" href="/xello-apple-touch-icon-clean-x.png?v=20260507-x-only-2" />
+    <link rel="icon" type="image/svg+xml" href="/xello-favicon-x-only.svg?v=20260507-x-only-3" />
+    <link rel="icon" type="image/png" href="/xello-favicon-x-only.png?v=20260507-x-only-3" sizes="512x512" />
+    <link rel="shortcut icon" href="/favicon.ico?v=20260507-x-only-3" />
+    <link rel="apple-touch-icon" href="/xello-apple-touch-icon-x-only.png?v=20260507-x-only-3" />
     <style>
       :root { color-scheme: dark; --green: #9ad14b; --dark: #101111; --panel: #181a1a; --line: #2b2f2d; }
       * { box-sizing: border-box; }
