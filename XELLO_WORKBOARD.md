@@ -192,6 +192,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Continue First Touch AI editor training from the conversion-led reference library and V3 training cycle before making the next reel.
 - Use the new First Touch elite editor training standard to make one stronger V3 reel, score it, and only then create variants.
 - Run the First Touch exponential editor flywheel: daily reference mining, pattern extraction, agent competition, scorecard review, Sam taste feedback and outcome tracking.
+- Review the rendered `first-touch-v3-active-site-proof.mp4` draft, then decide whether to create one controlled hook/music/end-card variant.
 
 ## Latest Decisions
 
@@ -235,6 +236,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - First Touch AI editor system now has a conversion-led reference example library, V3 training cycle, Sam feedback memory, upgraded caption/story rules and a CRM Learning examples box focused on leads, CPL, CPA and ROAS rather than likes alone.
 - First Touch AI editor training has been upgraded with a 24-example elite conversion reference bank, 10-point taste overlay, V-next feedback loop and Elite Reference Teacher Agent prompt.
 - First Touch AI editor training now has an exponential compounding system: daily mining routine, agent competition workflow, winning-pattern library, Sam taste profile, outcome tracker and first daily training log.
+- First Touch Active Site Proof V3 has been rendered from the current footage, scored 81/100 and logged back into the AI editor training feedback/outcome system.
 
 ## Next Handoff
 
