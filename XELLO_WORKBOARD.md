@@ -189,6 +189,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Use `content-engine/STARTER_FOUNDATIONS_CONTENT_FRAMEWORK_2026-05-06.md` to score assets and create starter-only briefs once uploads are available.
 - Create client-facing starter foundations summaries once assets are available.
 - Use `client-delivery/STARTER_FOUNDATIONS_DELIVERY_PLAN_2026-05-06.md` as the next Client Delivery handoff for First Touch and M8.
+- Continue First Touch AI editor training from the conversion-led reference library and V3 training cycle before making the next reel.
 
 ## Latest Decisions
 
@@ -207,6 +208,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - For M8, should Xello create missing accounts directly, or guide owner-led setup?
 - Does M8 want a Google Business Profile despite initial hesitation?
 - After the First Touch shoot, which captured/uploaded assets are best enough to use as proof?
+- Which licensed music source should become Xello's default for paid-ad-safe client edits?
 
 ## Completed Changes
 
@@ -228,6 +230,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Leader relay evidence notes have been added and pushed.
 - Content Engine prepared the active-client-only starter foundations content framework.
 - First Touch shoot-day content strategy has been created and the live CRM Content Ideas section now uses it as the shoot operating checklist.
+- First Touch AI editor system now has a conversion-led reference example library, V3 training cycle, Sam feedback memory, upgraded caption/story rules and a CRM Learning examples box focused on leads, CPL, CPA and ROAS rather than likes alone.
 
 ## Next Handoff
 

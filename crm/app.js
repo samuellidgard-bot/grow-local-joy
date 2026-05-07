@@ -52,6 +52,72 @@ const defaultData = {
     { pillar: "Behind the scenes", goal: "Show the quality of the process and equipment before you have lots of public case studies.", examples: "Drone setup, filming checklist, CRM workflow, ad planning process." },
     { pillar: "Local proof", goal: "Build credibility around Brighton/Hove renovation marketing without inventing results.", examples: "Local market observations, anonymised audits, before/after creative concepts, test structure." }
   ],
+  adExamples: [
+    {
+      name: "First Choice Design",
+      niche: "Renovation Meta ads",
+      signal: "163 qualified leads, $99k converted revenue, 14.47x ROAS",
+      pattern: "High-quality visual creative plus service-specific homeowner lead forms.",
+      learning: "Tie proof footage to lofts, extensions, refurbs and serious enquiry language.",
+      source: "https://www.adovateagency.com/case-studies/fcd-casestudy"
+    },
+    {
+      name: "My/Architect",
+      niche: "Home renovation paid social",
+      signal: "+525% leads generated and first lead within 3 days",
+      pattern: "Use the homeowner journey and process positioning, not just pretty visuals.",
+      learning: "Captions need to explain the path from idea to active site to enquiry.",
+      source: "https://helloseed.co.uk/case-studies/my-architect-scaling-home-renovation-enquiries-with-paid-social/"
+    },
+    {
+      name: "Builder Funnel Remodeler",
+      niche: "Kitchen/bath remodel Facebook ads",
+      signal: "53 contacts, $19.95 CPL, 3.6% CTR",
+      pattern: "Service-specific before/after proof with branded creative and landing-page tracking.",
+      learning: "Use before-final-reveal wording until finished First Touch reveals are available.",
+      source: "https://info.builderfunnel.com/case-studies/remodeler-generates-5000-clicks-and-53-leads-with-before-after-photo-facebook-ad"
+    },
+    {
+      name: "Excellent Exteriors",
+      niche: "Home improvement video lead ad",
+      signal: "22k video plays, 42 leads, $15.55 CPL",
+      pattern: "Show the service happening, then use a short practical lead form.",
+      learning: "Active site footage is useful when it clearly demonstrates real work.",
+      source: "https://searchenginesmarketer.com/case-studies/facebook-ads-lead-gen-power-washing/"
+    },
+    {
+      name: "Takkenkamp Groep",
+      niche: "Construction/renovation TikTok",
+      signal: "88.5% follower growth, below EUR 1 cost per follow, 19% engagement",
+      pattern: "Craftsmanship, sustainability and life-on-site content amplified with Spark Ads.",
+      learning: "Real site life can build trust before polished finished-project reveals exist.",
+      source: "https://ads.tiktok.com/business/en-US/inspiration/takkenkamp-groep-tiktok-success-stories?redirected=1"
+    },
+    {
+      name: "EZiD Singapore",
+      niche: "Interior renovation TikTok lead gen",
+      signal: "25.7% lower CPA and 4% CVR uplift",
+      pattern: "Quote-form journey backed by lookalike/customer signals and conversion optimisation.",
+      learning: "Track which hooks create serious homeowner leads, not only watch time.",
+      source: "https://ads.tiktok.com/business/en/inspiration/ezid-singapore?redirected=1"
+    },
+    {
+      name: "Studio 32",
+      niche: "Remodeling TikTok UGC",
+      signal: "550 leads in 3 months and 20:1 ROAS",
+      pattern: "UGC remodeling content plus measurement before scaling.",
+      learning: "Sonny talking clips should become the trust spine over site footage.",
+      source: "https://www.dinametra.com/en/case-study/generacion-de-250-leads-y-roas-de-4-1-con-nueva-estrategia-en-tiktok-para-estudio-32"
+    },
+    {
+      name: "Greenkub",
+      niche: "Garden studio Facebook quote post",
+      signal: "Public engagement signal: 1.2k comments and 579 shares seen in search result",
+      pattern: "Concrete benefit bullets with a direct Get quote route.",
+      learning: "Use specific proof and benefits instead of vague quality claims.",
+      source: "https://www.facebook.com/greenkub.europe/posts/le-studio-de-jardin-greenkub-sans-permis-de-construire-install%C3%A9-en-5-jours-sans-/733976085430739/"
+    }
+  ],
   firstTouchProduction: [
     { stage: "Shoot mission", detail: "Build a proof library, not just adverts: profile proof, website proof, Google photos, architect referral proof and future gated lead-test footage.", checklist: "Minimum: 70 usable vertical clips, 20 still photos, 5 owner talking clips, 3 review snippets and 3 project notes." },
     { stage: "Priority services", detail: "Lead the shoot around loft conversions, extensions and full refurbs across Brighton/Hove/Sussex.", checklist: "Capture larger-project proof first; keep smaller jobs only as finish-quality or referral proof." },
@@ -454,7 +520,9 @@ const defaultData = {
     { insight: "Kitchen and extension firms respond best to a website audit angle before Meta ads are mentioned.", source: "Warm replies", confidence: 78, action: "Lead with website conversion gaps." },
     { insight: "Brighton and Hove prospects need a local, personal tone. Generic agency language gets ignored.", source: "Outreach review", confidence: 72, action: "Mention exact town and service." },
     { insight: "Instagram DMs should stay short and manual-assisted to avoid account risk.", source: "Operating rule", confidence: 90, action: "Queue DMs for human sending." },
-    { insight: "A free growth audit is easier to sell than a full retainer in the first message.", source: "Sales strategy", confidence: 86, action: "CTA remains free audit." }
+    { insight: "A free growth audit is easier to sell than a full retainer in the first message.", source: "Sales strategy", confidence: 86, action: "CTA remains free audit." },
+    { insight: "For renovation ads, the best examples optimise for qualified enquiries, CPA, CPL or ROAS rather than likes alone.", source: "AI Editor research 2026-05-07", confidence: 88, action: "Judge videos by serious leads and booked conversations." },
+    { insight: "Without Sonny voiceover, captions must act as the narrator: hook, context, proof, fit filter and CTA.", source: "Sam feedback 2026-05-07", confidence: 92, action: "Upgrade all V3 edit plans with story-led captions." }
   ],
   knowledge: [
     { title: "Entry Offer", detail: "Start with the starter foundations offer: social setup, Google Business improvements, website/CTA basics, tracking and content foundations.", owner: "Xello" },
@@ -465,12 +533,16 @@ const defaultData = {
     { title: "Content Creation Layer", detail: "Content Creation Agent turns company research into filming angles, advert hooks and Meta content ideas.", owner: "Content Creation Agent" },
     { title: "Xello Social Growth", detail: "Xello Social Growth Agent plans Instagram and TikTok content to build credibility, followers and authority for the agency.", owner: "Xello Social Growth Agent" },
     { title: "Compliance Rule", detail: "No fake guarantees. Clear Xello identity. Respect do-not-contact and approval-first sending.", owner: "Compliance" },
-    { title: "Sales CTA", detail: "First message starts a conversation with a compliment, one brief line explaining that Xello helps improve local online presence and a simple question. Do not lead with paid ads.", owner: "Outreach Writer" }
+    { title: "Sales CTA", detail: "First message starts a conversation with a compliment, one brief line explaining that Xello helps improve local online presence and a simple question. Do not lead with paid ads.", owner: "Outreach Writer" },
+    { title: "AI Editor Reference Library", detail: "Use the conversion ad examples before creating new First Touch edit plans. Learn from actual leads, CPL, CPA, ROAS and quote-route patterns, not vanity metrics.", owner: "AI Editor Teacher" },
+    { title: "Caption Narrator Rule", detail: "Until Sonny voiceover exists, on-screen captions must carry the story: why this matters, what the viewer is seeing, proof, who it is for and the next enquiry step.", owner: "Caption Ads Agent" }
   ],
   playbooks: [
     { name: "Prospect Research", steps: "Find company, identify service, check area, score lead need, avoid poor-fit businesses.", agent: "Prospect Scanner" },
     { name: "Company Research", steps: "Check available website/social notes, create a safe personal hook, identify pain point, choose outreach angle.", agent: "Company Research Agent" },
     { name: "Content Creation", steps: "Use company research to choose profile improvements, starter content ideas, what to film and which hooks could later support a paid lead test.", agent: "Content Creation Agent" },
+    { name: "AI Editor Training", steps: "Study the conversion reference library, choose a narrative shape, create slick caption sequences, build a JSON edit plan, render a draft, score it and feed Sam feedback back into memory.", agent: "AI Editor Teacher" },
+    { name: "V3 First Touch Reels", steps: "Create story-led edits from current site footage: hook, context, proof, fit filter and CTA. Save Sonny voiceover slots for the next shoot.", agent: "Short-Form Editor Agent" },
     { name: "Xello Social Growth", steps: "Plan weekly Reels/TikToks around founder journey, marketing tips, local lead generation, behind-the-scenes and proof-building content.", agent: "Xello Social Growth Agent" },
     { name: "Website Audit", steps: "Check CTA clarity, quote form, mobile experience, trust signals, tracking and landing page quality.", agent: "Website Audit Agent" },
     { name: "Outreach Writing", steps: "Use one specific observation, a light compliment and one easy question. Avoid pitching the full offer until they reply.", agent: "Outreach Writer" },
@@ -483,7 +555,9 @@ const defaultData = {
   experiments: [
     { name: "Website audit first", hypothesis: "Lead with website conversion gaps instead of Meta ads to increase replies.", status: "Running", result: "8 warm replies from 96 sends", learning: "Keep testing with kitchen and extension firms." },
     { name: "Short Instagram DM", hypothesis: "Short local DMs get more replies than long audit pitches.", status: "Planned", result: "Not started", learning: "Run manually with 20 prospects." },
-    { name: "Brighton vs Worthing", hypothesis: "Brighton/Hove firms have higher budget but more competition.", status: "Running", result: "Brighton has stronger lead scores", learning: "Prioritise high-ticket areas first." }
+    { name: "Brighton vs Worthing", hypothesis: "Brighton/Hove firms have higher budget but more competition.", status: "Running", result: "Brighton has stronger lead scores", learning: "Prioritise high-ticket areas first." },
+    { name: "First Touch V3 caption upgrade", hypothesis: "Story-led captions will make active-project footage feel more premium and more enquiry-focused than descriptive captions.", status: "Ready", result: "Reference library and agent rules added.", learning: "Next edit should use captions as the narrator until Sonny voiceover exists." },
+    { name: "Conversion examples over vanity examples", hypothesis: "Training editors on CPL, CPA, ROAS and qualified lead patterns will produce better ad concepts than training on likes alone.", status: "Running", result: "8 reference examples added to the CRM examples box.", learning: "The agent should justify each edit by the lead it is trying to attract." }
   ],
   delivery: [
     { client: "First Touch Innovations", stage: "Starter foundations", checklist: "Social/GMB/website basics, content plan and tracking foundations before any paid test.", health: "Trial", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Optional", contentStatus: "Foundation plan ready", campaignStatus: "Not ready for ads", nextReview: "After starter setup", nextAction: "Confirm missing socials, Google Business gaps and website basics" },
@@ -1022,6 +1096,7 @@ function loadState() {
   merged.agentOutputs = merged.agentOutputs || defaultData.agentOutputs;
   merged.socialCalendar = merged.socialCalendar || defaultData.socialCalendar;
   merged.contentPillars = merged.contentPillars || defaultData.contentPillars;
+  merged.adExamples = mergeByField(merged.adExamples || [], defaultData.adExamples, "name");
   merged.firstTouchProduction = merged.firstTouchProduction || defaultData.firstTouchProduction;
   merged.firstTouchAdAngles = merged.firstTouchAdAngles || defaultData.firstTouchAdAngles;
   merged.firstTouchMetaPlan = merged.firstTouchMetaPlan || defaultData.firstTouchMetaPlan;
@@ -3236,6 +3311,28 @@ function renderExperiments() {
         <p><strong>Hypothesis:</strong> ${item.hypothesis}</p>
         <p><strong>Result:</strong> ${item.result}</p>
         <p><strong>Learning:</strong> ${item.learning}</p>
+      </article>
+    `)
+    .join("");
+}
+
+function renderAdExamples() {
+  const target = document.getElementById("adExampleGrid");
+  if (!target) return;
+  target.innerHTML = (state.adExamples || defaultData.adExamples)
+    .map((item) => `
+      <article class="experiment-card">
+        <div class="card-title-row">
+          <div>
+            <p class="label">${item.niche}</p>
+            <strong>${item.name}</strong>
+          </div>
+          <span class="mini-stat">Reference</span>
+        </div>
+        <p><strong>Signal:</strong> ${item.signal}</p>
+        <p><strong>Pattern:</strong> ${item.pattern}</p>
+        <p><strong>Agent learning:</strong> ${item.learning}</p>
+        <p class="metric-note"><a href="${item.source}" target="_blank" rel="noreferrer">Open source</a></p>
       </article>
     `)
     .join("");
@@ -6627,6 +6724,7 @@ function renderAll() {
   renderOutreachFeedback();
   renderPlaybooks();
   renderExperiments();
+  renderAdExamples();
   renderBusinessStrategy();
   renderDelivery();
   renderTestJourney();
