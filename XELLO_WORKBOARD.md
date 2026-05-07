@@ -173,13 +173,16 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 
 ### In Progress
 
-- Wait for First Touch and M8 Google Drive folders to be filled with photo/video proof assets.
+- Use the new Client Tick-Along Board to keep First Touch, M8 and CRM system work moving one practical step per day.
+- First Touch is moving into a shoot-day proof capture workflow; use the shoot strategy before waiting on Drive uploads.
+- Wait for M8 Google Drive folders to be filled with photo/video proof assets.
 - Use Leader relay notes inside each client task to record evidence found, auto-complete decisions and only true approval gates.
 - Keep clients in Starter foundations phase until missing useful foundations are created or deliberately skipped.
 
 ### Next Practical Tasks
 
-- Confirm First Touch current account list: website, Instagram, TikTok and Google Business; Facebook Page creation is already approved.
+- Today priority: First Touch shoot-day proof capture prep, M8 missing-foundation decisions, and converting trial-client friction into the repeatable Foundations offer.
+- Use `first-touch-advert-launch-pack/first-touch-shoot-day-content-strategy-2026-05-06.md` for the First Touch shoot with Sonny.
 - Confirm M8 current account list: website, TikTok, Google Business decision, Instagram/Facebook status.
 - Use the CRM Platform Status Board to confirm each useful platform status: Found, Needs polish, Create, or Skip.
 - Prepare proof asset review once Drive folders have uploads.
@@ -197,15 +200,19 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Content ideas/briefs should only be produced for active starter foundation clients to save API/useful thinking.
 - The Leader workflow should auto-complete research/status/setup-prep tasks where possible and collect relay evidence notes before task completion.
 - First Touch Facebook Page creation is approved by Sam; Leader should prepare setup details and only pause for admin invite/final public publish.
+- First Touch public proof has been found on the Work page, TikTok and Google Business; the next blocker is collecting original/high-res assets, review screenshots and project notes on shoot day.
 
 ## Open Questions
 
 - For M8, should Xello create missing accounts directly, or guide owner-led setup?
 - Does M8 want a Google Business Profile despite initial hesitation?
-- Which uploaded Drive assets are best enough to use as proof?
+- After the First Touch shoot, which captured/uploaded assets are best enough to use as proof?
 
 ## Completed Changes
 
+- CRM Client Overview now includes a Client Tick-Along Board showing each trial client's current stage, next action, AI-can-do work, waiting-on-client items and the lesson being folded back into the Foundations offer.
+- Today's Actions now prioritise First Touch shoot prep, M8 foundations decisions and offer/process learning before generic outreach work.
+- Current-stage tasks now show ownership chips such as completed, next, AI can prep, Sam/client action, approval gate, shoot-day workflow and decision needed.
 - CRM client pages now include a Platform Status Board for First Touch and M8 with Found / Needs polish / Create / Skip account decisions, synced into the deployable live repo copy.
 - Leader relay notes now prompt for platform status, evidence, auto-complete decisions and only true approval gates.
 - First Touch Facebook Page creation has been approved and reflected in the CRM task language.
@@ -219,6 +226,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - GitHub CLI is authenticated and Codex can now push commits.
 - Leader relay evidence notes have been added and pushed.
 - Content Engine prepared the active-client-only starter foundations content framework.
+- First Touch shoot-day content strategy has been created and the live CRM Content Ideas section now uses it as the shoot operating checklist.
 
 ## Next Handoff
 

@@ -1767,7 +1767,10 @@ function getTodayActions() {
   const socialIdeas = state.xelloSocial?.filter((item) => item.status !== "Posted").length || 0;
   const deliveryNext = state.delivery.find((item) => item.nextAction);
 
+  const clientActions = getClientTickAlongActions();
+
   return [
+    ...clientActions.slice(0, 3),
     {
       title: approvals ? `Review ${approvals} outreach draft${approvals === 1 ? "" : "s"}` : "Outreach approvals clear",
       owner: "Sam",
@@ -1823,6 +1826,32 @@ function getTodayActions() {
       priority: outputsToReview ? "Medium" : "Low",
       detail: "Mark outputs as Approved, Used or Archived so the hub stays clean.",
       next: "Open Agent Outputs"
+    }
+  ];
+}
+
+function getClientTickAlongActions() {
+  return [
+    {
+      title: "Prepare First Touch shoot-day proof capture",
+      owner: "Master Control + Content Engine",
+      priority: "High",
+      detail: "Use the print pack to capture 70 clips, 20 photos, Sonny trust clips, reviews and project notes. This moves First Touch through proof asset intake even while profile edits wait until the shoot.",
+      next: "Open First Touch"
+    },
+    {
+      title: "Advance M8 missing foundations decisions",
+      owner: "Client Delivery + Leader",
+      priority: "High",
+      detail: "Website and TikTok are found. Next job is deciding Instagram/Facebook/Google Business as Create, Polish or Skip, then checking website phone/email clarity.",
+      next: "Open M8"
+    },
+    {
+      title: "Capture today's learning into the Foundations offer",
+      owner: "Sam + Master Control",
+      priority: "Medium",
+      detail: "Turn trial-client friction into a repeatable process: AI can prepare, client waits are labelled, and ads stay gated until proof, route and tracking are ready.",
+      next: "Open Offer Doc"
     }
   ];
 }
@@ -3848,6 +3877,9 @@ function renderClientCurrentStageActionPlan(progress) {
             ${tasks.map((task, index) => `
               <li class="${completions[index] ? "is-complete" : index === nextTaskIndex ? "is-next" : ""}">
                 <span>${escapeHtml(task)}</span>
+                <div class="task-ownership-row">
+                  ${renderTaskOwnershipChips(task, progress, completions[index], index === nextTaskIndex)}
+                </div>
                 ${completions[index] ? "<strong>Done</strong>" : index === nextTaskIndex ? "<strong>Next</strong>" : ""}
               </li>
             `).join("")}
@@ -3861,6 +3893,33 @@ function renderClientCurrentStageActionPlan(progress) {
       </div>
     </div>
   `;
+}
+
+function renderTaskOwnershipChips(task, progress, complete = false, next = false) {
+  const chips = getTaskOwnershipChips(task, progress, complete, next);
+  return chips.map((chip) => `<small class="task-chip ${chip.className}">${escapeHtml(chip.label)}</small>`).join("");
+}
+
+function getTaskOwnershipChips(task, progress, complete = false, next = false) {
+  if (complete) return [{ label: "completed", className: "done" }];
+  const text = String(task || "").toLowerCase();
+  const chips = [];
+  if (next) chips.push({ label: "next", className: "next" });
+  if (text.includes("access") || text.includes("admin invite") || text.includes("publish") || text.includes("spend") || text.includes("password")) {
+    chips.push({ label: "approval gate", className: "gate" });
+  } else if (text.includes("collect") || text.includes("shoot") || text.includes("owner") || text.includes("send or chase") || text.includes("ask")) {
+    chips.push({ label: "sam/client action", className: "human" });
+  } else if (text.includes("prepare") || text.includes("write") || text.includes("audit") || text.includes("check") || text.includes("update") || text.includes("sort") || text.includes("create")) {
+    chips.push({ label: "ai can prep", className: "ai" });
+  }
+  if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Proof asset intake" && !complete) {
+    chips.push({ label: "shoot-day workflow", className: "shoot" });
+  }
+  if (progress.company === "M8 Designs" && progress.currentStepLabel === "Missing foundations" && !complete) {
+    chips.push({ label: "decision needed", className: "decision" });
+  }
+  if (!chips.length) chips.push({ label: "xello action", className: "neutral" });
+  return chips;
 }
 
 function getDefaultCurrentStageTaskCompletions(progress) {
@@ -4873,6 +4932,8 @@ function renderStarterTimeline(analysis) {
 }
 
 function renderClients() {
+  renderClientOperatingBoard();
+
   document.getElementById("clientGrid").innerHTML = state.clients
     .map((client) => `
       <article class="client-card">
@@ -4912,6 +4973,96 @@ function renderClients() {
       `;
     })
     .join("") || `<p class="metric-note">No foundations audits yet.</p>`;
+}
+
+function getClientOperatingBoard() {
+  return [
+    {
+      client: "First Touch Innovations",
+      stage: "Proof asset intake",
+      momentum: "Moving",
+      nextAction: "Use the shoot-day print pack with Sonny and collect proof assets instead of waiting on bio edits.",
+      aiCanDo: ["Prepare shot list/scripts", "Build proof folder structure", "Draft first content batch", "Prepare tracker fields"],
+      waitingOn: ["Shoot day with Sonny", "Original/high-res files", "Review screenshots", "Owner permission for public use"],
+      samAction: "Take the print pack to the shoot, capture the proof library and mark assets by project/proof type afterwards.",
+      crmLearning: "Waiting on a client should not feel stuck if Xello has prep work, proof capture and tracking setup to complete."
+    },
+    {
+      client: "M8 Designs",
+      stage: "Missing foundations",
+      momentum: "Needs decisions",
+      nextAction: "Confirm platform decisions and keep the offer focused on proper projects, not small handyman enquiries.",
+      aiCanDo: ["Audit website contact route", "Prepare platform status notes", "Draft profile/portfolio positioning", "Build M8 tracker fields"],
+      waitingOn: ["Owner links for Instagram/Facebook if they exist", "Google Business create/skip decision", "High-quality project files"],
+      samAction: "Ask one clean M8 question set: existing socials, Google Business decision, best project assets and contact route.",
+      crmLearning: "The system needs a clear Create/Polish/Skip decision for each foundation so setup work does not blur into guessing."
+    },
+    {
+      client: "Xello CRM",
+      stage: "System development",
+      momentum: "Build from friction",
+      nextAction: "Keep improving the dashboard around real trial-client bottlenecks instead of adding random features.",
+      aiCanDo: ["Label ownership", "Prepare next actions", "Document offer process", "Gate lead tests"],
+      waitingOn: ["Real trial outcomes", "Shoot assets", "Client responses"],
+      samAction: "Use each confusing moment as a rule for the offer: what AI does, what Sam does and what the client must approve.",
+      crmLearning: "The first trial clients are not just clients; they are the training data for the repeatable Xello Foundations offer."
+    }
+  ];
+}
+
+function renderClientOperatingBoard() {
+  const target = document.getElementById("clientOperatingBoard");
+  if (!target) return;
+  const rows = getClientOperatingBoard();
+  target.innerHTML = `
+    <div class="client-operating-summary">
+      <article>
+        <span>Primary goal</span>
+        <strong>Keep every trial client moving one useful step forward.</strong>
+      </article>
+      <article>
+        <span>Rule</span>
+        <strong>Label work as AI can do, Sam action, waiting on client or approval gate.</strong>
+      </article>
+      <article>
+        <span>Offer learning</span>
+        <strong>Turn each messy trial-client lesson into the repeatable Foundations process.</strong>
+      </article>
+    </div>
+    <div class="client-operating-grid">
+      ${rows.map((row) => `
+        <article class="client-operating-card">
+          <div class="card-title-row">
+            <div>
+              <p class="label">${escapeHtml(row.stage)}</p>
+              <h3>${escapeHtml(row.client)}</h3>
+            </div>
+            <span class="status-chip ${statusToneClass(row.momentum)}">${escapeHtml(row.momentum)}</span>
+          </div>
+          <strong>${escapeHtml(row.nextAction)}</strong>
+          <div class="client-operating-columns">
+            <div>
+              <span>AI can do now</span>
+              <ul>${row.aiCanDo.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+            <div>
+              <span>Waiting on</span>
+              <ul>${row.waitingOn.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          </div>
+          <p><strong>Sam action:</strong> ${escapeHtml(row.samAction)}</p>
+          <em>${escapeHtml(row.crmLearning)}</em>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
+function statusToneClass(status = "") {
+  const text = String(status).toLowerCase();
+  if (text.includes("moving") || text.includes("build")) return "positive";
+  if (text.includes("decision") || text.includes("needs")) return "warning";
+  return "neutral";
 }
 
 function renderClientAnalyses() {

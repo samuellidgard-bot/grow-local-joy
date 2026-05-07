@@ -66,6 +66,12 @@ The CRM should act as the full Xello Operating Hub:
 - Finance/spend tracking.
 - Google Sheets connection.
 
+Latest operating improvement:
+
+- Client Overview now has a Client Tick-Along Board so trial clients do not feel stuck when one task is waiting on the owner. It separates AI-prep work, Sam actions, waiting-on-client items and offer-process learning.
+- Today's Actions should prioritise active trial-client movement first: First Touch shoot proof capture, M8 missing-foundation decisions and turning each trial-client friction point into the repeatable Foundations offer.
+- Current-stage task rows now show responsibility labels such as AI can prep, Sam/client action, approval gate, shoot-day workflow and decision needed.
+
 ## Design Direction
 
 Keep the dashboard simple, clean and easy to understand.
