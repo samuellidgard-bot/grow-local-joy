@@ -210,6 +210,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 
 ## Completed Changes
 
+- CRM Overview has been restructured into an operating hub: client progress bars first, most important next actions, system health across delivery/content/agents/outreach/lead tests, and outreach moved into a lower snapshot instead of dominating the page.
 - CRM Client Overview now includes a Client Tick-Along Board showing each trial client's current stage, next action, AI-can-do work, waiting-on-client items and the lesson being folded back into the Foundations offer.
 - Today's Actions now prioritise First Touch shoot prep, M8 foundations decisions and offer/process learning before generic outreach work.
 - Current-stage tasks now show ownership chips such as completed, next, AI can prep, Sam/client action, approval gate, shoot-day workflow and decision needed.

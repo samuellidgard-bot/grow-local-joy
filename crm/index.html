@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xello CRM Dashboard</title>
-    <link rel="stylesheet" href="styles.css?v=20260507-foundations-operating-board" />
+    <link rel="stylesheet" href="styles.css?v=20260507-overview-operating-hub" />
   </head>
   <body>
     <div class="app-shell">
@@ -79,7 +79,7 @@
           <div>
             <p class="eyebrow">Xello Media</p>
             <h1>Agency CRM Dashboard</h1>
-            <p class="subhead">Track prospects, AI outreach, calls, clients and spend from one simple internal workspace.</p>
+            <p class="subhead">Track client delivery, foundations progress, AI agents, content, outreach, spend and next actions from one operating hub.</p>
           </div>
           <div class="topbar-actions">
             <button class="icon-button" id="syncBtn" title="Sync live Google Sheet data">Sync Sheet</button>
@@ -99,15 +99,50 @@
 
           <div class="metric-grid" id="metricGrid"></div>
 
+          <section class="panel overview-client-progress-panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Client delivery</p>
+                <h2>Current Client Progress</h2>
+              </div>
+              <span class="pill">Foundations first</span>
+            </div>
+            <div id="overviewClientProgress"></div>
+          </section>
+
           <div class="two-column">
             <section class="panel">
               <div class="panel-header">
                 <div>
-                  <p class="label">Priority</p>
-                  <h2>Hot Leads</h2>
+                  <p class="label">Master priority</p>
+                  <h2>Most Important Things Next</h2>
                 </div>
-                <span class="pill">Today</span>
+                <span class="pill">Do these first</span>
               </div>
+              <div class="overview-priority-list" id="overviewPriorityList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="label">Operating areas</p>
+                  <h2>System Health</h2>
+                </div>
+                <span class="pill">Balanced view</span>
+              </div>
+              <div class="overview-system-grid" id="overviewSystemGrid"></div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Outreach snapshot</p>
+                <h2>Sales Pipeline Still Matters</h2>
+              </div>
+              <span class="pill">After delivery priorities</span>
+            </div>
+            <div class="overview-outreach-layout">
               <div class="table-wrap">
                 <table>
                   <thead>
@@ -122,27 +157,8 @@
                   <tbody id="hotLeadsTable"></tbody>
                 </table>
               </div>
-            </section>
-
-            <section class="panel">
-              <div class="panel-header">
-                <div>
-                  <p class="label">Actions</p>
-                  <h2>Today</h2>
-                </div>
-              </div>
-              <div class="task-list" id="taskList"></div>
-            </section>
-          </div>
-
-          <section class="panel">
-            <div class="panel-header">
-              <div>
-                <p class="label">Pipeline</p>
-                <h2>Sales Stages</h2>
-              </div>
+              <div class="pipeline-row" id="pipelineRow"></div>
             </div>
-            <div class="pipeline-row" id="pipelineRow"></div>
           </section>
         </section>
 

@@ -1528,22 +1528,34 @@ function bindStatusButtons() {
 function calculateMetrics() {
   const prospects = state.prospects;
   const drafts = state.drafts;
-  const sentStatuses = ["Contacted", "Warm Reply", "Call Booked", "Proposal Sent", "Won"];
   const replies = state.replies?.length || prospects.filter((lead) => ["Warm Reply", "Call Booked", "Proposal Sent", "Won"].includes(lead.status)).length;
   const calls = state.calls?.length || prospects.filter((lead) => lead.status === "Call Booked").length;
-  const won = prospects.filter((lead) => lead.status === "Won").length;
+  const activeClientAnalyses = (state.clientAnalyses || defaultData.clientAnalyses || []).filter((analysis) => ["First Touch Innovations", "M8 Designs"].includes(analysis.company));
+  const foundationScores = activeClientAnalyses.map((analysis) => Number(analysis.foundationAudit?.score || 0)).filter(Boolean);
+  const averageFoundationScore = foundationScores.length
+    ? Math.round(foundationScores.reduce((sum, score) => sum + score, 0) / foundationScores.length)
+    : 0;
+  const activeAgents = state.agents.filter((agent) => ["Running", "Waiting Approval", "Queued"].includes(agent.status)).length;
+  const reviewOutputs = [
+    ...(state.websiteAudits || []),
+    ...(state.socialAudits || []),
+    ...(state.contentBriefs || []),
+    ...(state.agentOutputs || [])
+  ].filter((item) => normaliseStatus(item.status) === "Needs Review").length;
   const pipelineValue = prospects.filter((lead) => ["Call Booked", "Proposal Sent", "Won"].includes(lead.status)).length * 1500;
-  const apiSpend = state.spend.reduce((sum, item) => sum + Number(item.cost || 0), 0);
+  const deliveryActions = state.delivery.filter((item) => item.nextAction && !String(item.health).toLowerCase().includes("complete")).length;
+  const starterContentCount = (state.contentIdeas || []).filter((item) => isStarterFoundationClient(item.company)).length + (state.firstTouchProduction || []).length;
+  const leadTests = state.delivery.filter((item) => String(item.stage || "").toLowerCase().includes("test") || String(item.campaignStatus || "").toLowerCase().includes("launch")).length;
 
   return [
-    { label: "Prospects", value: prospects.length, note: "Companies tracked", icon: "S", progressValue: prospects.length, progressTarget: 25, progressLabel: "Scan target" },
-    { label: "AI drafts", value: drafts.filter((draft) => draft.status !== "Approved").length, note: "Need approval", icon: "A", progressValue: drafts.filter((draft) => draft.status === "Approved").length, progressTarget: Math.max(1, drafts.length), progressLabel: "Approved" },
-    { label: "Outreach sent", value: prospects.filter((lead) => sentStatuses.includes(lead.status)).length, note: "Email + IG tasks", icon: "O", progressValue: prospects.filter((lead) => sentStatuses.includes(lead.status)).length, progressTarget: Math.max(1, prospects.length), progressLabel: "Contacted" },
-    { label: "Replies", value: replies, note: "Warm pipeline", icon: "R", progressValue: replies, progressTarget: 5, progressLabel: "Reply goal" },
-    { label: "Calls booked", value: calls, note: "Audit calls", icon: "C", progressValue: calls, progressTarget: 3, progressLabel: "Call goal" },
-    { label: "Pipeline value", value: `£${(pipelineValue / 1000).toFixed(1)}k`, note: "Monthly retainer", icon: "P", progressValue: pipelineValue, progressTarget: 4500, progressLabel: "3-client target" },
-    { label: "API spend", value: money(apiSpend), note: "Tracked budget", icon: "£" },
-    { label: "Won clients", value: won, note: "Target: 3", icon: "W", progressValue: won, progressTarget: 3, progressLabel: "Retainer goal" }
+    { label: "Active clients", value: activeClientAnalyses.length, note: "Trial delivery", icon: "C", progressValue: activeClientAnalyses.length, progressTarget: 2, progressLabel: "Trial clients" },
+    { label: "Foundation score", value: `${averageFoundationScore}%`, note: "Avg readiness", icon: "F", progressValue: averageFoundationScore, progressTarget: 100, progressLabel: "Ready target" },
+    { label: "Client actions", value: deliveryActions, note: "Need movement", icon: "D", progressValue: Math.max(0, 8 - deliveryActions), progressTarget: 8, progressLabel: "Delivery clarity" },
+    { label: "Lead tests", value: leadTests, note: "Gated for now", icon: "G", progressValue: leadTests, progressTarget: 1, progressLabel: "Only when ready" },
+    { label: "Agent queue", value: activeAgents, note: "Running/queued", icon: "AI", progressValue: activeAgents, progressTarget: Math.max(1, state.agents.length), progressLabel: "Agent coverage" },
+    { label: "Review queue", value: drafts.filter((draft) => draft.status !== "Approved").length + reviewOutputs, note: "Drafts/outputs", icon: "R" },
+    { label: "Starter content", value: starterContentCount, note: "Ideas/assets", icon: "S", progressValue: starterContentCount, progressTarget: 12, progressLabel: "Proof bank" },
+    { label: "Pipeline value", value: `£${(pipelineValue / 1000).toFixed(1)}k`, note: `${replies} replies, ${calls} calls`, icon: "P", progressValue: pipelineValue, progressTarget: 4500, progressLabel: "3-client target" }
   ];
 }
 
@@ -1693,6 +1705,119 @@ function renderMetrics() {
   renderMetricCards("socialMetricGrid", calculateSocialMetrics());
 }
 
+function renderOverviewOperatingHub() {
+  renderOverviewClientProgress();
+  renderOverviewPriorityList();
+  renderOverviewSystemGrid();
+}
+
+function getOverviewClientProgressRows() {
+  const analyses = (state.clientAnalyses || defaultData.clientAnalyses || []).filter((analysis) => ["First Touch Innovations", "M8 Designs"].includes(analysis.company));
+  return analyses.map((analysis) => {
+    const progress = getClientProgressPlan(analysis);
+    const steps = progress.starterComplete ? progress.middleOfferSteps : progress.starterSteps;
+    const percentComplete = Math.min(100, Math.round((progress.currentStep / steps.length) * 100));
+    const tasks = progress.currentStepDetail?.tasks || [];
+    const key = leaderPlanKey(progress);
+    const completions = {
+      ...getDefaultCurrentStageTaskCompletions(progress),
+      ...(state.leaderTaskCompletions?.[key] || {})
+    };
+    const nextTaskIndex = tasks.findIndex((_, index) => !completions[index]);
+    const nextTask = nextTaskIndex >= 0 ? tasks[nextTaskIndex] : progress.currentStepDetail?.doneWhen || "Ready for review.";
+    const auditScore = Number(analysis.foundationAudit?.score || 0);
+    return {
+      company: analysis.company,
+      viewId: analysis.viewId,
+      offer: progress.currentOffer,
+      step: progress.currentStepLabel,
+      stepCount: `${progress.currentStep}/8`,
+      percentComplete,
+      auditScore,
+      nextTask,
+      decision: readinessLabel(auditScore).label
+    };
+  });
+}
+
+function renderOverviewClientProgress() {
+  const target = document.getElementById("overviewClientProgress");
+  if (!target) return;
+  const rows = getOverviewClientProgressRows();
+  target.innerHTML = `
+    <div class="overview-client-progress-grid">
+      ${rows.map((row) => `
+        <article class="overview-client-card">
+          <div class="card-title-row">
+            <div>
+              <p class="label">${escapeHtml(row.offer)}</p>
+              <h3>${escapeHtml(row.company)}</h3>
+            </div>
+            <span class="status-chip ${row.auditScore >= 70 ? "positive" : row.auditScore >= 45 ? "warning" : "neutral"}">${escapeHtml(row.decision)}</span>
+          </div>
+          <div class="overview-progress-stats">
+            <span><strong>${escapeHtml(row.stepCount)}</strong> current step</span>
+            <span><strong>${row.percentComplete}%</strong> phase progress</span>
+            <span><strong>${row.auditScore}%</strong> readiness</span>
+          </div>
+          ${renderProgressBar(row.percentComplete, 100, row.step)}
+          <p><strong>Next:</strong> ${escapeHtml(row.nextTask)}</p>
+          <button class="small-button approve" data-view-jump="${escapeHtml(row.viewId)}">Open client page</button>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderOverviewPriorityList() {
+  const target = document.getElementById("overviewPriorityList");
+  if (!target) return;
+  target.innerHTML = getTodayActions()
+    .slice(0, 5)
+    .map((item, index) => `
+      <article class="overview-priority-card priority-${String(item.priority).toLowerCase()}">
+        <span>${String(index + 1).padStart(2, "0")}</span>
+        <div>
+          <p class="label">${escapeHtml(item.owner)}</p>
+          <h3>${escapeHtml(item.title)}</h3>
+          <p>${escapeHtml(item.detail)}</p>
+          <strong>${escapeHtml(item.next)}</strong>
+        </div>
+      </article>
+    `)
+    .join("");
+}
+
+function renderOverviewSystemGrid() {
+  const target = document.getElementById("overviewSystemGrid");
+  if (!target) return;
+  const actions = getClientTickAlongActions();
+  const approvals = state.drafts.filter((draft) => draft.status !== "Approved").length;
+  const warm = state.prospects.filter((lead) => ["Warm Reply", "Call Booked", "Proposal Sent"].includes(lead.status)).length;
+  const activeAgents = state.agents.filter((agent) => ["Running", "Waiting Approval", "Queued"].includes(agent.status)).length;
+  const proofReady = (state.firstTouchProduction || []).length;
+  const systems = [
+    { area: "Client Delivery", status: "Priority", detail: actions[0]?.title || "Move active clients one step forward.", score: 82 },
+    { area: "Foundation Offer", status: "Building", detail: "Trial-client friction is being turned into a repeatable delivery process.", score: 74 },
+    { area: "Content + Proof", status: "Active", detail: `${proofReady} First Touch shoot/proof items ready for the workflow.`, score: 68 },
+    { area: "AI Agents", status: "Queued", detail: `${activeAgents} agents are running, queued or waiting approval.`, score: 61 },
+    { area: "Outreach", status: "Secondary", detail: `${approvals} drafts to review and ${warm} warm pipeline conversations.`, score: 56 },
+    { area: "Lead Tests", status: "Gated", detail: "No paid tests until proof, route and tracking pass readiness review.", score: 25 }
+  ];
+  target.innerHTML = systems
+    .map((system) => `
+      <article class="overview-system-card">
+        <div class="card-title-row">
+          <strong>${escapeHtml(system.area)}</strong>
+          <span>${escapeHtml(system.status)}</span>
+        </div>
+        <div class="overview-system-meter"><span style="width:${Math.max(4, Math.min(100, system.score))}%"></span></div>
+        <p>${escapeHtml(system.detail)}</p>
+      </article>
+    `)
+    .join("");
+}
+
 function renderHotLeads() {
   const hot = [...state.prospects].sort((a, b) => b.score - a.score).slice(0, 5);
   document.getElementById("hotLeadsTable").innerHTML = hot
@@ -1733,6 +1858,8 @@ function renderProspects(filter = "") {
 }
 
 function renderTasks() {
+  const target = document.getElementById("taskList");
+  if (!target) return;
   const needsApproval = state.drafts.filter((draft) => draft.status !== "Approved").length;
   const igTasks = state.drafts.filter((draft) => draft.channel === "Instagram").length;
   const warm = state.prospects.filter((lead) => ["Warm Reply", "Call Booked"].includes(lead.status)).length;
@@ -1744,7 +1871,7 @@ function renderTasks() {
     { text: "Check spend before the next AI batch.", priority: "Low", progress: percent(10 - state.spend.reduce((sum, item) => sum + Number(item.cost || 0), 0), 10) }
   ];
 
-  document.getElementById("taskList").innerHTML = tasks
+  target.innerHTML = tasks
     .map((task) => `
       <div class="task-item priority-${String(task.priority).toLowerCase()}">
         <span class="task-check">${task.priority === "High" ? "!" : "✓"}</span>
@@ -6470,6 +6597,7 @@ function runLocalDemoJourney() {
 
 function renderAll() {
   renderMetrics();
+  renderOverviewOperatingHub();
   renderHotLeads();
   renderProspects(document.getElementById("prospectSearch")?.value || "");
   renderProfiles();
