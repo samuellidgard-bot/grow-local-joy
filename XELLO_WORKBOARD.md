@@ -190,6 +190,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Create client-facing starter foundations summaries once assets are available.
 - Use `client-delivery/STARTER_FOUNDATIONS_DELIVERY_PLAN_2026-05-06.md` as the next Client Delivery handoff for First Touch and M8.
 - Continue First Touch AI editor training from the conversion-led reference library and V3 training cycle before making the next reel.
+- Use the new First Touch elite editor training standard to make one stronger V3 reel, score it, and only then create variants.
 
 ## Latest Decisions
 
@@ -231,6 +232,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Content Engine prepared the active-client-only starter foundations content framework.
 - First Touch shoot-day content strategy has been created and the live CRM Content Ideas section now uses it as the shoot operating checklist.
 - First Touch AI editor system now has a conversion-led reference example library, V3 training cycle, Sam feedback memory, upgraded caption/story rules and a CRM Learning examples box focused on leads, CPL, CPA and ROAS rather than likes alone.
+- First Touch AI editor training has been upgraded with a 24-example elite conversion reference bank, 10-point taste overlay, V-next feedback loop and Elite Reference Teacher Agent prompt.
 
 ## Next Handoff
 

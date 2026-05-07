@@ -116,6 +116,126 @@ const defaultData = {
       pattern: "Concrete benefit bullets with a direct Get quote route.",
       learning: "Use specific proof and benefits instead of vague quality claims.",
       source: "https://www.facebook.com/greenkub.europe/posts/le-studio-de-jardin-greenkub-sans-permis-de-construire-install%C3%A9-en-5-jours-sans-/733976085430739/"
+    },
+    {
+      name: "Wood Quality",
+      niche: "Remodeling Meta lead system",
+      signal: "$33 remodeling leads reported",
+      pattern: "Simple local remodeling offer with lead quality treated as the main win.",
+      learning: "The edit should qualify the project type early instead of chasing cheap broad leads.",
+      source: "https://ads.inc/case-studies/wood-quality"
+    },
+    {
+      name: "Renew Tile & Grout",
+      niche: "Home improvement Facebook/Instagram leads",
+      signal: "$15 CPL and 16x ROAS reported",
+      pattern: "Visual proof and human-first messaging for a local booking service.",
+      learning: "Close-up process footage can convert when the viewer understands the problem being solved.",
+      source: "https://soudcoh.com/case-study/renew-tile-grout"
+    },
+    {
+      name: "Leads.io GreenMatch",
+      niche: "TikTok quote lead generation",
+      signal: "1,000+ leads, 5.06% conversion rate, 35% qualification rate",
+      pattern: "Storytelling, trend fit and form/CRO testing for quote-style lead generation.",
+      learning: "Reference ads should teach the editor to judge qualification rate, not only lead count.",
+      source: "https://ads.tiktok.com/business/en-US/inspiration/leads-io-tiktok-succes-stories"
+    },
+    {
+      name: "SuCo Home Windows",
+      niche: "TikTok home services lead gen",
+      signal: "1,615 new leads and 37% lower CPL",
+      pattern: "TikTok-first creative with hyperlocal messaging and zip-code targeting.",
+      learning: "First Touch edits should mention service area and homeowner context when possible.",
+      source: "https://ads.tiktok.com/business/en/inspiration/suco-finds-new-professional-servivces-customers-with-zip-code-targeting?redirected=1"
+    },
+    {
+      name: "TeknoStep",
+      niche: "Home products TikTok lead generation",
+      signal: "2,600 qualified leads and nearly 29% CTR",
+      pattern: "Natural product/service content plus lead forms to learn what buyers actually want.",
+      learning: "Every First Touch edit should teach the CRM which service or project stage viewers respond to.",
+      source: "https://ads.tiktok.com/business/en-US/inspiration/caso-de-exito-TikTok-TeknoStep-Smart%2B_smb_pymes"
+    },
+    {
+      name: "Granny Flats WA",
+      niche: "Construction TikTok Smart+ lead generation",
+      signal: "76% lower CPA, 20% higher CVR and 6x impressions",
+      pattern: "Quality story-led videos combined with high creative volume.",
+      learning: "Train quality first, then create variants once the story format is proven.",
+      source: "https://ads.tiktok.com/business/library/AUNZ_TakeItToTikTok_Proserve_Playbook.pdf"
+    },
+    {
+      name: "A+ Construction",
+      niche: "Home renovation paid ads",
+      signal: "+95% total conversions and 48% lower CPA",
+      pattern: "Creative strategy, landing page quality and audience testing worked together.",
+      learning: "A good reel is only one part of the funnel; the CTA and landing route must match the promise.",
+      source: "https://lineardesign.com/case-studies/a-construction/"
+    },
+    {
+      name: "Triadex Horsepower Brands",
+      niche: "Multi-location home services",
+      signal: "1,844 verified leads and $1.55m estimated pipeline value",
+      pattern: "Local service verticals used paid media, GBP and tracked lead value together.",
+      learning: "Train editors to think about pipeline value and booked jobs, not isolated views.",
+      source: "https://triadexservices.com/hvac-marketing-services/"
+    },
+    {
+      name: "Profit Roofing Hail Funnel",
+      niche: "Roofing Facebook lead funnel",
+      signal: "50 quality leads, $30 average CPL and 40% conversion rate reported",
+      pattern: "Urgent local problem, weather/event context and a clear inspection route.",
+      learning: "When there is a real trigger, lead with the homeowner problem before the company name.",
+      source: "https://profitroofingsystems.com/case-study/facebook-ads/facebook-ads-roofing-contractor-case-study/"
+    },
+    {
+      name: "Service Allies Bath Remodel",
+      niche: "Bathroom remodeling Facebook leads",
+      signal: "$173k in sales from bath-remodel leads reported",
+      pattern: "Specific project-type ads and exclusive leads owned by the contractor.",
+      learning: "Specificity beats general builder messaging: loft, extension, refurb, bathroom, kitchen.",
+      source: "https://www.serviceallies.com/bath-remodeling-leads"
+    },
+    {
+      name: "Greenlane RenoFi",
+      niche: "Home renovation paid social lead quality",
+      signal: "+113% leads, +137% opportunities, 30% lower CPL and 35% fewer unwanted leads",
+      pattern: "Audience restructure, first-party data, funnel-stage creative and lead-quality exclusions.",
+      learning: "The editor must help repel poor-fit leads as much as it attracts good-fit ones.",
+      source: "https://www.greenlanemarketing.com/case-studies/paid-social-audience-restructure-doubled-mqls-and-reduced-cpl-by-30"
+    },
+    {
+      name: "Construction Lead Benchmarks",
+      niche: "Construction Facebook lead ads",
+      signal: "Home and home improvement benchmark listed at $41.26 CPL",
+      pattern: "Raw CPL only matters when linked to lead value, follow-up speed and project margin.",
+      learning: "Score ads against likely job value and lead quality, not just cheap lead volume.",
+      source: "https://admanage.ai/blog/facebook-ads-for-construction-companies"
+    },
+    {
+      name: "Home Services 2026 Benchmarks",
+      niche: "Contractor Facebook lead ads",
+      signal: "Facebook lead ads reported at 7.72% conversion rate and $27.66 CPL benchmark",
+      pattern: "Lead ads can work when tracking and follow-up are in place.",
+      learning: "No First Touch edit is ready for paid testing unless the enquiry route is clear.",
+      source: "https://pipelineon.com/blog/facebook-ads-home-service/"
+    },
+    {
+      name: "Roofing Creative Guide",
+      niche: "Roofing/home service creative",
+      signal: "Guide benchmark suggests 3-7% CTR on video content",
+      pattern: "Educational problem-led video helps homeowners before they request a quote.",
+      learning: "First Touch videos should teach one useful thing, not only show pretty site clips.",
+      source: "https://ppcinfo.com/en/articles/facebook-ads-roofing-2024-guide"
+    },
+    {
+      name: "CyberOptik Roofing Campaign",
+      niche: "Roofing Facebook campaign analysis",
+      signal: "$120k return from $650 ad investment and 50 leads cited from source case study",
+      pattern: "Real project visuals, local targeting and a clear offer beat stock-looking ads.",
+      learning: "Use First Touch's real project footage as the trust asset; avoid anything that feels generic.",
+      source: "https://www.cyberoptik.net/blog/roofing-business-facebook-ads/"
     }
   ],
   firstTouchProduction: [
@@ -522,7 +642,8 @@ const defaultData = {
     { insight: "Instagram DMs should stay short and manual-assisted to avoid account risk.", source: "Operating rule", confidence: 90, action: "Queue DMs for human sending." },
     { insight: "A free growth audit is easier to sell than a full retainer in the first message.", source: "Sales strategy", confidence: 86, action: "CTA remains free audit." },
     { insight: "For renovation ads, the best examples optimise for qualified enquiries, CPA, CPL or ROAS rather than likes alone.", source: "AI Editor research 2026-05-07", confidence: 88, action: "Judge videos by serious leads and booked conversations." },
-    { insight: "Without Sonny voiceover, captions must act as the narrator: hook, context, proof, fit filter and CTA.", source: "Sam feedback 2026-05-07", confidence: 92, action: "Upgrade all V3 edit plans with story-led captions." }
+    { insight: "Without Sonny voiceover, captions must act as the narrator: hook, context, proof, fit filter and CTA.", source: "Sam feedback 2026-05-07", confidence: 92, action: "Upgrade all V3 edit plans with story-led captions." },
+    { insight: "The next AI editor jump comes from one excellent scored draft at a time: reference examples, caption story, lead filter, render, score, then V-next instruction.", source: "Elite editor training 2026-05-07", confidence: 91, action: "Run the elite feedback loop before creating more variants." }
   ],
   knowledge: [
     { title: "Entry Offer", detail: "Start with the starter foundations offer: social setup, Google Business improvements, website/CTA basics, tracking and content foundations.", owner: "Xello" },
@@ -535,13 +656,15 @@ const defaultData = {
     { title: "Compliance Rule", detail: "No fake guarantees. Clear Xello identity. Respect do-not-contact and approval-first sending.", owner: "Compliance" },
     { title: "Sales CTA", detail: "First message starts a conversation with a compliment, one brief line explaining that Xello helps improve local online presence and a simple question. Do not lead with paid ads.", owner: "Outreach Writer" },
     { title: "AI Editor Reference Library", detail: "Use the conversion ad examples before creating new First Touch edit plans. Learn from actual leads, CPL, CPA, ROAS and quote-route patterns, not vanity metrics.", owner: "AI Editor Teacher" },
-    { title: "Caption Narrator Rule", detail: "Until Sonny voiceover exists, on-screen captions must carry the story: why this matters, what the viewer is seeing, proof, who it is for and the next enquiry step.", owner: "Caption Ads Agent" }
+    { title: "Caption Narrator Rule", detail: "Until Sonny voiceover exists, on-screen captions must carry the story: why this matters, what the viewer is seeing, proof, who it is for and the next enquiry step.", owner: "Caption Ads Agent" },
+    { title: "Elite AI Editor Standard", detail: "Before each new First Touch reel, pick three conversion references, choose one narrative, write captions first, add a lead filter, score the draft and write one V-next improvement.", owner: "Elite Reference Teacher Agent" }
   ],
   playbooks: [
     { name: "Prospect Research", steps: "Find company, identify service, check area, score lead need, avoid poor-fit businesses.", agent: "Prospect Scanner" },
     { name: "Company Research", steps: "Check available website/social notes, create a safe personal hook, identify pain point, choose outreach angle.", agent: "Company Research Agent" },
     { name: "Content Creation", steps: "Use company research to choose profile improvements, starter content ideas, what to film and which hooks could later support a paid lead test.", agent: "Content Creation Agent" },
     { name: "AI Editor Training", steps: "Study the conversion reference library, choose a narrative shape, create slick caption sequences, build a JSON edit plan, render a draft, score it and feed Sam feedback back into memory.", agent: "AI Editor Teacher" },
+    { name: "Elite Editor Feedback Loop", steps: "Pick 3 references, write the caption story before editing, create one draft, score hook/story/captions/proof/premium feel/lead fit, then write one V-next instruction.", agent: "Elite Reference Teacher Agent" },
     { name: "V3 First Touch Reels", steps: "Create story-led edits from current site footage: hook, context, proof, fit filter and CTA. Save Sonny voiceover slots for the next shoot.", agent: "Short-Form Editor Agent" },
     { name: "Xello Social Growth", steps: "Plan weekly Reels/TikToks around founder journey, marketing tips, local lead generation, behind-the-scenes and proof-building content.", agent: "Xello Social Growth Agent" },
     { name: "Website Audit", steps: "Check CTA clarity, quote form, mobile experience, trust signals, tracking and landing page quality.", agent: "Website Audit Agent" },
@@ -557,7 +680,7 @@ const defaultData = {
     { name: "Short Instagram DM", hypothesis: "Short local DMs get more replies than long audit pitches.", status: "Planned", result: "Not started", learning: "Run manually with 20 prospects." },
     { name: "Brighton vs Worthing", hypothesis: "Brighton/Hove firms have higher budget but more competition.", status: "Running", result: "Brighton has stronger lead scores", learning: "Prioritise high-ticket areas first." },
     { name: "First Touch V3 caption upgrade", hypothesis: "Story-led captions will make active-project footage feel more premium and more enquiry-focused than descriptive captions.", status: "Ready", result: "Reference library and agent rules added.", learning: "Next edit should use captions as the narrator until Sonny voiceover exists." },
-    { name: "Conversion examples over vanity examples", hypothesis: "Training editors on CPL, CPA, ROAS and qualified lead patterns will produce better ad concepts than training on likes alone.", status: "Running", result: "8 reference examples added to the CRM examples box.", learning: "The agent should justify each edit by the lead it is trying to attract." }
+    { name: "Conversion examples over vanity examples", hypothesis: "Training editors on CPL, CPA, ROAS and qualified lead patterns will produce better ad concepts than training on likes alone.", status: "Running", result: "24 reference examples added to the CRM examples box and elite reference bank.", learning: "The agent should justify each edit by the lead it is trying to attract." }
   ],
   delivery: [
     { client: "First Touch Innovations", stage: "Starter foundations", checklist: "Social/GMB/website basics, content plan and tracking foundations before any paid test.", health: "Trial", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Optional", contentStatus: "Foundation plan ready", campaignStatus: "Not ready for ads", nextReview: "After starter setup", nextAction: "Confirm missing socials, Google Business gaps and website basics" },
