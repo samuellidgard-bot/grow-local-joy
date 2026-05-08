@@ -155,6 +155,10 @@ The automation should write drafts into:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/automation_outputs/xello-social/`
 
+It should also maintain:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/automation_outputs/xello-social/posting-tracker.md`
+
 ## Publishing Rule
 
 The automation is allowed to draft.
