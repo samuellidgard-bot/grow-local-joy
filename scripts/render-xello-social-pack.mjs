@@ -284,8 +284,7 @@ function carouselHtml(slide, index, total) {
   const hasNumber = lead.match(/^(\d+)\.\s*(.+)$/);
   const leadText = hasNumber ? hasNumber[2] : lead;
   const number = hasNumber ? hasNumber[1] : String(index).padStart(2, "0");
-  const icon = carouselIcon(index, isFinal);
-  const layout = isCover ? "cover full-visual" : isFinal ? "final full-visual" : index % 2 === 0 ? "image-left" : "image-right";
+  const layout = isCover ? "cover" : isFinal ? "final" : index % 2 === 0 ? "panel-right" : "panel-left";
   const visualSrc = backgroundForSlide(index, isFinal);
 
   return baseHtml({
@@ -293,19 +292,18 @@ function carouselHtml(slide, index, total) {
     height: 1350,
     body: `
       <section class="slide ${layout}">
-        ${visualSrc && (isCover || isFinal) ? `<div class="bg-visual"><img src="${visualSrc}" alt="" /></div>` : ""}
+        ${visualSrc ? `<div class="bg-visual"><img src="${visualSrc}" alt="" /></div>` : ""}
         <div class="top-row">
           <span class="chip">${escapeHtml(slideBadge(index, isCover, isFinal))}</span>
           <span class="counter">${index + 1}/${total}</span>
         </div>
-        ${visualSrc && !isCover && !isFinal ? `<div class="visual-card"><img src="${visualSrc}" alt="" /></div>` : !visualSrc ? `<div class="ghost-icon">${iconSvg(icon)}</div>` : ""}
         ${isCover ? '<div class="warning-strip">Before you boost a post</div>' : ""}
         <div class="${isCover ? "cover-copy" : isFinal ? "final-copy" : "copy"}">
           ${!isCover && !isFinal ? `<div class="number">${escapeHtml(number)}</div>` : ""}
           ${isFinal ? `<div class="save-icon">${iconSvg("save")}</div>` : ""}
           <h1>${escapeHtml(leadText)}</h1>
           ${body ? `<p>${escapeHtml(body).replaceAll("\n", "<br>")}</p>` : ""}
-          ${!isCover && !isFinal ? '<div class="micro-label">Fix this before sending more traffic.</div>' : ""}
+          ${!isCover && !isFinal ? '<div class="micro-label">Before you send more traffic</div>' : ""}
         </div>
       </section>
     `,
@@ -327,19 +325,6 @@ function carouselHtml(slide, index, total) {
         z-index: 2;
         height: 100%;
       }
-      .ghost-icon {
-        position: absolute;
-        right: 46px;
-        top: 214px;
-        width: 250px;
-        height: 250px;
-        opacity: 0.12;
-        transform: rotate(-8deg);
-      }
-      .ghost-icon svg {
-        width: 100%;
-        height: 100%;
-      }
       .bg-visual {
         position: absolute;
         inset: 34px;
@@ -352,7 +337,7 @@ function carouselHtml(slide, index, total) {
         height: 100%;
         display: block;
         object-fit: cover;
-        opacity: 0.58;
+        opacity: 0.84;
         filter: saturate(1.06) contrast(1.08);
       }
       .bg-visual::after {
@@ -360,57 +345,18 @@ function carouselHtml(slide, index, total) {
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(90deg, rgba(17, 19, 21, 0.95) 0%, rgba(17, 19, 21, 0.72) 42%, rgba(17, 19, 21, 0.3) 100%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.3), rgba(17, 19, 21, 0.72));
+          linear-gradient(90deg, rgba(17, 19, 21, 0.94) 0%, rgba(17, 19, 21, 0.76) 45%, rgba(17, 19, 21, 0.42) 100%),
+          linear-gradient(180deg, rgba(17, 19, 21, 0.34), rgba(17, 19, 21, 0.78));
+      }
+      .panel-left .bg-visual::after {
+        background:
+          linear-gradient(270deg, rgba(17, 19, 21, 0.94) 0%, rgba(17, 19, 21, 0.74) 46%, rgba(17, 19, 21, 0.36) 100%),
+          linear-gradient(180deg, rgba(17, 19, 21, 0.34), rgba(17, 19, 21, 0.78));
       }
       .final .bg-visual::after {
         background:
           linear-gradient(90deg, rgba(17, 19, 21, 0.95) 0%, rgba(17, 19, 21, 0.76) 50%, rgba(17, 19, 21, 0.42) 100%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.28), rgba(17, 19, 21, 0.74));
-      }
-      .visual-card {
-        position: absolute;
-        z-index: 1;
-        right: 68px;
-        top: 330px;
-        width: 356px;
-        height: 356px;
-        border: 2px solid rgba(143, 207, 92, 0.28);
-        border-radius: 34px;
-        overflow: hidden;
-        background: rgba(247, 250, 244, 0.05);
-        box-shadow: 0 34px 90px rgba(0, 0, 0, 0.36);
-      }
-      .visual-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(90deg, rgba(17, 19, 21, 0.08), rgba(17, 19, 21, 0.32)),
-          linear-gradient(180deg, transparent, rgba(17, 19, 21, 0.18));
-        pointer-events: none;
-      }
-      .visual-card img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-        filter: saturate(0.98) contrast(1.04);
-      }
-      .image-left .visual-card {
-        left: 72px;
-        right: auto;
-      }
-      .image-left .copy {
-        left: 536px;
-        right: 72px;
-      }
-      .image-right .visual-card {
-        right: 72px;
-      }
-      .image-right .copy {
-        left: 72px;
-        right: 536px;
+          linear-gradient(180deg, rgba(17, 19, 21, 0.3), rgba(17, 19, 21, 0.75));
       }
       .warning-strip {
         position: absolute;
@@ -430,26 +376,42 @@ function carouselHtml(slide, index, total) {
       }
       .cover-copy, .copy {
         position: absolute;
+        z-index: 2;
         left: 72px;
         right: 72px;
         top: 310px;
       }
+      .copy {
+        width: 548px;
+        min-height: 660px;
+        padding: 40px 42px;
+        border: 2px solid rgba(143, 207, 92, 0.26);
+        border-radius: 34px;
+        background: rgba(17, 19, 21, 0.74);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(8px);
+      }
+      .panel-right .copy {
+        left: auto;
+        right: 72px;
+      }
+      .panel-left .copy {
+        left: 72px;
+        right: auto;
+      }
       .cover-copy h1 {
-        max-width: 690px;
+        max-width: 820px;
         margin: 0;
-        font-size: 96px;
+        font-size: 104px;
         line-height: 0.98;
         font-weight: 950;
       }
       .cover-copy h1::first-line {
         color: ${brand.green};
       }
-      .copy {
-        top: 300px;
-      }
       .number {
-        width: 104px;
-        height: 104px;
+        width: 96px;
+        height: 96px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -457,22 +419,22 @@ function carouselHtml(slide, index, total) {
         border-radius: 50%;
         background: ${brand.green};
         color: #10200c;
-        font-size: 48px;
+        font-size: 44px;
         font-weight: 950;
       }
       .copy h1 {
-        max-width: 410px;
+        max-width: 460px;
         margin: 0 0 34px;
         color: ${brand.ink};
-        font-size: 66px;
+        font-size: 70px;
         line-height: 1;
         font-weight: 950;
       }
       .copy p {
-        max-width: 420px;
+        max-width: 450px;
         margin: 0;
         color: ${brand.muted};
-        font-size: 34px;
+        font-size: 35px;
         line-height: 1.18;
         font-weight: 760;
       }
@@ -481,7 +443,7 @@ function carouselHtml(slide, index, total) {
         margin-top: 44px;
         padding: 16px 22px;
         border-radius: 16px;
-        background: rgba(247, 250, 244, 0.08);
+        background: rgba(247, 250, 244, 0.1);
         border-left: 8px solid ${brand.green};
         color: ${brand.ink};
         font-size: 24px;

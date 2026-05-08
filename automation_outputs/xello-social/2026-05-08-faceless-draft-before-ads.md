@@ -113,49 +113,49 @@ Follow Xello Media for practical marketing, AI and social media lessons for loca
 Slide 1:
 
 ```text
-Running ads with weak foundations is how local businesses waste money.
+Weak foundations waste ad spend.
 ```
 
 Slide 2:
 
 ```text
 1. Clear offer
-Can a stranger understand what you sell in 5 seconds?
+If your offer needs explaining, your ads pay for confusion.
 ```
 
 Slide 3:
 
 ```text
 2. Real proof
-Show reviews, work, process and trust signals before asking for enquiries.
+Proof beats promises. Show reviews, work and process.
 ```
 
 Slide 4:
 
 ```text
 3. Easy enquiry route
-One obvious mobile next step: call, WhatsApp or form.
+One tap to WhatsApp beats a hidden contact form.
 ```
 
 Slide 5:
 
 ```text
 4. Fast follow-up
-Reply while the lead still remembers why they messaged.
+A 30-minute reply can beat a 24-hour reply.
 ```
 
 Slide 6:
 
 ```text
 5. Tracking
-Know which channel created the enquiry before spending more.
+If you cannot track it, you cannot scale it.
 ```
 
 Final slide:
 
 ```text
 Traffic does not fix weak foundations.
-Save this before wasting your next 100 pounds on ads.
+Save this before wasting your next £100 on ads.
 Follow @xello_media for better enquiries, not just more clicks.
 ```
 
