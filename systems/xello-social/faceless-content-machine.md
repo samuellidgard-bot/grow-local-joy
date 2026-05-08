@@ -31,6 +31,10 @@ Practical marketing, AI and social media lessons for local businesses that want 
 - AI-generated or AI-assisted content should be labelled or disclosed when platform rules require it.
 - Direct publishing automation should stay approval-first until platform account access, consent, API requirements and brand QA are properly set up.
 
+Main 30-day growth sprint:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/30-day-faceless-instagram-growth-sprint.md`
+
 Reference sources:
 
 - TikTok Newsroom / TikTok Next 2026 trend notes: `https://newsroom.tiktok.com/vi-prsenterer-tiktok-next-2026-vores-bud-p-de-vigtigste-marketingtrends-kommer-r?lang=da`

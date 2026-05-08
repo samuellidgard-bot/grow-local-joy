@@ -196,6 +196,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Continue AI editor training through tutorial study: SFX restraint, colour grading, transitions, caption motion and end-card polish before forcing more drafts from limited footage.
 - Let the First Touch AI editor automation compound-improve itself: daily runs should score themselves, avoid duplicate references, rotate weak training gaps and add low-risk training-pack improvements; weekly review should clean up repeated gaps.
 - Today Xello own-social priority: run a faceless draft-first content machine for marketing, AI and social media tips while Sam prepares founder-led videos for later.
+- Xello Instagram growth sprint: use the 30-day faceless plan focused on AI growth systems, social media hacks, prompt giveaways and better-enquiry marketing foundations.
 
 ## Latest Decisions
 
@@ -243,6 +244,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - First Touch AI editor training has been expanded with tutorial-based SFX, colour grading, transition/effects and audio training modules plus dedicated SFX and Colour Grading agent prompts.
 - First Touch AI editor automation is now self-improving: the daily run reads a protocol/scorecard/backlog, adds low-risk training-pack improvements, and a weekly Friday review checks the last 7 days for repeated gaps.
 - Xello own-social has a faceless automated content strategy: weekday draft automation, five education pillars, CRM social plan updates and first manual-review post draft.
+- Xello own-social now has a 30-day faceless Instagram growth sprint with brand identity, content pillars, 21 Reel / 9 carousel calendar, monetization route and 4-hour weekly batching workflow.
 
 ## Next Handoff
 
