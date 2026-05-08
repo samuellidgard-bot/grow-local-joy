@@ -191,7 +191,7 @@ function imageDataUri(filePath) {
   return imageDataUriCache.get(filePath);
 }
 
-function baseHtml({ width, height, body, extraCss = "" }) {
+function baseHtml({ width, height, body, extraCss = "", showHandle = true }) {
   return `<!doctype html>
 <html>
 <head>
@@ -270,7 +270,7 @@ function baseHtml({ width, height, body, extraCss = "" }) {
     ${body}
     <div class="brand">
       <div class="brand-mark">${xelloLogoMarkup}<span>Xello Media</span></div>
-      <span>@xello_media</span>
+      ${showHandle ? "<span>@xello_media</span>" : ""}
     </div>
   </main>
 </body>
@@ -293,32 +293,20 @@ function carouselHtml(slide, index, total) {
     body: `
       <section class="slide ${layout}">
         ${visualSrc ? `<div class="bg-visual"><img src="${visualSrc}" alt="" /></div>` : ""}
-        <div class="top-row">
-          <span class="chip">${escapeHtml(slideBadge(index, isCover, isFinal))}</span>
-          <span class="counter">${index + 1}/${total}</span>
-        </div>
-        ${isCover ? '<div class="warning-strip">Before you boost a post</div>' : ""}
         <div class="${isCover ? "cover-copy" : isFinal ? "final-copy" : "copy"}">
-          ${!isCover && !isFinal ? `<div class="number">${escapeHtml(number)}</div>` : ""}
-          ${isFinal ? `<div class="save-icon">${iconSvg("save")}</div>` : ""}
           <h1>${escapeHtml(leadText)}</h1>
           ${body ? `<p>${escapeHtml(body).replaceAll("\n", "<br>")}</p>` : ""}
-          ${!isCover && !isFinal ? '<div class="micro-label">Before you send more traffic</div>' : ""}
         </div>
       </section>
     `,
+    showHandle: false,
     extraCss: `
-      .top-row {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      .canvas {
+        padding: 0;
+        background: ${brand.black};
       }
-      .counter {
-        color: ${brand.muted};
-        font-size: 30px;
-        font-weight: 900;
+      .canvas::before {
+        display: none;
       }
       .slide {
         position: relative;
@@ -327,10 +315,9 @@ function carouselHtml(slide, index, total) {
       }
       .bg-visual {
         position: absolute;
-        inset: 34px;
+        inset: 0;
         z-index: 0;
         overflow: hidden;
-        border-radius: 36px;
       }
       .bg-visual img {
         width: 100%;
@@ -338,162 +325,107 @@ function carouselHtml(slide, index, total) {
         display: block;
         object-fit: cover;
         opacity: 1;
-        filter: saturate(1.18) contrast(1.12) brightness(1.08);
+        filter: saturate(1.24) contrast(1.12) brightness(1.05);
+        transform: scale(1.025);
       }
       .bg-visual::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(circle at 78% 52%, rgba(17, 19, 21, 0.08), rgba(17, 19, 21, 0.22) 34%, rgba(17, 19, 21, 0.42) 72%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.16), rgba(17, 19, 21, 0.34));
+        display: none;
       }
       .panel-left .bg-visual::after {
-        background:
-          radial-gradient(circle at 22% 52%, rgba(17, 19, 21, 0.08), rgba(17, 19, 21, 0.22) 34%, rgba(17, 19, 21, 0.42) 72%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.16), rgba(17, 19, 21, 0.34));
+        display: none;
       }
       .final .bg-visual::after {
-        background:
-          linear-gradient(90deg, rgba(17, 19, 21, 0.62) 0%, rgba(17, 19, 21, 0.38) 56%, rgba(17, 19, 21, 0.16) 100%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.12), rgba(17, 19, 21, 0.34));
-      }
-      .warning-strip {
-        position: absolute;
-        left: 0;
-        top: 230px;
-        display: inline-flex;
-        align-items: center;
-        padding: 14px 24px;
-        border-radius: 999px;
-        background: rgba(143, 207, 92, 0.12);
-        border: 2px solid ${brand.line};
-        color: ${brand.muted};
-        font-size: 28px;
-        line-height: 1;
-        font-weight: 900;
-        text-transform: uppercase;
+        display: none;
       }
       .cover-copy, .copy {
         position: absolute;
         z-index: 2;
-        left: 72px;
-        right: 72px;
-        top: 310px;
+        left: 62px;
+        right: 62px;
+        top: 420px;
+        text-shadow: 0 8px 34px rgba(0, 0, 0, 0.76), 0 2px 8px rgba(0, 0, 0, 0.88);
       }
       .copy {
-        width: 548px;
-        min-height: 660px;
-        padding: 40px 42px;
-        border: 2px solid rgba(143, 207, 92, 0.26);
-        border-radius: 34px;
-        background: rgba(12, 14, 15, 0.88);
-        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
-        backdrop-filter: blur(4px);
+        width: 780px;
       }
       .panel-right .copy {
-        left: auto;
-        right: 72px;
+        left: 62px;
+        right: auto;
       }
       .panel-left .copy {
-        left: 72px;
+        left: 62px;
         right: auto;
       }
       .cover-copy h1 {
-        max-width: 820px;
+        max-width: 910px;
         margin: 0;
-        font-size: 104px;
-        line-height: 0.98;
+        font-size: 116px;
+        line-height: 0.94;
         font-weight: 950;
       }
       .cover-copy {
-        width: 760px;
-        padding: 42px 48px;
-        border: 2px solid rgba(143, 207, 92, 0.22);
-        border-radius: 34px;
-        background: rgba(10, 12, 13, 0.66);
-        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
+        top: 400px;
+        width: 900px;
       }
       .cover-copy h1::first-line {
         color: ${brand.green};
       }
-      .number {
-        width: 96px;
-        height: 96px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 40px;
-        border-radius: 50%;
-        background: ${brand.green};
-        color: #10200c;
-        font-size: 44px;
-        font-weight: 950;
-      }
       .copy h1 {
-        max-width: 460px;
-        margin: 0 0 34px;
+        max-width: 760px;
+        margin: 0 0 26px;
         color: ${brand.ink};
-        font-size: 70px;
-        line-height: 1;
+        font-size: 88px;
+        line-height: 0.95;
         font-weight: 950;
       }
       .copy p {
-        max-width: 450px;
+        max-width: 710px;
         margin: 0;
-        color: ${brand.muted};
-        font-size: 35px;
-        line-height: 1.18;
-        font-weight: 760;
-      }
-      .micro-label {
-        display: inline-flex;
-        margin-top: 44px;
-        padding: 16px 22px;
-        border-radius: 16px;
-        background: rgba(247, 250, 244, 0.1);
-        border-left: 8px solid ${brand.green};
         color: ${brand.ink};
-        font-size: 24px;
-        line-height: 1.1;
-        font-weight: 900;
+        font-size: 43px;
+        line-height: 1.08;
+        font-weight: 820;
       }
       .final-copy {
         position: absolute;
-        left: 72px;
-        right: 72px;
-        top: 270px;
-        width: 760px;
-        padding: 42px 48px;
-        border: 2px solid rgba(143, 207, 92, 0.22);
-        border-radius: 34px;
-        background: rgba(10, 12, 13, 0.66);
-        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
-      }
-      .save-icon {
-        width: 110px;
-        height: 110px;
-        margin-bottom: 44px;
-      }
-      .save-icon svg {
-        width: 100%;
-        height: 100%;
+        z-index: 2;
+        left: 62px;
+        right: 62px;
+        top: 400px;
+        width: 900px;
+        text-shadow: 0 8px 34px rgba(0, 0, 0, 0.78), 0 2px 8px rgba(0, 0, 0, 0.9);
       }
       .final-copy h1 {
-        max-width: 680px;
-        margin: 0 0 34px;
+        max-width: 890px;
+        margin: 0 0 30px;
         color: ${brand.green};
-        font-size: 82px;
-        line-height: 0.98;
+        font-size: 94px;
+        line-height: 0.95;
         font-weight: 950;
       }
       .final-copy p {
-        max-width: 620px;
+        max-width: 780px;
         margin: 0;
         color: ${brand.ink};
-        font-size: 38px;
-        line-height: 1.16;
+        font-size: 42px;
+        line-height: 1.1;
         font-weight: 850;
+      }
+      .brand {
+        left: 58px;
+        right: auto;
+        bottom: 50px;
+        z-index: 4;
+        justify-content: flex-start;
+        color: ${brand.ink};
+        font-size: 27px;
+        letter-spacing: 2.5px;
+        text-shadow: 0 5px 18px rgba(0, 0, 0, 0.9);
+      }
+      .brand svg {
+        width: 42px;
+        height: 42px;
+        filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.78));
       }
     `,
   });
