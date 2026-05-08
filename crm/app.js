@@ -36,21 +36,24 @@ const defaultData = {
     { company: "Hove Kitchen Studio", title: "Kitchen transformation Reel", hook: "From tired kitchen to the room everyone gathers in.", format: "30-second Reel / Meta ad", scenes: "Before shot, detail close-ups, reveal, owner or fitter talking through one design decision.", cta: "Book a free kitchen quote conversation.", source: "Company Research Agent", status: "Needs Review" }
   ],
   xelloSocial: [
-    { platform: "Instagram Reels", pillar: "Marketing education", hook: "3 reasons renovation companies lose leads from their website", format: "Talking-head Reel with captions", script: "Open with the problem, show 3 fixes, end with 'I’m testing this with local Brighton renovation firms.'", cta: "Follow for local marketing breakdowns", status: "Planned" },
-    { platform: "TikTok", pillar: "Founder journey", hook: "I’m building a Brighton marketing agency from zero", format: "Day-in-the-life / behind the scenes", script: "Show outreach, research, filming kit and why local businesses need better lead tracking.", cta: "Comment 'audit' if you want me to review a local business", status: "Planned" },
-    { platform: "Instagram Carousel", pillar: "Proof building", hook: "Why local trades need online foundations before paid ads", format: "6-slide educational carousel", script: "Social setup, Google Business, website basics, tracking, content proof, then ads when ready.", cta: "Save this if you run a local service business", status: "Planned" }
+    { platform: "Instagram Reels", pillar: "Marketing foundations", hook: "Before you spend on ads, check these 5 things", format: "Faceless text-led Reel with simple Xello green checklist animation", script: "Hook, then show: clear offer, proof, website CTA, enquiry route and tracking. End with 'traffic will not fix weak foundations'.", cta: "Save this before running ads", status: "Faceless draft system" },
+    { platform: "TikTok", pillar: "AI for small businesses", hook: "3 safe ways a local business can use AI this week", format: "Faceless screen recording with prompt snippets and captions", script: "Show AI turning messy notes into post ideas, FAQs into website copy and customer questions into content, with a warning not to fake results or personality.", cta: "Follow Xello for practical AI marketing tips", status: "Faceless draft system" },
+    { platform: "LinkedIn", pillar: "Better enquiries", hook: "More leads is not always better. Better enquiries are.", format: "Short text post plus one clean checklist graphic", script: "Explain the difference between attention, leads and useful enquiries. List project type, area, photos, timeline and contact route as quality signals.", cta: "Connect for practical local marketing breakdowns", status: "Faceless draft system" },
+    { platform: "Instagram Carousel", pillar: "Social media trust", hook: "One project can become 7 pieces of content", format: "6-slide faceless carousel", script: "Break one real job into progress clip, detail photo, FAQ, review, before-final-reveal, team/process note and enquiry CTA.", cta: "Save this content system", status: "Faceless draft system" }
   ],
   socialCalendar: [
-    { day: "Monday", platform: "Instagram Reel", focus: "Marketing education", task: "Film one practical tip for renovation companies, using captions and a clear example.", status: "Planned" },
-    { day: "Wednesday", platform: "TikTok", focus: "Founder journey", task: "Show behind the scenes of building Xello: prospect research, CRM, filming kit or learning from calls.", status: "Planned" },
-    { day: "Friday", platform: "Instagram Reel", focus: "Proof building", task: "Break down a website, advert or lead tracking improvement without naming private client data.", status: "Planned" },
-    { day: "Sunday", platform: "Carousel", focus: "Authority", task: "Post a simple checklist or mini-guide local businesses can save.", status: "Planned" }
+    { day: "Monday", platform: "Instagram Reel + TikTok", focus: "Marketing foundations", task: "Publish one faceless checklist about what to fix before ads.", status: "Draft-first" },
+    { day: "Tuesday", platform: "TikTok + LinkedIn", focus: "AI for small businesses", task: "Share one practical AI use case with a safety/accuracy note.", status: "Draft-first" },
+    { day: "Wednesday", platform: "Instagram Carousel", focus: "Social media trust", task: "Post a saveable framework for turning proof into content.", status: "Draft-first" },
+    { day: "Thursday", platform: "LinkedIn + Reel", focus: "Better enquiries", task: "Teach the difference between attention, leads and useful enquiries.", status: "Draft-first" },
+    { day: "Friday", platform: "Instagram Reel + LinkedIn", focus: "Build in public", task: "Share one CRM/process lesson from building Xello without private client data.", status: "Draft-first" }
   ],
   contentPillars: [
-    { pillar: "Marketing education", goal: "Show expertise with websites, Meta ads, lead tracking and follow-up systems.", examples: "3 website mistakes, what makes a good local ad, how to track leads properly." },
-    { pillar: "Founder journey", goal: "Make Xello feel human, local and trustworthy while the company is still growing.", examples: "Building from Brighton, learning from calls, preparing filming equipment, honest wins and lessons." },
-    { pillar: "Behind the scenes", goal: "Show the quality of the process and equipment before you have lots of public case studies.", examples: "Drone setup, filming checklist, CRM workflow, ad planning process." },
-    { pillar: "Local proof", goal: "Build credibility around Brighton/Hove renovation marketing without inventing results.", examples: "Local market observations, anonymised audits, before/after creative concepts, test structure." }
+    { pillar: "Marketing foundations", goal: "Teach local service businesses what to fix before paid ads.", examples: "Bios, Google Business, website CTAs, proof, enquiry route and tracking." },
+    { pillar: "AI for small businesses", goal: "Show useful AI workflows without fake avatars, fake proof or overhyped claims.", examples: "Prompt snippets, content repurposing, FAQ drafting, reply drafts and accuracy checks." },
+    { pillar: "Social media trust", goal: "Explain how content builds trust before it sells.", examples: "Process proof, project breakdowns, reviews, FAQs and content from one job." },
+    { pillar: "Better enquiries", goal: "Position Xello around lead quality, not vanity metrics.", examples: "Useful enquiry checklist, tracking source, project fit and follow-up speed." },
+    { pillar: "Build in public", goal: "Share Xello's process while staying faceless until Sam is ready for founder-led videos.", examples: "CRM lessons, workflow screenshots, anonymous audits and system improvements." }
   ],
   adExamples: [
     {
@@ -610,7 +613,7 @@ const defaultData = {
     { name: "Prospect Scanner", purpose: "Finds renovation companies across Brighton, Hove and Sussex.", status: "Running", currentTask: "Scanning builders and extension firms in Brighton", progress: 68, lastRun: "Today 09:20", nextRun: "Today 16:00", cost: 0.42, outputs: 37 },
     { name: "Company Research Agent", purpose: "Builds personalised hooks and pain points for each company before outreach is written.", status: "Queued", currentTask: "Waiting for new prospects to research", progress: 10, lastRun: "Not run yet", nextRun: "After prospect scan", cost: 0, outputs: 0 },
     { name: "Content Creation Agent", purpose: "Turns company research into advert hooks, filming plans and Meta content ideas.", status: "Queued", currentTask: "Waiting for researched companies", progress: 10, lastRun: "Not run yet", nextRun: "After company research", cost: 0, outputs: 0 },
-    { name: "Xello Social Growth Agent", purpose: "Plans Instagram and TikTok content to grow Xello's credibility and following.", status: "Queued", currentTask: "Planning founder-led marketing content", progress: 10, lastRun: "Not run yet", nextRun: "Weekly", cost: 0, outputs: 0 },
+    { name: "Xello Social Growth Agent", purpose: "Plans Instagram, TikTok and LinkedIn content to grow Xello's credibility and following.", status: "Running", currentTask: "Drafting faceless marketing, AI and social media education posts for manual approval", progress: 45, lastRun: "Faceless strategy set 2026-05-08", nextRun: "Weekdays 08:30", cost: 0, outputs: 4 },
     { name: "Website Audit Agent", purpose: "Checks prospect websites for conversion gaps and trust signals.", status: "Queued", currentTask: "Waiting for new prospect batch", progress: 20, lastRun: "Yesterday 17:10", nextRun: "After scan", cost: 0.31, outputs: 18 },
     { name: "Social Audit Agent", purpose: "Reviews Instagram activity and content opportunities.", status: "Idle", currentTask: "No pending social audits", progress: 0, lastRun: "Yesterday 15:40", nextRun: "Manual trigger", cost: 0.18, outputs: 12 },
     { name: "Outreach Writer", purpose: "Drafts personalised emails, follow-ups and Instagram DMs.", status: "Waiting Approval", currentTask: "42 drafts need review", progress: 100, lastRun: "Today 10:05", nextRun: "After approvals", cost: 0.56, outputs: 42 },
@@ -655,7 +658,7 @@ const defaultData = {
     { title: "Target Market", detail: "Renovation companies, builders, extensions, lofts, kitchens, bathrooms and design-build firms across Sussex.", owner: "Prospect Scanner" },
     { title: "Personalisation Layer", detail: "Company Research Agent creates hooks, pain points and outreach angles before the Outreach Writer drafts.", owner: "Company Research Agent" },
     { title: "Content Creation Layer", detail: "Content Creation Agent turns company research into filming angles, advert hooks and Meta content ideas.", owner: "Content Creation Agent" },
-    { title: "Xello Social Growth", detail: "Xello Social Growth Agent plans Instagram and TikTok content to build credibility, followers and authority for the agency.", owner: "Xello Social Growth Agent" },
+    { title: "Xello Social Growth", detail: "Xello Social Growth Agent plans faceless Instagram, TikTok and LinkedIn education content to build credibility now, then adds founder-led content when Sam is ready.", owner: "Xello Social Growth Agent" },
     { title: "Compliance Rule", detail: "No fake guarantees. Clear Xello identity. Respect do-not-contact and approval-first sending.", owner: "Compliance" },
     { title: "Sales CTA", detail: "First message starts a conversation with a compliment, one brief line explaining that Xello helps improve local online presence and a simple question. Do not lead with paid ads.", owner: "Outreach Writer" },
     { title: "AI Editor Reference Library", detail: "Use the conversion ad examples before creating new First Touch edit plans. Learn from actual leads, CPL, CPA, ROAS and quote-route patterns, not vanity metrics.", owner: "AI Editor Teacher" },
@@ -676,7 +679,7 @@ const defaultData = {
     { name: "SFX And Colour Training", steps: "Study editing tutorials, extract rules for sound effects, transitions, colour correction and grading, then apply only where the technique improves trust, pacing or lead clarity.", agent: "SFX Sound Design Agent / Colour Grading Agent" },
     { name: "Automation Self-Improvement", steps: "Daily: read recent logs, choose the weakest gap, mine references/tutorials, score the run and update the backlog. Weekly: review repeated gaps and tighten the training rules.", agent: "AI Automation" },
     { name: "V3 First Touch Reels", steps: "Create story-led edits from current site footage: hook, context, proof, fit filter and CTA. Save Sonny voiceover slots for the next shoot.", agent: "Short-Form Editor Agent" },
-    { name: "Xello Social Growth", steps: "Plan weekly Reels/TikToks around founder journey, marketing tips, local lead generation, behind-the-scenes and proof-building content.", agent: "Xello Social Growth Agent" },
+    { name: "Xello Social Growth", steps: "Plan weekday faceless posts around marketing foundations, AI for small businesses, social trust, better enquiries and build-in-public lessons. Draft only; Sam approves publishing.", agent: "Xello Social Growth Agent" },
     { name: "Website Audit", steps: "Check CTA clarity, quote form, mobile experience, trust signals, tracking and landing page quality.", agent: "Website Audit Agent" },
     { name: "Outreach Writing", steps: "Use one specific observation, a light compliment and one easy question. Avoid pitching the full offer until they reply.", agent: "Outreach Writer" },
     { name: "Starter Foundations", steps: "Create/optimise social profiles, Google Business, website/CTA basics, tracking and content foundations before paid ads.", agent: "Sales" },
@@ -1104,14 +1107,14 @@ const agentDetails = {
     guardrails: "Ideas only. It does not post content or run ads without human approval."
   },
   "Xello Social Growth Agent": {
-    purpose: "Grows Xello Media's own Instagram and TikTok presence with credible founder-led marketing content.",
+    purpose: "Grows Xello Media's own Instagram, TikTok and LinkedIn presence with credible faceless education first, then founder-led content later.",
     responsibilities: [
-      "Plans Reels, TikToks, carousels and short-form content ideas for Xello.",
+      "Plans Reels, TikToks, LinkedIn posts, carousels and short-form content ideas for Xello.",
       "Creates marketing tips that show Xello understands lead generation, websites, Meta ads and tracking.",
-      "Turns Sam's founder story, local Brighton/Hove angle and filming equipment into trust-building content.",
+      "Creates faceless practical education now, then turns Sam's founder story into trust-building content once he is ready to film.",
       "Suggests hooks, scripts, CTAs and weekly posting plans."
     ],
-    inputs: "Xello offer, target market, founder story, available equipment, trends/manual research notes and content performance.",
+    inputs: "Xello offer, target market, founder story, faceless content machine, available equipment, trends/manual research notes and content performance.",
     outputs: "Xello Social Plan rows with platform, pillar, hook, format, script, CTA and status.",
     guardrails: "Planning only. It does not post, comment, DM or represent Xello publicly without human approval."
   },

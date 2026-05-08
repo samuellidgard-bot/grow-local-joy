@@ -195,6 +195,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Review the rendered `first-touch-v3-active-site-proof.mp4` draft, then decide whether to create one controlled hook/music/end-card variant.
 - Continue AI editor training through tutorial study: SFX restraint, colour grading, transitions, caption motion and end-card polish before forcing more drafts from limited footage.
 - Let the First Touch AI editor automation compound-improve itself: daily runs should score themselves, avoid duplicate references, rotate weak training gaps and add low-risk training-pack improvements; weekly review should clean up repeated gaps.
+- Today Xello own-social priority: run a faceless draft-first content machine for marketing, AI and social media tips while Sam prepares founder-led videos for later.
 
 ## Latest Decisions
 
@@ -241,6 +242,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - First Touch Active Site Proof V3 has been rendered from the current footage, scored 81/100 and logged back into the AI editor training feedback/outcome system.
 - First Touch AI editor training has been expanded with tutorial-based SFX, colour grading, transition/effects and audio training modules plus dedicated SFX and Colour Grading agent prompts.
 - First Touch AI editor automation is now self-improving: the daily run reads a protocol/scorecard/backlog, adds low-risk training-pack improvements, and a weekly Friday review checks the last 7 days for repeated gaps.
+- Xello own-social has a faceless automated content strategy: weekday draft automation, five education pillars, CRM social plan updates and first manual-review post draft.
 
 ## Next Handoff
 
