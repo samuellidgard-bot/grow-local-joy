@@ -1,5 +1,5 @@
 import { chromium } from "playwright";
-import ffmpegPath from "ffmpeg-static";
+import bundledFfmpegPath from "ffmpeg-static";
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import fs from "node:fs/promises";
@@ -16,6 +16,7 @@ const musicLibraryPath = path.join(outputRoot, "music-library");
 const xelloLogoMarkup = existsSync(publicLogoSvgPath)
   ? readFileSync(publicLogoSvgPath, "utf8").replace("<svg", '<svg aria-hidden="true"')
   : "";
+const ffmpegPath = resolveFfmpegPath();
 
 const brand = {
   black: "#111315",
@@ -49,6 +50,17 @@ function slugify(value = "") {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 60);
+}
+
+function resolveFfmpegPath() {
+  const systemFfmpeg = spawnSync("which", ["ffmpeg"], { encoding: "utf8" });
+  const systemPath = systemFfmpeg.status === 0 ? systemFfmpeg.stdout.trim() : "";
+
+  if (systemPath && existsSync(systemPath)) {
+    return systemPath;
+  }
+
+  return bundledFfmpegPath;
 }
 
 async function readCurrentDraft() {
