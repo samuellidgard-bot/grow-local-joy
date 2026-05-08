@@ -337,26 +337,26 @@ function carouselHtml(slide, index, total) {
         height: 100%;
         display: block;
         object-fit: cover;
-        opacity: 0.84;
-        filter: saturate(1.06) contrast(1.08);
+        opacity: 1;
+        filter: saturate(1.18) contrast(1.12) brightness(1.08);
       }
       .bg-visual::after {
         content: "";
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(90deg, rgba(17, 19, 21, 0.94) 0%, rgba(17, 19, 21, 0.76) 45%, rgba(17, 19, 21, 0.42) 100%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.34), rgba(17, 19, 21, 0.78));
+          radial-gradient(circle at 78% 52%, rgba(17, 19, 21, 0.08), rgba(17, 19, 21, 0.22) 34%, rgba(17, 19, 21, 0.42) 72%),
+          linear-gradient(180deg, rgba(17, 19, 21, 0.16), rgba(17, 19, 21, 0.34));
       }
       .panel-left .bg-visual::after {
         background:
-          linear-gradient(270deg, rgba(17, 19, 21, 0.94) 0%, rgba(17, 19, 21, 0.74) 46%, rgba(17, 19, 21, 0.36) 100%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.34), rgba(17, 19, 21, 0.78));
+          radial-gradient(circle at 22% 52%, rgba(17, 19, 21, 0.08), rgba(17, 19, 21, 0.22) 34%, rgba(17, 19, 21, 0.42) 72%),
+          linear-gradient(180deg, rgba(17, 19, 21, 0.16), rgba(17, 19, 21, 0.34));
       }
       .final .bg-visual::after {
         background:
-          linear-gradient(90deg, rgba(17, 19, 21, 0.95) 0%, rgba(17, 19, 21, 0.76) 50%, rgba(17, 19, 21, 0.42) 100%),
-          linear-gradient(180deg, rgba(17, 19, 21, 0.3), rgba(17, 19, 21, 0.75));
+          linear-gradient(90deg, rgba(17, 19, 21, 0.62) 0%, rgba(17, 19, 21, 0.38) 56%, rgba(17, 19, 21, 0.16) 100%),
+          linear-gradient(180deg, rgba(17, 19, 21, 0.12), rgba(17, 19, 21, 0.34));
       }
       .warning-strip {
         position: absolute;
@@ -387,9 +387,9 @@ function carouselHtml(slide, index, total) {
         padding: 40px 42px;
         border: 2px solid rgba(143, 207, 92, 0.26);
         border-radius: 34px;
-        background: rgba(17, 19, 21, 0.74);
+        background: rgba(12, 14, 15, 0.88);
         box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(4px);
       }
       .panel-right .copy {
         left: auto;
@@ -405,6 +405,14 @@ function carouselHtml(slide, index, total) {
         font-size: 104px;
         line-height: 0.98;
         font-weight: 950;
+      }
+      .cover-copy {
+        width: 760px;
+        padding: 42px 48px;
+        border: 2px solid rgba(143, 207, 92, 0.22);
+        border-radius: 34px;
+        background: rgba(10, 12, 13, 0.66);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
       }
       .cover-copy h1::first-line {
         color: ${brand.green};
@@ -455,6 +463,12 @@ function carouselHtml(slide, index, total) {
         left: 72px;
         right: 72px;
         top: 270px;
+        width: 760px;
+        padding: 42px 48px;
+        border: 2px solid rgba(143, 207, 92, 0.22);
+        border-radius: 34px;
+        background: rgba(10, 12, 13, 0.66);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
       }
       .save-icon {
         width: 110px;
