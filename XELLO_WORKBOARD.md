@@ -199,6 +199,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Xello Instagram growth sprint: use the 30-day faceless plan focused on AI growth systems, social media hacks, prompt giveaways and better-enquiry marketing foundations.
 - Xello Instagram Growth Scout should study successful accounts/current algorithm lessons and relay reusable patterns into the daily faceless draft automation before posts are created.
 - Xello own-social needs the full compounding loop: QA score every draft, use Canva template families, manually capture results, and run a weekly growth review to update the lessons bank.
+- Xello own-social should now use the daily `post-to-publish-today/current-post.md` handoff, three hook options per post, profile conversion tracking and three pinned starter posts.
 
 ## Latest Decisions
 
@@ -249,6 +250,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Xello own-social now has a 30-day faceless Instagram growth sprint with brand identity, content pillars, 21 Reel / 9 carousel calendar, monetization route and 4-hour weekly batching workflow.
 - Xello own-social now has an Instagram Growth Scout loop: scout agent, lessons bank, dated scout outputs and relay rules for the daily post drafting automation.
 - Xello own-social now has post QA scoring, performance capture, three Canva template specs and a weekly growth review agent to make the account improve from its own results.
+- Xello own-social now has hook testing, profile conversion tracking, a Post To Publish Today folder, a Canva build pack and three pinned starter post drafts.
 
 ## Next Handoff
 

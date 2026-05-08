@@ -42,6 +42,13 @@ Before publishing, answer:
 Every automated draft should include:
 
 ```text
+Hook options:
+- Safe/clear:
+- Strong/pain:
+- Viral/curiosity:
+- Chosen hook:
+- Reason:
+
 QA Score:
 - Hook strength:
 - Save value:

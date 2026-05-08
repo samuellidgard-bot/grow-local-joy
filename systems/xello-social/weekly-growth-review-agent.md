@@ -22,8 +22,11 @@ Read:
 - `systems/xello-social/instagram-growth-lessons-bank.md`
 - `systems/xello-social/post-qa-scorecard.md`
 - `systems/xello-social/performance-capture-system.md`
+- `systems/xello-social/hook-testing-system.md`
+- `systems/xello-social/profile/profile-conversion-system.md`
 - Latest files in `automation_outputs/xello-social/growth-scout/`
 - Latest drafts in `automation_outputs/xello-social/`
+- `automation_outputs/xello-social/profile-conversion-tracker.md`
 
 ## Review Questions
 
@@ -39,6 +42,8 @@ Answer:
 8. Which design lesson should be applied next week?
 9. Which CTA should be tested next?
 10. What should the daily draft automation do differently?
+11. Did profile visits turn into follows?
+12. Which hook type performed best: safe/clear, strong/pain or viral/curiosity?
 
 ## Output Location
 

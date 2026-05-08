@@ -49,9 +49,25 @@ Quality and performance loop:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/weekly-growth-review-agent.md`
 
+Hook testing:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/hook-testing-system.md`
+
+Profile conversion:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/profile/profile-conversion-system.md`
+
 Canva template specs:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/canva-template-specs/`
+
+Pinned starter posts:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/automation_outputs/xello-social/pinned-posts/`
+
+Daily publish handoff:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/automation_outputs/xello-social/post-to-publish-today/current-post.md`
 
 Reference sources:
 
@@ -172,6 +188,10 @@ Each weekday automation run should create:
 Before drafting, the automation must read the Instagram growth lessons bank and apply any Active rules to the post.
 
 Every draft must include a QA score from the Xello Social Post QA Scorecard. Drafts scoring under `45/60` should include a rewrite recommendation before Sam posts manually.
+
+Every draft must include three hook options from the Hook Testing System and choose one winner.
+
+Every draft should also be copied into the Post To Publish Today handoff so Sam has one file to open each day.
 
 The automation should write drafts into:
 
