@@ -215,7 +215,7 @@ Every draft must include three hook options from the Hook Testing System and cho
 
 Every draft should also be copied into the Post To Publish Today handoff so Sam has one file to open each day.
 
-After the draft is created, the ready-pack renderer should run and create the daily manual posting folder. The pack should include carousel PNGs, Reel frame PNGs, an upload-ready MP4 draft, caption, hashtags, LinkedIn repurpose copy, music direction and a short checklist. The renderer should not publish or schedule content.
+After the draft is created, the ready-pack renderer should run and create the daily manual posting folder. The pack should include a simple `POST_THESE_IMAGES` folder with actual carousel PNGs to upload, `POST_THIS_REEL.mp4`, `POST_THIS_CAPTION.txt`, Reel frame PNGs, caption, hashtags, LinkedIn repurpose copy, music direction and a short checklist. The renderer should not publish or schedule content.
 
 The automation should write drafts into:
 

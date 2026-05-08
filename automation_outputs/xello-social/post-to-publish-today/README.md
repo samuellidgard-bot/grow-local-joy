@@ -30,6 +30,9 @@ The file should include:
 The ready pack should include:
 
 - `OPEN_THIS_FIRST.md`
+- `POST_THESE_IMAGES/01.png` etc.
+- `POST_THIS_REEL.mp4`
+- `POST_THIS_CAPTION.txt`
 - `caption.txt`
 - `hashtags.txt`
 - `linkedin-post.txt`

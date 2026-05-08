@@ -56,7 +56,7 @@ Daily ready-to-post pack renderer:
 
 - Command: `npm run xello:social:pack`
 - Script: `scripts/render-xello-social-pack.mjs`
-- Output: carousel PNGs, Reel MP4 draft, Reel frames, caption, hashtags, LinkedIn copy, music direction and manual checklist.
+- Output: `POST_THESE_IMAGES` carousel PNGs, `POST_THIS_REEL.mp4`, `POST_THIS_CAPTION.txt`, Reel frames, caption, hashtags, LinkedIn copy, music direction and manual checklist.
 - Music: drop approved royalty-free audio files into `automation_outputs/xello-social/music-library/approved/` and the renderer will embed the first compatible track it finds.
 
 Daily routine:

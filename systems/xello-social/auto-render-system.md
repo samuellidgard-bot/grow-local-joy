@@ -10,6 +10,7 @@ The renderer creates:
 
 - Carousel PNGs.
 - Reel MP4 draft.
+- Simple post-ready copies named `POST_THESE_IMAGES`, `POST_THIS_REEL.mp4` and `POST_THIS_CAPTION.txt`.
 - Reel storyboard frames.
 - Animated web preview.
 - Caption text file.
@@ -69,7 +70,7 @@ If no approved track exists, the renderer exports a silent MP4 so Sam can add mu
 
 1. Open `/Users/sam/Desktop/Xello Daily Post Pack`.
 2. Start with `OPEN_THIS_FIRST.md`.
-3. Post carousel PNGs or `xello-reel-draft.mp4` manually.
-4. Paste `caption.txt` and `hashtags.txt`.
+3. Post the numbered PNGs inside `POST_THESE_IMAGES` or upload `POST_THIS_REEL.mp4`.
+4. Paste `POST_THIS_CAPTION.txt`.
 5. Add in-app music if the MP4 is silent.
 6. Log results in `posting-tracker.md`.

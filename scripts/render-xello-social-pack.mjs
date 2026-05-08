@@ -556,6 +556,7 @@ async function main() {
   const currentPackPath = path.join(todayRoot, "current-ready-pack");
   const carouselPath = path.join(datedPackPath, "carousel");
   const reelFramesPath = path.join(datedPackPath, "reel-frames");
+  const postImagesPath = path.join(datedPackPath, "POST_THESE_IMAGES");
 
   const slides = parseCarouselSlides(markdown);
   const reelFrames = parseReelFrames(markdown);
@@ -567,6 +568,7 @@ async function main() {
   await fs.rm(datedPackPath, { recursive: true, force: true });
   await fs.mkdir(carouselPath, { recursive: true });
   await fs.mkdir(reelFramesPath, { recursive: true });
+  await fs.mkdir(postImagesPath, { recursive: true });
 
   const browser = await chromium.launch();
   const page = await browser.newPage({ deviceScaleFactor: 1 });
@@ -579,6 +581,7 @@ async function main() {
       height: 1350,
     });
     carouselFiles.push(filePath);
+    await fs.copyFile(filePath, path.join(postImagesPath, `${String(index + 1).padStart(2, "0")}.png`));
   }
 
   const reelFiles = [];
@@ -595,8 +598,13 @@ async function main() {
 
   const reelMp4Path = path.join(datedPackPath, "xello-reel-draft.mp4");
   const videoResult = await createMp4(reelFiles, reelMp4Path, datedPackPath);
+  const simpleReelPath = path.join(datedPackPath, "POST_THIS_REEL.mp4");
+  if (videoResult.created) {
+    await fs.copyFile(reelMp4Path, simpleReelPath);
+  }
 
   await writeText(path.join(datedPackPath, "caption.txt"), [caption, cta].filter(Boolean).join("\n\n"));
+  await writeText(path.join(datedPackPath, "POST_THIS_CAPTION.txt"), [caption, cta, hashtags].filter(Boolean).join("\n\n"));
   await writeText(path.join(datedPackPath, "hashtags.txt"), hashtags);
   await writeText(path.join(datedPackPath, "linkedin-post.txt"), linkedInPost);
   await writeText(path.join(datedPackPath, "music-direction.txt"), `
@@ -635,6 +643,9 @@ ${sourcePath}
 ## What To Post Today
 
 - Carousel slides: ${carouselPath}
+- Postable image folder: ${postImagesPath}
+- Simple Reel file: ${simpleReelPath}
+- Simple caption file: ${path.join(datedPackPath, "POST_THIS_CAPTION.txt")}
 - Reel MP4 draft: ${reelMp4Path}
 - Reel preview: ${path.join(datedPackPath, "reel-preview.html")}
 - Caption: ${path.join(datedPackPath, "caption.txt")}
@@ -642,10 +653,10 @@ ${sourcePath}
 
 ## Quick Posting Order
 
-1. Post the carousel if you want the lowest-friction first post.
-2. Post the Reel MP4 if the motion preview feels good enough.
-3. Add music inside Instagram/TikTok if the MP4 is silent.
-4. Use the caption and hashtags files exactly as the starting point.
+1. For an Instagram carousel, upload the PNGs inside POST_THESE_IMAGES in number order.
+2. For a Reel, upload POST_THIS_REEL.mp4.
+3. Copy POST_THIS_CAPTION.txt into the post caption.
+4. Add music inside Instagram/TikTok if the MP4 is silent.
 
 ## Video Export
 
