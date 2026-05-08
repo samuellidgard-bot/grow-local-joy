@@ -13,7 +13,7 @@ Paid ads work better when the basics are ready. If the offer, proof, enquiry rou
 Hook:
 
 ```text
-Before you spend money on ads, check these 5 things.
+Running ads with weak foundations is how local businesses waste money.
 ```
 
 Visual:
@@ -26,13 +26,13 @@ Visual:
 On-screen text:
 
 ```text
-Before ads, check:
+Before ads, fix this:
 
-1. Is your offer clear?
-2. Can people see real proof?
-3. Is the next step obvious?
-4. Can they contact you fast?
-5. Are you tracking where leads came from?
+1. Clear offer
+2. Real proof
+3. Easy enquiry route
+4. Fast follow-up
+5. Simple tracking
 
 Traffic does not fix weak foundations.
 ```
@@ -113,49 +113,50 @@ Follow Xello Media for practical marketing, AI and social media lessons for loca
 Slide 1:
 
 ```text
-Before ads, fix these 5 things
+Running ads with weak foundations is how local businesses waste money.
 ```
 
 Slide 2:
 
 ```text
 1. Clear offer
-Can people tell what you actually do?
+Can a stranger understand what you sell in 5 seconds?
 ```
 
 Slide 3:
 
 ```text
 2. Real proof
-Show work, reviews, process and trust signals.
+Show reviews, work, process and trust signals before asking for enquiries.
 ```
 
 Slide 4:
 
 ```text
 3. Easy enquiry route
-One obvious next step on mobile.
+One obvious mobile next step: call, WhatsApp or form.
 ```
 
 Slide 5:
 
 ```text
 4. Fast follow-up
-A lead goes cold quickly if nobody replies.
+Reply while the lead still remembers why they messaged.
 ```
 
 Slide 6:
 
 ```text
 5. Tracking
-Know whether leads came from social, search, referrals or ads.
+Know which channel created the enquiry before spending more.
 ```
 
 Final slide:
 
 ```text
 Traffic does not fix weak foundations.
-Save this checklist.
+Save this before running your next ad.
+Follow @xello_media for practical marketing systems.
 ```
 
 ## Visual Production Notes

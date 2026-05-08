@@ -138,6 +138,34 @@ function splitLeadAndBody(text) {
   };
 }
 
+function iconSvg(name) {
+  const common = 'viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"';
+  const stroke = `stroke="${brand.green}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"`;
+  const fill = `fill="${brand.green}"`;
+  const icons = {
+    warning: `<svg ${common}><path ${stroke} d="M32 8 58 54H6L32 8Z"/><path ${stroke} d="M32 24v14"/><path ${stroke} d="M32 47h.01"/></svg>`,
+    target: `<svg ${common}><circle ${stroke} cx="32" cy="32" r="23"/><circle ${stroke} cx="32" cy="32" r="12"/><circle ${fill} cx="32" cy="32" r="4"/></svg>`,
+    star: `<svg ${common}><path ${stroke} d="m32 7 7 16 17 2-13 11 4 17-15-9-15 9 4-17L8 25l17-2 7-16Z"/></svg>`,
+    phone: `<svg ${common}><path ${stroke} d="M19 10h26a5 5 0 0 1 5 5v34a5 5 0 0 1-5 5H19a5 5 0 0 1-5-5V15a5 5 0 0 1 5-5Z"/><path ${stroke} d="M27 46h10"/><path ${stroke} d="M22 18h20"/></svg>`,
+    clock: `<svg ${common}><circle ${stroke} cx="32" cy="32" r="24"/><path ${stroke} d="M32 18v16l11 7"/></svg>`,
+    chart: `<svg ${common}><path ${stroke} d="M10 52h44"/><path ${stroke} d="M18 44V29"/><path ${stroke} d="M32 44V18"/><path ${stroke} d="M46 44V24"/></svg>`,
+    save: `<svg ${common}><path ${stroke} d="M18 10h28a4 4 0 0 1 4 4v40L32 43 14 54V14a4 4 0 0 1 4-4Z"/></svg>`,
+  };
+
+  return icons[name] || icons.target;
+}
+
+function carouselIcon(index, isFinal) {
+  if (isFinal) return "save";
+  return ["warning", "target", "star", "phone", "clock", "chart"][index] || "target";
+}
+
+function slideBadge(index, isCover, isFinal) {
+  if (isCover) return "Fix before ads";
+  if (isFinal) return "Save this";
+  return ["Offer", "Proof", "Enquiry", "Speed", "Tracking"][index - 1] || "Checklist";
+}
+
 function baseHtml({ width, height, body, extraCss = "" }) {
   return `<!doctype html>
 <html>
@@ -227,23 +255,30 @@ function baseHtml({ width, height, body, extraCss = "" }) {
 function carouselHtml(slide, index, total) {
   const { lead, body } = splitLeadAndBody(slide.text);
   const isCover = index === 0;
+  const isFinal = /^final slide$/i.test(slide.label) || index === total - 1;
   const hasNumber = lead.match(/^(\d+)\.\s*(.+)$/);
   const leadText = hasNumber ? hasNumber[2] : lead;
-  const number = hasNumber ? hasNumber[1] : String(index + 1).padStart(2, "0");
+  const number = hasNumber ? hasNumber[1] : String(index).padStart(2, "0");
+  const icon = carouselIcon(index, isFinal);
+  const layout = isCover ? "cover" : isFinal ? "final" : index % 2 === 0 ? "split" : "stack";
 
   return baseHtml({
     width: 1080,
     height: 1350,
     body: `
-      <section class="slide">
+      <section class="slide ${layout}">
         <div class="top-row">
-          <span class="chip">${isCover ? "Checklist" : `Step ${number}`}</span>
+          <span class="chip">${escapeHtml(slideBadge(index, isCover, isFinal))}</span>
           <span class="counter">${index + 1}/${total}</span>
         </div>
-        <div class="${isCover ? "cover-copy" : "copy"}">
-          ${!isCover ? `<div class="number">${escapeHtml(number)}</div>` : ""}
+        <div class="ghost-icon">${iconSvg(icon)}</div>
+        ${isCover ? '<div class="warning-strip">Before you boost a post</div>' : ""}
+        <div class="${isCover ? "cover-copy" : isFinal ? "final-copy" : "copy"}">
+          ${!isCover && !isFinal ? `<div class="number">${escapeHtml(number)}</div>` : ""}
+          ${isFinal ? `<div class="save-icon">${iconSvg("save")}</div>` : ""}
           <h1>${escapeHtml(leadText)}</h1>
           ${body ? `<p>${escapeHtml(body).replaceAll("\n", "<br>")}</p>` : ""}
+          ${!isCover && !isFinal ? '<div class="micro-label">Fix this before sending more traffic.</div>' : ""}
         </div>
       </section>
     `,
@@ -265,16 +300,45 @@ function carouselHtml(slide, index, total) {
         z-index: 2;
         height: 100%;
       }
+      .ghost-icon {
+        position: absolute;
+        right: 46px;
+        top: 214px;
+        width: 250px;
+        height: 250px;
+        opacity: 0.12;
+        transform: rotate(-8deg);
+      }
+      .ghost-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+      .warning-strip {
+        position: absolute;
+        left: 0;
+        top: 230px;
+        display: inline-flex;
+        align-items: center;
+        padding: 14px 24px;
+        border-radius: 999px;
+        background: rgba(143, 207, 92, 0.12);
+        border: 2px solid ${brand.line};
+        color: ${brand.muted};
+        font-size: 28px;
+        line-height: 1;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
       .cover-copy, .copy {
         position: absolute;
         left: 0;
         right: 0;
-        top: 260px;
+        top: 310px;
       }
       .cover-copy h1 {
-        max-width: 860px;
+        max-width: 900px;
         margin: 0;
-        font-size: 106px;
+        font-size: 94px;
         line-height: 0.98;
         font-weight: 950;
       }
@@ -282,11 +346,17 @@ function carouselHtml(slide, index, total) {
         color: ${brand.green};
       }
       .copy {
+        top: 245px;
+      }
+      .split .copy {
+        top: 305px;
+      }
+      .stack .copy {
         top: 235px;
       }
       .number {
-        width: 112px;
-        height: 112px;
+        width: 118px;
+        height: 118px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -298,20 +368,63 @@ function carouselHtml(slide, index, total) {
         font-weight: 950;
       }
       .copy h1 {
-        max-width: 840px;
+        max-width: 850px;
         margin: 0 0 34px;
         color: ${brand.ink};
-        font-size: 86px;
+        font-size: 84px;
         line-height: 1;
         font-weight: 950;
       }
       .copy p {
-        max-width: 805px;
+        max-width: 760px;
         margin: 0;
         color: ${brand.muted};
-        font-size: 45px;
+        font-size: 42px;
         line-height: 1.18;
         font-weight: 760;
+      }
+      .micro-label {
+        display: inline-flex;
+        margin-top: 54px;
+        padding: 16px 22px;
+        border-radius: 16px;
+        background: rgba(247, 250, 244, 0.08);
+        border-left: 8px solid ${brand.green};
+        color: ${brand.ink};
+        font-size: 29px;
+        line-height: 1.1;
+        font-weight: 900;
+      }
+      .final-copy {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 252px;
+      }
+      .save-icon {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 44px;
+      }
+      .save-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+      .final-copy h1 {
+        max-width: 890px;
+        margin: 0 0 34px;
+        color: ${brand.green};
+        font-size: 82px;
+        line-height: 0.98;
+        font-weight: 950;
+      }
+      .final-copy p {
+        max-width: 780px;
+        margin: 0;
+        color: ${brand.ink};
+        font-size: 44px;
+        line-height: 1.16;
+        font-weight: 850;
       }
     `,
   });
