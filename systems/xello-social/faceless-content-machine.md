@@ -77,6 +77,20 @@ Daily publish handoff:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/automation_outputs/xello-social/post-to-publish-today/current-post.md`
 
+Ready-to-post daily pack:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/automation_outputs/xello-social/post-to-publish-today/current-ready-pack/`
+
+Desktop shortcut:
+
+`/Users/sam/Desktop/Xello Daily Post Pack`
+
+Pack renderer:
+
+`npm run xello:social:pack`
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/scripts/render-xello-social-pack.mjs`
+
 Reference sources:
 
 - TikTok Newsroom / TikTok Next 2026 trend notes: `https://newsroom.tiktok.com/vi-prsenterer-tiktok-next-2026-vores-bud-p-de-vigtigste-marketingtrends-kommer-r?lang=da`
@@ -200,6 +214,8 @@ Every draft must include a QA score from the Xello Social Post QA Scorecard. Dra
 Every draft must include three hook options from the Hook Testing System and choose one winner.
 
 Every draft should also be copied into the Post To Publish Today handoff so Sam has one file to open each day.
+
+After the draft is created, the ready-pack renderer should run and create the daily manual posting folder. The pack should include carousel PNGs, Reel frame PNGs, an upload-ready MP4 draft, caption, hashtags, LinkedIn repurpose copy, music direction and a short checklist. The renderer should not publish or schedule content.
 
 The automation should write drafts into:
 
