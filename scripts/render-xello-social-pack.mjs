@@ -285,7 +285,7 @@ function carouselHtml(slide, index, total) {
   const leadText = hasNumber ? hasNumber[2] : lead;
   const number = hasNumber ? hasNumber[1] : String(index).padStart(2, "0");
   const icon = carouselIcon(index, isFinal);
-  const layout = isCover ? "cover" : isFinal ? "final" : index % 2 === 0 ? "split" : "stack";
+  const layout = isCover ? "cover full-visual" : isFinal ? "final full-visual" : index % 2 === 0 ? "image-left" : "image-right";
   const visualSrc = backgroundForSlide(index, isFinal);
 
   return baseHtml({
@@ -293,11 +293,12 @@ function carouselHtml(slide, index, total) {
     height: 1350,
     body: `
       <section class="slide ${layout}">
+        ${visualSrc && (isCover || isFinal) ? `<div class="bg-visual"><img src="${visualSrc}" alt="" /></div>` : ""}
         <div class="top-row">
           <span class="chip">${escapeHtml(slideBadge(index, isCover, isFinal))}</span>
           <span class="counter">${index + 1}/${total}</span>
         </div>
-        ${visualSrc ? `<div class="visual-card"><img src="${visualSrc}" alt="" /></div>` : `<div class="ghost-icon">${iconSvg(icon)}</div>`}
+        ${visualSrc && !isCover && !isFinal ? `<div class="visual-card"><img src="${visualSrc}" alt="" /></div>` : !visualSrc ? `<div class="ghost-icon">${iconSvg(icon)}</div>` : ""}
         ${isCover ? '<div class="warning-strip">Before you boost a post</div>' : ""}
         <div class="${isCover ? "cover-copy" : isFinal ? "final-copy" : "copy"}">
           ${!isCover && !isFinal ? `<div class="number">${escapeHtml(number)}</div>` : ""}
@@ -339,13 +340,41 @@ function carouselHtml(slide, index, total) {
         width: 100%;
         height: 100%;
       }
+      .bg-visual {
+        position: absolute;
+        inset: 34px;
+        z-index: 0;
+        overflow: hidden;
+        border-radius: 36px;
+      }
+      .bg-visual img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        opacity: 0.58;
+        filter: saturate(1.06) contrast(1.08);
+      }
+      .bg-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(17, 19, 21, 0.95) 0%, rgba(17, 19, 21, 0.72) 42%, rgba(17, 19, 21, 0.3) 100%),
+          linear-gradient(180deg, rgba(17, 19, 21, 0.3), rgba(17, 19, 21, 0.72));
+      }
+      .final .bg-visual::after {
+        background:
+          linear-gradient(90deg, rgba(17, 19, 21, 0.95) 0%, rgba(17, 19, 21, 0.76) 50%, rgba(17, 19, 21, 0.42) 100%),
+          linear-gradient(180deg, rgba(17, 19, 21, 0.28), rgba(17, 19, 21, 0.74));
+      }
       .visual-card {
         position: absolute;
         z-index: 1;
-        right: 58px;
-        top: 308px;
-        width: 340px;
-        height: 382px;
+        right: 68px;
+        top: 330px;
+        width: 356px;
+        height: 356px;
         border: 2px solid rgba(143, 207, 92, 0.28);
         border-radius: 34px;
         overflow: hidden;
@@ -368,19 +397,20 @@ function carouselHtml(slide, index, total) {
         object-fit: cover;
         filter: saturate(0.98) contrast(1.04);
       }
-      .cover .visual-card {
-        top: 348px;
-        right: 58px;
-        width: 342px;
-        height: 430px;
-        opacity: 0.82;
+      .image-left .visual-card {
+        left: 72px;
+        right: auto;
       }
-      .final .visual-card {
-        top: 318px;
-        right: 58px;
-        width: 340px;
-        height: 400px;
-        opacity: 0.7;
+      .image-left .copy {
+        left: 536px;
+        right: 72px;
+      }
+      .image-right .visual-card {
+        right: 72px;
+      }
+      .image-right .copy {
+        left: 72px;
+        right: 536px;
       }
       .warning-strip {
         position: absolute;
@@ -400,14 +430,14 @@ function carouselHtml(slide, index, total) {
       }
       .cover-copy, .copy {
         position: absolute;
-        left: 0;
-        right: 0;
+        left: 72px;
+        right: 72px;
         top: 310px;
       }
       .cover-copy h1 {
-        max-width: 640px;
+        max-width: 690px;
         margin: 0;
-        font-size: 78px;
+        font-size: 96px;
         line-height: 0.98;
         font-weight: 950;
       }
@@ -415,60 +445,54 @@ function carouselHtml(slide, index, total) {
         color: ${brand.green};
       }
       .copy {
-        top: 245px;
-      }
-      .split .copy {
-        top: 305px;
-      }
-      .stack .copy {
-        top: 235px;
+        top: 300px;
       }
       .number {
-        width: 112px;
-        height: 112px;
+        width: 104px;
+        height: 104px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 46px;
+        margin-bottom: 40px;
         border-radius: 50%;
         background: ${brand.green};
         color: #10200c;
-        font-size: 52px;
+        font-size: 48px;
         font-weight: 950;
       }
       .copy h1 {
-        max-width: 510px;
+        max-width: 410px;
         margin: 0 0 34px;
         color: ${brand.ink};
-        font-size: 76px;
+        font-size: 66px;
         line-height: 1;
         font-weight: 950;
       }
       .copy p {
-        max-width: 500px;
+        max-width: 420px;
         margin: 0;
         color: ${brand.muted};
-        font-size: 38px;
+        font-size: 34px;
         line-height: 1.18;
         font-weight: 760;
       }
       .micro-label {
         display: inline-flex;
-        margin-top: 54px;
+        margin-top: 44px;
         padding: 16px 22px;
         border-radius: 16px;
         background: rgba(247, 250, 244, 0.08);
         border-left: 8px solid ${brand.green};
         color: ${brand.ink};
-        font-size: 27px;
+        font-size: 24px;
         line-height: 1.1;
         font-weight: 900;
       }
       .final-copy {
         position: absolute;
-        left: 0;
-        right: 0;
-        top: 252px;
+        left: 72px;
+        right: 72px;
+        top: 270px;
       }
       .save-icon {
         width: 110px;
@@ -480,18 +504,18 @@ function carouselHtml(slide, index, total) {
         height: 100%;
       }
       .final-copy h1 {
-        max-width: 570px;
+        max-width: 680px;
         margin: 0 0 34px;
         color: ${brand.green};
-        font-size: 76px;
+        font-size: 82px;
         line-height: 0.98;
         font-weight: 950;
       }
       .final-copy p {
-        max-width: 540px;
+        max-width: 620px;
         margin: 0;
         color: ${brand.ink};
-        font-size: 40px;
+        font-size: 38px;
         line-height: 1.16;
         font-weight: 850;
       }

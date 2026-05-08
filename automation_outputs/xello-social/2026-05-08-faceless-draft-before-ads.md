@@ -13,7 +13,7 @@ Paid ads work better when the basics are ready. If the offer, proof, enquiry rou
 Hook:
 
 ```text
-Running ads with weak foundations is how local businesses waste money.
+Weak foundations waste ad spend.
 ```
 
 Visual:
@@ -155,8 +155,8 @@ Final slide:
 
 ```text
 Traffic does not fix weak foundations.
-Save this before running your next ad.
-Follow @xello_media for practical marketing systems.
+Save this before wasting your next 100 pounds on ads.
+Follow @xello_media for better enquiries, not just more clicks.
 ```
 
 ## Visual Production Notes
