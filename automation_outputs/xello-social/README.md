@@ -26,6 +26,8 @@ Current strategy:
 - `systems/xello-social/weekly-growth-review-agent.md`
 - `systems/xello-social/hook-testing-system.md`
 - `systems/xello-social/profile/profile-conversion-system.md`
+- `systems/xello-social/ai-news-scout-agent.md`
+- `systems/xello-social/newsletter/weekly-ai-newsletter-post-format.md`
 - `systems/xello-social/canva-template-specs/`
 
 Posting tracker:
@@ -35,6 +37,10 @@ Posting tracker:
 Profile tracker:
 
 - `automation_outputs/xello-social/profile-conversion-tracker.md`
+
+AI news scout:
+
+- `automation_outputs/xello-social/ai-news/`
 
 Pinned starter posts:
 
@@ -57,3 +63,4 @@ Daily routine:
 9. Add the live link and results into `posting-tracker.md`.
 10. Add weekly profile results into `profile-conversion-tracker.md`.
 11. Weekly review turns results into better lessons.
+12. AI News Scout creates one weekly newsletter-style post angle from current AI/social updates.

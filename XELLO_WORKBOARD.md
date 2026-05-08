@@ -200,6 +200,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Xello Instagram Growth Scout should study successful accounts/current algorithm lessons and relay reusable patterns into the daily faceless draft automation before posts are created.
 - Xello own-social needs the full compounding loop: QA score every draft, use Canva template families, manually capture results, and run a weekly growth review to update the lessons bank.
 - Xello own-social should now use the daily `post-to-publish-today/current-post.md` handoff, three hook options per post, profile conversion tracking and three pinned starter posts.
+- Add a weekly AI news/newsletter lane so Xello can translate current AI/social updates into practical business lessons and prompt giveaways.
 
 ## Latest Decisions
 
@@ -251,6 +252,7 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - Xello own-social now has an Instagram Growth Scout loop: scout agent, lessons bank, dated scout outputs and relay rules for the daily post drafting automation.
 - Xello own-social now has post QA scoring, performance capture, three Canva template specs and a weekly growth review agent to make the account improve from its own results.
 - Xello own-social now has hook testing, profile conversion tracking, a Post To Publish Today folder, a Canva build pack and three pinned starter post drafts.
+- Xello own-social now has an AI News Scout and weekly AI newsletter post format for timely "what this means for small businesses" content.
 
 ## Next Handoff
 

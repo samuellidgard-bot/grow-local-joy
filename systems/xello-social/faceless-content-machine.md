@@ -57,6 +57,14 @@ Profile conversion:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/profile/profile-conversion-system.md`
 
+AI news and weekly newsletter:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/ai-news-scout-agent.md`
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/newsletter/weekly-ai-newsletter-post-format.md`
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/automation_outputs/xello-social/ai-news/`
+
 Canva template specs:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/canva-template-specs/`
@@ -251,6 +259,9 @@ Optional carousel recap
 Sunday:
 Review what performed and plan next week.
 
+Weekly AI Brief:
+Translate 3 current AI/social updates into practical business moves for small businesses.
+
 ## First 14 Faceless Posts
 
 1. Before you spend on ads, check these 5 things.
@@ -267,6 +278,7 @@ Review what performed and plan next week.
 12. Why social media is a trust system before it is a sales system.
 13. What to post if you have no case studies yet.
 14. How to turn customer questions into content.
+15. 3 AI updates small businesses should actually care about this week.
 
 ## Daily Draft Template
 
