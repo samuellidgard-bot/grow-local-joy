@@ -41,6 +41,18 @@ Growth scout relay:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/instagram-growth-lessons-bank.md`
 
+Quality and performance loop:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/post-qa-scorecard.md`
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/performance-capture-system.md`
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/weekly-growth-review-agent.md`
+
+Canva template specs:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/canva-template-specs/`
+
 Reference sources:
 
 - TikTok Newsroom / TikTok Next 2026 trend notes: `https://newsroom.tiktok.com/vi-prsenterer-tiktok-next-2026-vores-bud-p-de-vigtigste-marketingtrends-kommer-r?lang=da`
@@ -158,6 +170,8 @@ Each weekday automation run should create:
 9. Whether the post is safe to publish manually.
 
 Before drafting, the automation must read the Instagram growth lessons bank and apply any Active rules to the post.
+
+Every draft must include a QA score from the Xello Social Post QA Scorecard. Drafts scoring under `45/60` should include a rewrite recommendation before Sam posts manually.
 
 The automation should write drafts into:
 

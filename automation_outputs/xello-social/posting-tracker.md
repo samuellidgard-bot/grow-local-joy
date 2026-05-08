@@ -35,3 +35,26 @@ Use this tracker to move each automated draft from idea to manual post.
 - Did it attract business owners or random viewers?
 - Did anyone ask a useful question?
 - What should tomorrow's draft do differently?
+
+## Performance Capture Template
+
+Use this after 24-72 hours:
+
+```text
+Sprint Day:
+Date posted:
+Platform:
+Format:
+Hook:
+Live link:
+Views:
+Saves:
+Shares:
+Comments:
+Profile visits:
+Follows gained:
+DMs/enquiries:
+Best audience signal:
+Learning label:
+Next action:
+```
