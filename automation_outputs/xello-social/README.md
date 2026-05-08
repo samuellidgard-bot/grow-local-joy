@@ -19,6 +19,8 @@ Current strategy:
 
 - `systems/xello-social/faceless-content-machine.md`
 - `systems/xello-social/30-day-faceless-instagram-growth-sprint.md`
+- `systems/xello-social/instagram-growth-scout-agent.md`
+- `systems/xello-social/instagram-growth-lessons-bank.md`
 
 Posting tracker:
 
@@ -27,7 +29,8 @@ Posting tracker:
 Daily routine:
 
 1. Automation creates the draft at 8:30am on weekdays.
-2. Sam reviews the newest markdown file.
-3. Build the visual in Canva, CapCut or Instagram drafts.
-4. Post manually.
-5. Add the live link and results into `posting-tracker.md`.
+2. Growth Scout lessons should be checked before the draft is created.
+3. Sam reviews the newest markdown file.
+4. Build the visual in Canva, CapCut or Instagram drafts.
+5. Post manually.
+6. Add the live link and results into `posting-tracker.md`.

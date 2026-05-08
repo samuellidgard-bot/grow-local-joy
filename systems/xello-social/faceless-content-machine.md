@@ -35,6 +35,12 @@ Main 30-day growth sprint:
 
 `/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/30-day-faceless-instagram-growth-sprint.md`
 
+Growth scout relay:
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/instagram-growth-scout-agent.md`
+
+`/Users/sam/Documents/Codex/2026-04-27/create-me-a-crm-dashboard-that/grow-local-joy/systems/xello-social/instagram-growth-lessons-bank.md`
+
 Reference sources:
 
 - TikTok Newsroom / TikTok Next 2026 trend notes: `https://newsroom.tiktok.com/vi-prsenterer-tiktok-next-2026-vores-bud-p-de-vigtigste-marketingtrends-kommer-r?lang=da`
@@ -150,6 +156,8 @@ Each weekday automation run should create:
 7. Caption and hashtags.
 8. Safety notes.
 9. Whether the post is safe to publish manually.
+
+Before drafting, the automation must read the Instagram growth lessons bank and apply any Active rules to the post.
 
 The automation should write drafts into:
 
