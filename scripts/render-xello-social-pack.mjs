@@ -12,11 +12,21 @@ const outputRoot = path.join(repoRoot, "automation_outputs", "xello-social");
 const todayRoot = path.join(outputRoot, "post-to-publish-today");
 const currentPostPath = path.join(todayRoot, "current-post.md");
 const publicLogoSvgPath = path.join(repoRoot, "public", "xello-favicon-x-only.svg");
+const aiBackgroundRoot = path.join(repoRoot, "public", "xello-social", "ai-backgrounds");
 const musicLibraryPath = path.join(outputRoot, "music-library");
 const xelloLogoMarkup = existsSync(publicLogoSvgPath)
   ? readFileSync(publicLogoSvgPath, "utf8").replace("<svg", '<svg aria-hidden="true"')
   : "";
 const ffmpegPath = resolveFfmpegPath();
+const carouselBackgrounds = [
+  "wasted-ad-spend.png",
+  "clear-offer.png",
+  "real-proof.png",
+  "enquiry-route.png",
+  "fast-follow-up.png",
+  "tracking.png",
+].map((file) => path.join(aiBackgroundRoot, file));
+const imageDataUriCache = new Map();
 
 const brand = {
   black: "#111315",
@@ -166,6 +176,21 @@ function slideBadge(index, isCover, isFinal) {
   return ["Offer", "Proof", "Enquiry", "Speed", "Tracking"][index - 1] || "Checklist";
 }
 
+function backgroundForSlide(index, isFinal) {
+  const backgroundPath = isFinal ? carouselBackgrounds[0] : carouselBackgrounds[index] || carouselBackgrounds.at(-1);
+  return imageDataUri(backgroundPath);
+}
+
+function imageDataUri(filePath) {
+  if (!existsSync(filePath)) return "";
+  if (!imageDataUriCache.has(filePath)) {
+    const encoded = readFileSync(filePath).toString("base64");
+    imageDataUriCache.set(filePath, `data:image/png;base64,${encoded}`);
+  }
+
+  return imageDataUriCache.get(filePath);
+}
+
 function baseHtml({ width, height, body, extraCss = "" }) {
   return `<!doctype html>
 <html>
@@ -261,6 +286,7 @@ function carouselHtml(slide, index, total) {
   const number = hasNumber ? hasNumber[1] : String(index).padStart(2, "0");
   const icon = carouselIcon(index, isFinal);
   const layout = isCover ? "cover" : isFinal ? "final" : index % 2 === 0 ? "split" : "stack";
+  const visualSrc = backgroundForSlide(index, isFinal);
 
   return baseHtml({
     width: 1080,
@@ -271,7 +297,7 @@ function carouselHtml(slide, index, total) {
           <span class="chip">${escapeHtml(slideBadge(index, isCover, isFinal))}</span>
           <span class="counter">${index + 1}/${total}</span>
         </div>
-        <div class="ghost-icon">${iconSvg(icon)}</div>
+        ${visualSrc ? `<div class="visual-card"><img src="${visualSrc}" alt="" /></div>` : `<div class="ghost-icon">${iconSvg(icon)}</div>`}
         ${isCover ? '<div class="warning-strip">Before you boost a post</div>' : ""}
         <div class="${isCover ? "cover-copy" : isFinal ? "final-copy" : "copy"}">
           ${!isCover && !isFinal ? `<div class="number">${escapeHtml(number)}</div>` : ""}
@@ -313,6 +339,49 @@ function carouselHtml(slide, index, total) {
         width: 100%;
         height: 100%;
       }
+      .visual-card {
+        position: absolute;
+        z-index: 1;
+        right: 58px;
+        top: 308px;
+        width: 340px;
+        height: 382px;
+        border: 2px solid rgba(143, 207, 92, 0.28);
+        border-radius: 34px;
+        overflow: hidden;
+        background: rgba(247, 250, 244, 0.05);
+        box-shadow: 0 34px 90px rgba(0, 0, 0, 0.36);
+      }
+      .visual-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(17, 19, 21, 0.08), rgba(17, 19, 21, 0.32)),
+          linear-gradient(180deg, transparent, rgba(17, 19, 21, 0.18));
+        pointer-events: none;
+      }
+      .visual-card img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        filter: saturate(0.98) contrast(1.04);
+      }
+      .cover .visual-card {
+        top: 348px;
+        right: 58px;
+        width: 342px;
+        height: 430px;
+        opacity: 0.82;
+      }
+      .final .visual-card {
+        top: 318px;
+        right: 58px;
+        width: 340px;
+        height: 400px;
+        opacity: 0.7;
+      }
       .warning-strip {
         position: absolute;
         left: 0;
@@ -336,9 +405,9 @@ function carouselHtml(slide, index, total) {
         top: 310px;
       }
       .cover-copy h1 {
-        max-width: 900px;
+        max-width: 640px;
         margin: 0;
-        font-size: 94px;
+        font-size: 78px;
         line-height: 0.98;
         font-weight: 950;
       }
@@ -355,8 +424,8 @@ function carouselHtml(slide, index, total) {
         top: 235px;
       }
       .number {
-        width: 118px;
-        height: 118px;
+        width: 112px;
+        height: 112px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -368,18 +437,18 @@ function carouselHtml(slide, index, total) {
         font-weight: 950;
       }
       .copy h1 {
-        max-width: 850px;
+        max-width: 510px;
         margin: 0 0 34px;
         color: ${brand.ink};
-        font-size: 84px;
+        font-size: 76px;
         line-height: 1;
         font-weight: 950;
       }
       .copy p {
-        max-width: 760px;
+        max-width: 500px;
         margin: 0;
         color: ${brand.muted};
-        font-size: 42px;
+        font-size: 38px;
         line-height: 1.18;
         font-weight: 760;
       }
@@ -391,7 +460,7 @@ function carouselHtml(slide, index, total) {
         background: rgba(247, 250, 244, 0.08);
         border-left: 8px solid ${brand.green};
         color: ${brand.ink};
-        font-size: 29px;
+        font-size: 27px;
         line-height: 1.1;
         font-weight: 900;
       }
@@ -411,18 +480,18 @@ function carouselHtml(slide, index, total) {
         height: 100%;
       }
       .final-copy h1 {
-        max-width: 890px;
+        max-width: 570px;
         margin: 0 0 34px;
         color: ${brand.green};
-        font-size: 82px;
+        font-size: 76px;
         line-height: 0.98;
         font-weight: 950;
       }
       .final-copy p {
-        max-width: 780px;
+        max-width: 540px;
         margin: 0;
         color: ${brand.ink};
-        font-size: 44px;
+        font-size: 40px;
         line-height: 1.16;
         font-weight: 850;
       }
