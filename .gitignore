@@ -27,5 +27,6 @@ dist-ssr
 automation_outputs/xello-social/post-to-publish-today/current-ready-pack/
 automation_outputs/xello-social/post-to-publish-today/20*-*/
 automation_outputs/xello-social/post-to-publish-today/OPEN_THIS_TODAY.md
+automation_outputs/xello-social/launch-posts/**/POST_THESE_IMAGES/
 automation_outputs/xello-social/music-library/approved/*
 !automation_outputs/xello-social/music-library/approved/README.md

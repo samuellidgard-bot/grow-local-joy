@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "xello:social:pack": "node scripts/render-xello-social-pack.mjs"
+    "xello:social:pack": "node scripts/render-xello-social-pack.mjs",
+    "xello:intro-carousel": "node scripts/render-xello-intro-carousel.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
