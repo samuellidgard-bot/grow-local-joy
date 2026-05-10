@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-full.png";
+import logo from "@/assets/xello-media-logo-approved.png";
 
 const links = [
   { label: "14-Day Test", href: "#services" },

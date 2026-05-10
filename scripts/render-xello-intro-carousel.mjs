@@ -8,9 +8,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const outputRoot = path.join(repoRoot, "automation_outputs", "xello-social", "launch-posts", "what-is-xello-media");
 const desktopRoot = path.join(process.env.HOME || "", "Desktop", "Xello Launch Carousel - What Is Xello Media");
-const logoPath = path.join(repoRoot, "public", "xello-favicon-x-only.svg");
+const logoPath = path.join(repoRoot, "public", "xello-media-logo.png");
 
-const logoMarkup = existsSync(logoPath) ? readFileSync(logoPath, "utf8") : "<strong>X</strong>";
+const logoMarkup = existsSync(logoPath)
+  ? `<img src="data:image/png;base64,${readFileSync(logoPath).toString("base64")}" alt="Xello Media" />`
+  : "<strong>XELLO MEDIA</strong>";
 
 const brand = {
   black: "#080a09",
@@ -245,9 +247,9 @@ function slideHtml(slide, index) {
       align-items: center;
       gap: 16px;
     }
-    .brand svg {
-      width: 44px;
-      height: 44px;
+    .brand img {
+      width: 226px;
+      height: auto;
       display: block;
       filter: drop-shadow(0 5px 18px rgba(0, 0, 0, 0.7));
     }
@@ -282,7 +284,7 @@ function slideHtml(slide, index) {
       ${isFirst ? '<div class="pill">Home improvement marketing</div>' : ""}
     </section>
     <div class="bottom">
-      <div class="brand">${logoMarkup}<span>Xello Media</span></div>
+      <div class="brand">${logoMarkup}</div>
       <span class="progress">@xello_media</span>
     </div>
   </main>

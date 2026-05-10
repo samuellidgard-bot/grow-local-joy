@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Camera, CheckCircle2, GraduationCap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-full.png";
+import logo from "@/assets/xello-media-logo-approved.png";
 
 const HeroSection = () => {
   const scrollToContact = () => {

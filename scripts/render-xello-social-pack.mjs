@@ -12,11 +12,15 @@ const outputRoot = path.join(repoRoot, "automation_outputs", "xello-social");
 const todayRoot = path.join(outputRoot, "post-to-publish-today");
 const currentPostPath = path.join(todayRoot, "current-post.md");
 const publicLogoSvgPath = path.join(repoRoot, "public", "xello-favicon-x-only.svg");
+const publicLogoPngPath = path.join(repoRoot, "public", "xello-media-logo.png");
 const aiBackgroundRoot = path.join(repoRoot, "public", "xello-social", "ai-backgrounds");
 const musicLibraryPath = path.join(outputRoot, "music-library");
 const xelloLogoMarkup = existsSync(publicLogoSvgPath)
   ? readFileSync(publicLogoSvgPath, "utf8").replace("<svg", '<svg aria-hidden="true"')
   : "";
+const xelloFullLogoMarkup = existsSync(publicLogoPngPath)
+  ? `<img class="brand-logo" src="data:image/png;base64,${readFileSync(publicLogoPngPath).toString("base64")}" alt="Xello Media" />`
+  : `<div class="brand-mark">${xelloLogoMarkup}<span>Xello Media</span></div>`;
 const ffmpegPath = resolveFfmpegPath();
 const carouselBackgrounds = [
   "wasted-ad-spend.png",
@@ -249,6 +253,12 @@ function baseHtml({ width, height, body, extraCss = "", showHandle = true }) {
       height: 44px;
       display: block;
     }
+    .brand-logo {
+      width: 230px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 5px 18px rgba(0, 0, 0, 0.72));
+    }
     .chip {
       display: inline-flex;
       align-items: center;
@@ -269,7 +279,7 @@ function baseHtml({ width, height, body, extraCss = "", showHandle = true }) {
   <main class="canvas">
     ${body}
     <div class="brand">
-      <div class="brand-mark">${xelloLogoMarkup}<span>Xello Media</span></div>
+      ${xelloFullLogoMarkup}
       ${showHandle ? "<span>@xello_media</span>" : ""}
     </div>
   </main>
@@ -426,6 +436,9 @@ function carouselHtml(slide, index, total) {
         width: 42px;
         height: 42px;
         filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.78));
+      }
+      .brand-logo {
+        width: 230px;
       }
     `,
   });

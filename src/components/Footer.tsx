@@ -1,4 +1,4 @@
-import logo from "@/assets/logo-full.png";
+import logo from "@/assets/xello-media-logo-approved.png";
 
 const Footer = () => (
   <footer className="bg-navy py-12 border-t border-primary-foreground/5">
