@@ -1,4 +1,5 @@
 import { chromium } from "playwright";
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -28,21 +29,22 @@ const slides = [
   {
     kicker: "START HERE",
     title: "What is Xello Media?",
-    body: "A marketing system for home improvement businesses that want better enquiries, not just more clicks.",
+    body: "",
     marker: "01",
-    accent: "system",
+    accent: "logo",
     highlight: "Xello Media",
+    logoHero: true,
   },
   {
-    kicker: "WHO WE HELP",
-    title: "We help great work get seen.",
-    body: "Builders, landscapers, installers and home improvement brands already have proof. We help turn it into trust, content and enquiries.",
+    kicker: "WHAT WE ARE",
+    title: "A marketing agency for home improvement companies.",
+    body: "Xello Media helps builders, landscapers, installers and renovation businesses turn their work into trust, content and better enquiries.",
     marker: "02",
-    accent: "proof",
-    highlight: "great work",
+    accent: "home",
+    highlight: "home improvement",
   },
   {
-    kicker: "STEP ONE",
+    kicker: "FOUNDATION OFFER",
     title: "First, we fix the foundations.",
     body: "Clear offer. Real proof. Easy enquiry route. Fast follow-up. Simple tracking.",
     marker: "03",
@@ -50,33 +52,33 @@ const slides = [
     highlight: "foundations",
   },
   {
-    kicker: "CONTENT",
-    title: "Then we turn proof into content.",
-    body: "Real projects, process clips, reviews and client trust signals become posts, Reels and ad assets.",
+    kicker: "WHY IT MATTERS",
+    title: "Ads only work when the basics are ready.",
+    body: "Before spending more on traffic, we make sure people understand, trust and know how to enquire.",
     marker: "04",
+    accent: "checklist",
+    highlight: "basics",
+  },
+  {
+    kicker: "CONTENT ENGINE",
+    title: "Then proof becomes content.",
+    body: "Projects, process clips, reviews and trust signals become posts, Reels and ad assets.",
+    marker: "05",
     accent: "content",
     highlight: "proof",
   },
   {
-    kicker: "ADS",
-    title: "Then we use ads properly.",
-    body: "Not random boosts. Campaigns built around proof, clear offers and an enquiry route people can actually use.",
-    marker: "05",
-    accent: "ads",
-    highlight: "ads",
-  },
-  {
-    kicker: "OUTCOME",
-    title: "The goal is simple.",
-    body: "More qualified conversations, less wasted ad spend, and a marketing system you can understand.",
+    kicker: "META ADS SYSTEM",
+    title: "Then we build the Meta ads system.",
+    body: "Campaigns are built around proof, clear offers and a simple way for people to enquire.",
     marker: "06",
-    accent: "outcome",
-    highlight: "simple",
+    accent: "ads",
+    highlight: "Meta ads",
   },
   {
     kicker: "XELLO MEDIA",
     title: "Built for better enquiries.",
-    body: "Follow @xello_media to watch us build social, content and ad systems for home improvement businesses.",
+    body: "Follow @xello_media to watch us build content, tracking and ad systems for home improvement businesses.",
     marker: "07",
     accent: "finish",
     highlight: "better enquiries",
@@ -97,16 +99,20 @@ function iconFor(accent) {
   const fill = `fill="none"`;
 
   const icons = {
+    logo: "",
+    home: `<path ${stroke} ${fill} d="M34 118L128 42l94 76"/><path ${stroke} ${fill} d="M54 112v96h148v-96"/><path ${stroke} ${fill} d="M100 208v-58h56v58"/>`,
     system: `<path ${stroke} ${fill} d="M24 80h132M24 122h92M24 164h132"/><path ${stroke} ${fill} d="M192 68l34 34-70 70-34-34z"/><path ${stroke} ${fill} d="M202 58l34 34"/>`,
     proof: `<path ${stroke} ${fill} d="M32 146l38 38 98-108"/><path ${stroke} ${fill} d="M34 52h148l40 40v112H34z"/><path ${stroke} ${fill} d="M182 52v40h40"/>`,
     foundation: `<path ${stroke} ${fill} d="M36 184h184M52 184v-58h40v58M108 184V92h40v92M164 184V52h40v132"/>`,
+    checklist: `<path ${stroke} ${fill} d="M54 76h148M54 128h148M54 180h148"/><path ${stroke} ${fill} d="M22 74l14 14 26-34M22 126l14 14 26-34M22 178l14 14 26-34"/>`,
     content: `<rect ${stroke} ${fill} x="34" y="50" width="188" height="136" rx="24"/><path ${stroke} ${fill} d="M104 94l58 24-58 24z"/><path ${stroke} ${fill} d="M58 214h140"/>`,
     ads: `<path ${stroke} ${fill} d="M42 148l120-62v96z"/><path ${stroke} ${fill} d="M162 108h28a34 34 0 010 68h-28"/><path ${stroke} ${fill} d="M62 154l24 60"/>`,
     outcome: `<path ${stroke} ${fill} d="M38 170l54-54 42 42 86-94"/><path ${stroke} ${fill} d="M168 64h52v52"/><path ${stroke} ${fill} d="M38 212h184"/>`,
     finish: `<path ${stroke} ${fill} d="M44 58l168 168M212 58L44 226"/><path ${stroke} ${fill} d="M156 68h60v60"/>`,
   };
 
-  return `<svg viewBox="0 0 256 256" aria-hidden="true">${icons[accent] || icons.system}</svg>`;
+  if (!icons[accent]) return "";
+  return `<svg viewBox="0 0 256 256" aria-hidden="true">${icons[accent]}</svg>`;
 }
 
 function renderTitle(slide) {
@@ -126,6 +132,10 @@ function slideHtml(slide, index) {
 <head>
   <meta charset="utf-8" />
   <style>
+    @page {
+      size: 1080px 1350px;
+      margin: 0;
+    }
     * { box-sizing: border-box; }
     html, body {
       width: 1080px;
@@ -215,7 +225,7 @@ function slideHtml(slide, index) {
     .copy {
       position: relative;
       z-index: 3;
-      margin-top: ${isFirst ? "250px" : "230px"};
+      margin-top: ${isFirst ? "190px" : "230px"};
       max-width: ${isFirst || isLast ? "900px" : "865px"};
     }
     h1 {
@@ -285,10 +295,33 @@ function slideHtml(slide, index) {
       font-weight: 900;
       text-transform: uppercase;
     }
+    .hero-logo {
+      position: relative;
+      z-index: 3;
+      margin-top: 80px;
+      width: 850px;
+      max-width: 100%;
+      filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.58));
+    }
+    .hero-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .logo-cover .copy {
+      margin-top: 170px;
+    }
+    .logo-cover h1 {
+      max-width: 900px;
+      font-size: 112px;
+    }
+    .logo-cover .mark {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <main class="slide">
+  <main class="slide ${slide.logoHero ? "logo-cover" : ""}">
     <div class="topbar">
       <span class="kicker">${escapeHtml(slide.kicker)}</span>
       <span>${escapeHtml(slide.marker)}/07</span>
@@ -296,11 +329,12 @@ function slideHtml(slide, index) {
     <div class="mark">${iconFor(slide.accent)}</div>
     <section class="copy">
       <h1>${renderTitle(slide)}</h1>
-      <p>${escapeHtml(slide.body)}</p>
-      ${isFirst ? '<div class="pill">Home improvement marketing</div>' : ""}
+      ${slide.body ? `<p>${escapeHtml(slide.body)}</p>` : ""}
+      ${isFirst && !slide.logoHero ? '<div class="pill">Home improvement marketing</div>' : ""}
     </section>
+    ${slide.logoHero ? `<div class="hero-logo">${logoMarkup}</div>` : ""}
     <div class="bottom">
-      <div class="brand">${logoMarkup}</div>
+      <div class="brand">${slide.logoHero ? "" : logoMarkup}</div>
       <span class="progress">@xello_media</span>
     </div>
   </main>
@@ -314,24 +348,74 @@ async function renderPng(page, html, filePath) {
   await page.screenshot({ path: filePath, type: "png" });
 }
 
+async function renderPdf(page, html, filePath) {
+  await page.setViewportSize({ width: 1080, height: 1350 });
+  await page.setContent(html, { waitUntil: "networkidle" });
+  await page.pdf({
+    path: filePath,
+    width: "1080px",
+    height: "1350px",
+    printBackground: true,
+    preferCSSPageSize: true,
+    margin: { top: "0", right: "0", bottom: "0", left: "0" },
+  });
+}
+
+function mergePdfPages(pagePaths, outputPath) {
+  const bundledPython = path.join(
+    process.env.HOME || "",
+    ".cache",
+    "codex-runtimes",
+    "codex-primary-runtime",
+    "dependencies",
+    "python",
+    "bin",
+    "python3",
+  );
+  const python = existsSync(bundledPython) ? bundledPython : "python3";
+  const script = `
+import sys
+from pypdf import PdfWriter
+
+writer = PdfWriter()
+for pdf_path in sys.argv[2:]:
+    writer.append(pdf_path)
+with open(sys.argv[1], "wb") as output:
+    writer.write(output)
+`;
+
+  execFileSync(python, ["-c", script, outputPath, ...pagePaths], { stdio: "inherit" });
+}
+
 async function main() {
   const imagesPath = path.join(outputRoot, "POST_THESE_IMAGES");
+  const pdfPagesPath = path.join(outputRoot, "PDF_PAGES");
+  const mergedPdfPath = path.join(outputRoot, "CANVA_IMPORT_THIS.pdf");
   await fs.rm(outputRoot, { recursive: true, force: true });
   await fs.mkdir(imagesPath, { recursive: true });
+  await fs.mkdir(pdfPagesPath, { recursive: true });
   await fs.rm(desktopRoot, { recursive: true, force: true });
   await fs.mkdir(path.join(desktopRoot, "POST_THESE_IMAGES"), { recursive: true });
 
   const browser = await chromium.launch();
   const page = await browser.newPage({ deviceScaleFactor: 1 });
+  const pdfPagePaths = [];
 
   for (const [index, slide] of slides.entries()) {
     const fileName = `${String(index + 1).padStart(2, "0")}.png`;
     const filePath = path.join(imagesPath, fileName);
-    await renderPng(page, slideHtml(slide, index), filePath);
+    const html = slideHtml(slide, index);
+    await renderPng(page, html, filePath);
     await fs.copyFile(filePath, path.join(desktopRoot, "POST_THESE_IMAGES", fileName));
+
+    const pdfPagePath = path.join(pdfPagesPath, `${String(index + 1).padStart(2, "0")}.pdf`);
+    await renderPdf(page, html, pdfPagePath);
+    pdfPagePaths.push(pdfPagePath);
   }
 
   await browser.close();
+  mergePdfPages(pdfPagePaths, mergedPdfPath);
+  await fs.copyFile(mergedPdfPath, path.join(desktopRoot, "CANVA_IMPORT_THIS.pdf"));
 
   const caption = `What is Xello Media?
 
