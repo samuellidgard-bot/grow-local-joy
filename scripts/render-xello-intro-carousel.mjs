@@ -31,6 +31,7 @@ const slides = [
     body: "A marketing system for home improvement businesses that want better enquiries, not just more clicks.",
     marker: "01",
     accent: "system",
+    highlight: "Xello Media",
   },
   {
     kicker: "WHO WE HELP",
@@ -38,6 +39,7 @@ const slides = [
     body: "Builders, landscapers, installers and home improvement brands already have proof. We help turn it into trust, content and enquiries.",
     marker: "02",
     accent: "proof",
+    highlight: "great work",
   },
   {
     kicker: "STEP ONE",
@@ -45,6 +47,7 @@ const slides = [
     body: "Clear offer. Real proof. Easy enquiry route. Fast follow-up. Simple tracking.",
     marker: "03",
     accent: "foundation",
+    highlight: "foundations",
   },
   {
     kicker: "CONTENT",
@@ -52,6 +55,7 @@ const slides = [
     body: "Real projects, process clips, reviews and client trust signals become posts, Reels and ad assets.",
     marker: "04",
     accent: "content",
+    highlight: "proof",
   },
   {
     kicker: "ADS",
@@ -59,6 +63,7 @@ const slides = [
     body: "Not random boosts. Campaigns built around proof, clear offers and an enquiry route people can actually use.",
     marker: "05",
     accent: "ads",
+    highlight: "ads",
   },
   {
     kicker: "OUTCOME",
@@ -66,6 +71,7 @@ const slides = [
     body: "More qualified conversations, less wasted ad spend, and a marketing system you can understand.",
     marker: "06",
     accent: "outcome",
+    highlight: "simple",
   },
   {
     kicker: "XELLO MEDIA",
@@ -73,6 +79,7 @@ const slides = [
     body: "Follow @xello_media to watch us build social, content and ad systems for home improvement businesses.",
     marker: "07",
     accent: "finish",
+    highlight: "better enquiries",
   },
 ];
 
@@ -102,6 +109,14 @@ function iconFor(accent) {
   return `<svg viewBox="0 0 256 256" aria-hidden="true">${icons[accent] || icons.system}</svg>`;
 }
 
+function renderTitle(slide) {
+  const escapedTitle = escapeHtml(slide.title);
+  if (!slide.highlight) return escapedTitle;
+
+  const escapedHighlight = escapeHtml(slide.highlight);
+  return escapedTitle.replace(escapedHighlight, `<span class="green">${escapedHighlight}</span>`);
+}
+
 function slideHtml(slide, index) {
   const isFirst = index === 0;
   const isLast = index === slides.length - 1;
@@ -126,36 +141,35 @@ function slideHtml(slide, index) {
       position: relative;
       width: 1080px;
       height: 1350px;
-      padding: 72px 68px 60px;
+      padding: 66px 64px 56px;
       overflow: hidden;
       background:
-        radial-gradient(circle at 82% 18%, rgba(145, 219, 87, ${isFirst || isLast ? "0.34" : "0.18"}), transparent 28%),
-        radial-gradient(circle at 12% 88%, rgba(145, 219, 87, 0.14), transparent 26%),
-        linear-gradient(145deg, #070908 0%, #121711 52%, #080a09 100%);
+        radial-gradient(circle at 86% 18%, rgba(145, 219, 87, ${isFirst || isLast ? "0.38" : "0.24"}), transparent 26%),
+        linear-gradient(135deg, rgba(145, 219, 87, 0.12), transparent 31%),
+        linear-gradient(145deg, #070807 0%, #111610 50%, #060806 100%);
     }
     .slide::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.18;
+      opacity: 0.13;
       background-image:
         linear-gradient(rgba(246, 248, 242, 0.06) 1px, transparent 1px),
         linear-gradient(90deg, rgba(246, 248, 242, 0.06) 1px, transparent 1px);
-      background-size: 54px 54px;
+      background-size: 64px 64px;
       mask-image: linear-gradient(180deg, transparent 0%, black 16%, black 76%, transparent 100%);
     }
     .slide::after {
       content: "";
       position: absolute;
-      width: 520px;
-      height: 520px;
-      right: -110px;
-      top: 122px;
-      border: 2px solid ${brand.line};
-      border-radius: 40px;
-      transform: rotate(12deg);
-      background: linear-gradient(145deg, rgba(145, 219, 87, 0.14), rgba(246, 248, 242, 0.02));
-      box-shadow: 0 0 120px rgba(145, 219, 87, 0.14);
+      width: 760px;
+      height: 760px;
+      right: -270px;
+      top: 70px;
+      border: 3px solid rgba(145, 219, 87, 0.16);
+      transform: rotate(45deg) skew(-7deg);
+      background: linear-gradient(145deg, rgba(145, 219, 87, 0.08), rgba(246, 248, 242, 0.01));
+      box-shadow: 0 0 140px rgba(145, 219, 87, 0.1);
     }
     .topbar {
       position: relative;
@@ -164,8 +178,8 @@ function slideHtml(slide, index) {
       align-items: center;
       justify-content: space-between;
       color: ${brand.muted};
-      font-size: 25px;
-      font-weight: 900;
+      font-size: 24px;
+      font-weight: 950;
       text-transform: uppercase;
     }
     .kicker {
@@ -185,59 +199,58 @@ function slideHtml(slide, index) {
     .mark {
       position: absolute;
       z-index: 2;
-      right: 84px;
+      right: 56px;
       top: 210px;
-      width: 250px;
-      height: 250px;
+      width: 330px;
+      height: 330px;
       display: grid;
       place-items: center;
-      border-radius: 42px;
-      background: rgba(8, 10, 9, 0.52);
-      border: 1px solid ${brand.line};
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.36);
+      opacity: 0.92;
     }
     .mark svg {
-      width: 132px;
-      height: 132px;
-      filter: drop-shadow(0 0 28px rgba(145, 219, 87, 0.28));
+      width: 238px;
+      height: 238px;
+      filter: drop-shadow(0 0 34px rgba(145, 219, 87, 0.24));
     }
     .copy {
       position: relative;
       z-index: 3;
-      margin-top: ${isFirst ? "290px" : "250px"};
-      max-width: ${isFirst || isLast ? "870px" : "810px"};
+      margin-top: ${isFirst ? "250px" : "230px"};
+      max-width: ${isFirst || isLast ? "900px" : "865px"};
     }
     h1 {
       margin: 0;
       color: ${brand.ink};
-      font-size: ${isFirst ? "104px" : isLast ? "98px" : "88px"};
-      line-height: 0.95;
+      font-size: ${isFirst ? "114px" : isLast ? "108px" : "100px"};
+      line-height: 0.9;
       font-weight: 950;
       text-wrap: balance;
+      text-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
     }
     h1 .green {
       color: ${brand.green};
+      text-shadow: 0 0 34px rgba(145, 219, 87, 0.14);
     }
     p {
-      max-width: 790px;
-      margin: 42px 0 0;
-      color: ${brand.muted};
-      font-size: 42px;
-      line-height: 1.16;
-      font-weight: 750;
+      max-width: 820px;
+      margin: 38px 0 0;
+      color: ${brand.ink};
+      font-size: 48px;
+      line-height: 1.08;
+      font-weight: 900;
       text-wrap: balance;
     }
     .bottom {
       position: absolute;
       z-index: 4;
-      left: 68px;
-      right: 68px;
+      left: 64px;
+      right: 64px;
       bottom: 56px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       color: ${brand.ink};
-      font-size: 27px;
+      font-size: 28px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 2.5px;
@@ -248,8 +261,11 @@ function slideHtml(slide, index) {
       gap: 16px;
     }
     .brand img {
-      width: 226px;
+      width: 350px;
+      max-height: 84px;
       height: auto;
+      object-fit: contain;
+      object-position: left center;
       display: block;
       filter: drop-shadow(0 5px 18px rgba(0, 0, 0, 0.7));
     }
@@ -259,13 +275,13 @@ function slideHtml(slide, index) {
     .pill {
       display: inline-flex;
       align-items: center;
-      margin-top: 58px;
-      padding: 18px 24px;
+      margin-top: 50px;
+      padding: 18px 26px;
       border-radius: 999px;
       background: rgba(145, 219, 87, 0.12);
       border: 1px solid ${brand.line};
       color: ${brand.green};
-      font-size: 27px;
+      font-size: 28px;
       font-weight: 900;
       text-transform: uppercase;
     }
@@ -279,7 +295,7 @@ function slideHtml(slide, index) {
     </div>
     <div class="mark">${iconFor(slide.accent)}</div>
     <section class="copy">
-      <h1>${escapeHtml(slide.title).replace("Xello Media", '<span class="green">Xello Media</span>').replace("better enquiries", '<span class="green">better enquiries</span>')}</h1>
+      <h1>${renderTitle(slide)}</h1>
       <p>${escapeHtml(slide.body)}</p>
       ${isFirst ? '<div class="pill">Home improvement marketing</div>' : ""}
     </section>
