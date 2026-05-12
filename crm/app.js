@@ -490,8 +490,8 @@ const defaultData = {
           { signal: "Logo / visual brand", expected: "Use uploaded logo or known profile image as reference", found: "Sam supplied logo matches the CRM reference for M8 Designs", status: "Confirmed" },
           { signal: "Location and service fit", expected: "Construction/home improvement work around Brighton, Hove and Sussex", found: "Official website says Sussex / Brighton and Hove construction services", status: "Confirmed" },
           { signal: "Website or portfolio", expected: "Official portfolio/domain controlled by M8 Designs", found: "https://www.m8designs.co.uk/", status: "Confirmed" },
-          { signal: "Social profiles", expected: "Same name/logo plus matching portfolio/service details", found: "TikTok @m8.designs supplied by Sam; other socials still unconfirmed", status: "Partial" },
-          { signal: "Google Business", expected: "Same name/location/category with matching photos/reviews/contact, if local search matters", found: "Sam thinks there may not be a Google presence yet", status: "Likely missing" }
+          { signal: "Social profiles", expected: "Same name/logo plus matching portfolio/service details", found: "Website, Instagram, Facebook and TikTok are now confirmed by Sam; TikTok is already posting regular content.", status: "Confirmed" },
+          { signal: "Google Business", expected: "Same name/location/category with matching photos/reviews/contact, if local search matters", found: "Sam confirmed M8 needs a stronger Google presence.", status: "Create" }
         ],
         agentRules: [
           "Do not assume the first M8 Designs result is the right business.",
@@ -510,35 +510,35 @@ const defaultData = {
       businessAnalysis: [
         { label: "Positioning angle", value: "A Sussex construction team for homeowners who want full-project delivery, with new builds and extensions as the strongest top-level message." },
         { label: "Likely growth gap", value: "M8 has a website and proof route, but the public presence still needs to make the premium project fit, contact path and strongest portfolio examples instantly obvious." },
-        { label: "Starter offer focus", value: "Tighten the website/contact journey, organise proof assets, improve TikTok/profile CTA, decide on Google Business and build lead tracking before visibility work." },
+        { label: "Starter offer focus", value: "Tighten the website/contact journey, organise proof assets, improve Instagram/Facebook/TikTok profile CTAs, create a Google presence and build lead tracking before visibility work." },
         { label: "Possible offer two", value: "Only after the portfolio, enquiry route and tracking are ready: test one focused local visibility angle for new builds or extensions with client-paid ad spend." }
       ],
       foundations: [
         { area: "Offer clarity", currentState: "Owner and website confirm new builds, extensions, bathrooms, refurbishments and supporting trades.", starterAction: "Lead with full-project delivery, new builds and extensions; keep bathrooms/rendering/plastering as supporting proof.", status: "Clarified" },
-        { area: "Social profiles", currentState: "Needs real audit", starterAction: "Check Instagram, Facebook, TikTok/YouTube and portfolio links for proof, bio clarity and enquiry CTA.", status: "To audit" },
-        { area: "Google Business", currentState: "Likely not set up yet", starterAction: "Confirm whether local search matters, then create or claim a profile with logo, services, photos, hours and review plan if useful.", status: "Likely missing" },
+        { area: "Social profiles", currentState: "Website, Instagram, Facebook and TikTok are confirmed; TikTok is already posting regular content.", starterAction: "Audit bio clarity, pinned proof, enquiry CTA and consistency across Instagram, Facebook and TikTok.", status: "Found - polish next" },
+        { area: "Google Business", currentState: "Needs stronger Google presence.", starterAction: "Prepare Google Business Profile setup/claim plan with logo, services, photos, service area, hours and review plan.", status: "Create" },
         { area: "Website/portfolio", currentState: "Official website supplied: https://www.m8designs.co.uk/.", starterAction: "Audit portfolio flow, service explanations, calls to action, contact route and mobile presentation.", status: "Found - audit next" },
         { area: "Tracking", currentState: "Not confirmed", starterAction: "Create a simple lead tracker: source, service wanted, budget signal, stage, next action and follow-up owner.", status: "Build now" }
       ],
       foundationAudit: {
-        score: 49,
-        status: "Offer clarified - foundations still need building",
-        summary: "M8 now has a clearer commercial direction: full construction projects, especially new builds and extensions, with bathrooms, rendering, plastering and finishing trades as supporting proof. The starter work should make the brand look premium, organise portfolio assets, sharpen the contact route and decide whether Google Business is worth adding before any visibility push.",
-        lastRun: "AI owner-response audit",
-        sources: "Official M8 website, Sam-supplied logo, Sam-supplied TikTok, public company index, public search mismatch review, owner WhatsApp transcript",
+        score: 61,
+        status: "Stage 2 complete - profile polish next",
+        summary: "M8 now has the core missing-foundation decisions made: website, Instagram, Facebook and TikTok are confirmed, TikTok is already active, and Google should be created/strengthened. The next job is profile polish: make the visible accounts consistently explain premium full-project delivery, point to the right contact route and capture a before/after trail for Xello proof.",
+        lastRun: "AI owner-response + Sam platform confirmation",
+        sources: "Official M8 website, Sam-supplied logo, Sam-confirmed Instagram/Facebook/TikTok, owner WhatsApp transcript and Xello stage-2 decision note",
         rows: [
           { area: "Identity and trust", agent: "Company Research Agent", score: 72, status: "Strong match", finding: "Sam supplied the official m8designs.co.uk website, which matches the M8 Designs Ltd construction context, local Sussex/Brighton and Hove positioning, services and owner transcript.", recommendation: "Use m8designs.co.uk as the main identity source, while still confirming any extra social or Google profiles before adding them." },
           { area: "Offer clarity", agent: "Client Strategy Agent", score: 68, status: "Owner clarified", finding: "The owner confirmed M8 wants proper projects: new builds, extensions, bathrooms, rendering and full start-to-finish work, not handyman jobs.", recommendation: "Position M8 around controlled, full-project delivery for homeowners, with new builds and extensions as the top offer." },
           { area: "Website and portfolio", agent: "Website Audit Agent", score: 52, status: "Found - needs polish", finding: "The official website exists and supports the owner transcript with construction, new builds, extensions, refurbishments, bathrooms and contact routes. The next job is conversion polish and proof order.", recommendation: "Build a clean portfolio proof order, make phone/email obvious and show full-project capability above smaller trade services." },
-          { area: "Google Business Profile", agent: "Local Visibility Agent", score: 14, status: "Likely missing", finding: "The owner is not focused on Google Business right now and Sam thinks there may not be a Google presence yet.", recommendation: "Keep this as a strategic decision: set it up if local search is a priority, but do not let it block website/social proof improvements." },
-          { area: "Social profiles", agent: "Social Audit Agent", score: 48, status: "TikTok found", finding: "TikTok @m8.designs is owner-supplied. The profile should now clearly push full projects, new builds and extensions rather than looking like general trades.", recommendation: "Update bio, pinned videos and CTA around proper projects, phone/email and Brighton/Hove service area." },
-          { area: "Proof and tracking", agent: "Tracking Agent", score: 36, status: "Needs setup", finding: "Proof exists on the website, but high-quality folders, testimonial structure, enquiry owner, source tracking and quote-stage tracking are not set up in the CRM yet.", recommendation: "Collect assets by project type and create a tracker for source, project type, access/parking fit, estimated value, stage and next action." }
+          { area: "Google Business Profile", agent: "Local Visibility Agent", score: 24, status: "Create", finding: "Sam confirmed M8 needs a Google presence. This should become a visible before/after win for the starter offer.", recommendation: "Prepare the Google Business setup/claim checklist, service categories, photo set, service area and review request route. Pause only for owner/admin verification." },
+          { area: "Social profiles", agent: "Social Audit Agent", score: 67, status: "Found - polish next", finding: "Sam confirmed M8 now has Instagram and Facebook, and TikTok is already posting regular content.", recommendation: "Audit bio, pinned proof, contact CTA and service hierarchy across Instagram, Facebook and TikTok so every profile points toward proper projects and phone/email enquiry." },
+          { area: "Proof and tracking", agent: "Tracking Agent", score: 45, status: "Before/after tracking needed", finding: "M8 is a useful Xello case-study opportunity because the online presence can be captured before profile polish, Google setup and proof improvements.", recommendation: "Save baseline screenshots/notes now, then track every profile, Google and enquiry-route upgrade as an after snapshot for Xello Instagram proof." }
         ],
         priorities: [
-          "Position M8 around new builds, extensions and full-project delivery.",
-          "Avoid promoting handyman jobs, difficult access, high-rise flats and subcontractor work.",
-          "Organise high-quality proof assets from the website and owner files.",
-          "Make phone/email and website contact routes clearer.",
+          "Move M8 from Stage 2 Missing foundations into Stage 3 Profile polish.",
+          "Position M8 around new builds, extensions and full-project delivery across website, Instagram, Facebook and TikTok.",
+          "Create or claim Google Business as the main missing public-presence foundation.",
+          "Capture before screenshots now so Xello can show the online-presence improvement later.",
           "Create tracking before any paid activity."
         ]
       },
@@ -700,7 +700,7 @@ const defaultData = {
   ],
   delivery: [
     { client: "First Touch Innovations", stage: "Starter foundations", checklist: "Social/GMB/website basics, content plan and tracking foundations before any paid test.", health: "Trial", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Optional", contentStatus: "Foundation plan ready", campaignStatus: "Not ready for ads", nextReview: "After starter setup", nextAction: "Confirm missing socials, Google Business gaps and website basics" },
-    { client: "M8 Designs", stage: "Starter foundations", checklist: "Clarify offer, ICP, social/profile setup, portfolio or website route, proof assets, tracking and first content foundations.", health: "Trial", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "To confirm", contentStatus: "Discovery needed", campaignStatus: "Not ready for ads", nextReview: "After starter discovery", nextAction: "Confirm exact niche, best services, target area and current online presence" },
+    { client: "M8 Designs", stage: "Starter foundations", checklist: "Stage 2 platform decisions complete; polish Instagram/Facebook/TikTok, create Google presence, tighten contact route, capture before/after proof and set tracking.", health: "Trial", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "To confirm", contentStatus: "Profile polish next", campaignStatus: "Not ready for ads", nextReview: "After profile polish", nextAction: "Capture before screenshots, then polish M8 profiles and prepare Google Business setup" },
     { client: "New Client Template", stage: "Starter onboarding", checklist: "Social access, website access, Google Business access, photos, testimonials, logo, services and tracking route.", health: "Ready", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Not set", contentStatus: "Waiting", campaignStatus: "Waiting", nextReview: "Not set", nextAction: "Collect access and foundation details" },
     { client: "Offer Two Template", stage: "14-day lead test", checklist: "Campaign angle, lead form, conversion tracking, ad spend boundary, first creatives.", health: "Template", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "To schedule", contentStatus: "Create first adverts", campaignStatus: "Draft", nextReview: "Launch + 3 days", nextAction: "Only launch after starter foundations are ready" },
     { client: "Weekly Reporting", stage: "Retain", checklist: "Leads, CPL, booked quotes, follow-up speed, best ads, next actions.", health: "Template", adSpend: 0, leads: 0, cpl: 0, bookedCalls: 0, siteVisit: "Complete", contentStatus: "Ongoing", campaignStatus: "Optimising", nextReview: "Every Friday", nextAction: "Prepare client summary and retainer next steps" }
@@ -1019,15 +1019,15 @@ const identityResearchDrafts = {
       note: "Use this as the visual reference. Candidate websites/social profiles should match this M8 Designs logo before you confirm them."
     },
     socialScan: {
-      summary: "Owner-supplied scan now has one trusted website and one trusted social account: m8designs.co.uk and TikTok @m8.designs. Other public social platforms still need owner links or manual confirmation. The visible m8designs.com result is a different business selling boat/fishing accessories in Ohio, so it should not be used.",
+      summary: "Sam has now confirmed M8's useful Stage 2 foundations: website, Instagram, Facebook and TikTok exist, and TikTok is already posting regular content. Google should be created/strengthened next. The visible m8designs.com result is a different business selling boat/fishing accessories in Ohio, so it should not be used.",
       platforms: [
         { platform: "Website", result: "Found: m8designs.co.uk", url: "https://www.m8designs.co.uk/", evidence: "Owner-supplied link from Sam; website presents M8 Designs Ltd construction services in Sussex / Brighton and Hove", status: "Trusted owner link" },
-        { platform: "Instagram", result: "Not found", url: "", evidence: "No reliable public profile found that matches the supplied logo and Hove construction context", status: "Ask owner" },
-        { platform: "Facebook", result: "Not found", url: "", evidence: "No reliable public profile found that matches the supplied logo and Hove construction context", status: "Ask owner" },
-        { platform: "TikTok", result: "Found: @m8.designs", url: "https://www.tiktok.com/@m8.designs?lang=en-GB", evidence: "Owner-supplied link from Sam; compare profile image/content against the supplied M8 Designs logo", status: "Trusted owner link" },
+        { platform: "Instagram", result: "Found", url: "", evidence: "Sam confirmed M8 has an Instagram account; exact clickable link can be added once available", status: "Found - polish next" },
+        { platform: "Facebook", result: "Found", url: "", evidence: "Sam confirmed M8 has a Facebook presence; exact clickable link can be added once available", status: "Found - polish next" },
+        { platform: "TikTok", result: "Found: @m8.designs", url: "https://www.tiktok.com/@m8.designs?lang=en-GB", evidence: "Owner-supplied link from Sam; Sam confirmed regular content is already being posted", status: "Found - active" },
         { platform: "YouTube", result: "Not found", url: "", evidence: "No reliable public profile found that matches the supplied logo and Hove construction context", status: "Ask owner" },
         { platform: "LinkedIn", result: "Not found", url: "", evidence: "Search results showed unrelated M8 companies, not this supplied logo/business", status: "Do not assume" },
-        { platform: "Google Business", result: "Likely not set up yet", url: "", evidence: "Sam does not think M8 currently has a Google presence; confirm with owner before creating or claiming one", status: "Likely missing" },
+        { platform: "Google Business", result: "Create/strengthen", url: "", evidence: "Sam confirmed M8 needs a Google presence", status: "Create" },
         { platform: "Wrong public match", result: "Mismatch: m8designs.com", url: "https://www.m8designs.com/", evidence: "Boat/fishing accessories business near Macedonia, Ohio; does not match Sam's supplied logo or local construction context", status: "Reject" }
       ]
     },
@@ -1260,6 +1260,14 @@ function loadState() {
   merged.leaderRuns = merged.leaderRuns || {};
   merged.leaderTaskCompletions = merged.leaderTaskCompletions || {};
   merged.leaderTaskEvidence = merged.leaderTaskEvidence || {};
+  merged.leaderTaskCompletions["m8-designs::starter-foundations::missing-foundations"] = {
+    ...(merged.leaderTaskCompletions["m8-designs::starter-foundations::missing-foundations"] || {}),
+    0: true,
+    1: true,
+    2: true,
+    3: true,
+    4: true
+  };
   merged.openCurrentActionPlanKey = merged.openCurrentActionPlanKey || "";
   return migrateOfferStrategy(merged);
 }
@@ -2181,10 +2189,10 @@ function getClientTickAlongActions() {
       next: "Open First Touch"
     },
     {
-      title: "Advance M8 missing foundations decisions",
+      title: "Advance M8 profile polish",
       owner: "Client Delivery + Leader",
       priority: "High",
-      detail: "Website and TikTok are found. Next job is deciding Instagram/Facebook/Google Business as Create, Polish or Skip, then checking website phone/email clarity.",
+      detail: "M8 Stage 2 is now decided: website, Instagram, Facebook and TikTok exist; Google needs a stronger presence. Next job is screenshotting the before state, polishing profiles and preparing Google Business setup.",
       next: "Open M8"
     },
     {
@@ -3925,7 +3933,8 @@ function getClientFoundationPlan(analysis, foundationAudit, competitorBenchmark)
     questionsForSam: [
       "Audit m8designs.co.uk for proof order, contact clarity and mobile trust.",
       "Ask the owner to export high-quality photos into one folder rather than relying only on website downloads.",
-      "Decide whether M8 wants Google Business now or whether website/TikTok proof comes first."
+      "Capture the before screenshots across website, Instagram, Facebook, TikTok and Google search before making visible profile changes.",
+      "Prepare the Google Business setup/claim plan; pause only for owner verification or admin approval."
     ]
   };
 }
@@ -4078,10 +4087,10 @@ function getClientProgressPlan(analysis) {
     ]
     : analysis.company === "M8 Designs"
       ? [
-        "Mark the M8 website and supplied TikTok link as found in the identity check.",
-        "Confirm whether M8 has Instagram or Facebook accounts already, and add the links if they exist.",
-        "Decide whether M8 should create a Google Business Profile now, since there is no strong Google presence yet.",
-        "Check the website contact route and make sure phone/email are clear before any content or lead work.",
+        "Mark the M8 website, Instagram, Facebook and supplied TikTok link as found in the identity check.",
+        "Treat Instagram, Facebook and TikTok as live foundations; audit bios, pinned proof and contact CTAs next.",
+        "Mark Google Business as Create because M8 needs a stronger Google presence.",
+        "Check the website/social contact route and make sure phone/email are clear before content or lead work.",
         "Update the CRM social scan with one clear status per platform: Found, Needs polish, Create, or Skip."
       ]
       : [
@@ -4104,6 +4113,19 @@ function getClientProgressPlan(analysis) {
       "Sort assets into project type, proof type and quality level.",
       "Flag missing proof needed for the best service angle."
     ];
+  const profilePolishTasks = analysis.company === "M8 Designs"
+    ? [
+      "Write a simple one-line positioning statement for M8 around new builds, extensions and full-project delivery.",
+      "Prepare tightened bio/contact-route copy for Instagram, Facebook and TikTok around proper projects, phone/email and Brighton/Hove/Sussex.",
+      "Use the same logo/name/contact details across the website and useful social platforms.",
+      "Add service highlights, pinned proof recommendations and a Google Business setup note where the platform allows it."
+    ]
+    : [
+      "Write a simple one-line positioning statement for the business.",
+      "Prepare tightened bio/contact-route copy for Instagram, TikTok and Google; owner implementation can wait until Sam's shoot day with Sonny.",
+      "Use the same logo/name/contact details across useful platforms.",
+      "Add service highlights and proof points where the platform allows it."
+    ];
   const starterSteps = [
     {
       title: "Discovery + identity",
@@ -4120,7 +4142,7 @@ function getClientProgressPlan(analysis) {
     {
       title: "Profile polish",
       description: "Make the visible profiles look credible: consistent logo, bio, service list, location, contact route, proof highlights and a clear reason to enquire.",
-      tasks: ["Write a simple one-line positioning statement for the business.", "Prepare tightened bio/contact-route copy for Instagram, TikTok and Google; owner implementation can wait until Sam's shoot day with Sonny.", "Use the same logo/name/contact details across useful platforms.", "Add service highlights and proof points where the platform allows it."],
+      tasks: profilePolishTasks,
       doneWhen: "A prospect can land on any main profile and understand who the business helps, what they do and how to enquire."
     },
     {
@@ -4279,7 +4301,7 @@ function getTaskOwnershipChips(task, progress, complete = false, next = false) {
     chips.push({ label: "shoot-day workflow", className: "shoot" });
   }
   if (progress.company === "M8 Designs" && progress.currentStepLabel === "Missing foundations" && !complete) {
-    chips.push({ label: "decision needed", className: "decision" });
+    chips.push({ label: "stage 2 decision", className: "decision" });
   }
   if (!chips.length) chips.push({ label: "xello action", className: "neutral" });
   return chips;
@@ -4291,7 +4313,7 @@ function getDefaultCurrentStageTaskCompletions(progress) {
   if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Profile polish") return { 0: true, 1: true, 2: true, 3: true };
   if (progress.company === "First Touch Innovations" && progress.currentStepLabel === "Proof asset intake") return { 0: true };
   if (progress.currentStepLabel !== "Missing foundations") return {};
-  if (progress.company === "M8 Designs") return { 0: true };
+  if (progress.company === "M8 Designs") return { 0: true, 1: true, 2: true, 3: true, 4: true };
   return {};
 }
 
@@ -4340,13 +4362,13 @@ function getClientPlatformStatusPlan(analysis) {
   }
 
   return {
-    summary: "M8 has a trusted website and TikTok base. The main decision is whether to create missing local-search/social foundations or keep the starter work focused on website, proof and contact route.",
+    summary: "M8 has the core Stage 2 platform decisions made: website, Instagram, Facebook and TikTok are live foundations; Google should be created/strengthened. Next focus is profile polish and before/after evidence capture.",
     rows: [
       { platform: "Website", status: "Needs polish", evidence: "Owner-supplied m8designs.co.uk is the trusted source.", action: "Audit portfolio order, premium service hierarchy, phone/email CTA, mobile layout and project-fit wording.", ownerDecision: "Confirm which site edits the owner is comfortable making first.", priority: "Now" },
-      { platform: "TikTok", status: "Needs polish", evidence: "Sam supplied @m8.designs as the trusted TikTok link.", action: "Make bio and pinned proof point at proper projects, new builds, extensions and contact route.", ownerDecision: "Confirm whether TikTok should be the main social proof channel for now.", priority: "Now" },
-      { platform: "Google Business", status: "Create", evidence: "Owner is not focused on Google and Sam thinks there may be no profile yet.", action: "Create or claim only if local search matters now; add logo, services, photos, hours and review plan.", ownerDecision: "Owner must approve setup because public business details are involved.", priority: "Decision" },
-      { platform: "Instagram", status: "Create", evidence: "No reliable matching profile found yet.", action: "Create only if M8 can keep it consistent with website proof and has enough quality images.", ownerDecision: "Ask whether Instagram exists already before creating anything.", priority: "Decision" },
-      { platform: "Facebook", status: "Skip", evidence: "No reliable matching page found yet.", action: "Skip for now unless the owner already has a page or local referrals use Facebook heavily.", ownerDecision: "Confirm skip so Xello does not waste setup time.", priority: "Later" },
+      { platform: "Instagram", status: "Needs polish", evidence: "Sam confirmed M8 now has an Instagram account.", action: "Audit bio, profile image, proof order, pinned content and phone/email enquiry CTA.", ownerDecision: "No create decision needed; ask for edits/admin only when profile copy is approved.", priority: "Now" },
+      { platform: "Facebook", status: "Needs polish", evidence: "Sam confirmed M8 now has a Facebook presence.", action: "Check category, intro, contact details, service area, photos and whether it supports trust/referrals.", ownerDecision: "No create decision needed; owner/admin approval only for public changes.", priority: "Now" },
+      { platform: "TikTok", status: "Needs polish", evidence: "Sam confirmed M8 is already posting regular content on TikTok.", action: "Make bio and pinned proof point at proper projects, new builds, extensions and contact route.", ownerDecision: "Confirm whether TikTok should remain the main active content channel while Instagram/Facebook catch up.", priority: "Now" },
+      { platform: "Google Business", status: "Create", evidence: "Sam confirmed M8 needs a Google presence.", action: "Prepare Google Business Profile create/claim plan: logo, categories, services, service area, photos, hours and review request route.", ownerDecision: "Owner/admin approval is needed for verification and public business details.", priority: "Now" },
       { platform: "Wrong M8 result", status: "Skip", evidence: "m8designs.com is a boat/fishing accessories business in Ohio.", action: "Do not use this result for research, screenshots, links or client planning.", ownerDecision: "No action, just keep the rejection visible.", priority: "Guardrail" }
     ]
   };
@@ -4400,6 +4422,98 @@ function renderClientPlatformStatusBoard(analysis) {
             <em>${escapeHtml(row.ownerDecision)}</em>
           </article>
         `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function getBeforeAfterPresencePlan(analysis) {
+  if (analysis.company !== "M8 Designs") {
+    return {
+      summary: "Capture the client’s public presence before Xello changes anything, then compare it with the improved profile, proof and enquiry route later.",
+      before: [
+        { label: "Website", status: "Baseline", detail: "Screenshot homepage, contact route, project proof and mobile view before copy/proof changes." },
+        { label: "Socials", status: "Baseline", detail: "Screenshot current bios, pinned content, proof depth and contact CTA." },
+        { label: "Google", status: "Baseline", detail: "Screenshot current Google Business profile, reviews, photos and local search visibility if present." }
+      ],
+      after: [
+        { label: "Cleaner profile", detail: "Consistent offer, logo, service area, proof and enquiry route across useful platforms." },
+        { label: "Proof assets", detail: "Before/after visuals, project notes, review snippets and starter content examples." },
+        { label: "Tracking", detail: "Lead source and quote-stage tracking ready before any paid test." }
+      ],
+      contentAngles: [
+        "Before vs after online presence audit",
+        "How a trade business becomes easier to trust online",
+        "Why foundations come before ads"
+      ]
+    };
+  }
+
+  return {
+    summary: "Use M8 as a clean Xello proof story: show the starting online presence now, then document how Xello improves clarity, Google visibility, social trust and enquiry readiness.",
+    before: [
+      { label: "Website", status: "Capture now", detail: "Screenshot homepage, portfolio/service order, contact page, phone/email visibility and mobile view before polish." },
+      { label: "Instagram", status: "Capture now", detail: "Screenshot bio, grid, pinned posts, proof quality, contact route and whether proper projects are obvious." },
+      { label: "Facebook", status: "Capture now", detail: "Screenshot category, intro, services, contact details, photos and any public proof before cleanup." },
+      { label: "TikTok", status: "Capture now", detail: "Screenshot active posting cadence, bio, pinned videos and CTA while regular content is already happening." },
+      { label: "Google", status: "Before gap", detail: "Screenshot search/Maps result showing weak or missing Google presence before setup/claim work." }
+    ],
+    after: [
+      { label: "Profile clarity", detail: "M8 clearly positioned around new builds, extensions and full start-to-finish projects." },
+      { label: "Google presence", detail: "Google Business created/claimed with logo, services, service area, photos and review request route." },
+      { label: "Social proof", detail: "Instagram, Facebook and TikTok bios/pins point to proper projects and phone/email enquiry." },
+      { label: "Enquiry route", detail: "Website and social profiles make phone/email clear before content or ads send attention there." },
+      { label: "Case study asset", detail: "Xello has a before/after proof set for Instagram: baseline screenshots, changes made and starter foundation result." }
+    ],
+    contentAngles: [
+      "How we turned scattered online presence into a clearer builder profile",
+      "Before ads, we fixed the public trust signals",
+      "M8 Designs before/after: website, socials, Google and enquiry route",
+      "What a starter foundations package actually changes"
+    ]
+  };
+}
+
+function renderBeforeAfterPresencePanel(analysis) {
+  const plan = getBeforeAfterPresencePlan(analysis);
+  return `
+    <section class="panel before-after-presence-panel">
+      <div class="panel-header">
+        <div>
+          <p class="label">Xello proof tracker</p>
+          <h2>Before / After Online Presence</h2>
+          ${renderSectionPreview(plan.summary, [
+            { value: plan.before.length, label: "before checks" },
+            { value: plan.after.length, label: "after wins" },
+            { value: "Case study", label: "Xello content" }
+          ])}
+        </div>
+        <span class="pill">Screenshot now</span>
+      </div>
+      <div class="before-after-grid">
+        <article>
+          <p class="label">Before baseline to capture today</p>
+          <div class="mini-table">
+            ${plan.before.map((item) => `
+              <div>
+                <strong>${escapeHtml(item.label)} <em>${escapeHtml(item.status)}</em></strong>
+                <span>${escapeHtml(item.detail)}</span>
+              </div>
+            `).join("")}
+          </div>
+        </article>
+        <article>
+          <p class="label">After state Xello should create</p>
+          <ol class="analysis-checklist">
+            ${plan.after.map((item) => `<li><strong>${escapeHtml(item.label)}:</strong> ${escapeHtml(item.detail)}</li>`).join("")}
+          </ol>
+        </article>
+        <article>
+          <p class="label">Xello Instagram proof angles</p>
+          <ol class="analysis-checklist">
+            ${plan.contentAngles.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ol>
+        </article>
       </div>
     </section>
   `;
@@ -4625,7 +4739,8 @@ function getStarterDeliveryPrep(analysis, foundationAudit, competitorBenchmark) 
       "Rewrite the strategy brief around new builds, extensions and full start-to-finish construction projects.",
       "Audit m8designs.co.uk for proof order, mobile clarity, contact CTA and project fit language.",
       "Prepare a project-fit qualifier that filters out handyman jobs, awkward access and subcontractor work.",
-      "Decide how Google Business fits the plan without making it the only foundation priority."
+      "Prepare the Google Business setup/claim plan now that Google presence is confirmed as needed.",
+      "Capture before screenshots across website, Instagram, Facebook, TikTok and Google search for the future Xello testimonial."
     ],
     waitingTasks: [
       "Pull high-quality project photos into separate folders for new builds, extensions, bathrooms and rendering.",
@@ -4776,7 +4891,7 @@ function getStarterDeliveryPack(analysis) {
       { week: "Week 1", focus: "Offer clarity", action: "Rewrite positioning around new builds, extensions and full start-to-finish project delivery." },
       { week: "Week 2", focus: "Website and profile cleanup", action: "Improve project order, contact CTA, service wording and mobile proof clarity." },
       { week: "Week 3", focus: "Content and filters", action: "Create content that attracts proper projects and filters out handyman, awkward-access and subcontractor work." },
-      { week: "Week 4", focus: "Google and readiness decision", action: "Decide whether Google Business is needed now, then rescore before any lead test." }
+      { week: "Week 4", focus: "Google and readiness decision", action: "Create/claim Google Business, then rescore before any lead test." }
     ],
     clientScript: [
       "The strongest message for M8 is not that you do a bit of everything. It is that you can take proper projects from start to finish.",
@@ -4786,7 +4901,7 @@ function getStarterDeliveryPack(analysis) {
     ],
     nextDecisions: [
       "Which project category should be the first public focus: new builds, extensions, or bathrooms/rendering?",
-      "Do you want Google Business set up now, or should the website/TikTok proof come first?",
+      "Who can approve or verify the Google Business setup/claim when the profile is ready?",
       "Which images are high-quality enough to represent M8 as premium?"
     ]
   };
@@ -4900,12 +5015,12 @@ function getPreAssetWorkbench(analysis, foundationAudit, competitorBenchmark) {
     ],
     reportBlocks: [
       { label: "Current score", value: `${score}% starter foundation readiness. Ads stay gated while the profile, proof and enquiry route are tightened.` },
-      { label: "What is working", value: "Clear desire for proper projects, existing website/TikTok presence, strong service range and visual portfolio potential." },
-      { label: "What is missing", value: "Sharper project hierarchy, organised proof, review snippets, Google Business decision and poor-fit enquiry filters." },
-      { label: "30-day outcome", value: "A cleaner premium profile, stronger website sections, better-fit enquiry wording and a practical lead tracking process." }
+      { label: "What is working", value: "Clear desire for proper projects, existing website, Instagram, Facebook and active TikTok presence, strong service range and visual portfolio potential." },
+      { label: "What is missing", value: "Sharper project hierarchy, organised proof, review snippets, Google Business setup and poor-fit enquiry filters." },
+      { label: "30-day outcome", value: "A cleaner premium profile, stronger website sections, improved Google presence, better-fit enquiry wording and a practical lead tracking process." }
     ],
     trackerRows: [
-      { field: "Lead source", example: "Website / TikTok / referral / word of mouth / future Google" },
+      { field: "Lead source", example: "Website / Instagram / Facebook / TikTok / referral / word of mouth / future Google" },
       { field: "Project type", example: "New build, extension, bathroom, rendering, other" },
       { field: "Access fit", example: "Good parking/storage, okay, difficult access, high-rise/city-centre issue" },
       { field: "Fit decision", example: "Strong fit, possible fit, poor fit, reject" },
@@ -5007,7 +5122,7 @@ function getReadinessItems(analysis, foundationAudit, competitorBenchmark) {
     {
       label: "Google presence",
       score: auditRowScore(foundationAudit, ["google"]) || (analysis.company === "M8 Designs" ? 12 : 74),
-      detail: analysis.company === "M8 Designs" ? "Likely missing, create or claim if local search matters." : "Profile found, now optimise services, photos and review activity."
+      detail: analysis.company === "M8 Designs" ? "Create or claim Google Business now that a stronger Google presence is confirmed as needed." : "Profile found, now optimise services, photos and review activity."
     },
     {
       label: "Website/enquiry route",
@@ -5352,13 +5467,13 @@ function getClientOperatingBoard() {
     },
     {
       client: "M8 Designs",
-      stage: "Missing foundations",
-      momentum: "Needs decisions",
-      nextAction: "Confirm platform decisions and keep the offer focused on proper projects, not small handyman enquiries.",
-      aiCanDo: ["Audit website contact route", "Prepare platform status notes", "Draft profile/portfolio positioning", "Build M8 tracker fields"],
-      waitingOn: ["Owner links for Instagram/Facebook if they exist", "Google Business create/skip decision", "High-quality project files"],
-      samAction: "Ask one clean M8 question set: existing socials, Google Business decision, best project assets and contact route.",
-      crmLearning: "The system needs a clear Create/Polish/Skip decision for each foundation so setup work does not blur into guessing."
+      stage: "Profile polish",
+      momentum: "Moving",
+      nextAction: "Stage 2 is decided: website, Instagram, Facebook and TikTok are live; Google needs creating. Now capture the before state and polish the visible profiles.",
+      aiCanDo: ["Prepare before/after screenshot checklist", "Audit profile bios and pinned proof", "Draft Google Business setup plan", "Build M8 tracker fields"],
+      waitingOn: ["Exact profile links if Sam wants them clickable", "Owner/admin approval for public changes", "High-quality project files"],
+      samAction: "Capture the current M8 website/social/Google baseline before changes, then use it as Xello proof content once the after state is improved.",
+      crmLearning: "Trial clients should create public Xello proof: baseline, intervention, after state and what changed."
     },
     {
       client: "Xello CRM",
@@ -5775,6 +5890,8 @@ function renderClientAnalysisSheet(targetId, company) {
     ${renderClientReadinessBoard(analysis, foundationAudit, competitorBenchmark)}
 
     ${renderClientPlatformStatusBoard(analysis)}
+
+    ${renderBeforeAfterPresencePanel(analysis)}
 
     ${renderOwnerResponseInbox(analysis)}
 

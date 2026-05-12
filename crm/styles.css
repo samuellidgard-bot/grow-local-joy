@@ -2147,6 +2147,7 @@ tbody tr:hover {
 .architect-pack-grid article,
 .tracking-blueprint-grid article,
 .proof-help-layout article,
+.before-after-grid article,
 .delivery-brief-grid article,
 .content-template-grid article,
 .asset-intake-grid article,
@@ -2286,6 +2287,42 @@ tbody tr:hover {
   font-style: normal;
   font-weight: 800;
   line-height: 1.4;
+}
+
+.before-after-presence-panel {
+  border-top: 3px solid rgba(130, 200, 50, 0.78);
+  background:
+    linear-gradient(135deg, rgba(12, 18, 12, 0.03), rgba(237, 248, 228, 0.74)),
+    #ffffff;
+}
+
+.before-after-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(280px, 0.78fr);
+  gap: 12px;
+}
+
+.before-after-grid article:first-child {
+  border-color: rgba(162, 112, 24, 0.24);
+  background: #fffdf8;
+}
+
+.before-after-grid article:nth-child(2) {
+  border-color: rgba(144, 200, 71, 0.36);
+  background: #fbfdf8;
+}
+
+.before-after-grid .mini-table strong em {
+  display: inline-block;
+  margin-left: 6px;
+  border-radius: 999px;
+  background: #e7f5d7;
+  color: var(--brand-dark);
+  padding: 3px 6px;
+  font-size: 10px;
+  font-style: normal;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .done-for-you-plan-panel {
@@ -4752,6 +4789,7 @@ label select {
   .architect-pack-grid,
   .tracking-blueprint-grid,
   .proof-help-layout,
+  .before-after-grid,
   .delivery-prep-hero,
   .delivery-brief-grid,
   .delivery-template-layout,
