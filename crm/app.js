@@ -1019,11 +1019,11 @@ const identityResearchDrafts = {
       note: "Use this as the visual reference. Candidate websites/social profiles should match this M8 Designs logo before you confirm them."
     },
     socialScan: {
-      summary: "Sam has now confirmed M8's useful Stage 2 foundations: website, Instagram, Facebook and TikTok exist, and TikTok is already posting regular content. Google should be created/strengthened next. The visible m8designs.com result is a different business selling boat/fishing accessories in Ohio, so it should not be used.",
+      summary: "Sam has now confirmed M8's useful Stage 2 foundations: website, Instagram, Facebook and TikTok exist, and TikTok is already posting regular content. Public research found a strong Instagram match at @m8designsltd; Facebook still needs owner/admin confirmation because the likely matching public handle is not viewable from a logged-out check. Google should be created/strengthened next. The visible m8designs.com result is a different business selling boat/fishing accessories in Ohio, so it should not be used.",
       platforms: [
         { platform: "Website", result: "Found: m8designs.co.uk", url: "https://www.m8designs.co.uk/", evidence: "Owner-supplied link from Sam; website presents M8 Designs Ltd construction services in Sussex / Brighton and Hove", status: "Trusted owner link" },
-        { platform: "Instagram", result: "Found", url: "", evidence: "Sam confirmed M8 has an Instagram account; exact clickable link can be added once available", status: "Found - polish next" },
-        { platform: "Facebook", result: "Found", url: "", evidence: "Sam confirmed M8 has a Facebook presence; exact clickable link can be added once available", status: "Found - polish next" },
+        { platform: "Instagram", result: "Found: @m8designsltd", url: "https://www.instagram.com/m8designsltd/", evidence: "Public Instagram page uses M8 Designs / M8 Designs LTD, shows the M8 logo and lists new builds, extensions and renovations. Baseline screenshot saved in the foundations pack.", status: "Found - polish next" },
+        { platform: "Facebook", result: "Owner-confirmed, public URL still needs verification", url: "", evidence: "Sam confirmed M8 has a Facebook presence, but public checks did not expose a reliable viewable page. facebook.com/m8designsltd is not publicly viewable from a logged-out check, so do not treat it as confirmed until the owner/admin route verifies it.", status: "Needs exact owner/admin confirmation" },
         { platform: "TikTok", result: "Found: @m8.designs", url: "https://www.tiktok.com/@m8.designs?lang=en-GB", evidence: "Owner-supplied link from Sam; Sam confirmed regular content is already being posted", status: "Found - active" },
         { platform: "YouTube", result: "Not found", url: "", evidence: "No reliable public profile found that matches the supplied logo and Hove construction context", status: "Ask owner" },
         { platform: "LinkedIn", result: "Not found", url: "", evidence: "Search results showed unrelated M8 companies, not this supplied logo/business", status: "Do not assume" },
@@ -1040,18 +1040,21 @@ const identityResearchDrafts = {
       { label: "Company status", value: "Active", source: "Public company index", status: "Found" },
       { label: "Business activity", value: "Construction of commercial buildings, other construction installation, building completion and finishing.", source: "SIC codes", status: "Found" },
       { label: "Previous company name", value: "LION CONSTRUCTION SOUTHERN LTD", source: "Public company index", status: "Found" },
+      { label: "Instagram profile", value: "https://www.instagram.com/m8designsltd/", source: "Public Instagram match checked 2026-05-12", status: "Strong match" },
       { label: "TikTok profile", value: "https://www.tiktok.com/@m8.designs?lang=en-GB", source: "Owner-supplied link from Sam", status: "Trusted owner link" },
+      { label: "Facebook profile", value: "Not safely public-verified yet; likely handle is not viewable logged out.", source: "Public Facebook handle checks", status: "Needs owner/admin confirmation" },
       { label: "Likely wrong match", value: "m8designs.com appears to be boat/fishing accessories in Macedonia, Ohio.", source: "Web result", status: "Mismatch" },
       { label: "Logo check", value: "Trusted M8 Designs logo supplied by Sam and saved in CRM assets.", source: "Human reference", status: "Reference ready" }
     ],
     sources: [
       { label: "M8 Designs official website", url: "https://www.m8designs.co.uk/" },
       { label: "Public company index", url: "https://www.companiesintheuk.co.uk/ltd/m8-designs" },
+      { label: "M8 Designs Instagram", url: "https://www.instagram.com/m8designsltd/" },
       { label: "M8 Designs TikTok", url: "https://www.tiktok.com/@m8.designs?lang=en-GB" },
       { label: "Possible wrong M8 Designs result", url: "https://www.m8designs.com/" }
     ],
     gaps: [
-      "Ask for Instagram, Facebook, YouTube, LinkedIn and Google Business links that use this logo/profile image, if they exist.",
+      "Verify the exact M8 Facebook Page through the owner/admin view before linking it as a confirmed profile.",
       "Confirm exact niche and whether the old company name matters."
     ]
   }
@@ -4365,8 +4368,8 @@ function getClientPlatformStatusPlan(analysis) {
     summary: "M8 has the core Stage 2 platform decisions made: website, Instagram, Facebook and TikTok are live foundations; Google should be created/strengthened. Next focus is profile polish and before/after evidence capture.",
     rows: [
       { platform: "Website", status: "Needs polish", evidence: "Owner-supplied m8designs.co.uk is the trusted source.", action: "Audit portfolio order, premium service hierarchy, phone/email CTA, mobile layout and project-fit wording.", ownerDecision: "Confirm which site edits the owner is comfortable making first.", priority: "Now" },
-      { platform: "Instagram", status: "Needs polish", evidence: "Sam confirmed M8 now has an Instagram account.", action: "Audit bio, profile image, proof order, pinned content and phone/email enquiry CTA.", ownerDecision: "No create decision needed; ask for edits/admin only when profile copy is approved.", priority: "Now" },
-      { platform: "Facebook", status: "Needs polish", evidence: "Sam confirmed M8 now has a Facebook presence.", action: "Check category, intro, contact details, service area, photos and whether it supports trust/referrals.", ownerDecision: "No create decision needed; owner/admin approval only for public changes.", priority: "Now" },
+      { platform: "Instagram", status: "Needs polish", evidence: "Public match found: instagram.com/m8designsltd uses M8 Designs / M8 Designs LTD, the M8 logo and a new-builds/extensions/renovations bio.", action: "Audit bio, profile image, proof order, pinned content and phone/email enquiry CTA; current baseline shows no posts yet, so this is a polish/setup profile rather than active proof.", ownerDecision: "No create decision needed; ask for edits/admin only when profile copy is approved.", priority: "Now" },
+      { platform: "Facebook", status: "Needs confirmation", evidence: "Sam confirmed M8 has a Facebook presence, but public checks did not expose a safe viewable URL. The same likely handle is not publicly viewable logged out.", action: "Ask owner/admin for the exact page link or screenshot from their account, then check category, intro, contact details, service area, photos and proof.", ownerDecision: "Do not add a public Facebook link until the owner/admin confirms the exact page.", priority: "Now" },
       { platform: "TikTok", status: "Needs polish", evidence: "Sam confirmed M8 is already posting regular content on TikTok.", action: "Make bio and pinned proof point at proper projects, new builds, extensions and contact route.", ownerDecision: "Confirm whether TikTok should remain the main active content channel while Instagram/Facebook catch up.", priority: "Now" },
       { platform: "Google Business", status: "Create", evidence: "Sam confirmed M8 needs a Google presence.", action: "Prepare Google Business Profile create/claim plan: logo, categories, services, service area, photos, hours and review request route.", ownerDecision: "Owner/admin approval is needed for verification and public business details.", priority: "Now" },
       { platform: "Wrong M8 result", status: "Skip", evidence: "m8designs.com is a boat/fishing accessories business in Ohio.", action: "Do not use this result for research, screenshots, links or client planning.", ownerDecision: "No action, just keep the rejection visible.", priority: "Guardrail" }
@@ -5471,8 +5474,8 @@ function getClientOperatingBoard() {
       momentum: "Moving",
       nextAction: "Stage 2 is decided: website, Instagram, Facebook and TikTok are live; Google needs creating. Use the M8 profile polish pack to capture the before state, prep Google and tighten profiles.",
       aiCanDo: ["Prepare before/after screenshot checklist", "Audit profile bios and pinned proof", "Draft Google Business setup plan", "Build M8 tracker fields"],
-      waitingOn: ["Exact profile links if Sam wants them clickable", "Owner/admin approval for public changes", "High-quality project files"],
-      samAction: "Send exact Instagram/Facebook links, confirm the Google verification route and use the before/after log as Xello proof content once the after state is improved.",
+      waitingOn: ["Exact Facebook page from owner/admin view", "Owner/admin approval for public changes", "High-quality project files"],
+      samAction: "Confirm the Facebook page/admin route, confirm the Google verification route and use the before/after log as Xello proof content once the after state is improved.",
       crmLearning: "Trial clients should create public Xello proof: baseline, intervention, after state and what changed."
     },
     {
