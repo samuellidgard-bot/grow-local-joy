@@ -216,14 +216,14 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - The Leader workflow should auto-complete research/status/setup-prep tasks where possible and collect relay evidence notes before task completion.
 - First Touch Facebook Page creation is approved by Sam; Leader should prepare setup details and only pause for admin invite/final public publish.
 - First Touch public proof has been found on the Work page, TikTok and Google Business; the next blocker is collecting original/high-res assets, review screenshots and project notes on shoot day.
-- M8 Stage 2 is now decided: website, Instagram, Facebook and TikTok are live foundations, and Google presence should be created/strengthened.
+- M8 Stage 2 direction is now decided: website, Instagram and TikTok are live foundations; Facebook Page has not been created yet but owner said he would create it; Google presence should be created/claimed and verified.
 - M8 Instagram public match found: https://www.instagram.com/m8designsltd/ uses M8 Designs / M8 Designs LTD, the M8 logo and a new-builds/extensions/renovations bio. Baseline screenshot saved in the foundation pack.
-- M8 Facebook remains owner/admin confirmation only: public checks did not expose a safe viewable page link, and the likely same handle is not publicly viewable logged out.
+- M8 Facebook should now be treated as a create/prep task, not a hidden-existing-page task.
 - M8 should move into Stage 3 profile polish, with the before/after online presence trail tracked as future Xello testimonial content.
 
 ## Open Questions
 
-- For M8, what is the exact Facebook URL from the owner/admin view so the page can be linked and screenshotted safely?
+- For M8, will the owner create the Facebook Page himself first, or should he invite Xello after a blank Page is created so Xello can polish it?
 - For M8, who owns the Google Business verification/admin route?
 - After the First Touch shoot, which captured/uploaded assets are best enough to use as proof?
 - Which licensed music source should become Xello's default for paid-ad-safe client edits?
