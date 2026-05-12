@@ -5459,20 +5459,20 @@ function getClientOperatingBoard() {
       client: "First Touch Innovations",
       stage: "Proof asset intake",
       momentum: "Moving",
-      nextAction: "Use the shoot-day print pack with Sonny and collect proof assets instead of waiting on bio edits.",
+      nextAction: "Use the foundation pack and shoot-day proof workflow to package footage, reviews and profile/contact polish before any paid lead test.",
       aiCanDo: ["Prepare shot list/scripts", "Build proof folder structure", "Draft first content batch", "Prepare tracker fields"],
       waitingOn: ["Shoot day with Sonny", "Original/high-res files", "Review screenshots", "Owner permission for public use"],
-      samAction: "Take the print pack to the shoot, capture the proof library and mark assets by project/proof type afterwards.",
+      samAction: "Use the First Touch proof/profile pack, confirm public footage permission, collect review screenshots and mark assets by project/proof type.",
       crmLearning: "Waiting on a client should not feel stuck if Xello has prep work, proof capture and tracking setup to complete."
     },
     {
       client: "M8 Designs",
       stage: "Profile polish",
       momentum: "Moving",
-      nextAction: "Stage 2 is decided: website, Instagram, Facebook and TikTok are live; Google needs creating. Now capture the before state and polish the visible profiles.",
+      nextAction: "Stage 2 is decided: website, Instagram, Facebook and TikTok are live; Google needs creating. Use the M8 profile polish pack to capture the before state, prep Google and tighten profiles.",
       aiCanDo: ["Prepare before/after screenshot checklist", "Audit profile bios and pinned proof", "Draft Google Business setup plan", "Build M8 tracker fields"],
       waitingOn: ["Exact profile links if Sam wants them clickable", "Owner/admin approval for public changes", "High-quality project files"],
-      samAction: "Capture the current M8 website/social/Google baseline before changes, then use it as Xello proof content once the after state is improved.",
+      samAction: "Send exact Instagram/Facebook links, confirm the Google verification route and use the before/after log as Xello proof content once the after state is improved.",
       crmLearning: "Trial clients should create public Xello proof: baseline, intervention, after state and what changed."
     },
     {

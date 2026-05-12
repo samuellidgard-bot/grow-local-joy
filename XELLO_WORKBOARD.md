@@ -181,9 +181,12 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 
 ### Next Practical Tasks
 
-- Today priority: First Touch shoot-day proof capture prep, M8 missing-foundation decisions, and converting trial-client friction into the repeatable Foundations offer.
+- Today priority: M8 profile polish/Google setup prep, First Touch proof/profile packaging, and converting trial-client friction into the repeatable Foundations offer.
 - Use `first-touch-advert-launch-pack/first-touch-shoot-day-content-strategy-2026-05-06.md` for the First Touch shoot with Sonny.
-- Confirm M8 current account list: website, TikTok, Google Business decision, Instagram/Facebook status.
+- Treat M8 Stage 2 as complete for now: website, Instagram, Facebook and TikTok exist; Google presence needs creating/strengthening.
+- Use `../client-delivery/foundation-phase-2026-05-12/MASTER_FOUNDATION_PHASE_PACK_2026-05-12.md` as the current client foundations working pack.
+- Use `../client-delivery/foundation-phase-2026-05-12/M8_DESIGNS_STAGE_3_PROFILE_POLISH_PACK_2026-05-12.md` for M8 profile polish, Google Business setup prep and testimonial before/after tracking.
+- Use `../client-delivery/foundation-phase-2026-05-12/FIRST_TOUCH_PROOF_AND_PROFILE_PACK_2026-05-12.md` for First Touch proof packaging and profile/contact polish.
 - Use the CRM Platform Status Board to confirm each useful platform status: Found, Needs polish, Create, or Skip.
 - Prepare proof asset review once Drive folders have uploads.
 - Use `content-engine/STARTER_FOUNDATIONS_CONTENT_FRAMEWORK_2026-05-06.md` to score assets and create starter-only briefs once uploads are available.
@@ -213,11 +216,13 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - The Leader workflow should auto-complete research/status/setup-prep tasks where possible and collect relay evidence notes before task completion.
 - First Touch Facebook Page creation is approved by Sam; Leader should prepare setup details and only pause for admin invite/final public publish.
 - First Touch public proof has been found on the Work page, TikTok and Google Business; the next blocker is collecting original/high-res assets, review screenshots and project notes on shoot day.
+- M8 Stage 2 is now decided: website, Instagram, Facebook and TikTok are live foundations, and Google presence should be created/strengthened.
+- M8 should move into Stage 3 profile polish, with the before/after online presence trail tracked as future Xello testimonial content.
 
 ## Open Questions
 
-- For M8, should Xello create missing accounts directly, or guide owner-led setup?
-- Does M8 want a Google Business Profile despite initial hesitation?
+- For M8, what are the exact Instagram and Facebook URLs so the baseline can be linked and screenshotted?
+- For M8, who owns the Google Business verification/admin route?
 - After the First Touch shoot, which captured/uploaded assets are best enough to use as proof?
 - Which licensed music source should become Xello's default for paid-ad-safe client edits?
 
@@ -247,6 +252,8 @@ Avoid two chats editing the same file at the same time. If unsure, add a note un
 - First Touch Active Site Proof V3 has been rendered from the current footage, scored 81/100 and logged back into the AI editor training feedback/outcome system.
 - First Touch AI editor training has been expanded with tutorial-based SFX, colour grading, transition/effects and audio training modules plus dedicated SFX and Colour Grading agent prompts.
 - First Touch AI editor automation is now self-improving: the daily run reads a protocol/scorecard/backlog, adds low-risk training-pack improvements, and a weekly Friday review checks the last 7 days for repeated gaps.
+- M8 has been advanced from missing foundations into profile polish in the CRM: Instagram/Facebook/TikTok/website are treated as live foundations, Google is marked for creation, and before/after testimonial tracking has been added.
+- Master Control created the 2026-05-12 foundation-phase working pack with public baseline screenshots, M8 profile polish/Google setup prep, First Touch proof/profile prep, lead tracker template and before/after proof log.
 - Xello own-social has a faceless automated content strategy: weekday draft automation, five education pillars, CRM social plan updates and first manual-review post draft.
 - Xello own-social now has a 30-day faceless Instagram growth sprint with brand identity, content pillars, 21 Reel / 9 carousel calendar, monetization route and 4-hour weekly batching workflow.
 - Xello own-social now has an Instagram Growth Scout loop: scout agent, lessons bank, dated scout outputs and relay rules for the daily post drafting automation.
