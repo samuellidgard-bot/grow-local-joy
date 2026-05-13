@@ -4,21 +4,21 @@ import { ClipboardCheck, MousePointerClick, Search, TrendingUp } from "lucide-re
 const launchPlan = [
   {
     phase: "Step 1",
-    title: "10-Minute Fit Call",
+    title: "Foundation Review",
     icon: Search,
-    points: ["Understand what work you want more of", "Check your website, social proof and local area", "Decide if a small test is worth running"],
+    points: ["Understand what work you want more of", "Check your website, social proof and local area", "Spot the foundations that need fixing first"],
   },
   {
     phase: "Step 2",
-    title: "Site Visit & Test Build",
+    title: "Build The Essentials",
     icon: MousePointerClick,
-    points: ["Film one useful project or service angle", "Build one simple Meta campaign", "Set up tracking so enquiries are not guessed"],
+    points: ["Polish useful social and Google basics", "Improve the enquiry route and contact clarity", "Prepare proof assets and simple tracking"],
   },
   {
     phase: "Step 3",
-    title: "Review The Real Outcome",
+    title: "Choose The Next Move",
     icon: TrendingUp,
-    points: ["Review enquiries, quality and cost", "Spot website or follow-up improvements", "Only discuss ongoing work if the test creates useful evidence"],
+    points: ["Review what is ready and what still blocks trust", "Plan content or ads only when the business is prepared", "Move into ongoing work only if it makes sense"],
   },
 ];
 
@@ -33,10 +33,10 @@ const CaseStudiesSection = () => (
       >
         <span className="text-sm font-semibold tracking-widest uppercase text-secondary">How It Works</span>
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-primary-foreground">
-          A lower-risk way to test if paid content can generate enquiries
+          A cleaner route from weak online presence to better enquiries
         </h2>
         <p className="text-primary-foreground/60 mt-4 max-w-2xl mx-auto text-lg">
-          The first goal is not to sell a huge package. It is to start with one realistic test, learn quickly and decide whether a bigger growth system is worth building.
+          The first goal is not to sell a huge package. It is to make the business clearer, more credible and easier to enquire with before scaling traffic.
         </p>
       </motion.div>
 
@@ -77,10 +77,10 @@ const CaseStudiesSection = () => (
         className="mt-10 rounded-lg border border-secondary/25 bg-secondary/10 p-6 text-center"
       >
         <p className="font-heading text-xl font-bold text-primary-foreground">
-          Best fit: renovation companies that can handle more quote requests and have at least one real project we can use for proof-led content.
+          Best fit: renovation companies that want better online trust, clearer enquiries and a stronger base before spending more on ads.
         </p>
-        <p className="mt-2 text-sm text-primary-foreground/68">
-          Not a fit if you want guaranteed leads, zero ad spend, or a full website rebuild for free.
+        <p className="mt-2 text-sm text-primary-foreground/70">
+          Not a fit if you want fake guarantees, overnight results or traffic before the basics are ready.
         </p>
       </motion.div>
     </div>

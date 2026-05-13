@@ -5,9 +5,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, Mail, Send } from "lucide-react";
 
 const callSteps = [
-  "Sam reviews your website, socials and local area before replying.",
-  "The call checks whether a small test is actually worth running.",
-  "No retainer is discussed unless the test creates useful evidence.",
+  "Sam reviews your website, socials, Google presence and enquiry route before replying.",
+  "The call checks which foundations need tightening first.",
+  "Ads and retainers are only discussed once the basics are ready.",
 ];
 
 const ContactSection = () => {
@@ -21,12 +21,12 @@ const ContactSection = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-sm font-semibold tracking-widest uppercase text-secondary">Start With A Quick Call</span>
+            <span className="text-sm font-semibold tracking-widest uppercase text-secondary">Start With The Foundations</span>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 text-foreground">
-              See if a 14-day lead test makes sense for your company
+              Ask Xello to review your online foundations
             </h2>
             <p className="text-muted-foreground mt-4 text-lg max-w-2xl mx-auto">
-              Send a few details and I will personally check whether your business is a good fit before asking you to book anything.
+              Send a few details and I will personally check what needs improving before more traffic or ad spend is pushed at the business.
             </p>
           </motion.div>
 
@@ -70,7 +70,7 @@ const ContactSection = () => {
               method="POST"
               className="bg-card rounded-lg p-8 sm:p-10 shadow-card border border-border space-y-5"
             >
-              <input type="hidden" name="_subject" value="New Xello Media 14-Day Test Enquiry" />
+              <input type="hidden" name="_subject" value="New Xello Media Starter Foundations Enquiry" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
@@ -111,8 +111,8 @@ const ContactSection = () => {
                   <Input name="main_service" placeholder="Extensions, kitchens, bathrooms..." className="h-12 rounded-md" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-card-foreground mb-1.5 block">Comfortable test ad budget</label>
-                  <Input name="test_ad_budget" placeholder="Not sure yet, £150-£500..." className="h-12 rounded-md" />
+                  <label className="text-sm font-medium text-card-foreground mb-1.5 block">Biggest weak spot right now</label>
+                  <Input name="biggest_weak_spot" placeholder="Website, Google, social proof, tracking..." className="h-12 rounded-md" />
                 </div>
               </div>
               <div>
@@ -120,7 +120,7 @@ const ContactSection = () => {
                 <Textarea
                   required
                   name="message"
-                  placeholder="Tell me what kind of projects you want more of and whether you have a current job we could film."
+                  placeholder="Tell me what kind of projects you want more of and what you think currently holds your marketing back."
                   className="min-h-[120px] rounded-md"
                 />
               </div>
@@ -136,7 +136,7 @@ const ContactSection = () => {
                 No automated sales spam. I will review your business first and reply personally.
               </p>
               <a
-                href="mailto:sam@xellomedia.co.uk?subject=Renovation%2014-Day%20Lead%20Test"
+                href="mailto:sam@xellomedia.co.uk?subject=Starter%20Foundations%20Review"
                 className="flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="h-4 w-4" />

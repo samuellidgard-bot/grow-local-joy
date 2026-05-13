@@ -5,7 +5,7 @@ const founderPoints = [
   {
     icon: MapPin,
     title: "Local to Brighton & Hove",
-    text: "The offer is built for nearby renovation firms, not generic national campaigns.",
+    text: "The foundations process is built for nearby home improvement companies, not generic national campaigns.",
   },
   {
     icon: GraduationCap,
@@ -15,7 +15,7 @@ const founderPoints = [
   {
     icon: Camera,
     title: "Real creative production",
-    text: "Camera, drone and microphones mean the test can use real site footage instead of bland stock-style content.",
+    text: "Camera, drone and microphones can turn real projects into the proof needed for stronger content and ads.",
   },
   {
     icon: MousePointerClick,
@@ -40,13 +40,13 @@ const FounderSection = () => (
           </h2>
           <p className="text-muted-foreground mt-5 text-lg leading-relaxed">
             Xello Media is built around a simple promise: help local home
-            renovation companies look more professional online, test better
-            creative and understand exactly where their enquiries come from.
+            renovation companies look more professional online, build stronger
+            proof and understand exactly where their enquiries come from.
           </p>
           <p className="text-muted-foreground mt-4 leading-relaxed">
-            The first step is deliberately small. We look at your current online
-            presence, agree one focused test and only talk about ongoing
-            management if the numbers and learning justify it.
+            The first step is practical: tighten the online foundations first,
+            then decide whether content, Meta ads or ongoing growth support is
+            the right next move.
           </p>
         </motion.div>
 

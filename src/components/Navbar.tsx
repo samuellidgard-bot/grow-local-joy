@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/xello-media-logo-approved.png";
 
 const links = [
-  { label: "14-Day Test", href: "#services" },
+  { label: "Starter Offer", href: "#services" },
   { label: "Process", href: "#case-studies" },
   { label: "Proof", href: "#proof" },
   { label: "FAQ", href: "#faq" },
@@ -39,7 +39,7 @@ const Navbar = () => {
             onClick={() => scrollTo("#contact")}
             className="bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Free Review
+            Foundations Review
           </Button>
         </div>
 
@@ -64,7 +64,7 @@ const Navbar = () => {
             onClick={() => scrollTo("#contact")}
             className="w-full bg-secondary hover:bg-orange-light text-secondary-foreground font-heading font-semibold rounded-md"
           >
-            Free Review
+            Foundations Review
           </Button>
         </div>
       )}

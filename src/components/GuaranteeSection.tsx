@@ -14,13 +14,13 @@ const GuaranteeSection = () => (
           <ShieldCheck className="h-8 w-8 text-primary" />
         </div>
         <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground mb-4">
-          Simple test. Clear boundaries.
+          Foundations first. Growth second.
         </h2>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          The first test is intentionally capped: one focused offer, one filmed
-          advert, one local Meta campaign and transparent tracking. You cover the
-          ad spend, keep control of the account and only move into ongoing
-          management if the test creates enough useful learning or opportunity.
+          Xello does not push paid ads before the basics are ready. The first
+          step is to make your business clearer, more trustworthy and easier to
+          contact online. Once that foundation is in place, ads and ongoing
+          growth work have a stronger chance of producing useful enquiries.
         </p>
       </motion.div>
     </div>
