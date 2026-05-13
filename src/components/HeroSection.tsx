@@ -47,8 +47,8 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.04] mb-6 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]"
           >
-            Make your business easier to trust, easier to contact and{" "}
-            <span className="text-gradient-accent">easier to choose.</span>
+            We build the foundations that turn local attention into{" "}
+            <span className="text-gradient-accent">real enquiries.</span>
           </motion.h1>
 
           <motion.p
