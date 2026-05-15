@@ -10,11 +10,12 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen bg-hero overflow-hidden flex items-center">
       <img
-        src="/renovation-before-after.png"
-        alt="House renovation before and after concept"
-        className="absolute inset-0 h-full w-full object-cover opacity-25"
+        src="/xello-hero-home.png"
+        alt="Premium home exterior at night"
+        className="absolute inset-0 h-full w-full object-cover opacity-45"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/70 to-black/90" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.38)_70%)]" />
 
       <div className="container mx-auto px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
